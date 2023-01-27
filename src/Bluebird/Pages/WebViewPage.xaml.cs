@@ -3,36 +3,18 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.Web.WebView2.Core;
 using System;
 using System.Collections.Generic;
-using Windows.ApplicationModel;
 using Windows.UI.Xaml.Controls;
 
 namespace Bluebird.Pages;
 
 public sealed partial class WebViewPage : Page
 {
-    public static event System.EventHandler<EnteredBackgroundEventArgs> EnteredBackground;
-    public static event System.EventHandler<LeavingBackgroundEventArgs> ExitBackground;
 
     public WebViewPage()
     {
         this.InitializeComponent();
         WebViewControl.EnsureCoreWebView2Async();
-
-        EnteredBackground += WebViewPage_EnteredBackground;
-        ExitBackground += WebViewPage_ExitBackground;
     }
-
-    private void WebViewPage_ExitBackground(object sender, LeavingBackgroundEventArgs e)
-    {
-        
-    }
-
-    private void WebViewPage_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
-    {
-       
-    }
-
-    #region WebViewEvents
     private void WebViewControl_CoreWebView2Initialized(WebView2 sender, CoreWebView2InitializedEventArgs args)
     {
         // WebViewEvents
@@ -43,7 +25,6 @@ public sealed partial class WebViewPage : Page
         sender.CoreWebView2.DocumentTitleChanged += CoreWebView2_DocumentTitleChanged;
         sender.CoreWebView2.FaviconChanged += CoreWebView2_FaviconChanged;
         // Apply WebView2 settings
-        
         ApplyWebView2Settings();
         if (launchurl != null)
         {
@@ -114,5 +95,4 @@ public sealed partial class WebViewPage : Page
     {
         MainPageContent.SelectedTab.Header = sender.DocumentTitle;
     }
-    #endregion
 }

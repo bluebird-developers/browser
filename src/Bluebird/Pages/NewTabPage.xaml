@@ -21,7 +21,7 @@
                     Width="400"
                     KeyDown="TextBox_KeyDown"
                     Loaded="TextBox_Loaded"
-                    PlaceholderText="Type here to search" />
+                    PlaceholderText="Search or enter web address" />
             </StackPanel>
         </StackPanel>
     </Grid>

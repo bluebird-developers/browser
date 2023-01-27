@@ -7,8 +7,15 @@ public static class IconHelper
 {
     public static IconSource ConvFavURLToIconSource(string url)
     {
-        Uri faviconUrl = new(url);
-        BitmapIconSource iconsource = new() { UriSource = faviconUrl, ShowAsMonochrome = false };
-        return iconsource;
+        if (url != null)
+        {
+            Uri faviconUrl = new(url);
+            BitmapIconSource iconsource = new() { UriSource = faviconUrl, ShowAsMonochrome = false };
+            return iconsource;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

@@ -23,20 +23,6 @@ sealed partial class App : Application
         this.InitializeComponent();
         this.Suspending += OnSuspending;
         LoadSettings();
-
-        this.EnteredBackground += App_EnteredBackground;
-        this.LeavingBackground += App_LeavingBackground;
-    }
-
-    bool _isInBackgroundMode = false;
-    private void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
-    {
-        _isInBackgroundMode = false;
-    }
-  
-    private void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
-    {
-        _isInBackgroundMode = true;
     }
 
     private void LoadSettings()
@@ -86,15 +72,7 @@ sealed partial class App : Application
                 Window.Current.Content = rootFrame;
             }
 
-
-            string payload = "BlueBirdStartup";
-            if (args.Kind == ActivationKind.StartupTask)
-            {
-                var startupArgs = args as StartupTaskActivatedEventArgs;
-                payload = ActivationKind.StartupTask.ToString();
-            }
-
-            rootFrame.Navigate(typeof(MainPage), payload);
+            rootFrame.Navigate(typeof(MainPage));
             Window.Current.Activate();
         }
     }

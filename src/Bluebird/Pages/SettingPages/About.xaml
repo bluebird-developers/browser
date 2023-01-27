@@ -36,7 +36,6 @@
                 </svsettctrl:SettingsBlockControl.Icon>
                 <svsettctrl:SettingsBlockControl.ExpandableContent>
                     <RichTextBlock>
-                        <Paragraph>Fluid_union</Paragraph>
                         <Paragraph>jarno9981</Paragraph>
                         <Paragraph>Pinguin2001</Paragraph>
                         <Paragraph>Note: This list is in alphabetical order</Paragraph>

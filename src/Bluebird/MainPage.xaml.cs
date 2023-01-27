@@ -24,15 +24,6 @@ public sealed partial class MainPage : Page
         Window.Current.VisibilityChanged += WindowVisibilityChangedEventHandler;
     }
 
-    protected override void OnNavigatedTo(NavigationEventArgs e)
-    {
-        string payload = e.Parameter as string;
-       
-        if (payload == "BlueBirdStartUp")
-        {
-                CreateHomeTab();
-        }      
-    }
     void WindowVisibilityChangedEventHandler(object sender, Windows.UI.Core.VisibilityChangedEventArgs e)
     {
         // Perform operations that should take place when the application becomes visible rather than

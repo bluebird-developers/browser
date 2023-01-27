@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <svsettctrl:SettingsBlockControl Title="Search engine" Description="This will also change your startpage">
+        <svsettctrl:SettingsBlockControl Title="Search engine">
             <svsettctrl:SettingsBlockControl.Icon>
                 <SymbolIcon Symbol="Find" />
             </svsettctrl:SettingsBlockControl.Icon>
