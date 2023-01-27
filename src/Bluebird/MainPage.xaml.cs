@@ -44,7 +44,8 @@ public sealed partial class MainPage : Page
 
     private async void SidebarButton_Click(object sender, RoutedEventArgs e)
     {
-        try {
+        try
+        {
             switch ((sender as Button).Tag)
             {
                 case "Back":
@@ -198,14 +199,15 @@ public sealed partial class MainPage : Page
         {
             TabWebView.CoreWebView2.Navigate(uri);
         }
-        else {
+        else
+        {
             launchurl = uri;
             TabContent.Navigate(typeof(WebViewPage));
         }
     }
 
     public TabViewItem SelectedTab
-   
+
     {
         get
         {
@@ -257,6 +259,15 @@ public sealed partial class MainPage : Page
         CreateHomeTab();
     }
 
+    private void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
+    {
+        // If there are no more tabs, close the browser
+        if (sender.TabItems.Count == 0)
+        {
+            CoreApplication.Exit();
+        }
+    }
+
     public void CreateHomeTab()
     {
         CreateTab("New tab", Symbol.Document, typeof(NewTabPage));
@@ -267,7 +278,7 @@ public sealed partial class MainPage : Page
         CreateTab("New tab", Symbol.Document, typeof(WebViewPage));
     }
 
-    public void CreateTab(string header, Symbol symbol , Type page)
+    public void CreateTab(string header, Symbol symbol, Type page)
     {
         Frame frame = new();
         TabViewItem newItem = new()

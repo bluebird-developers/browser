@@ -218,7 +218,8 @@
                 AddTabButtonClick="Tabs_AddTabButtonClick"
                 Background="Transparent"
                 Loaded="Tabs_Loaded"
-                TabCloseRequested="Tabs_TabCloseRequested">
+                TabCloseRequested="Tabs_TabCloseRequested"
+                TabItemsChanged="Tabs_TabItemsChanged">
                 <muxc:TabView.TabStripFooter>
                     <Grid
                         x:Name="CustomDragRegion"
