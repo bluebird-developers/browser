@@ -57,7 +57,7 @@ public sealed partial class MainPage : Page
                     TabWebView.GoForward();
                     break;
                 case "Search":
-                    //UrlBox.Text = TabWebView.CoreWebView2.Source;
+                    UrlBox.Text = TabWebView.CoreWebView2.Source;
                     UrlBox.Focus(FocusState.Programmatic);
                     break;
                 case "ReadingMode":
