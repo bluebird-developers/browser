@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="Bluebird.Pages.SettingPages.General"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Bluebird.Pages.SettingPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:svsettctrl="using:SVSettingsControl"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <svsettctrl:SettingsBlockControl Title="Search engine" Description="This will also change your startpage">
+            <svsettctrl:SettingsBlockControl.Icon>
+                <SymbolIcon Symbol="Find" />
+            </svsettctrl:SettingsBlockControl.Icon>
+            <ComboBox
+                x:Name="SearchengineSelection"
+                Loaded="SearchengineSelection_Loaded"
+                SelectionChanged="SearchengineSelection_SelectionChanged">
+                <x:String>Ask</x:String>
+                <x:String>Baidu</x:String>
+                <x:String>Bing</x:String>
+                <x:String>DuckDuckGo</x:String>
+                <x:String>Ecosia</x:String>
+                <x:String>Google</x:String>
+                <x:String>Startpage</x:String>
+                <x:String>Qwant</x:String>
+                <x:String>Qwant Lite</x:String>
+                <x:String>Yahoo!</x:String>
+            </ComboBox>
+        </svsettctrl:SettingsBlockControl>
+    </StackPanel>
+</Page>
