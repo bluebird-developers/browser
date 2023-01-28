@@ -49,17 +49,17 @@ public sealed partial class MainPage : Page
             switch ((sender as Button).Tag)
             {
                 case "Back":
-                    TabWebView.GoBack();
+                    if (TabWebView != null) TabWebView.GoBack();
                     break;
                 case "Refresh":
-                    TabWebView.Reload();
+                    if (TabWebView != null) TabWebView.Reload();
                     break;
                 case "Forward":
-                    TabWebView.GoForward();
+                    if (TabWebView != null) TabWebView.GoForward();
                     break;
                 case "Search":
-                    UrlBox.Text = TabWebView.CoreWebView2.Source;
-                    UrlBox.Focus(FocusState.Programmatic);
+                    if (TabWebView != null)
+                        UrlBox.Text = TabWebView.CoreWebView2.Source;
                     break;
                 case "ReadingMode":
                     string jscript = await ReadingModeHelper.GetReadingModeJScriptAsync();
@@ -70,18 +70,28 @@ public sealed partial class MainPage : Page
                     TabWebView.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
                     break;
                 case "Share":
-                    SystemHelper.ShowShareUIURL(TabWebView.CoreWebView2.DocumentTitle, TabWebView.CoreWebView2.Source);
+                    if (TabWebView != null)
+                        SystemHelper.ShowShareUIURL(TabWebView.CoreWebView2.DocumentTitle, TabWebView.CoreWebView2.Source);
                     break;
                 case "AddFavoriteFlyout":
-                    FavoriteTitle.Text = TabWebView.CoreWebView2.DocumentTitle;
-                    FavoriteUrl.Text = TabWebView.CoreWebView2.Source;
+                    if (TabWebView != null)
+                    {
+                        AddFavoriteFlyout.ShowAt(AddFavoriteFlyoutBtn);
+                        FavoriteTitle.Text = TabWebView.CoreWebView2.DocumentTitle;
+                        FavoriteUrl.Text = TabWebView.CoreWebView2.Source;
+                    }
                     break;
                 case "AddFavorite":
                     FavoritesHelper.AddFavoritesItem(FavoriteTitle.Text, FavoriteUrl.Text);
                     AddFavoriteFlyout.Hide();
                     break;
                 case "Favorites":
-                    LoadListFromJson("Favorites.json");
+                    JsonItemsList = await Json.GetListFromJsonAsync("Favorites.json");
+                    if (JsonItemsList != null) FavoritesListView.ItemsSource = JsonItemsList;
+                    else
+                    {
+                        FavoritesListView.ItemsSource = null;
+                    }
                     break;
                 case "FavoritesExpanded":
                     OpenFavoriteFlyoutBtn.Flyout.Hide();
@@ -91,7 +101,7 @@ public sealed partial class MainPage : Page
         }
         catch
         {
-            await UI.ShowDialog("Error", "This action is not supported on this page");
+            await UI.ShowDialog("Error", "This action is not supported in this state");
         }
     }
 
@@ -118,7 +128,7 @@ public sealed partial class MainPage : Page
                 }
                 break;
             case "DevTools":
-                if (TabContent.Content is WebViewPage)
+                if (TabWebView != null)
                 {
                     TabWebView.CoreWebView2.OpenDevToolsWindow();
                 }
@@ -128,7 +138,7 @@ public sealed partial class MainPage : Page
                 }
                 break;
             case "ShowSource":
-                if (TabContent.Content is WebViewPage)
+                if (TabWebView != null)
                 {
                     launchurl = "view-source:" + TabWebView.Source.ToString();
                     CreateWebTab();
@@ -298,16 +308,6 @@ public sealed partial class MainPage : Page
         var tabcontent = (Frame)selectedItem.Content;
         if (tabcontent.Content is WebViewPage) (tabcontent.Content as WebViewPage).WebViewControl.Close();
         sender.TabItems.Remove(args.Tab);
-    }
-
-    private async void LoadListFromJson(string file)
-    {
-        JsonItemsList = await Json.GetListFromJsonAsync(file);
-        if (JsonItemsList != null) FavoritesListView.ItemsSource = JsonItemsList;
-        else
-        {
-            FavoritesListView.ItemsSource = null;
-        }
     }
 
     private void FavoritesList_SelectionChanged(object sender, SelectionChangedEventArgs e)

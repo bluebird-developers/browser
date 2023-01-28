@@ -7,15 +7,16 @@ public static class IconHelper
 {
     public static IconSource ConvFavURLToIconSource(string url)
     {
-        if (url != null)
-        {
+       try
+       {
             Uri faviconUrl = new(url);
             BitmapIconSource iconsource = new() { UriSource = faviconUrl, ShowAsMonochrome = false };
             return iconsource;
         }
-        else
-        {
-            return null;
-        }
+       catch
+       {
+            IconSource iconsource = new SymbolIconSource() { Symbol = Windows.UI.Xaml.Controls.Symbol.Document };
+            return iconsource;
+       }
     }
 }

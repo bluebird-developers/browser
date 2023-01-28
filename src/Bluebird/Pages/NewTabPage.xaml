@@ -7,22 +7,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <StackPanel>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Image
-                    Width="48"
-                    Height="48"
-                    Source="ms-appx:///Assets/Square44x44Logo.altform-lightunplated_targetsize-48.png" />
-                <TextBlock VerticalAlignment="Center" Style="{StaticResource SubheaderTextBlockStyle}">Bluebird</TextBlock>
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0">
-                <TextBox
-                    Width="400"
-                    KeyDown="TextBox_KeyDown"
-                    Loaded="TextBox_Loaded"
-                    PlaceholderText="Search or enter web address" />
-            </StackPanel>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Image
+                Width="48"
+                Height="48"
+                Source="ms-appx:///Assets/Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+            <TextBlock
+                Margin="10,0,0,0"
+                VerticalAlignment="Center"
+                Style="{StaticResource SubheaderTextBlockStyle}">
+                Bluebird
+            </TextBlock>
         </StackPanel>
-    </Grid>
+        <StackPanel Margin="0,20,0,0">
+            <TextBox
+                Width="400"
+                IsSpellCheckEnabled="False"
+                KeyDown="TextBox_KeyDown"
+                Loaded="TextBox_Loaded"
+                PlaceholderText="Search or enter web address" />
+        </StackPanel>
+    </StackPanel>
 </Page>

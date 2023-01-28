@@ -42,6 +42,9 @@
                         <Paragraph>
                             Chat with us on<Hyperlink NavigateUri="bluebird:https://discord.com/invite/CWGHdGVFFV">Discord</Hyperlink>
                             to get latest information and support</Paragraph>
+                        <Paragraph>
+                            You can view the source code on<Hyperlink NavigateUri="bluebird:https://github.com/Pinguin2001/Bluebird-Browser">GitHub</Hyperlink>
+                        </Paragraph>
                     </RichTextBlock>
                 </svsettctrl:SettingsBlockControl.ExpandableContent>
             </svsettctrl:SettingsBlockControl>

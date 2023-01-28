@@ -13,8 +13,9 @@ public sealed partial class WebViewPage : Page
     public WebViewPage()
     {
         this.InitializeComponent();
-        WebViewControl.EnsureCoreWebView2Async();
+        _ = WebViewControl.EnsureCoreWebView2Async();
     }
+
     private void WebViewControl_CoreWebView2Initialized(WebView2 sender, CoreWebView2InitializedEventArgs args)
     {
         // WebViewEvents

@@ -50,6 +50,21 @@
                 </ListView>
             </Grid>
         </Flyout>
+        <Flyout x:Name="AddFavoriteFlyout" Placement="Right">
+            <StackPanel>
+                <TextBlock MinWidth="300" FontSize="20">
+                    Add favorite
+                </TextBlock>
+                <TextBlock>Name</TextBlock>
+                <TextBox x:Name="FavoriteTitle" />
+                <TextBlock>Url</TextBlock>
+                <TextBox x:Name="FavoriteUrl" />
+                <Button
+                    Click="SidebarButton_Click"
+                    Content="Add"
+                    Tag="AddFavorite" />
+            </StackPanel>
+        </Flyout>
     </Page.Resources>
     <Grid>
         <Grid>
@@ -89,7 +104,8 @@
                                     Width="400"
                                     GotFocus="UrlBox_GotFocus"
                                     IsSpellCheckEnabled="False"
-                                    KeyDown="UrlBox_KeyDown" />
+                                    KeyDown="UrlBox_KeyDown"
+                                    PlaceholderText="Search or enter web address" />
                             </Flyout>
                         </Button.Flyout>
                     </Button>
@@ -112,27 +128,11 @@
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE72D;" />
                     </Button>
                     <Button
+                        x:Name="AddFavoriteFlyoutBtn"
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="AddFavoriteFlyout">
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE734;" />
-                        <Button.Flyout>
-                            <Flyout x:Name="AddFavoriteFlyout" Placement="Right">
-                                <StackPanel>
-                                    <TextBlock MinWidth="300" FontSize="20">
-                                        Add favorite
-                                    </TextBlock>
-                                    <TextBlock>Name</TextBlock>
-                                    <TextBox x:Name="FavoriteTitle" />
-                                    <TextBlock>Url</TextBlock>
-                                    <TextBox x:Name="FavoriteUrl" />
-                                    <Button
-                                        Click="SidebarButton_Click"
-                                        Content="Add"
-                                        Tag="AddFavorite" />
-                                </StackPanel>
-                            </Flyout>
-                        </Button.Flyout>
                     </Button>
                     <Button
                         x:Name="OpenFavoriteFlyoutBtn"
