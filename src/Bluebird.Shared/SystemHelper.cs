@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.DataTransfer;
 
 namespace Bluebird.Shared
