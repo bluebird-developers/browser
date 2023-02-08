@@ -15,27 +15,35 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Style="{StaticResource SidebarButton}" Tag="Back">
+            <Button
+                Click="ToolbarButton_Click"
+                Style="{StaticResource SidebarButton}"
+                Tag="Back">
                 <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE112;" />
             </Button>
-            <Button Style="{StaticResource SidebarButton}" Tag="Home">
-                <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE10F;" />
-            </Button>
-            <Button Style="{StaticResource SidebarButton}" Tag="Refresh">
+            <Button
+                Click="ToolbarButton_Click"
+                Style="{StaticResource SidebarButton}"
+                Tag="Refresh">
                 <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE149;" />
             </Button>
-            <Button Style="{StaticResource SidebarButton}" Tag="Forward">
+            <Button
+                Click="ToolbarButton_Click"
+                Style="{StaticResource SidebarButton}"
+                Tag="Forward">
                 <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE72A;" />
             </Button>
             <muxc:ProgressRing
+                x:Name="LoadingRing"
                 Width="24"
                 Height="24"
                 IsActive="false" />
         </StackPanel>
         <Button
             HorizontalAlignment="Right"
+            Click="ToolbarButton_Click"
             Style="{StaticResource SidebarButton}"
-            Tag="Forward">
+            Tag="Close">
             <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE10A;" />
         </Button>
         <muxc:WebView2

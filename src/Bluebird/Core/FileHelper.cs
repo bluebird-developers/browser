@@ -9,8 +9,6 @@ public class FileHelper
     {
         var file = await ApplicationData.Current.LocalFolder.TryGetItemAsync(fileName);
         if (file != null)
-        {
             await file.DeleteAsync();
-        }
     }
 }

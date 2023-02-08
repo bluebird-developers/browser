@@ -15,10 +15,7 @@ public sealed partial class Privacy : Page
     {
         string selection = SettingsHelper.GetSetting("DisableJavaScript");
         if (selection == "true")
-        {
             DisableJavaScriptToggle.IsOn = true;
-        }
-        
     }
 
     private void DisableJavaScriptToggle_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -41,9 +38,7 @@ public sealed partial class Privacy : Page
     {
         string selection = SettingsHelper.GetSetting("DisableGenAutoFill");
         if (selection == "true")
-        {
             DisableGenaralAutoFillToggle.IsOn = true;
-        }
     }
 
     int trueCount = 0;
@@ -78,9 +73,7 @@ public sealed partial class Privacy : Page
     {
         string selection = SettingsHelper.GetSetting("DisableWebMess");
         if (selection == "true")
-        {
             DisablWebMessFillToggle.IsOn = true;
-        }
     }
 
     private void DisablWebMessFillToggle_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -102,9 +95,7 @@ public sealed partial class Privacy : Page
     {
         string selection = SettingsHelper.GetSetting("DisablePassSave");
         if (selection == "true")
-        {
             PasswordWebMessFillToggle.IsOn = true;
-        }
     }
 
     private void PasswordWebMessFillToggle_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)

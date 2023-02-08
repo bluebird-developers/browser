@@ -247,6 +247,7 @@
                 Margin="0,75,15,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
+                x:FieldModifier="public"
                 Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                 BorderBrush="Gray"
                 CornerRadius="8"

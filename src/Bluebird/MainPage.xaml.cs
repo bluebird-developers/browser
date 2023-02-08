@@ -11,7 +11,6 @@ using Windows.UI.Xaml.Input;
 using Bluebird.Pages;
 using Bluebird.Core;
 using System.Linq;
-using Windows.UI.Xaml.Navigation;
 
 namespace Bluebird;
 
@@ -62,12 +61,18 @@ public sealed partial class MainPage : Page
                         UrlBox.Text = TabWebView.CoreWebView2.Source;
                     break;
                 case "ReadingMode":
-                    string jscript = await ReadingModeHelper.GetReadingModeJScriptAsync();
-                    await TabWebView.CoreWebView2.ExecuteScriptAsync(jscript);
+                    if (TabWebView != null)
+                    {
+                        string jscript = await ReadingModeHelper.GetReadingModeJScriptAsync();
+                        await TabWebView.CoreWebView2.ExecuteScriptAsync(jscript);
+                    }
                     break;
                 case "Translate":
-                    string url = TabWebView.CoreWebView2.Source;
-                    TabWebView.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
+                    if (TabWebView != null)
+                    {
+                        string url = TabWebView.CoreWebView2.Source;
+                        TabWebView.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
+                    }
                     break;
                 case "Share":
                     if (TabWebView != null)
@@ -98,10 +103,18 @@ public sealed partial class MainPage : Page
                     CreateTab("Favorites", Symbol.Favorite, typeof(FavoritesPage));
                     break;
                 case "CompactOverlay":
-                    CompactOverlayFrame.Visibility = Visibility.Visible;
-                    launchurl = TabWebView.CoreWebView2.Source;
-                    CompactOverlayFrame.Navigate(typeof(Pages.CompactWebOverlay));
-                    Tabs.TabItems.Remove(Tabs.SelectedItem);
+                    if (TabWebView != null)
+                    {
+                        CompactOverlayFrame.Visibility = Visibility.Visible;
+                        launchurl = TabWebView.CoreWebView2.Source;
+                        CompactOverlayFrame.Navigate(typeof(CompactWebOverlay));
+                        TabWebView.Close();
+                        Tabs.TabItems.Remove(Tabs.SelectedItem);
+                    }
+                    else
+                    {
+                        await UI.ShowDialog("Error", "XAML-based pages cannot be moved into the overlay");
+                    }
                     break;
             }
         }
@@ -125,23 +138,15 @@ public sealed partial class MainPage : Page
             case "Fullscreen":
                 var view = ApplicationView.GetForCurrentView();
                 if (!view.IsFullScreenMode)
-                {
                     WindowManager.EnterFullScreen(true);
-                }
                 else
-                {
                     WindowManager.EnterFullScreen(false);
-                }
                 break;
             case "DevTools":
                 if (TabWebView != null)
-                {
                     TabWebView.CoreWebView2.OpenDevToolsWindow();
-                }
                 else
-                {
                     await UI.ShowDialog("Error", "Only webpage source can be inspected");
-                }
                 break;
             case "ShowSource":
                 if (TabWebView != null)
@@ -150,9 +155,7 @@ public sealed partial class MainPage : Page
                     CreateWebTab();
                 }
                 else
-                {
                     await UI.ShowDialog("Error", "Only webpage source can be inspected");
-                }
                 break;
             case "Settings":
                 CreateTab("Settings", Symbol.Setting, typeof(SettingsPage));
@@ -172,22 +175,14 @@ public sealed partial class MainPage : Page
             if (input.Contains("Bluebird-int://"))
             {
                 if (input == "Bluebird-int://newtab")
-                {
                     TabContent.Navigate(typeof(NewTabPage));
-                }
                 if (input == "Bluebird-int://settings")
-                {
                     TabContent.Navigate(typeof(SettingsPage));
-                }
             }
             else if (inputtype == "url")
-            {
                 NavigateToUrl(input.Trim());
-            }
             else if (inputtype == "urlNOProtocol")
-            {
                 NavigateToUrl("https://" + input.Trim());
-            }
             else
             {
                 string searchurl;
@@ -212,9 +207,7 @@ public sealed partial class MainPage : Page
     public void NavigateToUrl(string uri)
     {
         if (TabWebView != null)
-        {
             TabWebView.CoreWebView2.Navigate(uri);
-        }
         else
         {
             launchurl = uri;
@@ -229,9 +222,7 @@ public sealed partial class MainPage : Page
         {
             TabViewItem selectedItem = (TabViewItem)Tabs.SelectedItem;
             if (selectedItem != null)
-            {
                 return selectedItem;
-            }
             return null;
         }
     }
@@ -242,9 +233,7 @@ public sealed partial class MainPage : Page
         {
             TabViewItem selectedItem = (TabViewItem)Tabs.SelectedItem;
             if (selectedItem != null)
-            {
                 return (Frame)selectedItem.Content;
-            }
             return null;
         }
     }
@@ -254,20 +243,17 @@ public sealed partial class MainPage : Page
         get
         {
             if (TabContent.Content is WebViewPage)
-            {
                 return (TabContent.Content as WebViewPage).WebViewControl;
-            }
             return null;
         }
     }
 
     private void Tabs_Loaded(object sender, RoutedEventArgs e)
     {
-        if (launchurl != null) CreateWebTab();
+        if (launchurl != null)
+            CreateWebTab();
         else
-        {
             CreateHomeTab();
-        }
     }
 
     private void Tabs_AddTabButtonClick(TabView sender, object args)
@@ -275,12 +261,15 @@ public sealed partial class MainPage : Page
         CreateHomeTab();
     }
 
-    private void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
+    private async void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
     {
-        // If there are no more tabs, close the browser
         if (sender.TabItems.Count == 0)
         {
-            CoreApplication.Exit();
+            ContentDialogResult result = await UI.ShowDialogWithAction("Close Bluebird?", "Do you want to close Bluebird or create a new tab?", "New tab", "Close");
+            if (result == ContentDialogResult.Primary)
+                CreateHomeTab();
+            else
+                CoreApplication.Exit();
         }
     }
 

@@ -14,13 +14,9 @@ public sealed partial class General : Page
     {
         string selection = SettingsHelper.GetSetting("EngineFriendlyName");
         if (selection != null)
-        {
             SearchengineSelection.PlaceholderText = selection;
-        }
         else
-        {
             SearchengineSelection.PlaceholderText = "Qwant Lite";
-        }
     }
 
     private void SearchengineSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)

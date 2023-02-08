@@ -26,9 +26,7 @@ public sealed partial class NewTabPage : Page
             string searchurl;
             if (SearchUrl == null) searchurl = "https://lite.qwant.com/?q=";
             else
-            {
                 searchurl = SearchUrl;
-            }
             string query = searchurl + textbox.Text;
             MainPageContent.NavigateToUrl(query);
         }

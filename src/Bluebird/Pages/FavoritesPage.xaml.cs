@@ -17,11 +17,10 @@ namespace Bluebird.Pages
         private async void LoadFavorites()
         {
             JsonItemsList = await Json.GetListFromJsonAsync("Favorites.json");
-            if (JsonItemsList != null) FavoritesListView.ItemsSource = JsonItemsList;
+            if (JsonItemsList != null)
+                FavoritesListView.ItemsSource = JsonItemsList;
             else
-            {
                 FavoritesListView.ItemsSource = null;
-            }
         }
 
         private void FavoritesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
