@@ -142,6 +142,12 @@
                         Tag="Favorites">
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE728;" />
                     </Button>
+                    <Button
+                        Click="SidebarButton_Click"
+                        Style="{StaticResource SidebarButton}"
+                        Tag="CompactOverlay">
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE8A7;" />
+                    </Button>
                     <Button Style="{StaticResource SidebarButton}">
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE10C;" />
                         <Button.Flyout>
@@ -232,6 +238,19 @@
                     </ResourceDictionary>
                 </muxc:TabView.Resources>
             </muxc:TabView>
+
+            <Frame
+                x:Name="CompactOverlayFrame"
+                Grid.Column="1"
+                Width="300"
+                Height="500"
+                Margin="0,75,15,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                BorderBrush="Gray"
+                CornerRadius="8"
+                Visibility="Collapsed" />
         </Grid>
     </Grid>
 </Page>

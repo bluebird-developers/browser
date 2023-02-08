@@ -150,8 +150,8 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CompactOverlayPage.xaml.cs">
-      <DependentUpon>CompactOverlayPage.xaml</DependentUpon>
+    <Compile Include="Pages\CompactWebOverlay.xaml.cs">
+      <DependentUpon>CompactWebOverlay.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FavoritesPage.xaml.cs">
       <DependentUpon>FavoritesPage.xaml</DependentUpon>
@@ -239,7 +239,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
-    <Content Include="Extensions\ReadingMode\simpyread-enhanced-min.js">
+    <Content Include="Extensions\ReadingMode\simplyread-enhanced-min.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Package.StoreAssociation.xml" />
@@ -267,7 +267,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\CompactOverlayPage.xaml">
+    <Page Include="Pages\CompactWebOverlay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

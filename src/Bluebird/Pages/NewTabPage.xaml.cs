@@ -1,5 +1,4 @@
-﻿using Bluebird.Core;
-using Windows.System;
+﻿using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -24,27 +23,14 @@ public sealed partial class NewTabPage : Page
         var textbox = sender as TextBox;
         if (e.Key == VirtualKey.Enter)
         {
-            string input = textbox.Text;
-            string inputtype = UrlHelper.GetInputType(input);
-            if (inputtype == "url")
-            {
-                MainPageContent.NavigateToUrl(input.Trim());
-            }
-            else if (inputtype == "urlNOProtocol")
-            {
-                MainPageContent.NavigateToUrl("https://" + input.Trim());
-            }
+            string searchurl;
+            if (SearchUrl == null) searchurl = "https://lite.qwant.com/?q=";
             else
             {
-                string searchurl;
-                if (SearchUrl == null) searchurl = "https://lite.qwant.com/?q=";
-                else
-                {
-                    searchurl = SearchUrl;
-                }
-                string query = searchurl + input;
-                MainPageContent.NavigateToUrl(query);
+                searchurl = SearchUrl;
             }
+            string query = searchurl + textbox.Text;
+            MainPageContent.NavigateToUrl(query);
         }
     }
 }

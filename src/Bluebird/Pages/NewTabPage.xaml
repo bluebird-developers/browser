@@ -26,7 +26,7 @@
                 IsSpellCheckEnabled="False"
                 KeyDown="TextBox_KeyDown"
                 Loaded="TextBox_Loaded"
-                PlaceholderText="Search or enter web address" />
+                PlaceholderText="Type here to search" />
         </StackPanel>
     </StackPanel>
 </Page>

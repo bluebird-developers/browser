@@ -49,13 +49,13 @@ public sealed partial class MainPage : Page
             switch ((sender as Button).Tag)
             {
                 case "Back":
-                    if (TabWebView != null) TabWebView.GoBack();
+                    TabWebView?.GoBack();
                     break;
                 case "Refresh":
-                    if (TabWebView != null) TabWebView.Reload();
+                    TabWebView?.Reload();
                     break;
                 case "Forward":
-                    if (TabWebView != null) TabWebView.GoForward();
+                    TabWebView?.GoForward();
                     break;
                 case "Search":
                     if (TabWebView != null)
@@ -96,6 +96,12 @@ public sealed partial class MainPage : Page
                 case "FavoritesExpanded":
                     OpenFavoriteFlyoutBtn.Flyout.Hide();
                     CreateTab("Favorites", Symbol.Favorite, typeof(FavoritesPage));
+                    break;
+                case "CompactOverlay":
+                    CompactOverlayFrame.Visibility = Visibility.Visible;
+                    launchurl = TabWebView.CoreWebView2.Source;
+                    CompactOverlayFrame.Navigate(typeof(Pages.CompactWebOverlay));
+                    Tabs.TabItems.Remove(Tabs.SelectedItem);
                     break;
             }
         }
