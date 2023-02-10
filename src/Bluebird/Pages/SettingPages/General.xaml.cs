@@ -8,6 +8,8 @@ public sealed partial class General : Page
     public General()
     {
         this.InitializeComponent();
+        SearchengineSelection.Loaded += SearchengineSelection_Loaded;
+        SearchengineSelection.SelectionChanged += SearchengineSelection_SelectionChanged;
     }
 
     private void SearchengineSelection_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)

@@ -34,5 +34,15 @@ namespace Bluebird.Shared
             };
             DataTransferManager.ShowShareUI();
         }
+
+        public static void WriteStringToClipboard(string text)
+        {
+            DataPackage dataPackage = new()
+            {
+                RequestedOperation = DataPackageOperation.Copy
+            };
+            dataPackage.SetText(text);
+            Clipboard.SetContent(dataPackage);
+        }
     }
 }
