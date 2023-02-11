@@ -24,7 +24,8 @@ public sealed partial class NewTabPage : Page
         if (e.Key == VirtualKey.Enter)
         {
             string searchurl;
-            if (SearchUrl == null) searchurl = "https://lite.qwant.com/?q=";
+            if (SearchUrl == null)
+                searchurl = "https://lite.qwant.com/?q=";
             else
                 searchurl = SearchUrl;
             string query = searchurl + textbox.Text;

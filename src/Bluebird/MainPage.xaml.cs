@@ -92,11 +92,8 @@ public sealed partial class MainPage : Page
                     break;
                 case "Favorites":
                     JsonItemsList = await Json.GetListFromJsonAsync("Favorites.json");
-                    if (JsonItemsList != null) FavoritesListView.ItemsSource = JsonItemsList;
-                    else
-                    {
-                        FavoritesListView.ItemsSource = null;
-                    }
+                    if (JsonItemsList != null)
+                        FavoritesListView.ItemsSource = JsonItemsList;
                     break;
                 case "FavoritesExpanded":
                     OpenFavoriteFlyoutBtn.Flyout.Hide();
@@ -104,17 +101,18 @@ public sealed partial class MainPage : Page
                     break;
                 case "CompactOverlay":
                     if (TabWebView != null)
-                    {
-                        CompactOverlayFrame.Visibility = Visibility.Visible;
-                        launchurl = TabWebView.CoreWebView2.Source;
-                        CompactOverlayFrame.Navigate(typeof(CompactWebOverlay));
-                        TabWebView.Close();
-                        Tabs.TabItems.Remove(Tabs.SelectedItem);
-                    }
+                        if (Tabs.TabItems.Count > 1)
+                        {
+                            CompactOverlayFrame.Visibility = Visibility.Visible;
+                            launchurl = TabWebView.CoreWebView2.Source;
+                            CompactOverlayFrame.Navigate(typeof(CompactWebOverlay));
+                            TabWebView.Close();
+                            Tabs.TabItems.Remove(Tabs.SelectedItem);
+                        }
+                        else
+                            await UI.ShowDialog("Error", "You need to have at least two tabs open to use compact overlay");
                     else
-                    {
                         await UI.ShowDialog("Error", "XAML-based pages cannot be moved into the overlay");
-                    }
                     break;
             }
         }
@@ -261,16 +259,10 @@ public sealed partial class MainPage : Page
         CreateHomeTab();
     }
 
-    private async void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
+    private void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
     {
         if (sender.TabItems.Count == 0)
-        {
-            ContentDialogResult result = await UI.ShowDialogWithAction("Close Bluebird?", "Do you want to close Bluebird or create a new tab?", "New tab", "Close");
-            if (result == ContentDialogResult.Primary)
-                CreateHomeTab();
-            else
-                CoreApplication.Exit();
-        }
+            CoreApplication.Exit();
     }
 
     public void CreateHomeTab()
@@ -313,8 +305,8 @@ public sealed partial class MainPage : Page
         {
             // Get selected item
             JsonItems item = (JsonItems)listView.SelectedItem;
-            string url = item.Url;
-            NavigateToUrl(url);
+            launchurl = item.Url;
+            CreateWebTab();
             OpenFavoriteFlyoutBtn.Flyout.Hide();
             listView.ItemsSource = null;
         }

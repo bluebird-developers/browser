@@ -37,25 +37,15 @@ public sealed partial class WebViewPage : Page
     private void ApplyWebView2Settings()
     {
         if (SettingsHelper.GetSetting("DisableJavaScript") is "true")
-        {
             WebViewControl.CoreWebView2.Settings.IsScriptEnabled = false;
-        }
         if (SettingsHelper.GetSetting("DisableSwipeNav") is "true")
-        {
             WebViewControl.CoreWebView2.Settings.IsSwipeNavigationEnabled = false;
-        }
         if (SettingsHelper.GetSetting("DisableGenAutoFill") is "true")
-        {
             WebViewControl.CoreWebView2.Settings.IsGeneralAutofillEnabled = false;
-        }
         if (SettingsHelper.GetSetting("DisableWebMess") is "true")
-        {
             WebViewControl.CoreWebView2.Settings.IsWebMessageEnabled = false;
-        }
         if (SettingsHelper.GetSetting("DisablePassSave") is "true")
-        {
             WebViewControl.CoreWebView2.Settings.IsPasswordAutosaveEnabled = false;
-        }
     }
 
     private void CoreWebView2_NavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
@@ -86,9 +76,7 @@ public sealed partial class WebViewPage : Page
         for (int index = 0; index < menuList.Count; index++)
         {
             if (menuList[index].Name == "openLinkInNewWindow" || menuList[index].Name == "print" || menuList[index].Name == "emoji" || menuList[index].Name == "webCapture")
-            {
                 menuList.RemoveAt(index);
-            }
         }
     }
 

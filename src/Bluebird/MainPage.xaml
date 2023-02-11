@@ -244,7 +244,7 @@
                 Grid.Column="1"
                 Width="300"
                 Height="500"
-                Margin="0,75,15,0"
+                Margin="0,75,50,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 x:FieldModifier="public"

@@ -6,12 +6,13 @@
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
   xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
   IgnorableNamespaces="uap mp uap3">
 
   <Identity
     Name="57443TechFireX.BlueBirdBrowser"
     Publisher="CN=787233D4-4D29-47D2-B29A-AD3E99C44FE7"
-    Version="1.0.8.0" />
+    Version="1.0.10.0" />
 
   <mp:PhoneIdentity PhoneProductId="d802fa1e-c8a5-4556-8ef4-26818b13fddd" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -32,9 +33,10 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="Bluebird.App">
+      EntryPoint="Bluebird.App"
+	  desktop4:SupportsMultipleInstances="true">
       <uap:VisualElements
-        DisplayName="BlueBird Browser"
+        DisplayName="Bluebird"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="Bluebird"
@@ -49,15 +51,6 @@
         <uap:SplashScreen Image="Assets\SplashScreen.png" uap5:Optional="true"/>
       </uap:VisualElements>
 		<Extensions>
-			<uap5:Extension
-		Category="windows.startupTask"
-		Executable="Bluebird.exe"
-		EntryPoint="Bluebird.App">
-				<uap5:StartupTask
-				  TaskId="BlueBirdStartUp"
-				  Enabled="true"
-				  DisplayName="Bluebird" />
-			</uap5:Extension>
 			<uap:Extension Category="windows.protocol">
 				<uap:Protocol Name="bluebird">
 					<uap:DisplayName>Bluebird internal protocol</uap:DisplayName>

@@ -9,13 +9,32 @@ public sealed partial class Privacy : Page
     {
         this.InitializeComponent();
         UpdateText();
+        GetSettings();
     }
 
-    private void DisableJavaScriptToggle_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    private void GetSettings()
     {
-        string selection = SettingsHelper.GetSetting("DisableJavaScript");
-        if (selection == "true")
+        string DisableJS = SettingsHelper.GetSetting("DisableJavaScript");
+        if (DisableJS == "true")
             DisableJavaScriptToggle.IsOn = true;
+
+        string DisableAutoFill = SettingsHelper.GetSetting("DisableGenAutoFill");
+        if (DisableAutoFill == "true")
+            DisableGenaralAutoFillToggle.IsOn = true;
+
+        string DisableWebMess = SettingsHelper.GetSetting("DisableWebMess");
+        if (DisableWebMess == "true")
+            DisableWebMessFillToggle.IsOn = true;
+
+        string DisablePassSave = SettingsHelper.GetSetting("DisablePassSave");
+        if (DisablePassSave == "true")
+            PasswordWebMessFillToggle.IsOn = true;
+
+        // Set event handlers
+        DisableJavaScriptToggle.Toggled += DisableJavaScriptToggle_Toggled;
+        DisableGenaralAutoFillToggle.Toggled += DisableGenaralAutoFillToggle_Toggled;
+        DisableWebMessFillToggle.Toggled += DisableGenaralAutoFillToggle_Toggled;
+        PasswordWebMessFillToggle.Toggled += PasswordWebMessFillToggle_Toggled;
     }
 
     private void DisableJavaScriptToggle_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -34,15 +53,8 @@ public sealed partial class Privacy : Page
         UpdateText();
     }
 
-    private void DisableGenaralAutoFillToggle_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-    {
-        string selection = SettingsHelper.GetSetting("DisableGenAutoFill");
-        if (selection == "true")
-            DisableGenaralAutoFillToggle.IsOn = true;
-    }
-
     int trueCount = 0;
-    public async void UpdateText()
+    public void UpdateText()
     {
         TextLevel.Text = trueCount switch
         {
@@ -69,16 +81,9 @@ public sealed partial class Privacy : Page
         UpdateText();
     }
 
-    private void DisablWebMessFillToggle_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-    {
-        string selection = SettingsHelper.GetSetting("DisableWebMess");
-        if (selection == "true")
-            DisablWebMessFillToggle.IsOn = true;
-    }
-
     private void DisablWebMessFillToggle_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
     {
-        if (DisablWebMessFillToggle.IsOn)
+        if (DisableWebMessFillToggle.IsOn)
         {
             SettingsHelper.SetSetting("DisableWebMess", "true");
             trueCount++;
@@ -89,13 +94,6 @@ public sealed partial class Privacy : Page
             trueCount--;
         }
         UpdateText();
-    }
-
-    private void PasswordWebMessFillToggle_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-    {
-        string selection = SettingsHelper.GetSetting("DisablePassSave");
-        if (selection == "true")
-            PasswordWebMessFillToggle.IsOn = true;
     }
 
     private void PasswordWebMessFillToggle_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
