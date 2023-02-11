@@ -4,10 +4,8 @@
   <h2>Your next-gen webbrowser</a>
 </div>
 
-<script type="module" src="https://get.microsoft.com/badge/ms-store-badge.bundled.js"></script>
-<ms-store-badge
-	productid="9PNXW61T4T0V">
-</ms-store-badge>
+# Download
+<a href="https://pinguin2001.github.io/?navigate=Bluebird">Website</a>
 
 # Features:
 - Blazingly fast
