@@ -4,19 +4,19 @@
   <h2>Your next-gen webbrowser</a>
 </div>
 
+<script type="module" src="https://get.microsoft.com/badge/ms-store-badge.bundled.js"></script>
+<ms-store-badge
+	productid="9PNXW61T4T0V">
+</ms-store-badge>
+
 # Features:
 - Blazingly fast
 - Low ram usage
 - Browse the web
-- Search suggestions
 - Reading mode
-- QR Code generator
-- Pinned sites
-- Focus mode
-- Note on websites
 - Compact overlay
-- Split browsing
-- Freeform
+
+Check the app out to see them all! 
 
 # Screenshots
 TBD
