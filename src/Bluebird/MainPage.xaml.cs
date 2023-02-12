@@ -74,10 +74,6 @@ public sealed partial class MainPage : Page
                         TabWebView.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
                     }
                     break;
-                case "Share":
-                    if (TabWebView != null)
-                        SystemHelper.ShowShareUIURL(TabWebView.CoreWebView2.DocumentTitle, TabWebView.CoreWebView2.Source);
-                    break;
                 case "AddFavoriteFlyout":
                     if (TabWebView != null)
                     {
@@ -139,21 +135,6 @@ public sealed partial class MainPage : Page
                     WindowManager.EnterFullScreen(true);
                 else
                     WindowManager.EnterFullScreen(false);
-                break;
-            case "DevTools":
-                if (TabWebView != null)
-                    TabWebView.CoreWebView2.OpenDevToolsWindow();
-                else
-                    await UI.ShowDialog("Error", "Only webpage source can be inspected");
-                break;
-            case "ShowSource":
-                if (TabWebView != null)
-                {
-                    launchurl = "view-source:" + TabWebView.Source.ToString();
-                    CreateWebTab();
-                }
-                else
-                    await UI.ShowDialog("Error", "Only webpage source can be inspected");
                 break;
             case "Settings":
                 CreateTab("Settings", Symbol.Setting, typeof(SettingsPage));

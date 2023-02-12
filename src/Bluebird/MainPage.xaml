@@ -122,12 +122,6 @@
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE775;" />
                     </Button>
                     <Button
-                        Click="SidebarButton_Click"
-                        Style="{StaticResource SidebarButton}"
-                        Tag="Share">
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE72D;" />
-                    </Button>
-                    <Button
                         x:Name="AddFavoriteFlyoutBtn"
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
@@ -175,23 +169,6 @@
                                     Text="Full screen">
                                     <MenuFlyoutItem.Icon>
                                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE1D9;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutSeparator />
-                                <MenuFlyoutItem
-                                    Click="MoreFlyoutItem_Click"
-                                    Tag="DevTools"
-                                    Text="DevTools">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xEC7A;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutItem
-                                    Click="MoreFlyoutItem_Click"
-                                    Tag="ShowSource"
-                                    Text="Show source">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE943;" />
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
                                 <MenuFlyoutSeparator />

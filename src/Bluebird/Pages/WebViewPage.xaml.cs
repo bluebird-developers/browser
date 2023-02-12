@@ -1,9 +1,11 @@
 ﻿using Bluebird.Core;
+using Bluebird.Shared;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Web.WebView2.Core;
 using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 
 namespace Bluebird.Pages;
 
@@ -69,14 +71,43 @@ public sealed partial class WebViewPage : Page
         args.Handled = true;
     }
 
+    string SelectionText;
+    string LinkUri;
     private void CoreWebView2_ContextMenuRequested(CoreWebView2 sender, CoreWebView2ContextMenuRequestedEventArgs args)
     {
-        IList<CoreWebView2ContextMenuItem> menuList = args.MenuItems;
-        //MainPageContent.JsonListView.ItemsSource = menuList;
-        for (int index = 0; index < menuList.Count; index++)
+        Microsoft.UI.Xaml.Controls.CommandBarFlyout flyout;
+        if (args.ContextMenuTarget.Kind == CoreWebView2ContextMenuTargetKind.SelectedText)
         {
-            if (menuList[index].Name == "openLinkInNewWindow" || menuList[index].Name == "print" || menuList[index].Name == "emoji" || menuList[index].Name == "webCapture")
-                menuList.RemoveAt(index);
+            flyout = (Microsoft.UI.Xaml.Controls.CommandBarFlyout)Resources["TextContextMenu"];
+            SelectionText = args.ContextMenuTarget.SelectionText;
+        }
+
+        else if (args.ContextMenuTarget.Kind == CoreWebView2ContextMenuTargetKind.Image)
+            flyout = null;
+
+        else if (args.ContextMenuTarget.HasLinkUri)
+        {
+            flyout = (Microsoft.UI.Xaml.Controls.CommandBarFlyout)Resources["LinkContextMenu"];
+            SelectionText = args.ContextMenuTarget.LinkText;
+            LinkUri = args.ContextMenuTarget.LinkUri;
+        }
+
+        else if (args.ContextMenuTarget.IsEditable)
+            flyout = null;
+
+        else
+            flyout = (Microsoft.UI.Xaml.Controls.CommandBarFlyout)Resources["PageContextMenu"];
+
+        if (flyout != null)
+        {
+            FlyoutBase.SetAttachedFlyout(WebViewControl, flyout);
+            var wv2flyout = FlyoutBase.GetAttachedFlyout(WebViewControl);
+            var options = new FlyoutShowOptions()
+            {
+                Position = args.Location,
+            };
+            wv2flyout?.ShowAt(WebViewControl, options);
+            args.Handled = true;
         }
     }
 
@@ -84,4 +115,54 @@ public sealed partial class WebViewPage : Page
     {
         MainPageContent.SelectedTab.Header = sender.DocumentTitle;
     }
+
+    private async void AppBarButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    {
+        switch ((sender as AppBarButton).Tag)
+        {
+            // general context menu
+            case "Back":
+                if (WebViewControl.CanGoBack)
+                    WebViewControl.GoBack();
+                break;
+            case "Refresh":
+                WebViewControl.Reload();
+                break;
+            case "Forward":
+                if (WebViewControl.CanGoForward)
+                    WebViewControl.GoForward();
+                break;
+            case "Share":
+                SystemHelper.ShowShareUIURL(WebViewControl.CoreWebView2.DocumentTitle, WebViewControl.CoreWebView2.Source);
+                break;
+            case "CopyPageLink":
+                SystemHelper.WriteStringToClipboard(WebViewControl.CoreWebView2.Source);
+                break;
+            case "SelectAll":
+                await WebViewControl.CoreWebView2.ExecuteScriptAsync("document.execCommand(\"selectAll\");");
+                break;
+            case "ViewSource":
+                launchurl = "view-source:" + WebViewControl.Source;
+                MainPageContent.CreateWebTab();
+                break;
+            case "DevTools":
+                WebViewControl.CoreWebView2.OpenDevToolsWindow();
+                break;
+            // text context menu
+            case "OpenLnkInNewTab":
+                launchurl = LinkUri;
+                MainPageContent.CreateWebTab();
+                break;
+            case "Copy":
+                SystemHelper.WriteStringToClipboard(LinkUri);
+                break;
+            case "CopyText":
+                SystemHelper.WriteStringToClipboard(SelectionText);
+                break;
+        }
+        var flyout = FlyoutBase.GetAttachedFlyout(WebViewControl);
+        flyout.Hide();
+    }
+
+    
 }
