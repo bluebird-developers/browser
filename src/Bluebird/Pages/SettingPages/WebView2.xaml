@@ -11,7 +11,7 @@
     <StackPanel>
         <svsettctrl:SettingsBlockControl Title="Disable Touch Scrolling" Description="This makes touchscreen possible Turn On Means No Touchscreen">
             <svsettctrl:SettingsBlockControl.Icon>
-                <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE815;" />
+                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE815;" />
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="DisableTouch" />
         </svsettctrl:SettingsBlockControl>

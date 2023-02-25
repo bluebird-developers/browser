@@ -21,7 +21,7 @@
             </StackPanel>
             <svsettctrl:SettingsBlockControl Title="Version information" IsExpanded="True">
                 <svsettctrl:SettingsBlockControl.Icon>
-                    <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE946;" />
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE946;" />
                 </svsettctrl:SettingsBlockControl.Icon>
                 <svsettctrl:SettingsBlockControl.ExpandableContent>
                     <StackPanel>
@@ -32,7 +32,7 @@
             </svsettctrl:SettingsBlockControl>
             <svsettctrl:SettingsBlockControl Title="Developers" IsExpanded="True">
                 <svsettctrl:SettingsBlockControl.Icon>
-                    <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xEC7A;" />
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xEC7A;" />
                 </svsettctrl:SettingsBlockControl.Icon>
                 <svsettctrl:SettingsBlockControl.ExpandableContent>
                     <RichTextBlock>
@@ -50,7 +50,7 @@
             </svsettctrl:SettingsBlockControl>
             <svsettctrl:SettingsBlockControl Title="Dependencies" IsExpanded="True">
                 <svsettctrl:SettingsBlockControl.Icon>
-                    <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE1D3;" />
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE1D3;" />
                 </svsettctrl:SettingsBlockControl.Icon>
                 <svsettctrl:SettingsBlockControl.ExpandableContent>
                     <RichTextBlock>

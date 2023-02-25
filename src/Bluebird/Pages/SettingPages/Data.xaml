@@ -11,7 +11,7 @@
     <StackPanel>
         <svsettctrl:SettingsBlockControl Title="Browser data" Description="">
             <svsettctrl:SettingsBlockControl.Icon>
-                <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE13D;" />
+                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE13D;" />
             </svsettctrl:SettingsBlockControl.Icon>
             <Button Click="ClearBrowserData_Click" Content="Clear" />
         </svsettctrl:SettingsBlockControl>

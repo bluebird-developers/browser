@@ -28,27 +28,27 @@
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem Content="General" Tag="General">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE10F;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE10F;" />
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem Content="Data" Tag="Data">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE8B7;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE8B7;" />
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem Content="Settings - WebView2" Tag="WebView2">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE713;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE713;" />
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem Content="Privacy" Tag="Privacy">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xEA18;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xEA18;" />
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem Content="About" Tag="About">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE946;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE946;" />
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>

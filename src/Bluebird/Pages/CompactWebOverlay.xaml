@@ -19,19 +19,19 @@
                 Click="ToolbarButton_Click"
                 Style="{StaticResource SidebarButton}"
                 Tag="Back">
-                <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE112;" />
+                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE112;" />
             </Button>
             <Button
                 Click="ToolbarButton_Click"
                 Style="{StaticResource SidebarButton}"
                 Tag="Refresh">
-                <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE149;" />
+                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE149;" />
             </Button>
             <Button
                 Click="ToolbarButton_Click"
                 Style="{StaticResource SidebarButton}"
                 Tag="Forward">
-                <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE72A;" />
+                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE72A;" />
             </Button>
             <muxc:ProgressRing
                 x:Name="LoadingRing"
@@ -44,7 +44,7 @@
             Click="ToolbarButton_Click"
             Style="{StaticResource SidebarButton}"
             Tag="Close">
-            <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE10A;" />
+            <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE10A;" />
         </Button>
         <muxc:WebView2
             x:Name="CompactWebView"

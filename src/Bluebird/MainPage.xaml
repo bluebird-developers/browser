@@ -30,7 +30,7 @@
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="FavoritesExpanded">
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE8A7;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE8A7;" />
                     </Button>
                 </Grid>
                 <ListView
@@ -78,25 +78,25 @@
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="Back">
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE112;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE112;" />
                     </Button>
                     <Button
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="Refresh">
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE149;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE149;" />
                     </Button>
                     <Button
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="Forward">
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE72A;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE72A;" />
                     </Button>
                     <Button
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="Search">
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE11A;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE11A;" />
                         <Button.Flyout>
                             <Flyout x:Name="SearchFlyout" Placement="Right">
                                 <TextBox
@@ -113,20 +113,20 @@
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="ReadingMode">
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE736;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE736;" />
                     </Button>
                     <Button
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="Translate">
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE775;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE775;" />
                     </Button>
                     <Button
                         x:Name="AddFavoriteFlyoutBtn"
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="AddFavoriteFlyout">
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE734;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE734;" />
                     </Button>
                     <Button
                         x:Name="OpenFavoriteFlyoutBtn"
@@ -134,7 +134,7 @@
                         Flyout="{x:Bind FavoritesFlyout}"
                         Style="{StaticResource SidebarButton}"
                         Tag="Favorites">
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE728;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE728;" />
                     </Button>
                     <Button
                         Click="SidebarButton_Click"
@@ -143,7 +143,7 @@
                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE8A7;" />
                     </Button>
                     <Button Style="{StaticResource SidebarButton}">
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE10C;" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE10C;" />
                         <Button.Flyout>
                             <MenuFlyout x:Name="MoreFlyout" Placement="Right">
                                 <MenuFlyoutItem
@@ -151,7 +151,7 @@
                                     Tag="Favorites"
                                     Text="Favorites">
                                     <MenuFlyoutItem.Icon>
-                                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE728;" />
+                                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE728;" />
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
                                 <MenuFlyoutItem
@@ -159,7 +159,7 @@
                                     Tag="History"
                                     Text="History">
                                     <MenuFlyoutItem.Icon>
-                                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE81C;" />
+                                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE81C;" />
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
                                 <MenuFlyoutSeparator />
@@ -168,7 +168,7 @@
                                     Tag="Fullscreen"
                                     Text="Full screen">
                                     <MenuFlyoutItem.Icon>
-                                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE1D9;" />
+                                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE1D9;" />
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
                                 <MenuFlyoutSeparator />
@@ -177,7 +177,7 @@
                                     Tag="Settings"
                                     Text="Settings">
                                     <MenuFlyoutItem.Icon>
-                                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE713;" />
+                                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE713;" />
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
                             </MenuFlyout>
