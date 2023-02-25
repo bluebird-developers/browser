@@ -143,7 +143,6 @@
     <Compile Include="Core\FileHelper.cs" />
     <Compile Include="Core\Globals.cs" />
     <Compile Include="Core\Json.cs" />
-    <Compile Include="Core\ReadingModeHelper.cs" />
     <Compile Include="Core\SettingsHelper.cs" />
     <Compile Include="Core\TLD.cs" />
     <Compile Include="Core\UrlHelper.cs" />
@@ -239,9 +238,6 @@
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
-    <Content Include="Extensions\ReadingMode\simplyread-enhanced-min.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -327,6 +323,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bluebird.Modules\Bluebird.Modules.csproj">
+      <Project>{ade50839-aa20-4503-872c-e85ef1928bd9}</Project>
+      <Name>Bluebird.Modules</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bluebird.Shared\Bluebird.Shared.csproj">
       <Project>{749a0ccc-f0dd-4cab-87e1-c73a32f5354d}</Project>
       <Name>Bluebird.Shared</Name>

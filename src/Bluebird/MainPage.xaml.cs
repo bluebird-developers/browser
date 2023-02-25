@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Input;
 using Bluebird.Pages;
 using Bluebird.Core;
 using System.Linq;
+using Bluebird.Modules.Readability;
 
 namespace Bluebird;
 
@@ -63,7 +64,7 @@ public sealed partial class MainPage : Page
                 case "ReadingMode":
                     if (TabWebView != null)
                     {
-                        string jscript = await ReadingModeHelper.GetReadingModeJScriptAsync();
+                        string jscript = await ReadabilityHelper.GetReadabilityScriptAsync();
                         await TabWebView.CoreWebView2.ExecuteScriptAsync(jscript);
                     }
                     break;
