@@ -9,7 +9,8 @@ public sealed partial class About : Page
     public About()
     {
         this.InitializeComponent();
-        BluebirdVersion.Text = "Bluebird " + AppVersion.GetAppVersion() + " (" + SystemHelper.GetSystemArchitecture() + ")";
-        WebView2Version.Text = "WebView2 " + CoreWebView2Environment.GetAvailableBrowserVersionString();
+        string appversion = AppVersion.GetAppVersion();
+        string coreversion = CoreWebView2Environment.GetAvailableBrowserVersionString();
+        VersionText.Text = $"Bluebird {appversion} (core: {coreversion})";
     }
 }

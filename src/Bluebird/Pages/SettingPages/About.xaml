@@ -24,10 +24,7 @@
                     <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE946;" />
                 </svsettctrl:SettingsBlockControl.Icon>
                 <svsettctrl:SettingsBlockControl.ExpandableContent>
-                    <StackPanel>
-                        <TextBlock x:Name="BluebirdVersion" />
-                        <TextBlock x:Name="WebView2Version" />
-                    </StackPanel>
+                    <TextBlock x:Name="VersionText" />
                 </svsettctrl:SettingsBlockControl.ExpandableContent>
             </svsettctrl:SettingsBlockControl>
             <svsettctrl:SettingsBlockControl Title="Developers" IsExpanded="True">
@@ -38,7 +35,6 @@
                     <RichTextBlock>
                         <Paragraph>jarno9981</Paragraph>
                         <Paragraph>Pinguin2001</Paragraph>
-                        <Paragraph>Note: This list is in alphabetical order</Paragraph>
                         <Paragraph>
                             Chat with us on<Hyperlink NavigateUri="bluebird:https://discord.com/invite/CWGHdGVFFV">Discord</Hyperlink>
                             to get latest information and support</Paragraph>
@@ -61,11 +57,11 @@
                             <Hyperlink NavigateUri="bluebird:https://github.com/JamesNK/Newtonsoft.Json">Newtonsoft.Json</Hyperlink>
                             (MIT licence)</Paragraph>
                         <Paragraph>
-                            <Hyperlink NavigateUri="bluebird:https://github.com/Pinguin2001/simplyread-enhanced">simplyread-enhanced</Hyperlink>
-                            (AGPL-3.0 license)</Paragraph>
-                        <Paragraph>
                             <Hyperlink NavigateUri="bluebird:https://github.com/gus33000/SVSettingsControl">SVSettingsControl</Hyperlink>
                             (MIT licence)</Paragraph>
+                        <Paragraph>
+                            <Hyperlink NavigateUri="bluebird:https://github.com/mozilla/readability">Readability</Hyperlink>
+                            (Apache License, Version 2.0)</Paragraph>
                         <Paragraph>
                             <Hyperlink NavigateUri="bluebird:https://github.com/publicsuffix/list">The Public Suffix List</Hyperlink>
                             (MPL-2.0 license)</Paragraph>

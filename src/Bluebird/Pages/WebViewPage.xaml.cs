@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.Web.WebView2.Core;
 using System;
 using System.Collections.Generic;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 
@@ -27,6 +28,7 @@ public sealed partial class WebViewPage : Page
         sender.CoreWebView2.ContextMenuRequested += CoreWebView2_ContextMenuRequested;
         sender.CoreWebView2.DocumentTitleChanged += CoreWebView2_DocumentTitleChanged;
         sender.CoreWebView2.FaviconChanged += CoreWebView2_FaviconChanged;
+        sender.CoreWebView2.ContainsFullScreenElementChanged += CoreWebView2_ContainsFullScreenElementChanged;
         // Apply WebView2 settings
         ApplyWebView2Settings();
         if (launchurl != null)
@@ -40,8 +42,6 @@ public sealed partial class WebViewPage : Page
     {
         if (SettingsHelper.GetSetting("DisableJavaScript") is "true")
             WebViewControl.CoreWebView2.Settings.IsScriptEnabled = false;
-        if (SettingsHelper.GetSetting("DisableSwipeNav") is "true")
-            WebViewControl.CoreWebView2.Settings.IsSwipeNavigationEnabled = false;
         if (SettingsHelper.GetSetting("DisableGenAutoFill") is "true")
             WebViewControl.CoreWebView2.Settings.IsGeneralAutofillEnabled = false;
         if (SettingsHelper.GetSetting("DisableWebMess") is "true")
@@ -116,6 +116,16 @@ public sealed partial class WebViewPage : Page
         MainPageContent.SelectedTab.Header = sender.DocumentTitle;
     }
 
+    private void CoreWebView2_ContainsFullScreenElementChanged(CoreWebView2 sender, object args)
+    {
+        var view = ApplicationView.GetForCurrentView();
+        if (!view.IsFullScreenMode)
+            WindowManager.EnterFullScreen(true);
+        else
+            WindowManager.EnterFullScreen(false);
+    }
+
+
     private async void AppBarButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
     {
         switch ((sender as AppBarButton).Tag)
@@ -163,6 +173,4 @@ public sealed partial class WebViewPage : Page
         var flyout = FlyoutBase.GetAttachedFlyout(WebViewControl);
         flyout.Hide();
     }
-
-    
 }

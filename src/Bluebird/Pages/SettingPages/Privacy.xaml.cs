@@ -59,7 +59,7 @@ public sealed partial class Privacy : Page
         TextLevel.Text = trueCount switch
         {
             0 => "Default",
-            1 => "Low",
+            1 => "Better",
             2 => "Medium",
             3 => "High",
             4 => "Extreme"
