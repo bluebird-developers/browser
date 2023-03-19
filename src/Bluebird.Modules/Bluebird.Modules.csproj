@@ -117,10 +117,11 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup>
-	<LangVersion>11</LangVersion>
+    <LangVersion>11</LangVersion>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ForceDark\ForceDarkHelper.cs" />
     <Compile Include="Readability\ReadabilityHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Bluebird.Modules.rd.xml" />
@@ -131,6 +132,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ForceDark\Assets\forcedark.min.js" />
     <Content Include="Readability\Assets\readability.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
