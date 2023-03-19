@@ -2,10 +2,13 @@
 using Bluebird.Shared;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Web.WebView2.Core;
+using QRCoder;
 using System;
+using Windows.Storage.Streams;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Bluebird.Pages;
 
@@ -55,6 +58,8 @@ public sealed partial class WebViewPage : Page
     }
     private void CoreWebView2_NavigationCompleted(CoreWebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
     {
+        //string jscript = await Modules.ForceDark.ForceDarkHelper.GetForceDarkScriptAsync();
+        //await WebViewControl.ExecuteScriptAsync(jscript);
         MainPageContent.LoadingRing.IsActive = false;
     }
 
@@ -150,12 +155,27 @@ public sealed partial class WebViewPage : Page
             case "SelectAll":
                 await WebViewControl.CoreWebView2.ExecuteScriptAsync("document.execCommand(\"selectAll\");");
                 break;
-            case "ViewSource":
-                launchurl = "view-source:" + WebViewControl.Source;
-                MainPageContent.CreateWebTab();
-                break;
-            case "DevTools":
-                WebViewControl.CoreWebView2.OpenDevToolsWindow();
+            case "GenQRCode":
+                //Create raw qr code data
+                QRCodeGenerator qrGenerator = new();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(WebViewControl.CoreWebView2.Source.ToString(), QRCodeGenerator.ECCLevel.M);
+
+                //Create byte/raw bitmap qr code
+                BitmapByteQRCode qrCodeBmp = new(qrCodeData);
+                byte[] qrCodeImageBmp = qrCodeBmp.GetGraphic(20);
+                using (InMemoryRandomAccessStream stream = new())
+                {
+                    using (DataWriter writer = new(stream.GetOutputStreamAt(0)))
+                    {
+                        writer.WriteBytes(qrCodeImageBmp);
+                        await writer.StoreAsync();
+                    }
+                    var image = new BitmapImage();
+                    await image.SetSourceAsync(stream);
+                    // set image as image source for element
+                    QRCodeImage.Source = image;
+                }
+                QRCodeFlyout.ShowAt(WebViewControl);
                 break;
             // text context menu
             case "OpenLnkInNewTab":
@@ -175,5 +195,22 @@ public sealed partial class WebViewPage : Page
         }
         var flyout = FlyoutBase.GetAttachedFlyout(WebViewControl);
         flyout.Hide();
+    }
+
+    private void MenuFlyoutItem_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    {
+        switch ((sender as MenuFlyoutItem).Tag)
+        {
+            case "ViewSource":
+                launchurl = "view-source:" + WebViewControl.Source;
+                MainPageContent.CreateWebTab();
+                break;
+            case "DevTools":
+                WebViewControl.CoreWebView2.OpenDevToolsWindow();
+                break;
+            case "TaskManager":
+                WebViewControl.CoreWebView2.OpenTaskManagerWindow();
+                break;
+        }
     }
 }

@@ -8,6 +8,12 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
     <Page.Resources>
+        <Flyout x:Name="QRCodeFlyout" Placement="RightEdgeAlignedTop">
+            <Image
+                x:Name="QRCodeImage"
+                Width="160"
+                Height="160" />
+        </Flyout>
         <muxc:CommandBarFlyout
             x:Name="PageContextMenu"
             AlwaysExpanded="True"
@@ -41,20 +47,47 @@
                         <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE14E;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
-                <AppBarSeparator />
                 <AppBarButton
                     Click="AppBarButton_Click"
-                    Label="View source"
-                    Tag="ViewSource">
-                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE943;" />
+                    Label="Create QRCode"
+                    Tag="GenQRCode">
+                    <AppBarButton.Icon>
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xED14;" />
+                    </AppBarButton.Icon>
                 </AppBarButton>
-                <AppBarButton
-                    Click="AppBarButton_Click"
-                    Label="DevTools"
-                    Tag="DevTools">
+                <AppBarSeparator />
+                <AppBarButton Label="Developer">
                     <AppBarButton.Icon>
                         <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xEC7A;" />
                     </AppBarButton.Icon>
+                    <AppBarButton.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click"
+                                Tag="ViewSource"
+                                Text="View source">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE943;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click"
+                                Tag="DevTools"
+                                Text="DevTools">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xEC7A;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click"
+                                Tag="TaskManager"
+                                Text="Browser task manager">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xEC4A;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuFlyout>
+                    </AppBarButton.Flyout>
                 </AppBarButton>
             </muxc:CommandBarFlyout.SecondaryCommands>
         </muxc:CommandBarFlyout>
