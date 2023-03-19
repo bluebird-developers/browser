@@ -9,14 +9,6 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <svsettctrl:SettingsBlockControl Title="Privacy Level" Description="See You Privacy Level Here">
-            <svsettctrl:SettingsBlockControl.Icon>
-                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xEA18;" />
-            </svsettctrl:SettingsBlockControl.Icon>
-            <TextBlock x:Name="TextLevel" Width="150">
-                Default
-            </TextBlock>
-        </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl
             Title="Disable JavaScript"
             Margin="0,5,0,0"
