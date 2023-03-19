@@ -1,5 +1,4 @@
 ﻿using Microsoft.UI.Xaml.Controls;
-using Bluebird.Shared;
 using System;
 using Windows.ApplicationModel.Core;
 using Windows.System;

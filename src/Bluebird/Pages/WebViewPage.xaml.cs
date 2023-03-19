@@ -1,5 +1,4 @@
 ﻿using Bluebird.Core;
-using Bluebird.Shared;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Web.WebView2.Core;
 using QRCoder;

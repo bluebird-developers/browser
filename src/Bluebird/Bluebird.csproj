@@ -138,14 +138,19 @@
     <Compile Include="Controls\SVSettingsControl\SettingsDisplayControl.xaml.cs">
       <DependentUpon>SettingsDisplayControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\AppVersion.cs" />
+    <Compile Include="Core\ExceptionHelper.cs" />
     <Compile Include="Core\IconHelper.cs" />
     <Compile Include="Core\FavoritesHelper.cs" />
     <Compile Include="Core\FileHelper.cs" />
     <Compile Include="Core\Globals.cs" />
     <Compile Include="Core\Json.cs" />
     <Compile Include="Core\SettingsHelper.cs" />
+    <Compile Include="Core\SystemHelper.cs" />
     <Compile Include="Core\TLD.cs" />
+    <Compile Include="Core\UI.cs" />
     <Compile Include="Core\UrlHelper.cs" />
+    <Compile Include="Core\WindowManager.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

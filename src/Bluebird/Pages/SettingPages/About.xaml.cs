@@ -1,4 +1,4 @@
-﻿using Bluebird.Shared;
+﻿using Bluebird.Core;
 using Microsoft.Web.WebView2.Core;
 using Windows.UI.Xaml.Controls;
 

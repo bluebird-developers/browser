@@ -1,5 +1,4 @@
 ﻿using Bluebird.Core;
-using Bluebird.Shared;
 using Windows.UI.Xaml.Controls;
 
 namespace Bluebird.Pages.SettingPages;
