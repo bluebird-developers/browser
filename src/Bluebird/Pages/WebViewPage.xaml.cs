@@ -3,7 +3,6 @@ using Bluebird.Shared;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Web.WebView2.Core;
 using System;
-using System.Collections.Generic;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -168,6 +167,10 @@ public sealed partial class WebViewPage : Page
                 break;
             case "CopyText":
                 SystemHelper.WriteStringToClipboard(SelectionText);
+                break;
+            // link context menu
+            case "ShareLink":
+                SystemHelper.ShowShareUIURL(SelectionText, LinkUri);
                 break;
         }
         var flyout = FlyoutBase.GetAttachedFlyout(WebViewControl);

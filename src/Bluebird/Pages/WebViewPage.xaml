@@ -70,6 +70,16 @@
                     <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE16F;" />
                 </AppBarButton.Icon>
             </AppBarButton>
+            <muxc:CommandBarFlyout.SecondaryCommands>
+                <AppBarButton
+                    Click="AppBarButton_Click"
+                    Label="Select all"
+                    Tag="SelectAll">
+                    <AppBarButton.Icon>
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE14E;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+            </muxc:CommandBarFlyout.SecondaryCommands>
         </muxc:CommandBarFlyout>
         <muxc:CommandBarFlyout
             x:Name="LinkContextMenu"
@@ -91,6 +101,11 @@
                     <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE16F;" />
                 </AppBarButton.Icon>
             </AppBarButton>
+            <AppBarButton
+                Click="AppBarButton_Click"
+                Icon="Share"
+                Tag="ShareLink"
+                ToolTipService.ToolTip="Share selected link" />
             <muxc:CommandBarFlyout.SecondaryCommands>
                 <AppBarButton
                     Click="AppBarButton_Click"
