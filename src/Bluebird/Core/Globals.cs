@@ -1,9 +1,4 @@
-﻿using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml;
-using Windows.Storage;
-using System.Collections.Generic;
-
-namespace Bluebird.Core;
+﻿namespace Bluebird.Core;
 
 public class Globals
 {

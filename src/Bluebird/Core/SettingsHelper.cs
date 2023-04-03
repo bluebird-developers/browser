@@ -1,6 +1,4 @@
-﻿using Windows.Storage;
-
-namespace Bluebird.Core;
+﻿namespace Bluebird.Core;
 
 public static class SettingsHelper
 {

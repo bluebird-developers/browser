@@ -1,6 +1,4 @@
-﻿using System;
-using Windows.ApplicationModel.Core;
-using Windows.ApplicationModel.DataTransfer;
+﻿using Windows.ApplicationModel.DataTransfer;
 
 namespace Bluebird.Core;
 
@@ -16,7 +14,7 @@ public static class SystemHelper
             await UI.ShowDialog("Error", "Couldn´t restart Bluebird, please close the app manually");
         }
     }
-    
+
     public static void ShowShareUIURL(string title, string url)
     {
         var dt = DataTransferManager.GetForCurrentView();

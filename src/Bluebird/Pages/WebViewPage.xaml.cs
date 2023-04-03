@@ -1,15 +1,4 @@
-﻿using Bluebird.Core;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.Web.WebView2.Core;
-using QRCoder;
-using System;
-using Windows.Storage.Streams;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Media.Imaging;
-
-namespace Bluebird.Pages;
+﻿namespace Bluebird.Pages;
 
 public sealed partial class WebViewPage : Page
 {
@@ -20,7 +9,7 @@ public sealed partial class WebViewPage : Page
         _ = WebViewControl.EnsureCoreWebView2Async();
     }
 
-    private void WebViewControl_CoreWebView2Initialized(WebView2 sender, CoreWebView2InitializedEventArgs args)
+    private void WebViewControl_CoreWebView2Initialized(muxc.WebView2 sender, muxc.CoreWebView2InitializedEventArgs args)
     {
         // WebViewEvents
         sender.CoreWebView2.NavigationStarting += CoreWebView2_NavigationStarting;
@@ -78,10 +67,10 @@ public sealed partial class WebViewPage : Page
     string LinkUri;
     private void CoreWebView2_ContextMenuRequested(CoreWebView2 sender, CoreWebView2ContextMenuRequestedEventArgs args)
     {
-        Microsoft.UI.Xaml.Controls.CommandBarFlyout flyout;
+        muxc.CommandBarFlyout flyout;
         if (args.ContextMenuTarget.Kind == CoreWebView2ContextMenuTargetKind.SelectedText)
         {
-            flyout = (Microsoft.UI.Xaml.Controls.CommandBarFlyout)Resources["TextContextMenu"];
+            flyout = (muxc.CommandBarFlyout)Resources["TextContextMenu"];
             SelectionText = args.ContextMenuTarget.SelectionText;
         }
 
@@ -90,7 +79,7 @@ public sealed partial class WebViewPage : Page
 
         else if (args.ContextMenuTarget.HasLinkUri)
         {
-            flyout = (Microsoft.UI.Xaml.Controls.CommandBarFlyout)Resources["LinkContextMenu"];
+            flyout = (muxc.CommandBarFlyout)Resources["LinkContextMenu"];
             SelectionText = args.ContextMenuTarget.LinkText;
             LinkUri = args.ContextMenuTarget.LinkUri;
         }
@@ -99,7 +88,7 @@ public sealed partial class WebViewPage : Page
             flyout = null;
 
         else
-            flyout = (Microsoft.UI.Xaml.Controls.CommandBarFlyout)Resources["PageContextMenu"];
+            flyout = (muxc.CommandBarFlyout)Resources["PageContextMenu"];
 
         if (flyout != null)
         {
@@ -129,7 +118,7 @@ public sealed partial class WebViewPage : Page
     }
 
 
-    private async void AppBarButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    private async void AppBarButton_Click(object sender, RoutedEventArgs e)
     {
         switch ((sender as AppBarButton).Tag)
         {
@@ -196,7 +185,7 @@ public sealed partial class WebViewPage : Page
         flyout.Hide();
     }
 
-    private void MenuFlyoutItem_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
         switch ((sender as MenuFlyoutItem).Tag)
         {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
-
-namespace Bluebird.Core;
+﻿namespace Bluebird.Core;
 
 public class UI
 {

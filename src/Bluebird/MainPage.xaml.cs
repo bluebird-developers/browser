@@ -1,16 +1,5 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using System;
-using Windows.ApplicationModel.Core;
-using Windows.System;
+﻿using Bluebird.Pages;
 using Windows.UI;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Bluebird.Pages;
-using Bluebird.Core;
-using System.Linq;
-using Bluebird.Modules.Readability;
 
 namespace Bluebird;
 
@@ -20,15 +9,8 @@ public sealed partial class MainPage : Page
     {
         this.InitializeComponent();
         CustomTitleBar();
-        Window.Current.VisibilityChanged += WindowVisibilityChangedEventHandler;
     }
 
-    void WindowVisibilityChangedEventHandler(object sender, Windows.UI.Core.VisibilityChangedEventArgs e)
-    {
-        // Perform operations that should take place when the application becomes visible rather than
-        // when it is prelaunched, such as building a what's new feed
-        if (Tabs.TabItems.Count == 0) CreateHomeTab();
-    }
     private void CustomTitleBar()
     {
         // Hide default title bar.
@@ -63,7 +45,7 @@ public sealed partial class MainPage : Page
                 case "ReadingMode":
                     if (TabWebView != null)
                     {
-                        string jscript = await ReadabilityHelper.GetReadabilityScriptAsync();
+                        string jscript = await Modules.Readability.ReadabilityHelper.GetReadabilityScriptAsync();
                         await TabWebView.CoreWebView2.ExecuteScriptAsync(jscript);
                     }
                     break;
@@ -95,21 +77,6 @@ public sealed partial class MainPage : Page
                     OpenFavoriteFlyoutBtn.Flyout.Hide();
                     CreateTab("Favorites", Symbol.Favorite, typeof(FavoritesPage));
                     break;
-                case "CompactOverlay":
-                    if (TabWebView != null)
-                        if (Tabs.TabItems.Count > 1)
-                        {
-                            CompactOverlayFrame.Visibility = Visibility.Visible;
-                            launchurl = TabWebView.CoreWebView2.Source;
-                            CompactOverlayFrame.Navigate(typeof(CompactWebOverlay));
-                            TabWebView.Close();
-                            Tabs.TabItems.Remove(Tabs.SelectedItem);
-                        }
-                        else
-                            await UI.ShowDialog("Error", "You need to have at least two tabs open to use compact overlay");
-                    else
-                        await UI.ShowDialog("Error", "XAML-based pages cannot be moved into the overlay");
-                    break;
             }
         }
         catch
@@ -118,10 +85,14 @@ public sealed partial class MainPage : Page
         }
     }
 
-    private async void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
+    private void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
         switch ((sender as MenuFlyoutItem).Tag)
         {
+            case "Downloads":
+                launchurl = "edge://downloads";
+                CreateWebTab();
+                break;
             case "Favorites":
                 CreateTab("Favorites", Symbol.Favorite, typeof(FavoritesPage));
                 break;
@@ -194,12 +165,12 @@ public sealed partial class MainPage : Page
         }
     }
 
-    public TabViewItem SelectedTab
+    public muxc.TabViewItem SelectedTab
 
     {
         get
         {
-            TabViewItem selectedItem = (TabViewItem)Tabs.SelectedItem;
+            muxc.TabViewItem selectedItem = (muxc.TabViewItem)Tabs.SelectedItem;
             if (selectedItem != null)
                 return selectedItem;
             return null;
@@ -210,14 +181,14 @@ public sealed partial class MainPage : Page
     {
         get
         {
-            TabViewItem selectedItem = (TabViewItem)Tabs.SelectedItem;
+            muxc.TabViewItem selectedItem = (muxc.TabViewItem)Tabs.SelectedItem;
             if (selectedItem != null)
                 return (Frame)selectedItem.Content;
             return null;
         }
     }
 
-    WebView2 TabWebView
+    muxc.WebView2 TabWebView
     {
         get
         {
@@ -235,12 +206,12 @@ public sealed partial class MainPage : Page
             CreateHomeTab();
     }
 
-    private void Tabs_AddTabButtonClick(TabView sender, object args)
+    private void Tabs_AddTabButtonClick(muxc.TabView sender, object args)
     {
         CreateHomeTab();
     }
 
-    private void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
+    private void Tabs_TabItemsChanged(muxc.TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
     {
         if (sender.TabItems.Count == 0)
             CoreApplication.Exit();
@@ -259,10 +230,10 @@ public sealed partial class MainPage : Page
     public void CreateTab(string header, Symbol symbol, Type page)
     {
         Frame frame = new();
-        TabViewItem newItem = new()
+        muxc.TabViewItem newItem = new()
         {
             Header = header,
-            IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = symbol },
+            IconSource = new muxc.SymbolIconSource() { Symbol = symbol },
             Content = frame,
         };
         frame.Navigate(page);
@@ -270,9 +241,9 @@ public sealed partial class MainPage : Page
         Tabs.SelectedItem = newItem;
     }
 
-    private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
+    private void Tabs_TabCloseRequested(muxc.TabView sender, muxc.TabViewTabCloseRequestedEventArgs args)
     {
-        TabViewItem selectedItem = args.Tab;
+        muxc.TabViewItem selectedItem = args.Tab;
         var tabcontent = (Frame)selectedItem.Content;
         if (tabcontent.Content is WebViewPage) (tabcontent.Content as WebViewPage).WebViewControl.Close();
         sender.TabItems.Remove(args.Tab);

@@ -1,7 +1,4 @@
-﻿using Bluebird.Core;
-using Windows.UI.Xaml.Controls;
-
-namespace Bluebird.Pages.SettingPages;
+﻿namespace Bluebird.Pages.SettingPages;
 
 public sealed partial class Privacy : Page
 {
@@ -36,7 +33,7 @@ public sealed partial class Privacy : Page
         PasswordWebMessFillToggle.Toggled += PasswordWebMessFillToggle_Toggled;
     }
 
-    private void DisableJavaScriptToggle_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    private void DisableJavaScriptToggle_Toggled(object sender, RoutedEventArgs e)
     {
         if (DisableJavaScriptToggle.IsOn)
         {
@@ -47,7 +44,7 @@ public sealed partial class Privacy : Page
             SettingsHelper.SetSetting("DisableJavaScript", "false");
         }
     }
-    private void DisableGenaralAutoFillToggle_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    private void DisableGenaralAutoFillToggle_Toggled(object sender, RoutedEventArgs e)
     {
         if (DisableGenaralAutoFillToggle.IsOn)
         {
@@ -59,7 +56,7 @@ public sealed partial class Privacy : Page
         }
     }
 
-    private void DisablWebMessFillToggle_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    private void DisablWebMessFillToggle_Toggled(object sender, RoutedEventArgs e)
     {
         if (DisableWebMessFillToggle.IsOn)
         {
@@ -71,7 +68,7 @@ public sealed partial class Privacy : Page
         }
     }
 
-    private void PasswordWebMessFillToggle_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    private void PasswordWebMessFillToggle_Toggled(object sender, RoutedEventArgs e)
     {
         if (PasswordWebMessFillToggle.IsOn)
         {

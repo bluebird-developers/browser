@@ -67,132 +67,130 @@
         </Flyout>
     </Page.Resources>
     <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid x:Name="Sidebar" Grid.Column="0">
-                <StackPanel>
-                    <Button
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="Sidebar" Grid.Column="0">
+            <StackPanel>
+                <Button
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="Back">
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE112;" />
-                    </Button>
-                    <Button
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE112;" />
+                </Button>
+                <Button
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="Refresh">
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE149;" />
-                    </Button>
-                    <Button
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE149;" />
+                </Button>
+                <Button
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="Forward">
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE72A;" />
-                    </Button>
-                    <Button
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE72A;" />
+                </Button>
+                <Button
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="Search">
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE11A;" />
-                        <Button.Flyout>
-                            <Flyout x:Name="SearchFlyout" Placement="Right">
-                                <TextBox
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE11A;" />
+                    <Button.Flyout>
+                        <Flyout x:Name="SearchFlyout" Placement="Right">
+                            <TextBox
                                     x:Name="UrlBox"
                                     Width="400"
                                     GotFocus="UrlBox_GotFocus"
                                     IsSpellCheckEnabled="False"
                                     KeyDown="UrlBox_KeyDown"
                                     PlaceholderText="Search or enter web address" />
-                            </Flyout>
-                        </Button.Flyout>
-                    </Button>
-                    <Button
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="ReadingMode">
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE736;" />
-                    </Button>
-                    <Button
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE736;" />
+                </Button>
+                <Button
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="Translate">
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE775;" />
-                    </Button>
-                    <Button
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE775;" />
+                </Button>
+                <Button
                         x:Name="AddFavoriteFlyoutBtn"
                         Click="SidebarButton_Click"
                         Style="{StaticResource SidebarButton}"
                         Tag="AddFavoriteFlyout">
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE734;" />
-                    </Button>
-                    <Button
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE734;" />
+                </Button>
+                <Button
                         x:Name="OpenFavoriteFlyoutBtn"
                         Click="SidebarButton_Click"
                         Flyout="{x:Bind FavoritesFlyout}"
                         Style="{StaticResource SidebarButton}"
                         Tag="Favorites">
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE728;" />
-                    </Button>
-                    <Button
-                        Click="SidebarButton_Click"
-                        Style="{StaticResource SidebarButton}"
-                        Tag="CompactOverlay">
-                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE8A7;" />
-                    </Button>
-                    <Button Style="{StaticResource SidebarButton}">
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE10C;" />
-                        <Button.Flyout>
-                            <MenuFlyout x:Name="MoreFlyout" Placement="Right">
-                                <MenuFlyoutItem
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE728;" />
+                </Button>
+                <Button Style="{StaticResource SidebarButton}">
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE10C;" />
+                    <Button.Flyout>
+                        <MenuFlyout x:Name="MoreFlyout" Placement="Right">
+                            <MenuFlyoutItem Click="MoreFlyoutItem_Click" Tag="Downloads" Text="Downloads">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE896;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem
                                     Click="MoreFlyoutItem_Click"
                                     Tag="Favorites"
                                     Text="Favorites">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE728;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutItem
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE728;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem
                                     Click="MoreFlyoutItem_Click"
                                     Tag="History"
                                     Text="History">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE81C;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutSeparator />
-                                <MenuFlyoutItem
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE81C;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutSeparator />
+                            <MenuFlyoutItem
                                     Click="MoreFlyoutItem_Click"
                                     Tag="Fullscreen"
                                     Text="Full screen">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE1D9;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutSeparator />
-                                <MenuFlyoutItem
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE1D9;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutSeparator />
+                            <MenuFlyoutItem
                                     Click="MoreFlyoutItem_Click"
                                     Tag="Settings"
                                     Text="Settings">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE713;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                            </MenuFlyout>
-                        </Button.Flyout>
-                    </Button>
-                </StackPanel>
-                <StackPanel VerticalAlignment="Bottom">
-                    <muxc:ProgressRing
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE713;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom">
+                <muxc:ProgressRing
                         x:Name="LoadingRing"
                         x:FieldModifier="public"
                         IsActive="False" />
-                </StackPanel>
-            </Grid>
+            </StackPanel>
+        </Grid>
 
-            <muxc:TabView
+        <muxc:TabView
                 x:Name="Tabs"
                 Grid.Column="1"
                 Margin="0,-8,0,0"
@@ -203,32 +201,17 @@
                 Loaded="Tabs_Loaded"
                 TabCloseRequested="Tabs_TabCloseRequested"
                 TabItemsChanged="Tabs_TabItemsChanged">
-                <muxc:TabView.TabStripFooter>
-                    <Grid
-                        x:Name="CustomDragRegion"
-                        MinWidth="188"
-                        Background="Transparent" />
-                </muxc:TabView.TabStripFooter>
-                <muxc:TabView.Resources>
-                    <ResourceDictionary>
-                        <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="Transparent" />
-                    </ResourceDictionary>
-                </muxc:TabView.Resources>
-            </muxc:TabView>
-
-            <Frame
-                x:Name="CompactOverlayFrame"
-                Grid.Column="1"
-                Width="300"
-                Height="500"
-                Margin="0,75,50,0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                x:FieldModifier="public"
-                Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-                BorderBrush="Gray"
-                CornerRadius="8"
-                Visibility="Collapsed" />
-        </Grid>
+            <muxc:TabView.TabStripFooter>
+                <Grid
+                    x:Name="CustomDragRegion"
+                    MinWidth="188"
+                    Background="Transparent" />
+            </muxc:TabView.TabStripFooter>
+            <muxc:TabView.Resources>
+                <ResourceDictionary>
+                    <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="Transparent" />
+                </ResourceDictionary>
+            </muxc:TabView.Resources>
+        </muxc:TabView>
     </Grid>
 </Page>

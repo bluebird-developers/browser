@@ -1,10 +1,4 @@
-﻿using Windows.Storage;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System;
-
-namespace Bluebird.Core;
+﻿namespace Bluebird.Core;
 
 public class Json
 {

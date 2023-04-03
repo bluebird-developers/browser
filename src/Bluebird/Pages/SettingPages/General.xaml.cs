@@ -1,7 +1,4 @@
-﻿using Bluebird.Core;
-using Windows.UI.Xaml.Controls;
-
-namespace Bluebird.Pages.SettingPages;
+﻿namespace Bluebird.Pages.SettingPages;
 
 public sealed partial class General : Page
 {
@@ -12,7 +9,7 @@ public sealed partial class General : Page
         SearchengineSelection.SelectionChanged += SearchengineSelection_SelectionChanged;
     }
 
-    private void SearchengineSelection_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    private void SearchengineSelection_Loaded(object sender, RoutedEventArgs e)
     {
         string selection = SettingsHelper.GetSetting("EngineFriendlyName");
         if (selection != null)

@@ -23,7 +23,7 @@
     <AssemblyName>Bluebird</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.22621.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.22000.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -151,11 +151,9 @@
     <Compile Include="Core\UI.cs" />
     <Compile Include="Core\UrlHelper.cs" />
     <Compile Include="Core\WindowManager.cs" />
+    <Compile Include="GlobalUsings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\CompactWebOverlay.xaml.cs">
-      <DependentUpon>CompactWebOverlay.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FavoritesPage.xaml.cs">
       <DependentUpon>FavoritesPage.xaml</DependentUpon>
@@ -268,10 +266,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\CompactWebOverlay.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\FavoritesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -330,10 +324,6 @@
     <ProjectReference Include="..\Bluebird.Modules\Bluebird.Modules.csproj">
       <Project>{ade50839-aa20-4503-872c-e85ef1928bd9}</Project>
       <Name>Bluebird.Modules</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bluebird.Shared\Bluebird.Shared.csproj">
-      <Project>{749a0ccc-f0dd-4cab-87e1-c73a32f5354d}</Project>
-      <Name>Bluebird.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

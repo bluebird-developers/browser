@@ -1,8 +1,4 @@
-﻿using Bluebird.Core;
-using Microsoft.Web.WebView2.Core;
-using Windows.UI.Xaml.Controls;
-
-namespace Bluebird.Pages.SettingPages;
+﻿namespace Bluebird.Pages.SettingPages;
 
 public sealed partial class About : Page
 {

@@ -1,10 +1,4 @@
-﻿using Bluebird.Core;
-using System;
-using System.Linq;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-
-namespace Bluebird.Pages
+﻿namespace Bluebird.Pages
 {
     public sealed partial class FavoritesPage : Page
     {

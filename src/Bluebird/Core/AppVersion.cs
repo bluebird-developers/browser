@@ -1,6 +1,4 @@
-﻿using Windows.ApplicationModel;
-
-namespace Bluebird.Core;
+﻿namespace Bluebird.Core;
 
 public class AppVersion
 {

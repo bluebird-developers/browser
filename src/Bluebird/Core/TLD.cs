@@ -1,8 +1,4 @@
-﻿using System;
-using Windows.ApplicationModel;
-using Windows.Storage;
-
-namespace Bluebird.Core
+﻿namespace Bluebird.Core
 {
     internal class TLD
     {

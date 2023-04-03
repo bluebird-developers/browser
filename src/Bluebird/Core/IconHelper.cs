@@ -1,22 +1,19 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using System;
-
-namespace Bluebird.Core;
+﻿namespace Bluebird.Core;
 
 public static class IconHelper
 {
-    public static IconSource ConvFavURLToIconSource(string url)
+    public static Microsoft.UI.Xaml.Controls.IconSource ConvFavURLToIconSource(string url)
     {
-       try
-       {
+        try
+        {
             Uri faviconUrl = new(url);
-            BitmapIconSource iconsource = new() { UriSource = faviconUrl, ShowAsMonochrome = false };
+            Microsoft.UI.Xaml.Controls.BitmapIconSource iconsource = new() { UriSource = faviconUrl, ShowAsMonochrome = false };
             return iconsource;
         }
-       catch
-       {
-            IconSource iconsource = new SymbolIconSource() { Symbol = Windows.UI.Xaml.Controls.Symbol.Document };
+        catch
+        {
+            Microsoft.UI.Xaml.Controls.IconSource iconsource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document };
             return iconsource;
-       }
+        }
     }
 }

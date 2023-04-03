@@ -1,7 +1,4 @@
-﻿using System;
-using Windows.Storage;
-
-namespace Bluebird.Core;
+﻿namespace Bluebird.Core;
 
 public class FileHelper
 {

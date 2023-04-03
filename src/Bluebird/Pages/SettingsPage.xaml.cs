@@ -1,7 +1,4 @@
-﻿using System;
-using Windows.UI.Xaml.Controls;
-
-namespace Bluebird.Pages;
+﻿namespace Bluebird.Pages;
 
 public sealed partial class SettingsPage : Page
 {
@@ -12,7 +9,7 @@ public sealed partial class SettingsPage : Page
         NavigateToPage("General");
     }
 
-    private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
+    private void NavigationView_ItemInvoked(muxc.NavigationView sender, muxc.NavigationViewItemInvokedEventArgs args)
     {
         // Get invoked item
         object pageTag = args.InvokedItemContainer.Tag;

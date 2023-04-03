@@ -1,8 +1,4 @@
-﻿using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Markup;
-
-namespace SVSettingsControl;
+﻿namespace SVSettingsControl;
 
 [ContentProperty(Name = nameof(SettingsActionableElement))]
 public sealed partial class SettingsDisplayControl : UserControl
