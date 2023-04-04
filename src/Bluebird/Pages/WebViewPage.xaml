@@ -154,6 +154,7 @@
     <Grid CornerRadius="8,0,0,0">
         <muxc:WebView2
             x:Name="WebViewControl"
+            Loaded="WebViewControl_Loaded"
             x:FieldModifier="public"
             CoreWebView2Initialized="WebViewControl_CoreWebView2Initialized" />
     </Grid>

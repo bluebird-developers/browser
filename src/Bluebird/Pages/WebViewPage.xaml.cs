@@ -2,11 +2,14 @@
 
 public sealed partial class WebViewPage : Page
 {
-
     public WebViewPage()
     {
         this.InitializeComponent();
-        _ = WebViewControl.EnsureCoreWebView2Async();
+    }
+
+    private async void WebViewControl_Loaded(object sender, RoutedEventArgs e)
+    {
+        await WebViewControl.EnsureCoreWebView2Async();
     }
 
     private void WebViewControl_CoreWebView2Initialized(muxc.WebView2 sender, muxc.CoreWebView2InitializedEventArgs args)

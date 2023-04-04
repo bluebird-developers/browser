@@ -152,6 +152,6 @@ sealed partial class App : Application
     /// </summary>
     private void TryEnablePrelaunch()
     {
-        Windows.ApplicationModel.Core.CoreApplication.EnablePrelaunch(true);
+        CoreApplication.EnablePrelaunch(true);
     }
 }
