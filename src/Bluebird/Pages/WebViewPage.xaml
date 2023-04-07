@@ -18,7 +18,10 @@
             x:Name="PageContextMenu"
             AlwaysExpanded="True"
             Placement="BottomEdgeAlignedLeft">
-            <AppBarButton Click="AppBarButton_Click" Tag="Back">
+            <AppBarButton
+                Click="AppBarButton_Click"
+                IsEnabled="{x:Bind WebViewControl.CanGoBack, Mode=OneWay}"
+                Tag="Back">
                 <AppBarButton.Icon>
                     <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE112;" />
                 </AppBarButton.Icon>
@@ -28,7 +31,10 @@
                     <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE149;" />
                 </AppBarButton.Icon>
             </AppBarButton>
-            <AppBarButton Click="AppBarButton_Click" Tag="Forward">
+            <AppBarButton
+                Click="AppBarButton_Click"
+                IsEnabled="{x:Bind WebViewControl.CanGoForward, Mode=OneWay}"
+                Tag="Forward">
                 <AppBarButton.Icon>
                     <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE111;" />
                 </AppBarButton.Icon>
@@ -154,8 +160,8 @@
     <Grid CornerRadius="8,0,0,0">
         <muxc:WebView2
             x:Name="WebViewControl"
-            Loaded="WebViewControl_Loaded"
             x:FieldModifier="public"
-            CoreWebView2Initialized="WebViewControl_CoreWebView2Initialized" />
+            CoreWebView2Initialized="WebViewControl_CoreWebView2Initialized"
+            Loaded="WebViewControl_Loaded" />
     </Grid>
 </Page>
