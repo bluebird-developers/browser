@@ -10,6 +10,9 @@ public sealed partial class Privacy : Page
 
     private void GetSettings()
     {
+        string PasswordLock = SettingsHelper.GetSetting("PasswordLock");
+        if (PasswordLock == "true")
+            PasswordLockToggle.IsOn = true;
         string DisableJS = SettingsHelper.GetSetting("DisableJavaScript");
         if (DisableJS == "true")
             DisableJavaScriptToggle.IsOn = true;
@@ -27,10 +30,17 @@ public sealed partial class Privacy : Page
             PasswordWebMessFillToggle.IsOn = true;
 
         // Set event handlers
+        PasswordLockToggle.Toggled += PasswordLockToggle_Toggled;
         DisableJavaScriptToggle.Toggled += DisableJavaScriptToggle_Toggled;
         DisableGenaralAutoFillToggle.Toggled += DisableGenaralAutoFillToggle_Toggled;
         DisableWebMessFillToggle.Toggled += DisableGenaralAutoFillToggle_Toggled;
         PasswordWebMessFillToggle.Toggled += PasswordWebMessFillToggle_Toggled;
+    }
+
+    private async void PasswordLockToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (PasswordLockToggle.IsOn)
+            await UI.ShowDialog("Error", "Feature not implemented yet");
     }
 
     private void DisableJavaScriptToggle_Toggled(object sender, RoutedEventArgs e)

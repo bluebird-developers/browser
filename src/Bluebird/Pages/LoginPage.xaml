@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="Bluebird.Pages.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Bluebird.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Image
+            Width="100"
+            Height="100"
+            Source="ms-appx:///Assets/Square44x44Logo.targetsize-256.png" />
+        <PasswordBox
+            Grid.Row="1"
+            Width="300"
+            KeyDown="PasswordBox_KeyDown"
+            PlaceholderText="Enter your password" />
+    </Grid>
+</Page>

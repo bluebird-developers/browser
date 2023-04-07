@@ -1,5 +1,4 @@
 ﻿global using Bluebird.Core;
-global using Microsoft.Web.WebView2.Core;
 global using Newtonsoft.Json;
 global using QRCoder;
 global using System;

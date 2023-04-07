@@ -5,20 +5,27 @@ public sealed partial class General : Page
     public General()
     {
         this.InitializeComponent();
-        SearchengineSelection.Loaded += SearchengineSelection_Loaded;
-        SearchengineSelection.SelectionChanged += SearchengineSelection_SelectionChanged;
+        GetSettings();
     }
 
-    private void SearchengineSelection_Loaded(object sender, RoutedEventArgs e)
+    private void GetSettings()
     {
-        string selection = SettingsHelper.GetSetting("EngineFriendlyName");
-        if (selection != null)
-            SearchengineSelection.PlaceholderText = selection;
+        string SearchEngine = SettingsHelper.GetSetting("EngineFriendlyName");
+        if (SearchEngine != null)
+            SearchEngineSelector.PlaceholderText = SearchEngine;
         else
-            SearchengineSelection.PlaceholderText = "Qwant Lite";
+            SearchEngineSelector.PlaceholderText = "Qwant Lite";
+
+        string ForceDark = SettingsHelper.GetSetting("ForceDark");
+        if (ForceDark == "true")
+            ForceDarkSwitch.IsOn = true;
+
+        // Set event handlers
+        SearchEngineSelector.SelectionChanged += SearchEngineSelector_SelectionChanged;
+        ForceDarkSwitch.Toggled += ForceDarkSwitch_Toggled;
     }
 
-    private void SearchengineSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void SearchEngineSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         string selection = e.AddedItems[0].ToString();
         if (selection == "Ask") SetEngine("Ask", "https://www.ask.com/web?q=");
@@ -37,5 +44,17 @@ public sealed partial class General : Page
     {
         SettingsHelper.SetSetting("EngineFriendlyName", EngineFriendlyName);
         SettingsHelper.SetSetting("SearchUrl", SearchUrl);
+    }
+
+    private void ForceDarkSwitch_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (ForceDarkSwitch.IsOn)
+        {
+            SettingsHelper.SetSetting("ForceDark", "true");
+        }
+        else
+        {
+            SettingsHelper.SetSetting("ForceDark", "false");
+        }
     }
 }

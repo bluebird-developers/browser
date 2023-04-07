@@ -1,7 +1,10 @@
-﻿namespace Bluebird.Pages;
+﻿using Microsoft.Web.WebView2.Core;
+
+namespace Bluebird.Pages;
 
 public sealed partial class WebViewPage : Page
 {
+    private bool IsForceDarkMode;
     public WebViewPage()
     {
         this.InitializeComponent();
@@ -33,6 +36,8 @@ public sealed partial class WebViewPage : Page
 
     private void ApplyWebView2Settings()
     {
+        if (SettingsHelper.GetSetting("ForceDark") is "true")
+            IsForceDarkMode = true;
         if (SettingsHelper.GetSetting("DisableJavaScript") is "true")
             WebViewControl.CoreWebView2.Settings.IsScriptEnabled = false;
         if (SettingsHelper.GetSetting("DisableGenAutoFill") is "true")
@@ -47,10 +52,14 @@ public sealed partial class WebViewPage : Page
     {
         MainPageContent.LoadingRing.IsActive = true;
     }
-    private void CoreWebView2_NavigationCompleted(CoreWebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
+
+    private async void CoreWebView2_NavigationCompleted(CoreWebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
     {
-        //string jscript = await Modules.ForceDark.ForceDarkHelper.GetForceDarkScriptAsync();
-        //await WebViewControl.ExecuteScriptAsync(jscript);
+        if (IsForceDarkMode)
+        {
+            string jscript = await Modules.ForceDark.ForceDarkHelper.GetForceDarkScriptAsync();
+            await WebViewControl.ExecuteScriptAsync(jscript);
+        }
         MainPageContent.LoadingRing.IsActive = false;
     }
 

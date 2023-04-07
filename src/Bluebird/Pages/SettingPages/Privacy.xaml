@@ -9,10 +9,13 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <svsettctrl:SettingsBlockControl
-            Title="Disable JavaScript"
-            Margin="0,5,0,0"
-            Description="This improves your privacy by blocking trackers but it can also break a lot sites">
+        <svsettctrl:SettingsBlockControl Title="Password" Description="Require a password to open Bluebird">
+            <svsettctrl:SettingsBlockControl.Icon>
+                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE192;" />
+            </svsettctrl:SettingsBlockControl.Icon>
+            <ToggleSwitch x:Name="PasswordLockToggle" />
+        </svsettctrl:SettingsBlockControl>
+        <svsettctrl:SettingsBlockControl Title="Disable JavaScript" Description="This improves your privacy by blocking trackers but it can also break a lot sites">
             <svsettctrl:SettingsBlockControl.Icon>
                 <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE943;" />
             </svsettctrl:SettingsBlockControl.Icon>

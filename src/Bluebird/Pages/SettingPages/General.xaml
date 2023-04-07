@@ -13,10 +13,7 @@
             <svsettctrl:SettingsBlockControl.Icon>
                 <SymbolIcon Symbol="Find" />
             </svsettctrl:SettingsBlockControl.Icon>
-            <ComboBox
-                x:Name="SearchengineSelection"
-                Loaded="SearchengineSelection_Loaded"
-                SelectionChanged="SearchengineSelection_SelectionChanged">
+            <ComboBox x:Name="SearchEngineSelector">
                 <x:String>Ask</x:String>
                 <x:String>Baidu</x:String>
                 <x:String>Bing</x:String>
@@ -28,6 +25,12 @@
                 <x:String>Qwant Lite</x:String>
                 <x:String>Yahoo!</x:String>
             </ComboBox>
+        </svsettctrl:SettingsBlockControl>
+        <svsettctrl:SettingsBlockControl Title="Force dark mode for all websites">
+            <svsettctrl:SettingsBlockControl.Icon>
+                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE790;" />
+            </svsettctrl:SettingsBlockControl.Icon>
+            <ToggleSwitch x:Name="ForceDarkSwitch" />
         </svsettctrl:SettingsBlockControl>
     </StackPanel>
 </Page>
