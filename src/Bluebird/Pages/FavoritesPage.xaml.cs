@@ -31,8 +31,10 @@ public sealed partial class FavoritesPage : Page
         ContentDialogResult result = await UI.ShowDialogWithAction("Delete all favorites?", "Do you want to clear all favorites?", "Clear", "Cancel");
 
         if (result == ContentDialogResult.Primary)
+        {
             await FileHelper.DeleteLocalFile("Favorites.json");
-        FavoritesListView.ItemsSource = null;
+            FavoritesListView.ItemsSource = null;
+        }
     }
 
     private void FavoritesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
