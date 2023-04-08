@@ -5,8 +5,54 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Bluebird.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
-
+    <Page.Resources>
+        <muxc:CommandBarFlyout
+            x:Name="FavoritesContextMenu"
+            AlwaysExpanded="True"
+            Placement="BottomEdgeAlignedLeft">
+            <AppBarButton
+                Click="FavContextItem_Click"
+                Tag="OpenLnkInNewWindow"
+                ToolTipService.ToolTip="Open link in new window">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE17C;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton
+                Click="FavContextItem_Click"
+                Tag="OpenLnkInNewTab"
+                ToolTipService.ToolTip="Open link in new tab">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE8A7;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton
+                Click="FavContextItem_Click"
+                Tag="Copy"
+                ToolTipService.ToolTip="Copy link">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE16F;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton
+                Click="FavContextItem_Click"
+                Icon="Share"
+                Tag="ShareLink"
+                ToolTipService.ToolTip="Share selected link" />
+            <muxc:CommandBarFlyout.SecondaryCommands>
+                <AppBarButton
+                    Click="FavContextItem_Click"
+                    Label="Copy link text"
+                    Tag="CopyText">
+                    <AppBarButton.Icon>
+                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE16F;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+            </muxc:CommandBarFlyout.SecondaryCommands>
+        </muxc:CommandBarFlyout>
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="340" />
@@ -26,8 +72,27 @@
                 KeyDown="TextBox_KeyDown"
                 PlaceholderText="Search Favorites" />
         </StackPanel>
-        <Grid Grid.Column="1" Margin="30,30,0,0">
-            <ListView x:Name="FavoritesListView" SelectionChanged="FavoritesList_SelectionChanged">
+        <Grid Grid.Column="1" Margin="30,30,30,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Button
+                Grid.Row="0"
+                HorizontalAlignment="Right"
+                Click="ClearAllButton_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE107;" />
+                        <TextBlock Margin="10,0,0,0">Delete all favorites</TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <ListView
+                x:Name="FavoritesListView"
+                Grid.Row="1"
+                RightTapped="FavoritesListView_RightTapped"
+                SelectionChanged="FavoritesList_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
