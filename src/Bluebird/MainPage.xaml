@@ -141,6 +141,23 @@
                         <MenuFlyout x:Name="MoreFlyout" Placement="Right">
                             <MenuFlyoutItem
                                 Click="MoreFlyoutItem_Click"
+                                Tag="NewTab"
+                                Text="New tab">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE109;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem
+                                Click="MoreFlyoutItem_Click"
+                                Tag="NewWindow"
+                                Text="New window">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE17C;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutSeparator />
+                            <MenuFlyoutItem
+                                Click="MoreFlyoutItem_Click"
                                 Tag="Downloads"
                                 Text="Downloads">
                                 <MenuFlyoutItem.Icon>

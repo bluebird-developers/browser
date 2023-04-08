@@ -85,10 +85,16 @@ public sealed partial class MainPage : Page
         }
     }
 
-    private void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
+    private async void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
         switch ((sender as MenuFlyoutItem).Tag)
         {
+            case "NewTab":
+                CreateHomeTab();
+                break;
+            case "NewWindow":
+                await Launcher.LaunchUriAsync(new Uri("bluebird:"));
+                break;
             case "Downloads":
                 launchurl = "edge://downloads";
                 CreateWebTab();
