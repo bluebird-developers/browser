@@ -126,6 +126,14 @@
             Placement="BottomEdgeAlignedLeft">
             <AppBarButton
                 Click="AppBarButton_Click"
+                Tag="OpenLnkInNewWindow"
+                ToolTipService.ToolTip="Open link in new window">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE17C;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton
+                Click="AppBarButton_Click"
                 Tag="OpenLnkInNewTab"
                 ToolTipService.ToolTip="Open link in new tab">
                 <AppBarButton.Icon>
