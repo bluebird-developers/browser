@@ -89,7 +89,7 @@
                                 Tag="TaskManager"
                                 Text="Browser task manager">
                                 <MenuFlyoutItem.Icon>
-                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xEC4A;" />
+                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE9D9;" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
                         </MenuFlyout>
