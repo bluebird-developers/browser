@@ -7,14 +7,18 @@ public sealed partial class LoginPage : Page
         this.InitializeComponent();
     }
 
-    private void PasswordBox_KeyDown(object sender, KeyRoutedEventArgs e)
+    private async void PasswordBox_KeyDown(object sender, KeyRoutedEventArgs e)
     {
         if (e.Key == VirtualKey.Enter)
         {
             PasswordBox passwordBox = sender as PasswordBox;
             if (passwordBox.Password != null)
             {
-                // TODO
+                string password = PasswordHelper.GetCredential();
+                if (passwordBox.Password == password)
+                    Frame.Navigate(typeof(MainPage));
+                else
+                    await UI.ShowDialog("Error", "The password your entered is not correct");
             }
         }
     }

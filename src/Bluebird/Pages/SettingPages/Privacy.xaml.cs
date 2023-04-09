@@ -1,4 +1,6 @@
-﻿namespace Bluebird.Pages.SettingPages;
+﻿using Bluebird.Controls;
+
+namespace Bluebird.Pages.SettingPages;
 
 public sealed partial class Privacy : Page
 {
@@ -33,14 +35,28 @@ public sealed partial class Privacy : Page
         PasswordLockToggle.Toggled += PasswordLockToggle_Toggled;
         DisableJavaScriptToggle.Toggled += DisableJavaScriptToggle_Toggled;
         DisableGenaralAutoFillToggle.Toggled += DisableGenaralAutoFillToggle_Toggled;
-        DisableWebMessFillToggle.Toggled += DisableGenaralAutoFillToggle_Toggled;
+        DisableWebMessFillToggle.Toggled += DisableWebMessFillToggle_Toggled;
         PasswordWebMessFillToggle.Toggled += PasswordWebMessFillToggle_Toggled;
     }
 
     private async void PasswordLockToggle_Toggled(object sender, RoutedEventArgs e)
     {
         if (PasswordLockToggle.IsOn)
-            await UI.ShowDialog("Error", "Feature not implemented yet");
+        {
+            PasswordContentDialog dialog = new();
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+                SettingsHelper.SetSetting("PasswordLock", "true");
+            else
+            {
+                PasswordLockToggle.IsOn = false;
+                SettingsHelper.SetSetting("PasswordLock", "false");
+            }
+        }
+        else
+        {
+            SettingsHelper.SetSetting("PasswordLock", "false");
+        }
     }
 
     private void DisableJavaScriptToggle_Toggled(object sender, RoutedEventArgs e)
@@ -66,7 +82,7 @@ public sealed partial class Privacy : Page
         }
     }
 
-    private void DisablWebMessFillToggle_Toggled(object sender, RoutedEventArgs e)
+    private void DisableWebMessFillToggle_Toggled(object sender, RoutedEventArgs e)
     {
         if (DisableWebMessFillToggle.IsOn)
         {

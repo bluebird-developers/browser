@@ -2,6 +2,7 @@
 
 public class Globals
 {
+    public const string RESOURCE_NAME = "BluebirdAppLock";
     public class JsonItems
     {
         public string Title { get; set; }

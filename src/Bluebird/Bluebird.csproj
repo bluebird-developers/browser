@@ -131,6 +131,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PasswordContentDialog.xaml.cs">
+      <DependentUpon>PasswordContentDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SVSettingsControl\Converters.cs" />
     <Compile Include="Controls\SVSettingsControl\SettingsBlockControl.xaml.cs">
       <DependentUpon>SettingsBlockControl.xaml</DependentUpon>
@@ -145,6 +148,7 @@
     <Compile Include="Core\FileHelper.cs" />
     <Compile Include="Core\Globals.cs" />
     <Compile Include="Core\Json.cs" />
+    <Compile Include="Core\PasswordHelper.cs" />
     <Compile Include="Core\SettingsHelper.cs" />
     <Compile Include="Core\SystemHelper.cs" />
     <Compile Include="Core\TLD.cs" />
@@ -257,6 +261,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\PasswordContentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\SVSettingsControl\SettingsBlockControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

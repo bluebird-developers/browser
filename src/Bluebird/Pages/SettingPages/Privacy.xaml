@@ -15,13 +15,13 @@
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="PasswordLockToggle" />
         </svsettctrl:SettingsBlockControl>
-        <svsettctrl:SettingsBlockControl Title="Disable JavaScript" Description="This improves your privacy by blocking trackers but it can also break a lot sites">
+        <svsettctrl:SettingsBlockControl Title="Disable JavaScript" Description="This improves your privacy by blocking trackers at the expense of breaking all sites which rely on JavaScript">
             <svsettctrl:SettingsBlockControl.Icon>
                 <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE943;" />
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="DisableJavaScriptToggle" />
         </svsettctrl:SettingsBlockControl>
-        <svsettctrl:SettingsBlockControl Title="Disable Genaral Autofill" Description="This will disable autofilling in browser ( No Automaticly Fill )">
+        <svsettctrl:SettingsBlockControl Title="Disable autofill" Description="This will disable autofilling in browser">
             <svsettctrl:SettingsBlockControl.Icon>
                 <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE8DA;" />
             </svsettctrl:SettingsBlockControl.Icon>

@@ -15,9 +15,9 @@ public sealed partial class NewTabPage : Page
 
     private void TextBox_KeyDown(object sender, KeyRoutedEventArgs e)
     {
-        var textbox = sender as TextBox;
         if (e.Key == VirtualKey.Enter)
         {
+            TextBox textbox = sender as TextBox;
             string searchurl;
             if (SearchUrl == null)
                 searchurl = "https://lite.qwant.com/?q=";

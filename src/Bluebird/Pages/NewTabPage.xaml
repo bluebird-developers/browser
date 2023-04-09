@@ -16,17 +16,15 @@
             <TextBlock
                 Margin="10,0,0,0"
                 VerticalAlignment="Center"
-                Style="{StaticResource SubheaderTextBlockStyle}">
-                Bluebird
-            </TextBlock>
+                Style="{StaticResource SubheaderTextBlockStyle}"
+                Text="Bluebird" />
         </StackPanel>
-        <StackPanel Margin="0,20,0,0">
-            <TextBox
-                Width="400"
-                IsSpellCheckEnabled="False"
-                KeyDown="TextBox_KeyDown"
-                Loaded="TextBox_Loaded"
-                PlaceholderText="Type here to search" />
-        </StackPanel>
+        <TextBox
+            Width="400"
+            Margin="0,20,0,0"
+            IsSpellCheckEnabled="False"
+            KeyDown="TextBox_KeyDown"
+            Loaded="TextBox_Loaded"
+            PlaceholderText="Type here to search" />
     </StackPanel>
 </Page>
