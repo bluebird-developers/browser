@@ -23,12 +23,12 @@
                 IsEnabled="{x:Bind WebViewControl.CanGoBack, Mode=OneWay}"
                 Tag="Back">
                 <AppBarButton.Icon>
-                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE112;" />
+                    <FontIcon Glyph="&#xE112;" />
                 </AppBarButton.Icon>
             </AppBarButton>
             <AppBarButton Click="AppBarButton_Click" Tag="Refresh">
                 <AppBarButton.Icon>
-                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE149;" />
+                    <FontIcon Glyph="&#xE149;" />
                 </AppBarButton.Icon>
             </AppBarButton>
             <AppBarButton
@@ -36,7 +36,7 @@
                 IsEnabled="{x:Bind WebViewControl.CanGoForward, Mode=OneWay}"
                 Tag="Forward">
                 <AppBarButton.Icon>
-                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE111;" />
+                    <FontIcon Glyph="&#xE111;" />
                 </AppBarButton.Icon>
             </AppBarButton>
             <AppBarButton
@@ -50,7 +50,7 @@
                     Label="Select all"
                     Tag="SelectAll">
                     <AppBarButton.Icon>
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE14E;" />
+                        <FontIcon Glyph="&#xE14E;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
                 <AppBarButton
@@ -58,13 +58,13 @@
                     Label="Create QRCode"
                     Tag="GenQRCode">
                     <AppBarButton.Icon>
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xED14;" />
+                        <FontIcon Glyph="&#xED14;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
                 <AppBarSeparator />
                 <AppBarButton Label="Developer">
                     <AppBarButton.Icon>
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xEC7A;" />
+                        <FontIcon Glyph="&#xEC7A;" />
                     </AppBarButton.Icon>
                     <AppBarButton.Flyout>
                         <MenuFlyout>
@@ -73,7 +73,7 @@
                                 Tag="ViewSource"
                                 Text="View source">
                                 <MenuFlyoutItem.Icon>
-                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE943;" />
+                                    <FontIcon Glyph="&#xE943;" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
                             <MenuFlyoutItem
@@ -81,7 +81,7 @@
                                 Tag="DevTools"
                                 Text="DevTools">
                                 <MenuFlyoutItem.Icon>
-                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xEC7A;" />
+                                    <FontIcon Glyph="&#xEC7A;" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
                             <MenuFlyoutItem
@@ -89,7 +89,7 @@
                                 Tag="TaskManager"
                                 Text="Browser task manager">
                                 <MenuFlyoutItem.Icon>
-                                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE9D9;" />
+                                    <FontIcon Glyph="&#xE9D9;" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
                         </MenuFlyout>
@@ -106,7 +106,7 @@
                 Tag="CopyText"
                 ToolTipService.ToolTip="Copy text">
                 <AppBarButton.Icon>
-                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE16F;" />
+                    <FontIcon Glyph="&#xE16F;" />
                 </AppBarButton.Icon>
             </AppBarButton>
             <muxc:CommandBarFlyout.SecondaryCommands>
@@ -115,7 +115,7 @@
                     Label="Select all"
                     Tag="SelectAll">
                     <AppBarButton.Icon>
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE14E;" />
+                        <FontIcon Glyph="&#xE14E;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
             </muxc:CommandBarFlyout.SecondaryCommands>
@@ -129,7 +129,7 @@
                 Tag="OpenLnkInNewWindow"
                 ToolTipService.ToolTip="Open link in new window">
                 <AppBarButton.Icon>
-                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE17C;" />
+                    <FontIcon Glyph="&#xE17C;" />
                 </AppBarButton.Icon>
             </AppBarButton>
             <AppBarButton
@@ -137,7 +137,7 @@
                 Tag="OpenLnkInNewTab"
                 ToolTipService.ToolTip="Open link in new tab">
                 <AppBarButton.Icon>
-                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE8A7;" />
+                    <FontIcon Glyph="&#xE8A7;" />
                 </AppBarButton.Icon>
             </AppBarButton>
             <AppBarButton
@@ -145,7 +145,7 @@
                 Tag="Copy"
                 ToolTipService.ToolTip="Copy link">
                 <AppBarButton.Icon>
-                    <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE16F;" />
+                    <FontIcon Glyph="&#xE16F;" />
                 </AppBarButton.Icon>
             </AppBarButton>
             <AppBarButton
@@ -159,7 +159,7 @@
                     Label="Copy link text"
                     Tag="CopyText">
                     <AppBarButton.Icon>
-                        <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE16F;" />
+                        <FontIcon Glyph="&#xE16F;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
             </muxc:CommandBarFlyout.SecondaryCommands>

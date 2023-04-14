@@ -11,31 +11,31 @@
     <StackPanel>
         <svsettctrl:SettingsBlockControl Title="Password" Description="Require a password to open Bluebird">
             <svsettctrl:SettingsBlockControl.Icon>
-                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE192;" />
+                <FontIcon Glyph="&#xE192;" />
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="PasswordLockToggle" />
         </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl Title="Disable JavaScript" Description="This improves your privacy by blocking trackers at the expense of breaking all sites which rely on JavaScript">
             <svsettctrl:SettingsBlockControl.Icon>
-                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE943;" />
+                <FontIcon Glyph="&#xE943;" />
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="DisableJavaScriptToggle" />
         </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl Title="Disable autofill" Description="This will disable autofilling in browser">
             <svsettctrl:SettingsBlockControl.Icon>
-                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE8DA;" />
+                <FontIcon Glyph="&#xE8DA;" />
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="DisableGenaralAutoFillToggle" />
         </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl Title="Disable Web Messages" Description="This will disable browser WebMessages">
             <svsettctrl:SettingsBlockControl.Icon>
-                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE8BD;" />
+                <FontIcon Glyph="&#xE8BD;" />
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="DisableWebMessFillToggle" />
         </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl Title="Disable Save Passwords" Description="This will disable browser Auto Save Password">
             <svsettctrl:SettingsBlockControl.Icon>
-                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xF427;" />
+                <FontIcon Glyph="&#xE192;" />
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="PasswordWebMessFillToggle" />
         </svsettctrl:SettingsBlockControl>

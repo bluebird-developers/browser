@@ -28,7 +28,7 @@
         </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl Title="Force dark mode for all websites">
             <svsettctrl:SettingsBlockControl.Icon>
-                <FontIcon FontFamily="ms-appx:///Fonts/Segoe Fluent Icons.tff#Segoe Fluent Icons" Glyph="&#xE790;" />
+                <FontIcon Glyph="&#xE790;" />
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="ForceDarkSwitch" />
         </svsettctrl:SettingsBlockControl>
