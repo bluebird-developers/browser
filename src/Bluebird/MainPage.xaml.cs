@@ -57,9 +57,9 @@ public sealed partial class MainPage : Page
                     }
                     break;
                 case "AddFavoriteFlyout":
+                    AddFavoriteFlyout.ShowAt(AddFavoriteFlyoutBtn);
                     if (TabWebView != null)
                     {
-                        AddFavoriteFlyout.ShowAt(AddFavoriteFlyoutBtn);
                         FavoriteTitle.Text = TabWebView.CoreWebView2.DocumentTitle;
                         FavoriteUrl.Text = TabWebView.CoreWebView2.Source;
                     }
