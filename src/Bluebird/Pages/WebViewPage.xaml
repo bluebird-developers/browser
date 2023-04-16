@@ -118,6 +118,14 @@
                         <FontIcon Glyph="&#xE14E;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
+                <AppBarButton
+                    Click="AppBarButton_Click"
+                    Label="Search the web..."
+                    Tag="Search">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE721;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
             </muxc:CommandBarFlyout.SecondaryCommands>
         </muxc:CommandBarFlyout>
         <muxc:CommandBarFlyout
@@ -126,18 +134,18 @@
             Placement="BottomEdgeAlignedLeft">
             <AppBarButton
                 Click="AppBarButton_Click"
-                Tag="OpenLnkInNewWindow"
-                ToolTipService.ToolTip="Open link in new window">
-                <AppBarButton.Icon>
-                    <FontIcon Glyph="&#xE17C;" />
-                </AppBarButton.Icon>
-            </AppBarButton>
-            <AppBarButton
-                Click="AppBarButton_Click"
                 Tag="OpenLnkInNewTab"
                 ToolTipService.ToolTip="Open link in new tab">
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xE8A7;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton
+                Click="AppBarButton_Click"
+                Tag="OpenLnkInNewWindow"
+                ToolTipService.ToolTip="Open link in new window">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE17C;" />
                 </AppBarButton.Icon>
             </AppBarButton>
             <AppBarButton

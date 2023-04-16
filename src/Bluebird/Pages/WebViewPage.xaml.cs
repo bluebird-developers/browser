@@ -1,4 +1,5 @@
 ﻿using Microsoft.Web.WebView2.Core;
+using Windows.UI.Xaml.Controls;
 
 namespace Bluebird.Pages;
 
@@ -194,6 +195,16 @@ public sealed partial class WebViewPage : Page
             // link context menu
             case "ShareLink":
                 SystemHelper.ShowShareUIURL(SelectionText, LinkUri);
+                break;
+            case "Search":
+                string searchurl;
+                if (SearchUrl == null)
+                    searchurl = "https://lite.qwant.com/?q=";
+                else
+                    searchurl = SearchUrl;
+                string link = searchurl + SelectionText;
+                launchurl = link;
+                MainPageContent.CreateWebTab();
                 break;
         }
         var flyout = FlyoutBase.GetAttachedFlyout(WebViewControl);
