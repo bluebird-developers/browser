@@ -30,7 +30,7 @@
             <svsettctrl:SettingsBlockControl.Icon>
                 <FontIcon Glyph="&#xE790;" />
             </svsettctrl:SettingsBlockControl.Icon>
-            <ToggleSwitch x:Name="ForceDarkSwitch" />
+            <ToggleSwitch x:Name="ForceDarkSwitch" Margin="0,0,-80,0" />
         </svsettctrl:SettingsBlockControl>
     </StackPanel>
 </Page>

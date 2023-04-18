@@ -13,31 +13,31 @@
             <svsettctrl:SettingsBlockControl.Icon>
                 <FontIcon Glyph="&#xE192;" />
             </svsettctrl:SettingsBlockControl.Icon>
-            <ToggleSwitch x:Name="PasswordLockToggle" />
+            <ToggleSwitch x:Name="PasswordLockToggle" Margin="0,0,-80,0" />
         </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl Title="Disable JavaScript" Description="This improves your privacy by blocking trackers at the expense of breaking all sites which rely on JavaScript">
             <svsettctrl:SettingsBlockControl.Icon>
                 <FontIcon Glyph="&#xE943;" />
             </svsettctrl:SettingsBlockControl.Icon>
-            <ToggleSwitch x:Name="DisableJavaScriptToggle" />
+            <ToggleSwitch x:Name="DisableJavaScriptToggle" Margin="0,0,-80,0" />
         </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl Title="Disable autofill" Description="This will disable autofilling in browser">
             <svsettctrl:SettingsBlockControl.Icon>
                 <FontIcon Glyph="&#xE8DA;" />
             </svsettctrl:SettingsBlockControl.Icon>
-            <ToggleSwitch x:Name="DisableGenaralAutoFillToggle" />
+            <ToggleSwitch x:Name="DisableGenaralAutoFillToggle" Margin="0,0,-80,0" />
         </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl Title="Disable Web Messages" Description="This will disable browser WebMessages">
             <svsettctrl:SettingsBlockControl.Icon>
                 <FontIcon Glyph="&#xE8BD;" />
             </svsettctrl:SettingsBlockControl.Icon>
-            <ToggleSwitch x:Name="DisableWebMessFillToggle" />
+            <ToggleSwitch x:Name="DisableWebMessFillToggle" Margin="0,0,-80,0" />
         </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl Title="Disable Save Passwords" Description="This will disable browser Auto Save Password">
             <svsettctrl:SettingsBlockControl.Icon>
                 <FontIcon Glyph="&#xE192;" />
             </svsettctrl:SettingsBlockControl.Icon>
-            <ToggleSwitch x:Name="PasswordWebMessFillToggle" />
+            <ToggleSwitch x:Name="PasswordWebMessFillToggle" Margin="0,0,-80,0" />
         </svsettctrl:SettingsBlockControl>
     </StackPanel>
 </Page>
