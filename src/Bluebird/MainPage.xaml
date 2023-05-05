@@ -132,6 +132,9 @@
         <muxc:TabView.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.ThemeDictionaries>
+                    <ResourceDictionary x:Key="Light">
+                        <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="Transparent" />
+                    </ResourceDictionary>
                     <ResourceDictionary x:Key="Dark">
                         <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="#40000000" />
                     </ResourceDictionary>
