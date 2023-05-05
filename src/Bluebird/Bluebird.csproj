@@ -195,7 +195,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\DefaultUser\default.png" />
     <Content Include="Assets\FileIcons\document.png" />
     <Content Include="Assets\FileIcons\link.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
@@ -311,7 +310,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Styles\SidebarButton.xaml">
+    <Page Include="Styles\ToolbarButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

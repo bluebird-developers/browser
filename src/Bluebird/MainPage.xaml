@@ -9,229 +9,131 @@
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
     mc:Ignorable="d">
     <Page.Resources>
-        <Flyout x:Name="FavoritesFlyout" Placement="Right">
-            <Grid
-                MinWidth="300"
-                MinHeight="500"
-                MaxWidth="300"
-                MaxHeight="500">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="260" />
-                        <ColumnDefinition Width="40" />
-                    </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" TextChanged="Favorites_SearchBoxTextChanged" />
-                    <Button
-                        Grid.Column="1"
-                        Click="SidebarButton_Click"
-                        Style="{StaticResource SidebarButton}"
-                        Tag="FavoritesExpanded">
-                        <FontIcon Glyph="&#xE8A7;" />
-                    </Button>
-                </Grid>
-                <ListView
-                    x:Name="FavoritesListView"
-                    Grid.Row="1"
-                    SelectionChanged="FavoritesList_SelectionChanged">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <TextBlock
-                                    FontSize="20"
-                                    Text="{Binding Title}"
-                                    ToolTipService.ToolTip="{Binding Url}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
-        </Flyout>
-        <Flyout x:Name="AddFavoriteFlyout" Placement="Right">
-            <StackPanel>
-                <TextBlock MinWidth="300" FontSize="20">
-                    Add favorite
-                </TextBlock>
-                <TextBlock>Name</TextBlock>
-                <TextBox x:Name="FavoriteTitle" />
-                <TextBlock>Url</TextBlock>
-                <TextBox x:Name="FavoriteUrl" />
-                <Button
-                    Click="SidebarButton_Click"
-                    Content="Add"
-                    Tag="AddFavorite" />
-            </StackPanel>
+        <Flyout x:Name="SearchFlyout">
+            <TextBox
+                x:Name="UrlBox"
+                Width="400"
+                GotFocus="UrlBox_GotFocus"
+                IsSpellCheckEnabled="False"
+                KeyDown="UrlBox_KeyDown"
+                PlaceholderText="Search or enter web address" />
         </Flyout>
     </Page.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid x:Name="Sidebar" Grid.Column="0">
-            <StackPanel>
-                <Button
-                    Click="SidebarButton_Click"
-                    Style="{StaticResource SidebarButton}"
-                    Tag="Back">
-                    <FontIcon Glyph="&#xE112;" />
-                </Button>
-                <Button
-                    Click="SidebarButton_Click"
-                    Style="{StaticResource SidebarButton}"
-                    Tag="Refresh">
-                    <FontIcon Glyph="&#xE149;" />
-                </Button>
-                <Button
-                    Click="SidebarButton_Click"
-                    Style="{StaticResource SidebarButton}"
-                    Tag="Forward">
-                    <FontIcon Glyph="&#xE72A;" />
-                </Button>
-                <Button
-                    Click="SidebarButton_Click"
-                    Style="{StaticResource SidebarButton}"
-                    Tag="Search">
-                    <FontIcon Glyph="&#xE11A;" />
-                    <Button.Flyout>
-                        <Flyout x:Name="SearchFlyout" Placement="Right">
-                            <TextBox
-                                x:Name="UrlBox"
-                                Width="400"
-                                GotFocus="UrlBox_GotFocus"
-                                IsSpellCheckEnabled="False"
-                                KeyDown="UrlBox_KeyDown"
-                                PlaceholderText="Search or enter web address" />
-                        </Flyout>
-                    </Button.Flyout>
-                </Button>
-                <Button
-                    Click="SidebarButton_Click"
-                    Style="{StaticResource SidebarButton}"
-                    Tag="ReadingMode">
-                    <FontIcon Glyph="&#xE736;" />
-                </Button>
-                <Button
-                    Click="SidebarButton_Click"
-                    Style="{StaticResource SidebarButton}"
-                    Tag="Translate">
-                    <FontIcon Glyph="&#xE775;" />
-                </Button>
-                <Button
-                    x:Name="AddFavoriteFlyoutBtn"
-                    Click="SidebarButton_Click"
-                    Style="{StaticResource SidebarButton}"
-                    Tag="AddFavoriteFlyout">
-                    <FontIcon Glyph="&#xE734;" />
-                </Button>
-                <Button
-                    x:Name="OpenFavoriteFlyoutBtn"
-                    Click="SidebarButton_Click"
-                    Flyout="{x:Bind FavoritesFlyout}"
-                    Style="{StaticResource SidebarButton}"
-                    Tag="Favorites">
-                    <FontIcon Glyph="&#xE728;" />
-                </Button>
-                <Button Style="{StaticResource SidebarButton}">
-                    <FontIcon Glyph="&#xE10C;" />
-                    <Button.Flyout>
-                        <MenuFlyout x:Name="MoreFlyout" Placement="Right">
-                            <MenuFlyoutItem
-                                Click="MoreFlyoutItem_Click"
-                                Tag="NewTab"
-                                Text="New tab">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xE109;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                            <MenuFlyoutItem
-                                Click="MoreFlyoutItem_Click"
-                                Tag="NewWindow"
-                                Text="New window">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xE17C;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                            <MenuFlyoutSeparator />
-                            <MenuFlyoutItem
-                                Click="MoreFlyoutItem_Click"
-                                Tag="Downloads"
-                                Text="Downloads">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xE896;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                            <MenuFlyoutItem
-                                Click="MoreFlyoutItem_Click"
-                                Tag="Favorites"
-                                Text="Favorites">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xE728;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                            <MenuFlyoutItem
-                                Click="MoreFlyoutItem_Click"
-                                Tag="History"
-                                Text="History">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xE81C;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                            <MenuFlyoutSeparator />
-                            <MenuFlyoutItem
-                                Click="MoreFlyoutItem_Click"
-                                Tag="Fullscreen"
-                                Text="Full screen">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xE1D9;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                            <MenuFlyoutSeparator />
-                            <MenuFlyoutItem
-                                Click="MoreFlyoutItem_Click"
-                                Tag="Settings"
-                                Text="Settings">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xE713;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                        </MenuFlyout>
-                    </Button.Flyout>
-                </Button>
-            </StackPanel>
-            <StackPanel VerticalAlignment="Bottom">
-                <muxc:ProgressRing
-                    x:Name="LoadingRing"
-                    x:FieldModifier="public"
-                    IsActive="False" />
-            </StackPanel>
-        </Grid>
-
-        <muxc:TabView
-            x:Name="Tabs"
-            Grid.Column="1"
-            Margin="0,-8,0,0"
-            VerticalAlignment="Stretch"
-            x:FieldModifier="public"
-            AddTabButtonClick="Tabs_AddTabButtonClick"
-            Background="Transparent"
-            Loaded="Tabs_Loaded"
-            TabCloseRequested="Tabs_TabCloseRequested"
-            TabItemsChanged="Tabs_TabItemsChanged">
-            <muxc:TabView.TabStripFooter>
+    <muxc:TabView
+        x:Name="Tabs"
+        Grid.Column="1"
+        VerticalAlignment="Stretch"
+        AddTabButtonClick="Tabs_AddTabButtonClick"
+        Background="Transparent"
+        Loaded="Tabs_Loaded"
+        TabCloseRequested="Tabs_TabCloseRequested">
+        <muxc:TabView.TabStripHeader>
+            <Image Margin="0,3,0,0" Source="Assets/Square44x44Logo.targetsize-32.png" />
+        </muxc:TabView.TabStripHeader>
+        <muxc:TabView.TabStripFooter>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
                 <Grid
                     x:Name="CustomDragRegion"
-                    MinWidth="188"
+                    Grid.Column="0"
                     Background="Transparent" />
-            </muxc:TabView.TabStripFooter>
-            <muxc:TabView.Resources>
-                <ResourceDictionary>
-                    <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="Transparent" />
-                </ResourceDictionary>
-            </muxc:TabView.Resources>
-        </muxc:TabView>
-    </Grid>
+                <Button
+                    Grid.Column="1"
+                    Click="ToolbarButton_Click"
+                    Flyout="{x:Bind SearchFlyout}"
+                    Style="{StaticResource ToolbarButton}"
+                    Tag="Search">
+                    <FontIcon Glyph="&#xE721;" />
+                </Button>
+                <Grid Grid.Column="2">
+                    <Button Style="{StaticResource ToolbarButton}">
+                        <FontIcon Glyph="&#xE10C;" />
+                        <Button.Flyout>
+                            <MenuFlyout x:Name="MoreFlyout" Placement="Bottom">
+                                <MenuFlyoutItem
+                                    Click="MoreFlyoutItem_Click"
+                                    Tag="NewTab"
+                                    Text="New tab">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE109;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem
+                                    Click="MoreFlyoutItem_Click"
+                                    Tag="NewWindow"
+                                    Text="New window">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE17C;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutSeparator />
+                                <MenuFlyoutItem
+                                    Click="MoreFlyoutItem_Click"
+                                    Tag="Downloads"
+                                    Text="Downloads">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE896;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem
+                                    Click="MoreFlyoutItem_Click"
+                                    Tag="Favorites"
+                                    Text="Favorites">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE728;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem
+                                    Click="MoreFlyoutItem_Click"
+                                    Tag="History"
+                                    Text="History">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE81C;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutSeparator />
+                                <MenuFlyoutItem
+                                    Click="MoreFlyoutItem_Click"
+                                    Tag="Fullscreen"
+                                    Text="Full screen">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE1D9;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutSeparator />
+                                <MenuFlyoutItem
+                                    Click="MoreFlyoutItem_Click"
+                                    Tag="Settings"
+                                    Text="Settings">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE713;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </Grid>
+                <muxc:ProgressRing
+                    x:Name="LoadingRing"
+                    Grid.Column="3"
+                    x:FieldModifier="public"
+                    IsActive="False" />
+                <Grid
+                    Grid.Column="4"
+                    Width="150"
+                    Background="Transparent" />
+            </Grid>
+        </muxc:TabView.TabStripFooter>
+        <muxc:TabView.Resources>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="Transparent" />
+            </ResourceDictionary>
+        </muxc:TabView.Resources>
+    </muxc:TabView>
 </Page>

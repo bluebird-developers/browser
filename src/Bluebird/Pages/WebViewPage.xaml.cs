@@ -156,27 +156,18 @@ public sealed partial class WebViewPage : Page
             case "SelectAll":
                 await WebViewControl.CoreWebView2.ExecuteScriptAsync("document.execCommand(\"selectAll\");");
                 break;
-            case "GenQRCode":
-                //Create raw qr code data
-                QRCodeGenerator qrGenerator = new();
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(WebViewControl.CoreWebView2.Source.ToString(), QRCodeGenerator.ECCLevel.M);
-
-                //Create byte/raw bitmap qr code
-                BitmapByteQRCode qrCodeBmp = new(qrCodeData);
-                byte[] qrCodeImageBmp = qrCodeBmp.GetGraphic(20);
-                using (InMemoryRandomAccessStream stream = new())
-                {
-                    using (DataWriter writer = new(stream.GetOutputStreamAt(0)))
-                    {
-                        writer.WriteBytes(qrCodeImageBmp);
-                        await writer.StoreAsync();
-                    }
-                    var image = new BitmapImage();
-                    await image.SetSourceAsync(stream);
-                    // set image as image source for element
-                    QRCodeImage.Source = image;
-                }
-                QRCodeFlyout.ShowAt(WebViewControl);
+            case "ReadingMode":
+                string jscript = await Modules.Readability.ReadabilityHelper.GetReadabilityScriptAsync();
+                await WebViewControl.CoreWebView2.ExecuteScriptAsync(jscript);
+                break;
+            case "Translate":
+                string url = WebViewControl.CoreWebView2.Source;
+                WebViewControl.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
+                break;
+            case "ShowAddFavoriteFlyout":
+                FavoriteTitle.Text = WebViewControl.CoreWebView2.DocumentTitle;
+                FavoriteUrl.Text = WebViewControl.CoreWebView2.Source;
+                AddFavoriteFlyout.ShowAt(WebViewControl);
                 break;
             // text context menu
             case "OpenLnkInNewWindow":
@@ -211,10 +202,32 @@ public sealed partial class WebViewPage : Page
         flyout.Hide();
     }
 
-    private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+    private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
         switch ((sender as MenuFlyoutItem).Tag)
         {
+            case "GenQRCode":
+                //Create raw qr code data
+                QRCodeGenerator qrGenerator = new();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(WebViewControl.CoreWebView2.Source.ToString(), QRCodeGenerator.ECCLevel.M);
+
+                //Create byte/raw bitmap qr code
+                BitmapByteQRCode qrCodeBmp = new(qrCodeData);
+                byte[] qrCodeImageBmp = qrCodeBmp.GetGraphic(20);
+                using (InMemoryRandomAccessStream stream = new())
+                {
+                    using (DataWriter writer = new(stream.GetOutputStreamAt(0)))
+                    {
+                        writer.WriteBytes(qrCodeImageBmp);
+                        await writer.StoreAsync();
+                    }
+                    var image = new BitmapImage();
+                    await image.SetSourceAsync(stream);
+                    // set image as image source for element
+                    QRCodeImage.Source = image;
+                }
+                QRCodeFlyout.ShowAt(WebViewControl);
+                break;
             case "ViewSource":
                 launchurl = "view-source:" + WebViewControl.Source;
                 MainPageContent.CreateWebTab();
@@ -226,5 +239,11 @@ public sealed partial class WebViewPage : Page
                 WebViewControl.CoreWebView2.OpenTaskManagerWindow();
                 break;
         }
+    }
+
+    private void AddFavoriteButton_Click(object sender, RoutedEventArgs e)
+    {
+        FavoritesHelper.AddFavoritesItem(FavoriteTitle.Text, FavoriteUrl.Text);
+        AddFavoriteFlyout.Hide();
     }
 }

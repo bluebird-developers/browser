@@ -6,7 +6,7 @@
     <Application.Resources>
         <controls:XamlControlsResources>
             <controls:XamlControlsResources.MergedDictionaries>
-                <ResourceDictionary Source="Styles/SidebarButton.xaml" />
+                <ResourceDictionary Source="Styles/ToolbarButton.xaml" />
             </controls:XamlControlsResources.MergedDictionaries>
         </controls:XamlControlsResources>
     </Application.Resources>

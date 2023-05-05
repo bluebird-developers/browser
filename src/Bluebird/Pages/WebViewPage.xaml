@@ -8,6 +8,21 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
     <Page.Resources>
+        <Flyout x:Name="AddFavoriteFlyout" Placement="RightEdgeAlignedTop">
+            <StackPanel>
+                <TextBlock MinWidth="300" FontSize="20">
+                    Add favorite
+                </TextBlock>
+                <TextBlock>Name</TextBlock>
+                <TextBox x:Name="FavoriteTitle" />
+                <TextBlock>Url</TextBlock>
+                <TextBox x:Name="FavoriteUrl" />
+                <Button
+                    Click="AddFavoriteButton_Click"
+                    Content="Add"
+                    Tag="AddFavorite" />
+            </StackPanel>
+        </Flyout>
         <Flyout x:Name="QRCodeFlyout" Placement="RightEdgeAlignedTop">
             <Image
                 x:Name="QRCodeImage"
@@ -53,21 +68,46 @@
                         <FontIcon Glyph="&#xE14E;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
+                <AppBarSeparator />
                 <AppBarButton
                     Click="AppBarButton_Click"
-                    Label="Create QRCode"
-                    Tag="GenQRCode">
+                    Label="Add to favorites"
+                    Tag="ShowAddFavoriteFlyout">
                     <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xED14;" />
+                        <FontIcon Glyph="&#xE734;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton
+                    Click="AppBarButton_Click"
+                    Label="Reading mode"
+                    Tag="ReadingMode">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE736;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton
+                    Click="AppBarButton_Click"
+                    Label="Translate"
+                    Tag="Translate">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE775;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
                 <AppBarSeparator />
-                <AppBarButton Label="Developer">
+                <AppBarButton Label="Advanced">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xEC7A;" />
                     </AppBarButton.Icon>
                     <AppBarButton.Flyout>
                         <MenuFlyout>
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click"
+                                Tag="GenQRCode"
+                                Text="Create QRCode">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xED14;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
                             <MenuFlyoutItem
                                 Click="MenuFlyoutItem_Click"
                                 Tag="ViewSource"
@@ -173,7 +213,7 @@
             </muxc:CommandBarFlyout.SecondaryCommands>
         </muxc:CommandBarFlyout>
     </Page.Resources>
-    <Grid CornerRadius="8,0,0,0">
+    <Grid CornerRadius="8">
         <muxc:WebView2
             x:Name="WebViewControl"
             x:FieldModifier="public"

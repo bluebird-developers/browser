@@ -1,5 +1,6 @@
 ﻿using Bluebird.Pages;
 using Windows.UI;
+using Windows.UI.Xaml.Controls.Primitives;
 
 namespace Bluebird;
 
@@ -23,65 +24,14 @@ public sealed partial class MainPage : Page
         titleBar.ButtonBackgroundColor = Colors.Transparent;
     }
 
-    private async void SidebarButton_Click(object sender, RoutedEventArgs e)
+    private void ToolbarButton_Click(object sender, RoutedEventArgs e)
     {
-        try
+        switch ((sender as Button).Tag)
         {
-            switch ((sender as Button).Tag)
-            {
-                case "Back":
-                    TabWebView?.GoBack();
-                    break;
-                case "Refresh":
-                    TabWebView?.Reload();
-                    break;
-                case "Forward":
-                    TabWebView?.GoForward();
-                    break;
-                case "Search":
-                    if (TabWebView != null)
-                        UrlBox.Text = TabWebView.CoreWebView2.Source;
-                    break;
-                case "ReadingMode":
-                    if (TabWebView != null)
-                    {
-                        string jscript = await Modules.Readability.ReadabilityHelper.GetReadabilityScriptAsync();
-                        await TabWebView.CoreWebView2.ExecuteScriptAsync(jscript);
-                    }
-                    break;
-                case "Translate":
-                    if (TabWebView != null)
-                    {
-                        string url = TabWebView.CoreWebView2.Source;
-                        TabWebView.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
-                    }
-                    break;
-                case "AddFavoriteFlyout":
-                    AddFavoriteFlyout.ShowAt(AddFavoriteFlyoutBtn);
-                    if (TabWebView != null)
-                    {
-                        FavoriteTitle.Text = TabWebView.CoreWebView2.DocumentTitle;
-                        FavoriteUrl.Text = TabWebView.CoreWebView2.Source;
-                    }
-                    break;
-                case "AddFavorite":
-                    FavoritesHelper.AddFavoritesItem(FavoriteTitle.Text, FavoriteUrl.Text);
-                    AddFavoriteFlyout.Hide();
-                    break;
-                case "Favorites":
-                    JsonItemsList = await Json.GetListFromJsonAsync("Favorites.json");
-                    if (JsonItemsList != null)
-                        FavoritesListView.ItemsSource = JsonItemsList;
-                    break;
-                case "FavoritesExpanded":
-                    OpenFavoriteFlyoutBtn.Flyout.Hide();
-                    CreateTab("Favorites", Symbol.Favorite, typeof(FavoritesPage));
-                    break;
-            }
-        }
-        catch
-        {
-            await UI.ShowDialog("Error", "This action is not supported in this state");
+            case "Search":
+                if (TabWebView != null)
+                    UrlBox.Text = TabWebView.CoreWebView2.Source;
+                break;
         }
     }
 
@@ -115,8 +65,6 @@ public sealed partial class MainPage : Page
                 break;
             case "Settings":
                 CreateTab("Settings", Symbol.Setting, typeof(SettingsPage));
-                break;
-            case "About":
                 break;
         }
     }
@@ -217,12 +165,6 @@ public sealed partial class MainPage : Page
         CreateHomeTab();
     }
 
-    private void Tabs_TabItemsChanged(muxc.TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
-    {
-        if (sender.TabItems.Count == 0)
-            CoreApplication.Exit();
-    }
-
     public void CreateHomeTab()
     {
         CreateTab("New tab", Symbol.Document, typeof(NewTabPage));
@@ -249,33 +191,14 @@ public sealed partial class MainPage : Page
 
     private void Tabs_TabCloseRequested(muxc.TabView sender, muxc.TabViewTabCloseRequestedEventArgs args)
     {
-        muxc.TabViewItem selectedItem = args.Tab;
-        var tabcontent = (Frame)selectedItem.Content;
-        if (tabcontent.Content is WebViewPage) (tabcontent.Content as WebViewPage).WebViewControl.Close();
-        sender.TabItems.Remove(args.Tab);
-    }
-
-    private void FavoritesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        // Get listview sender
-        ListView listView = sender as ListView;
-        if (listView.ItemsSource != null)
+        if (sender.TabItems.Count != 0)
         {
-            // Get selected item
-            JsonItems item = (JsonItems)listView.SelectedItem;
-            launchurl = item.Url;
-            CreateWebTab();
-            OpenFavoriteFlyoutBtn.Flyout.Hide();
-            listView.ItemsSource = null;
+            muxc.TabViewItem selectedItem = args.Tab;
+            var tabcontent = (Frame)selectedItem.Content;
+            if (tabcontent.Content is WebViewPage) (tabcontent.Content as WebViewPage).WebViewControl.Close();
+            sender.TabItems.Remove(args.Tab);
         }
-    }
-
-    private void Favorites_SearchBoxTextChanged(object sender, TextChangedEventArgs e)
-    {
-        TextBox textbox = sender as TextBox;
-        // Get all ListView items with the submitted search query
-        var SearchResults = from s in JsonItemsList where s.Title.Contains(textbox.Text, StringComparison.OrdinalIgnoreCase) select s;
-        // Set SearchResults as ItemSource for HistoryListView
-        FavoritesListView.ItemsSource = SearchResults;
+        else
+            CoreApplication.Exit();
     }
 }
