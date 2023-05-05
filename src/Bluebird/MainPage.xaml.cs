@@ -184,14 +184,17 @@ public sealed partial class MainPage : Page
 
     private void Tabs_TabCloseRequested(muxc.TabView sender, muxc.TabViewTabCloseRequestedEventArgs args)
     {
-        if (sender.TabItems.Count != 0)
+        muxc.TabViewItem selectedItem = args.Tab;
+        var tabcontent = (Frame)selectedItem.Content;
+        if (tabcontent.Content is WebViewPage) (tabcontent.Content as WebViewPage).WebViewControl.Close();
+        sender.TabItems.Remove(args.Tab);
+    }
+
+    private void Tabs_TabItemsChanged(muxc.TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
+    {
+        if (sender.TabItems.Count == 0)
         {
-            muxc.TabViewItem selectedItem = args.Tab;
-            var tabcontent = (Frame)selectedItem.Content;
-            if (tabcontent.Content is WebViewPage) (tabcontent.Content as WebViewPage).WebViewControl.Close();
-            sender.TabItems.Remove(args.Tab);
-        }
-        else
             CoreApplication.Exit();
+        }
     }
 }
