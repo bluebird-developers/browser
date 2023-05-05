@@ -76,14 +76,7 @@ public sealed partial class MainPage : Page
         {
             string input = UrlBox.Text;
             string inputtype = UrlHelper.GetInputType(input);
-            if (input.Contains("Bluebird-int://"))
-            {
-                if (input == "Bluebird-int://newtab")
-                    TabContent.Navigate(typeof(NewTabPage));
-                if (input == "Bluebird-int://settings")
-                    TabContent.Navigate(typeof(SettingsPage));
-            }
-            else if (inputtype == "url")
+            if (inputtype == "url")
                 NavigateToUrl(input.Trim());
             else if (inputtype == "urlNOProtocol")
                 NavigateToUrl("https://" + input.Trim());
