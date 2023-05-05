@@ -16,7 +16,7 @@
                     Source="ms-appx:///Assets/Square44x44Logo.targetsize-256.png" />
                 <StackPanel>
                     <TextBlock FontSize="30">Bluebird</TextBlock>
-                    <TextBlock FontSize="15">Your next-gen webbrowser</TextBlock>
+                    <TextBlock FontSize="15">Your next-gen web browser</TextBlock>
                 </StackPanel>
             </StackPanel>
             <svsettctrl:SettingsBlockControl Title="Version information" IsExpanded="True">
@@ -36,10 +36,10 @@
                         <Paragraph>jarno9981</Paragraph>
                         <Paragraph>Pinguin2001</Paragraph>
                         <Paragraph>
-                            Chat with us on<Hyperlink NavigateUri="bluebird:https://discord.com/invite/CWGHdGVFFV">Discord</Hyperlink>
+                            Chat with us on <Hyperlink NavigateUri="bluebird:https://discord.com/invite/CWGHdGVFFV">Discord</Hyperlink>
                             to get latest information and support</Paragraph>
                         <Paragraph>
-                            You can view the source code on<Hyperlink NavigateUri="bluebird:https://github.com/Pinguin2001/Bluebird-Browser">GitHub</Hyperlink>
+                            You can view the source code on <Hyperlink NavigateUri="bluebird:https://github.com/Pinguin2001/Bluebird-Browser">GitHub</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                 </svsettctrl:SettingsBlockControl.ExpandableContent>
@@ -73,7 +73,7 @@
                 <svsettctrl:SettingsBlockControl.ExpandableContent>
                     <RichTextBlock>
                         <Paragraph>
-                            Icon created by<Hyperlink NavigateUri="bluebird:https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
+                            Icon created by <Hyperlink NavigateUri="bluebird:https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                 </svsettctrl:SettingsBlockControl.ExpandableContent>
