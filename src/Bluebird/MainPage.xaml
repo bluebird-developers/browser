@@ -25,11 +25,8 @@
         VerticalAlignment="Stretch"
         AddTabButtonClick="Tabs_AddTabButtonClick"
         Loaded="Tabs_Loaded"
-        TabItemsChanged="Tabs_TabItemsChanged"
-        TabCloseRequested="Tabs_TabCloseRequested">
-        <muxc:TabView.TabStripHeader>
-            <Image Margin="0,3,0,0" Source="Assets/Square44x44Logo.targetsize-32.png" />
-        </muxc:TabView.TabStripHeader>
+        TabCloseRequested="Tabs_TabCloseRequested"
+        TabItemsChanged="Tabs_TabItemsChanged">
         <muxc:TabView.TabStripFooter>
             <Grid>
                 <Grid.ColumnDefinitions>
