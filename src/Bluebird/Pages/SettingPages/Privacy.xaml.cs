@@ -51,11 +51,13 @@ public sealed partial class Privacy : Page
             {
                 PasswordLockToggle.IsOn = false;
                 SettingsHelper.SetSetting("PasswordLock", "false");
+                PasswordHelper.RemoveCredential("User");
             }
         }
         else
         {
             SettingsHelper.SetSetting("PasswordLock", "false");
+            PasswordHelper.RemoveCredential("User");
         }
     }
 

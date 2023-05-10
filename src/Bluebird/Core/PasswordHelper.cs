@@ -4,6 +4,7 @@ namespace Bluebird.Core;
 
 public static class PasswordHelper
 {
+    private const string RESOURCE_NAME = "BluebirdAppLock";
     public static string GetCredential()
     {
         PasswordVault vault = new();
