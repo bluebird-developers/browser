@@ -51,7 +51,8 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_NavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
     {
-        MainPageContent.LoadingRing.IsActive = true;
+        UrlBox.Text = args.Uri;
+        LoadingRing.IsActive = true;
     }
 
     private async void CoreWebView2_NavigationCompleted(CoreWebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
@@ -61,8 +62,7 @@ public sealed partial class WebViewPage : Page
             string jscript = await Modules.ForceDark.ForceDarkHelper.GetForceDarkScriptAsync();
             await WebViewControl.ExecuteScriptAsync(jscript);
         }
-        UrlBox.Text = sender.Source;
-        MainPageContent.LoadingRing.IsActive = false;
+        LoadingRing.IsActive = false;
     }
 
     private void CoreWebView2_FaviconChanged(CoreWebView2 sender, object args)
@@ -298,6 +298,9 @@ public sealed partial class WebViewPage : Page
             case "AddFavoriteFlyout":
                 FavoriteTitle.Text = WebViewControl.CoreWebView2.DocumentTitle;
                 FavoriteUrl.Text = WebViewControl.CoreWebView2.Source;
+                break;
+            case "Downloads":
+                WebViewControl.CoreWebView2.OpenDefaultDownloadDialog();
                 break;
         }
     }

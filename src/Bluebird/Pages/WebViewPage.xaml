@@ -228,6 +228,14 @@
                 IsSpellCheckEnabled="False"
                 KeyDown="UrlBox_KeyDown"
                 PlaceholderText="Type here to search or enter url" />
+            <muxc:ProgressRing
+                HorizontalAlignment="Right"
+                x:Name="LoadingRing"
+                Height="20"
+                Margin="0,0,10,0"
+                Width="20"
+                Grid.Column="1"
+                IsActive="False" />
             <StackPanel Grid.Column="2" Orientation="Horizontal">
                 <Button
                     Click="ToolbarButton_Click"
@@ -236,7 +244,7 @@
                     Tag="AddFavoriteFlyout">
                     <FontIcon Glyph="&#xE734;" />
                 </Button>
-                <Button Style="{StaticResource ToolbarButton}">
+                <Button Click="ToolbarButton_Click" Tag="Downloads" Style="{StaticResource ToolbarButton}">
                     <FontIcon Glyph="&#xE118;" />
                 </Button>
             </StackPanel>

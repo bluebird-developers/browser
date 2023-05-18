@@ -23,7 +23,6 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Grid
                     x:Name="CustomDragRegion"
@@ -97,14 +96,9 @@
                         </Button.Flyout>
                     </Button>
                 </Grid>
-                <muxc:ProgressRing
-                    x:Name="LoadingRing"
-                    Grid.Column="2"
-                    x:FieldModifier="public"
-                    IsActive="False" />
                 <Grid
-                    Grid.Column="3"
-                    Width="150"
+                    Grid.Column="2"
+                    Width="180"
                     Background="Transparent" />
             </Grid>
         </muxc:TabView.TabStripFooter>
