@@ -61,6 +61,7 @@ public sealed partial class WebViewPage : Page
             string jscript = await Modules.ForceDark.ForceDarkHelper.GetForceDarkScriptAsync();
             await WebViewControl.ExecuteScriptAsync(jscript);
         }
+        UrlBox.Text = sender.Source;
         MainPageContent.LoadingRing.IsActive = false;
     }
 
@@ -245,5 +246,59 @@ public sealed partial class WebViewPage : Page
     {
         FavoritesHelper.AddFavoritesItem(FavoriteTitle.Text, FavoriteUrl.Text);
         AddFavoriteFlyout.Hide();
+    }
+
+    private void UrlBox_KeyDown(object sender, KeyRoutedEventArgs e)
+    {
+        if (e.Key == VirtualKey.Enter)
+        {
+            string input = UrlBox.Text;
+            string inputtype = UrlHelper.GetInputType(input);
+            if (inputtype == "url")
+                NavigateToUrl(input.Trim());
+            else if (inputtype == "urlNOProtocol")
+                NavigateToUrl("https://" + input.Trim());
+            else
+            {
+                string searchurl;
+                if (SearchUrl == null) searchurl = "https://lite.qwant.com/?q=";
+                else
+                {
+                    searchurl = SearchUrl;
+                }
+                string query = searchurl + input;
+                NavigateToUrl(query);
+            }
+        }
+    }
+
+    private void UrlBox_GotFocus(object sender, RoutedEventArgs e)
+    {
+        UrlBox.SelectAll();
+    }
+
+    private void NavigateToUrl(string uri)
+    {
+        WebViewControl?.CoreWebView2.Navigate(uri);
+    }
+
+    private void ToolbarButton_Click(object sender, RoutedEventArgs e)
+    {
+        switch((sender as Button).Tag)
+        {
+            case "Back":
+                WebViewControl.GoBack();
+                break;
+            case "Refresh":
+                WebViewControl.Reload();
+                break;
+            case "Forward":
+                WebViewControl.GoForward();
+                break;
+            case "AddFavoriteFlyout":
+                FavoriteTitle.Text = WebViewControl.CoreWebView2.DocumentTitle;
+                FavoriteUrl.Text = WebViewControl.CoreWebView2.Source;
+                break;
+        }
     }
 }

@@ -24,17 +24,6 @@ public sealed partial class MainPage : Page
         titleBar.ButtonBackgroundColor = Colors.Transparent;
     }
 
-    private void ToolbarButton_Click(object sender, RoutedEventArgs e)
-    {
-        switch ((sender as Button).Tag)
-        {
-            case "Search":
-                if (TabWebView != null)
-                    UrlBox.Text = TabWebView.CoreWebView2.Source;
-                break;
-        }
-    }
-
     private async void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
         switch ((sender as MenuFlyoutItem).Tag)
@@ -68,38 +57,6 @@ public sealed partial class MainPage : Page
                 break;
         }
     }
-
-    #region UrlBox
-    private void UrlBox_KeyDown(object sender, KeyRoutedEventArgs e)
-    {
-        if (e.Key == VirtualKey.Enter)
-        {
-            string input = UrlBox.Text;
-            string inputtype = UrlHelper.GetInputType(input);
-            if (inputtype == "url")
-                NavigateToUrl(input.Trim());
-            else if (inputtype == "urlNOProtocol")
-                NavigateToUrl("https://" + input.Trim());
-            else
-            {
-                string searchurl;
-                if (SearchUrl == null) searchurl = "https://lite.qwant.com/?q=";
-                else
-                {
-                    searchurl = SearchUrl;
-                }
-                string query = searchurl + input;
-                NavigateToUrl(query);
-            }
-            SearchFlyout.Hide();
-        }
-    }
-
-    private void UrlBox_GotFocus(object sender, RoutedEventArgs e)
-    {
-        UrlBox.SelectAll();
-    }
-    #endregion
 
     public void NavigateToUrl(string uri)
     {

@@ -8,7 +8,7 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
     <Page.Resources>
-        <Flyout x:Name="AddFavoriteFlyout" Placement="RightEdgeAlignedTop">
+        <Flyout x:Name="AddFavoriteFlyout" Placement="Bottom">
             <StackPanel>
                 <TextBlock MinWidth="300" FontSize="20">
                     Add favorite
@@ -66,31 +66,6 @@
                     Tag="SelectAll">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE14E;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-                <AppBarSeparator />
-                <AppBarButton
-                    Click="AppBarButton_Click"
-                    Label="Add to favorites"
-                    Tag="ShowAddFavoriteFlyout">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE734;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-                <AppBarButton
-                    Click="AppBarButton_Click"
-                    Label="Reading mode"
-                    Tag="ReadingMode">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE736;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-                <AppBarButton
-                    Click="AppBarButton_Click"
-                    Label="Translate"
-                    Tag="Translate">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE775;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
                 <AppBarSeparator />
@@ -213,9 +188,62 @@
             </muxc:CommandBarFlyout.SecondaryCommands>
         </muxc:CommandBarFlyout>
     </Page.Resources>
-    <Grid CornerRadius="8">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Button
+                    Click="ToolbarButton_Click"
+                    IsEnabled="{x:Bind WebViewControl.CanGoBack, Mode=OneWay}"
+                    Style="{StaticResource ToolbarButton}"
+                    Tag="Back">
+                    <FontIcon Glyph="&#xE112;" />
+                </Button>
+                <Button
+                    Click="ToolbarButton_Click"
+                    Style="{StaticResource ToolbarButton}"
+                    Tag="Refresh">
+                    <FontIcon Glyph="&#xE149;" />
+                </Button>
+                <Button
+                    Click="ToolbarButton_Click"
+                    IsEnabled="{x:Bind WebViewControl.CanGoForward, Mode=OneWay}"
+                    Style="{StaticResource ToolbarButton}"
+                    Tag="Forward">
+                    <FontIcon Glyph="&#xE111;" />
+                </Button>
+            </StackPanel>
+            <TextBox
+                x:Name="UrlBox"
+                Grid.Column="1"
+                GotFocus="UrlBox_GotFocus"
+                IsSpellCheckEnabled="False"
+                KeyDown="UrlBox_KeyDown"
+                PlaceholderText="Type here to search or enter url" />
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button
+                    Click="ToolbarButton_Click"
+                    Flyout="{x:Bind AddFavoriteFlyout}"
+                    Style="{StaticResource ToolbarButton}"
+                    Tag="AddFavoriteFlyout">
+                    <FontIcon Glyph="&#xE734;" />
+                </Button>
+                <Button Style="{StaticResource ToolbarButton}">
+                    <FontIcon Glyph="&#xE118;" />
+                </Button>
+            </StackPanel>
+        </Grid>
         <muxc:WebView2
             x:Name="WebViewControl"
+            Grid.Row="1"
             x:FieldModifier="public"
             CoreWebView2Initialized="WebViewControl_CoreWebView2Initialized"
             Loaded="WebViewControl_Loaded" />

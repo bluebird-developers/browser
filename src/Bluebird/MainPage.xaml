@@ -8,20 +8,10 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
     mc:Ignorable="d">
-    <Page.Resources>
-        <Flyout x:Name="SearchFlyout">
-            <TextBox
-                x:Name="UrlBox"
-                Width="400"
-                GotFocus="UrlBox_GotFocus"
-                IsSpellCheckEnabled="False"
-                KeyDown="UrlBox_KeyDown"
-                PlaceholderText="Search or enter web address" />
-        </Flyout>
-    </Page.Resources>
     <muxc:TabView
         x:Name="Tabs"
         Grid.Column="1"
+        Margin="0,-5,0,0"
         VerticalAlignment="Stretch"
         AddTabButtonClick="Tabs_AddTabButtonClick"
         Loaded="Tabs_Loaded"
@@ -34,21 +24,12 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Grid
                     x:Name="CustomDragRegion"
                     Grid.Column="0"
                     Background="Transparent" />
-                <Button
-                    Grid.Column="1"
-                    Click="ToolbarButton_Click"
-                    Flyout="{x:Bind SearchFlyout}"
-                    Style="{StaticResource ToolbarButton}"
-                    Tag="Search">
-                    <FontIcon Glyph="&#xE721;" />
-                </Button>
-                <Grid Grid.Column="2">
+                <Grid Grid.Column="1">
                     <Button Style="{StaticResource ToolbarButton}">
                         <FontIcon Glyph="&#xE10C;" />
                         <Button.Flyout>
@@ -118,11 +99,11 @@
                 </Grid>
                 <muxc:ProgressRing
                     x:Name="LoadingRing"
-                    Grid.Column="3"
+                    Grid.Column="2"
                     x:FieldModifier="public"
                     IsActive="False" />
                 <Grid
-                    Grid.Column="4"
+                    Grid.Column="3"
                     Width="150"
                     Background="Transparent" />
             </Grid>
