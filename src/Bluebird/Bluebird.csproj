@@ -169,9 +169,6 @@
     <Compile Include="Pages\SettingPages\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NewTabPage.xaml.cs">
-      <DependentUpon>NewTabPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\SettingPages\Data.xaml.cs">
       <DependentUpon>Data.xaml</DependentUpon>
     </Compile>
@@ -285,10 +282,6 @@
     <Page Include="Pages\SettingPages\About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\NewTabPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SettingPages\Data.xaml">
       <SubType>Designer</SubType>

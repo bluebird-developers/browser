@@ -29,7 +29,7 @@ public sealed partial class MainPage : Page
         switch ((sender as MenuFlyoutItem).Tag)
         {
             case "NewTab":
-                CreateHomeTab();
+                CreateWebTab();
                 break;
             case "NewWindow":
                 await Launcher.LaunchUriAsync(new Uri("bluebird:"));
@@ -104,20 +104,12 @@ public sealed partial class MainPage : Page
 
     private void Tabs_Loaded(object sender, RoutedEventArgs e)
     {
-        if (launchurl != null)
-            CreateWebTab();
-        else
-            CreateHomeTab();
+        CreateWebTab();
     }
 
     private void Tabs_AddTabButtonClick(muxc.TabView sender, object args)
     {
-        CreateHomeTab();
-    }
-
-    public void CreateHomeTab()
-    {
-        CreateTab("New tab", Symbol.Document, typeof(NewTabPage));
+        CreateWebTab();
     }
 
     public void CreateWebTab()
