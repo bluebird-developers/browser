@@ -163,14 +163,6 @@ public sealed partial class WebViewPage : Page
             case "SelectAll":
                 await WebViewControl.CoreWebView2.ExecuteScriptAsync("document.execCommand(\"selectAll\");");
                 break;
-            case "ReadingMode":
-                string jscript = await Modules.Readability.ReadabilityHelper.GetReadabilityScriptAsync();
-                await WebViewControl.CoreWebView2.ExecuteScriptAsync(jscript);
-                break;
-            case "Translate":
-                string url = WebViewControl.CoreWebView2.Source;
-                WebViewControl.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
-                break;
             case "ShowAddFavoriteFlyout":
                 FavoriteTitle.Text = WebViewControl.CoreWebView2.DocumentTitle;
                 FavoriteUrl.Text = WebViewControl.CoreWebView2.Source;
@@ -288,7 +280,7 @@ public sealed partial class WebViewPage : Page
         WebViewControl.CoreWebView2.Navigate(uri);
     }
 
-    private void ToolbarButton_Click(object sender, RoutedEventArgs e)
+    private async void ToolbarButton_Click(object sender, RoutedEventArgs e)
     {
         switch((sender as Button).Tag)
         {
@@ -300,6 +292,14 @@ public sealed partial class WebViewPage : Page
                 break;
             case "Forward":
                 WebViewControl.GoForward();
+                break;
+            case "ReadingMode":
+                string jscript = await Modules.Readability.ReadabilityHelper.GetReadabilityScriptAsync();
+                await WebViewControl.CoreWebView2.ExecuteScriptAsync(jscript);
+                break;
+            case "Translate":
+                string url = WebViewControl.CoreWebView2.Source;
+                WebViewControl.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
                 break;
             case "AddFavoriteFlyout":
                 FavoriteTitle.Text = WebViewControl.CoreWebView2.DocumentTitle;

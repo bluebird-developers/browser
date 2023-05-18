@@ -237,12 +237,18 @@
                 Grid.Column="1"
                 IsActive="False" />
             <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button Click="ToolbarButton_Click" Tag="ReadingMode" Style="{StaticResource ToolbarButton}">
+                    <FontIcon Glyph="&#xE736;" />
+                </Button>
                 <Button
                     Click="ToolbarButton_Click"
                     Flyout="{x:Bind AddFavoriteFlyout}"
                     Style="{StaticResource ToolbarButton}"
                     Tag="AddFavoriteFlyout">
                     <FontIcon Glyph="&#xE734;" />
+                </Button>
+                <Button Click="ToolbarButton_Click" Tag="Translate" Style="{StaticResource ToolbarButton}">
+                    <FontIcon Glyph="&#xE775;" />
                 </Button>
                 <Button Click="ToolbarButton_Click" Tag="Downloads" Style="{StaticResource ToolbarButton}">
                     <FontIcon Glyph="&#xE118;" />
