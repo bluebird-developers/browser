@@ -1,5 +1,4 @@
 ﻿using Microsoft.Web.WebView2.Core;
-using Windows.UI.Xaml.Controls;
 
 namespace Bluebird.Pages;
 
@@ -13,7 +12,7 @@ public sealed partial class WebViewPage : Page
 
     private async void WebViewControl_Loaded(object sender, RoutedEventArgs e)
     {
-        await WebViewControl.EnsureCoreWebView2Async();
+        await (sender as muxc.WebView2).EnsureCoreWebView2Async();
     }
 
     private void WebViewControl_CoreWebView2Initialized(muxc.WebView2 sender, muxc.CoreWebView2InitializedEventArgs args)
@@ -25,6 +24,7 @@ public sealed partial class WebViewPage : Page
         sender.CoreWebView2.ContextMenuRequested += CoreWebView2_ContextMenuRequested;
         sender.CoreWebView2.DocumentTitleChanged += CoreWebView2_DocumentTitleChanged;
         sender.CoreWebView2.FaviconChanged += CoreWebView2_FaviconChanged;
+        sender.CoreWebView2.ScriptDialogOpening += CoreWebView2_ScriptDialogOpening;
         sender.CoreWebView2.ContainsFullScreenElementChanged += CoreWebView2_ContainsFullScreenElementChanged;
         // Apply WebView2 settings
         ApplyWebView2Settings();
@@ -47,6 +47,7 @@ public sealed partial class WebViewPage : Page
             WebViewControl.CoreWebView2.Settings.IsWebMessageEnabled = false;
         if (SettingsHelper.GetSetting("DisablePassSave") is "true")
             WebViewControl.CoreWebView2.Settings.IsPasswordAutosaveEnabled = false;
+        WebViewControl.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = false;
     }
 
     private void CoreWebView2_NavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
@@ -63,6 +64,11 @@ public sealed partial class WebViewPage : Page
             await WebViewControl.ExecuteScriptAsync(jscript);
         }
         LoadingRing.IsActive = false;
+    }
+
+    private async void CoreWebView2_ScriptDialogOpening(CoreWebView2 sender, CoreWebView2ScriptDialogOpeningEventArgs args)
+    {
+        await UI.ShowDialog($"{sender.DocumentTitle} says", args.Message);
     }
 
     private void CoreWebView2_FaviconChanged(CoreWebView2 sender, object args)
@@ -279,7 +285,7 @@ public sealed partial class WebViewPage : Page
 
     private void NavigateToUrl(string uri)
     {
-        WebViewControl?.CoreWebView2.Navigate(uri);
+        WebViewControl.CoreWebView2.Navigate(uri);
     }
 
     private void ToolbarButton_Click(object sender, RoutedEventArgs e)
