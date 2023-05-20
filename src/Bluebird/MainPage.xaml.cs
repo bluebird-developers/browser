@@ -39,7 +39,7 @@ public sealed partial class MainPage : Page
                 CreateWebTab();
                 break;
             case "Favorites":
-                CreateTab("Favorites", Symbol.Favorite, typeof(FavoritesPage));
+                CreateTab("Favorites", "\uE728", typeof(FavoritesPage));
                 break;
             case "History":
                 launchurl = "edge://history";
@@ -53,7 +53,7 @@ public sealed partial class MainPage : Page
                     WindowManager.EnterFullScreen(false);
                 break;
             case "Settings":
-                CreateTab("Settings", Symbol.Setting, typeof(SettingsPage));
+                CreateTab("Settings", "\uE115", typeof(SettingsPage));
                 break;
         }
     }
@@ -114,16 +114,16 @@ public sealed partial class MainPage : Page
 
     public void CreateWebTab()
     {
-        CreateTab("New tab", Symbol.Document, typeof(WebViewPage));
+        CreateTab("New tab", "\uE10F", typeof(WebViewPage));
     }
 
-    public void CreateTab(string header, Symbol symbol, Type page)
+    public void CreateTab(string header, string glyph, Type page)
     {
         Frame frame = new();
         muxc.TabViewItem newItem = new()
         {
             Header = header,
-            IconSource = new muxc.SymbolIconSource() { Symbol = symbol },
+            IconSource = new muxc.FontIconSource { FontFamily = new Windows.UI.Xaml.Media.FontFamily("Segoe MDL2 Assets"), Glyph = glyph },
             Content = frame,
         };
         frame.Navigate(page);
