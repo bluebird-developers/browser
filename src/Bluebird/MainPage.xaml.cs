@@ -36,14 +36,14 @@ public sealed partial class MainPage : Page
                 break;
             case "Downloads":
                 launchurl = "edge://downloads";
-                CreateWebTab();
+                CreateTab("Downloads", "\uE896", typeof(WebViewPage));
                 break;
             case "Favorites":
                 CreateTab("Favorites", "\uE728", typeof(FavoritesPage));
                 break;
             case "History":
                 launchurl = "edge://history";
-                CreateWebTab();
+                CreateTab("History", "\uE81C", typeof(WebViewPage));
                 break;
             case "Fullscreen":
                 var view = ApplicationView.GetForCurrentView();
