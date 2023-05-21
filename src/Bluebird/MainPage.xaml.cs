@@ -1,6 +1,5 @@
 ﻿using Bluebird.Pages;
 using Windows.UI;
-using Windows.UI.Xaml.Controls.Primitives;
 
 namespace Bluebird;
 
@@ -58,46 +57,13 @@ public sealed partial class MainPage : Page
         }
     }
 
-    public void NavigateToUrl(string uri)
-    {
-        if (TabWebView != null)
-            TabWebView.CoreWebView2.Navigate(uri);
-        else
-        {
-            launchurl = uri;
-            TabContent.Navigate(typeof(WebViewPage));
-        }
-    }
-
     public muxc.TabViewItem SelectedTab
-
     {
         get
         {
             muxc.TabViewItem selectedItem = (muxc.TabViewItem)Tabs.SelectedItem;
             if (selectedItem != null)
                 return selectedItem;
-            return null;
-        }
-    }
-
-    Frame TabContent
-    {
-        get
-        {
-            muxc.TabViewItem selectedItem = (muxc.TabViewItem)Tabs.SelectedItem;
-            if (selectedItem != null)
-                return (Frame)selectedItem.Content;
-            return null;
-        }
-    }
-
-    muxc.WebView2 TabWebView
-    {
-        get
-        {
-            if (TabContent.Content is WebViewPage)
-                return (TabContent.Content as WebViewPage).WebViewControl;
             return null;
         }
     }
