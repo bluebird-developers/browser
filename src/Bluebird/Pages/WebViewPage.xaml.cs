@@ -38,6 +38,8 @@ public sealed partial class WebViewPage : Page
             WebViewControl.Source = new Uri(launchurl);
             launchurl = null;
         }
+        else
+            WebViewControl.Source = new Uri("https://bluebird-developers.github.io/ntp/");
     }
 
     private void ApplyWebView2Settings()
@@ -57,7 +59,7 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_NavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
     {
-        UrlBox.Text = args.Uri;
+        UrlBox.Text = args.Uri != "https://bluebird-developers.github.io/ntp/" ? args.Uri : UrlBox.Text;
         LoadingRing.IsActive = true;
     }
 
