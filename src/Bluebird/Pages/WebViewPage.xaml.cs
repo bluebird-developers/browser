@@ -10,6 +10,11 @@ public sealed partial class WebViewPage : Page
         this.InitializeComponent();
     }
 
+    private void UrlBox_Loaded(object sender, RoutedEventArgs e)
+    {
+        (sender as TextBox).Focus(FocusState.Keyboard);
+    }
+
     private async void WebViewControl_Loaded(object sender, RoutedEventArgs e)
     {
         await (sender as muxc.WebView2).EnsureCoreWebView2Async();
