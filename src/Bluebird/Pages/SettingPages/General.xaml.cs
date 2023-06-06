@@ -16,8 +16,7 @@ public sealed partial class General : Page
         else
             SearchEngineSelector.PlaceholderText = "Qwant Lite";
 
-        string ForceDark = SettingsHelper.GetSetting("ForceDark");
-        if (ForceDark == "true")
+        if (SettingsHelper.GetSetting("ForceDark") == "true")
             ForceDarkSwitch.IsOn = true;
 
         // Set event handlers

@@ -12,23 +12,19 @@ public sealed partial class Privacy : Page
 
     private void GetSettings()
     {
-        string PasswordLock = SettingsHelper.GetSetting("PasswordLock");
-        if (PasswordLock == "true")
+        if (SettingsHelper.GetSetting("PasswordLock") == "true")
             PasswordLockToggle.IsOn = true;
-        string DisableJS = SettingsHelper.GetSetting("DisableJavaScript");
-        if (DisableJS == "true")
+
+        if (SettingsHelper.GetSetting("DisableJavaScript") == "true")
             DisableJavaScriptToggle.IsOn = true;
 
-        string DisableAutoFill = SettingsHelper.GetSetting("DisableGenAutoFill");
-        if (DisableAutoFill == "true")
+        if (SettingsHelper.GetSetting("DisableGenAutoFill") == "true")
             DisableGenaralAutoFillToggle.IsOn = true;
 
-        string DisableWebMess = SettingsHelper.GetSetting("DisableWebMess");
-        if (DisableWebMess == "true")
+        if (SettingsHelper.GetSetting("DisableWebMess") == "true")
             DisableWebMessFillToggle.IsOn = true;
 
-        string DisablePassSave = SettingsHelper.GetSetting("DisablePassSave");
-        if (DisablePassSave == "true")
+        if (SettingsHelper.GetSetting("DisablePassSave") == "true")
             PasswordWebMessFillToggle.IsOn = true;
 
         // Set event handlers
@@ -107,5 +103,4 @@ public sealed partial class Privacy : Page
             SettingsHelper.SetSetting("DisablePassSave", "false");
         }
     }
-
 }
