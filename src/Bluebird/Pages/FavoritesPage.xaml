@@ -77,17 +77,22 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Button
-                Grid.Row="0"
-                HorizontalAlignment="Right"
-                Click="ClearAllButton_Click">
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE107;" />
-                        <TextBlock Margin="10,0,0,0">Delete all favorites</TextBlock>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Click="RefreshButton_Click">
+                    <FontIcon Glyph="&#xE149;" />
+                </Button>
+                <Button
+                    Grid.Row="0"
+                    HorizontalAlignment="Right"
+                    Click="ClearAllButton_Click">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE107;" />
+                            <TextBlock Margin="10,0,0,0">Delete all favorites</TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
             <ListView
                 x:Name="FavoritesListView"
                 Grid.Row="1"

@@ -26,6 +26,11 @@ public sealed partial class FavoritesPage : Page
         FavoritesListView.ItemsSource = SearchResults;
     }
 
+    private void RefreshButton_Click(object sender, RoutedEventArgs e)
+    {
+        LoadFavorites();
+    }
+
     private async void ClearAllButton_Click(object sender, RoutedEventArgs e)
     {
         ContentDialogResult result = await UI.ShowDialogWithAction("Delete all favorites?", "Do you want to clear all favorites?", "Clear", "Cancel");
