@@ -8,7 +8,7 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
     <Page.Resources>
-        <Flyout x:Name="AddFavoriteFlyout" Placement="Bottom">
+        <Flyout x:Name="AddFavoriteFlyout" Placement="Left">
             <StackPanel>
                 <TextBlock MinWidth="300" FontSize="20">
                     Add favorite
@@ -23,7 +23,7 @@
                     Tag="AddFavorite" />
             </StackPanel>
         </Flyout>
-        <Flyout x:Name="QRCodeFlyout" Placement="RightEdgeAlignedTop">
+        <Flyout x:Name="QRCodeFlyout" Placement="Left">
             <Image
                 x:Name="QRCodeImage"
                 Width="160"

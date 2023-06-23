@@ -320,7 +320,7 @@ public sealed partial class WebViewPage : Page
                     // set image as image source for element
                     QRCodeImage.Source = image;
                 }
-                QRCodeFlyout.ShowAt(WebViewControl);
+                QRCodeFlyout.ShowAt(sender as Button);
                 break;
         }
     }
