@@ -31,6 +31,7 @@ public sealed partial class WebViewPage : Page
         sender.CoreWebView2.FaviconChanged += CoreWebView2_FaviconChanged;
         sender.CoreWebView2.ScriptDialogOpening += CoreWebView2_ScriptDialogOpening;
         sender.CoreWebView2.ContainsFullScreenElementChanged += CoreWebView2_ContainsFullScreenElementChanged;
+        sender.CoreWebView2.Settings.UserAgent = $"{sender.CoreWebView2.Settings.UserAgent} Bluebird/{AppVersion.GetAppVersion()}";
         // Apply WebView2 settings
         ApplyWebView2Settings();
         if (launchurl != null)
