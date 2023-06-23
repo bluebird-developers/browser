@@ -77,14 +77,6 @@
                         <MenuFlyout>
                             <MenuFlyoutItem
                                 Click="MenuFlyoutItem_Click"
-                                Tag="GenQRCode"
-                                Text="Create QRCode">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xED14;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                            <MenuFlyoutItem
-                                Click="MenuFlyoutItem_Click"
                                 Tag="ViewSource"
                                 Text="View source">
                                 <MenuFlyoutItem.Icon>
@@ -189,87 +181,101 @@
         </muxc:CommandBarFlyout>
     </Page.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <Button
-                    Click="ToolbarButton_Click"
-                    IsEnabled="{x:Bind WebViewControl.CanGoBack, Mode=OneWay}"
-                    Style="{StaticResource ToolbarButton}"
-                    Tag="Back">
-                    <FontIcon Glyph="&#xE112;" />
-                </Button>
-                <Button
-                    Click="ToolbarButton_Click"
-                    Style="{StaticResource ToolbarButton}"
-                    Tag="Refresh">
-                    <FontIcon Glyph="&#xE149;" />
-                </Button>
-                <Button
-                    Click="ToolbarButton_Click"
-                    IsEnabled="{x:Bind WebViewControl.CanGoForward, Mode=OneWay}"
-                    Style="{StaticResource ToolbarButton}"
-                    Tag="Forward">
-                    <FontIcon Glyph="&#xE111;" />
-                </Button>
-            </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid CornerRadius="7">
+            <muxc:WebView2
+                x:Name="WebViewControl"
+                Grid.Column="0"
+                x:FieldModifier="public"
+                CoreWebView2Initialized="WebViewControl_CoreWebView2Initialized"
+                Loaded="WebViewControl_Loaded" />
+        </Grid>
+        <Grid
+            x:Name="UrlBoxWrapper"
+            Grid.Column="0"
+            Width="600"
+            Height="32"
+            Margin="10"
+            VerticalAlignment="Top"
+            Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+            CornerRadius="5">
             <TextBox
                 x:Name="UrlBox"
-                Grid.Column="1"
                 GotFocus="UrlBox_GotFocus"
                 IsSpellCheckEnabled="False"
                 KeyDown="UrlBox_KeyDown"
                 Loaded="UrlBox_Loaded"
                 PlaceholderText="Type here to search or enter url" />
-            <muxc:ProgressRing
-                x:Name="LoadingRing"
-                Grid.Column="1"
-                Width="20"
-                Height="20"
-                Margin="0,0,10,0"
-                HorizontalAlignment="Right"
-                IsActive="False" />
-            <StackPanel Grid.Column="2" Orientation="Horizontal">
-                <Button
-                    Click="ToolbarButton_Click"
-                    Style="{StaticResource ToolbarButton}"
-                    Tag="ReadingMode">
-                    <FontIcon Glyph="&#xE736;" />
-                </Button>
-                <Button
-                    Click="ToolbarButton_Click"
-                    Flyout="{x:Bind AddFavoriteFlyout}"
-                    Style="{StaticResource ToolbarButton}"
-                    Tag="AddFavoriteFlyout">
-                    <FontIcon Glyph="&#xE734;" />
-                </Button>
-                <Button
-                    Click="ToolbarButton_Click"
-                    Style="{StaticResource ToolbarButton}"
-                    Tag="Translate">
-                    <FontIcon Glyph="&#xE775;" />
-                </Button>
-                <Button
-                    Click="ToolbarButton_Click"
-                    Style="{StaticResource ToolbarButton}"
-                    Tag="Downloads">
-                    <FontIcon Glyph="&#xE118;" />
-                </Button>
-            </StackPanel>
         </Grid>
-        <muxc:WebView2
-            x:Name="WebViewControl"
-            Grid.Row="1"
-            x:FieldModifier="public"
-            CoreWebView2Initialized="WebViewControl_CoreWebView2Initialized"
-            Loaded="WebViewControl_Loaded" />
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <Button
+                Click="ToolbarButton_Click"
+                IsEnabled="{x:Bind WebViewControl.CanGoBack, Mode=OneWay}"
+                Style="{StaticResource ToolbarButton}"
+                Tag="Back">
+                <FontIcon Glyph="&#xE112;" />
+            </Button>
+            <Button
+                Click="ToolbarButton_Click"
+                Style="{StaticResource ToolbarButton}"
+                Tag="Refresh">
+                <FontIcon Glyph="&#xE149;" />
+            </Button>
+            <Button
+                Click="ToolbarButton_Click"
+                IsEnabled="{x:Bind WebViewControl.CanGoForward, Mode=OneWay}"
+                Style="{StaticResource ToolbarButton}"
+                Tag="Forward">
+                <FontIcon Glyph="&#xE111;" />
+            </Button>
+            <Button
+                Click="ToolbarButton_Click"
+                Style="{StaticResource ToolbarButton}"
+                Tag="ToggleUrlBox">
+                <FontIcon Glyph="&#xE721;" />
+            </Button>
+            <Button
+                Click="ToolbarButton_Click"
+                Style="{StaticResource ToolbarButton}"
+                Tag="ReadingMode">
+                <FontIcon Glyph="&#xE736;" />
+            </Button>
+            <Button
+                Click="ToolbarButton_Click"
+                Flyout="{x:Bind AddFavoriteFlyout}"
+                Style="{StaticResource ToolbarButton}"
+                Tag="AddFavoriteFlyout">
+                <FontIcon Glyph="&#xE734;" />
+            </Button>
+            <Button
+                Click="ToolbarButton_Click"
+                Style="{StaticResource ToolbarButton}"
+                Tag="Translate">
+                <FontIcon Glyph="&#xE775;" />
+            </Button>
+            <Button
+                Click="ToolbarButton_Click"
+                Style="{StaticResource ToolbarButton}"
+                Tag="Downloads">
+                <FontIcon Glyph="&#xE118;" />
+            </Button>
+            <Button
+                Click="ToolbarButton_Click"
+                Style="{StaticResource ToolbarButton}"
+                Tag="GenQRCode">
+                <FontIcon Glyph="&#xED14;" />
+            </Button>
+        </StackPanel>
+        <muxc:ProgressRing
+            x:Name="LoadingRing"
+            Grid.Column="0"
+            Width="40"
+            Height="40"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            IsActive="False" />
     </Grid>
 </Page>

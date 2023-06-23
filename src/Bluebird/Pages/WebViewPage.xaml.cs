@@ -24,7 +24,7 @@ public sealed partial class WebViewPage : Page
     {
         // WebViewEvents
         sender.CoreWebView2.NavigationStarting += CoreWebView2_NavigationStarting;
-        sender.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
+        sender.CoreWebView2.DOMContentLoaded += CoreWebView2_DOMContentLoaded;
         sender.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;
         sender.CoreWebView2.ContextMenuRequested += CoreWebView2_ContextMenuRequested;
         sender.CoreWebView2.DocumentTitleChanged += CoreWebView2_DocumentTitleChanged;
@@ -59,17 +59,19 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_NavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
     {
+        WebViewControl.Visibility = Visibility.Collapsed;
         UrlBox.Text = args.Uri != "https://bluebird-developers.github.io/ntp/" ? args.Uri : UrlBox.Text;
         LoadingRing.IsActive = true;
     }
 
-    private async void CoreWebView2_NavigationCompleted(CoreWebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
+    private async void CoreWebView2_DOMContentLoaded(CoreWebView2 sender, CoreWebView2DOMContentLoadedEventArgs args)
     {
         if (IsForceDarkMode)
         {
             string jscript = await Modules.ForceDark.ForceDarkHelper.GetForceDarkScriptAsync();
             await WebViewControl.ExecuteScriptAsync(jscript);
         }
+        WebViewControl.Visibility = Visibility.Visible;
         LoadingRing.IsActive = false;
     }
 
@@ -208,32 +210,10 @@ public sealed partial class WebViewPage : Page
         flyout.Hide();
     }
 
-    private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+    private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
         switch ((sender as MenuFlyoutItem).Tag)
         {
-            case "GenQRCode":
-                //Create raw qr code data
-                QRCodeGenerator qrGenerator = new();
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(WebViewControl.CoreWebView2.Source.ToString(), QRCodeGenerator.ECCLevel.M);
-
-                //Create byte/raw bitmap qr code
-                BitmapByteQRCode qrCodeBmp = new(qrCodeData);
-                byte[] qrCodeImageBmp = qrCodeBmp.GetGraphic(20);
-                using (InMemoryRandomAccessStream stream = new())
-                {
-                    using (DataWriter writer = new(stream.GetOutputStreamAt(0)))
-                    {
-                        writer.WriteBytes(qrCodeImageBmp);
-                        await writer.StoreAsync();
-                    }
-                    var image = new BitmapImage();
-                    await image.SetSourceAsync(stream);
-                    // set image as image source for element
-                    QRCodeImage.Source = image;
-                }
-                QRCodeFlyout.ShowAt(WebViewControl);
-                break;
             case "ViewSource":
                 launchurl = "view-source:" + WebViewControl.Source;
                 MainPageContent.CreateWebTab();
@@ -297,6 +277,10 @@ public sealed partial class WebViewPage : Page
             case "Refresh":
                 WebViewControl.Reload();
                 break;
+            case "ToggleUrlBox":
+                UrlBoxWrapper.Visibility = UrlBoxWrapper.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+                UrlBox.Focus(FocusState.Keyboard);
+                break;
             case "Forward":
                 WebViewControl.GoForward();
                 break;
@@ -314,6 +298,28 @@ public sealed partial class WebViewPage : Page
                 break;
             case "Downloads":
                 WebViewControl.CoreWebView2.OpenDefaultDownloadDialog();
+                break;
+            case "GenQRCode":
+                //Create raw qr code data
+                QRCodeGenerator qrGenerator = new();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(WebViewControl.CoreWebView2.Source.ToString(), QRCodeGenerator.ECCLevel.M);
+
+                //Create byte/raw bitmap qr code
+                BitmapByteQRCode qrCodeBmp = new(qrCodeData);
+                byte[] qrCodeImageBmp = qrCodeBmp.GetGraphic(20);
+                using (InMemoryRandomAccessStream stream = new())
+                {
+                    using (DataWriter writer = new(stream.GetOutputStreamAt(0)))
+                    {
+                        writer.WriteBytes(qrCodeImageBmp);
+                        await writer.StoreAsync();
+                    }
+                    var image = new BitmapImage();
+                    await image.SetSourceAsync(stream);
+                    // set image as image source for element
+                    QRCodeImage.Source = image;
+                }
+                QRCodeFlyout.ShowAt(WebViewControl);
                 break;
         }
     }
