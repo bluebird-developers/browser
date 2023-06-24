@@ -175,6 +175,9 @@
     <Compile Include="Pages\SettingPages\General.xaml.cs">
       <DependentUpon>General.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SettingPages\Personalization.xaml.cs">
+      <DependentUpon>Personalization.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SettingPages\Privacy.xaml.cs">
       <DependentUpon>Privacy.xaml</DependentUpon>
     </Compile>
@@ -288,6 +291,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SettingPages\General.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingPages\Personalization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

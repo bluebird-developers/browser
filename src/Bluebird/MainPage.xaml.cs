@@ -1,4 +1,5 @@
 ﻿using Bluebird.Pages;
+using Microsoft.UI.Xaml.Controls;
 using Windows.UI;
 
 namespace Bluebird;
@@ -70,6 +71,8 @@ public sealed partial class MainPage : Page
 
     private void Tabs_Loaded(object sender, RoutedEventArgs e)
     {
+        if (SettingsHelper.GetSetting("CompactTabs") == "true")
+            (sender as TabView).TabWidthMode = TabViewWidthMode.Compact;
         CreateWebTab();
     }
 
