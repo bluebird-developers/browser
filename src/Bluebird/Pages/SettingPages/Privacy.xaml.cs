@@ -21,9 +21,6 @@ public sealed partial class Privacy : Page
         if (SettingsHelper.GetSetting("DisableGenAutoFill") == "true")
             DisableGenaralAutoFillToggle.IsOn = true;
 
-        if (SettingsHelper.GetSetting("DisableWebMess") == "true")
-            DisableWebMessFillToggle.IsOn = true;
-
         if (SettingsHelper.GetSetting("DisablePassSave") == "true")
             PasswordWebMessFillToggle.IsOn = true;
 
@@ -31,7 +28,6 @@ public sealed partial class Privacy : Page
         PasswordLockToggle.Toggled += PasswordLockToggle_Toggled;
         DisableJavaScriptToggle.Toggled += DisableJavaScriptToggle_Toggled;
         DisableGenaralAutoFillToggle.Toggled += DisableGenaralAutoFillToggle_Toggled;
-        DisableWebMessFillToggle.Toggled += DisableWebMessFillToggle_Toggled;
         PasswordWebMessFillToggle.Toggled += PasswordWebMessFillToggle_Toggled;
     }
 
@@ -77,18 +73,6 @@ public sealed partial class Privacy : Page
         else
         {
             SettingsHelper.SetSetting("DisableGenAutoFill", "false");
-        }
-    }
-
-    private void DisableWebMessFillToggle_Toggled(object sender, RoutedEventArgs e)
-    {
-        if (DisableWebMessFillToggle.IsOn)
-        {
-            SettingsHelper.SetSetting("DisableWebMess", "true");
-        }
-        else
-        {
-            SettingsHelper.SetSetting("DisableWebMess", "false");
         }
     }
 

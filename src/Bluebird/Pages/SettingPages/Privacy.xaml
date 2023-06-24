@@ -27,12 +27,6 @@
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="DisableGenaralAutoFillToggle" Margin="0,0,-80,0" />
         </svsettctrl:SettingsBlockControl>
-        <svsettctrl:SettingsBlockControl Title="Disable Web Messages" Description="This will disable browser WebMessages">
-            <svsettctrl:SettingsBlockControl.Icon>
-                <FontIcon Glyph="&#xE8BD;" />
-            </svsettctrl:SettingsBlockControl.Icon>
-            <ToggleSwitch x:Name="DisableWebMessFillToggle" Margin="0,0,-80,0" />
-        </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl Title="Disable Save Passwords" Description="This will disable browser Auto Save Password">
             <svsettctrl:SettingsBlockControl.Icon>
                 <FontIcon Glyph="&#xE192;" />
