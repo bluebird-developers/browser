@@ -199,7 +199,6 @@
             Width="600"
             Height="32"
             Margin="10"
-            VerticalAlignment="Top"
             Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
             CornerRadius="5">
             <TextBox

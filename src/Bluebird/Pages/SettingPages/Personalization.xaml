@@ -16,5 +16,14 @@
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="CompactTabsToggle" Margin="0,0,-80,0" />
         </svsettctrl:SettingsBlockControl>
+        <svsettctrl:SettingsBlockControl Title="Urlbox position" Description="Control wether the Urlbox should be displayed on the bottom or top">
+            <svsettctrl:SettingsBlockControl.Icon>
+                <FontIcon Glyph="&#xE721;" />
+            </svsettctrl:SettingsBlockControl.Icon>
+            <ComboBox x:Name="UrlboxPosSelector">
+                <x:String>Top</x:String>
+                <x:String>Bottom</x:String>
+            </ComboBox>
+        </svsettctrl:SettingsBlockControl>
     </StackPanel>
 </Page>

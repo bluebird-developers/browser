@@ -12,7 +12,11 @@ public sealed partial class WebViewPage : Page
 
     private void UrlBox_Loaded(object sender, RoutedEventArgs e)
     {
-        (sender as TextBox).Focus(FocusState.Keyboard);
+        if (SettingsHelper.GetSetting("UrlboxPos") == "Top")
+            UrlBoxWrapper.VerticalAlignment = VerticalAlignment.Top;
+        else
+            UrlBoxWrapper.VerticalAlignment = VerticalAlignment.Bottom;
+        UrlBox.Focus(FocusState.Programmatic);
     }
 
     private async void WebViewControl_Loaded(object sender, RoutedEventArgs e)
