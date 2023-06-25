@@ -23,6 +23,14 @@ sealed partial class App : Application
     private void LoadSettings()
     {
         SearchUrl = SettingsHelper.GetSetting("SearchUrl");
+        if (SettingsHelper.GetSetting("CompactTabs") == "true")
+            ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Compact;
+        else
+            ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Equal;
+        if (SettingsHelper.GetSetting("UrlboxPos") == "Top")
+            ViewModels.SettingsViewModel.SettingsVM.UrlboxPos = VerticalAlignment.Top;
+        else
+            ViewModels.SettingsViewModel.SettingsVM.UrlboxPos = VerticalAlignment.Bottom;
         TLD.LoadKnownDomains();
     }
 

@@ -43,6 +43,7 @@ public sealed partial class General : Page
     {
         SettingsHelper.SetSetting("EngineFriendlyName", EngineFriendlyName);
         SettingsHelper.SetSetting("SearchUrl", SearchUrl);
+        Globals.SearchUrl = SearchUrl;
     }
 
     private void ForceDarkSwitch_Toggled(object sender, RoutedEventArgs e)
@@ -50,10 +51,12 @@ public sealed partial class General : Page
         if (ForceDarkSwitch.IsOn)
         {
             SettingsHelper.SetSetting("ForceDark", "true");
+            ViewModels.SettingsViewModel.SettingsVM.IsForceDarkEnabled = true;
         }
         else
         {
             SettingsHelper.SetSetting("ForceDark", "false");
+            ViewModels.SettingsViewModel.SettingsVM.IsForceDarkEnabled = false;
         }
     }
 }

@@ -16,7 +16,8 @@
         AddTabButtonClick="Tabs_AddTabButtonClick"
         Loaded="Tabs_Loaded"
         TabCloseRequested="Tabs_TabCloseRequested"
-        TabItemsChanged="Tabs_TabItemsChanged">
+        TabItemsChanged="Tabs_TabItemsChanged"
+        TabWidthMode="{Binding TabWidthMode, Mode=OneWay}">
         <muxc:TabView.TabStripFooter>
             <Grid>
                 <Grid.ColumnDefinitions>

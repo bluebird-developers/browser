@@ -1,4 +1,6 @@
-﻿namespace Bluebird.Core;
+﻿using Bluebird.ViewModels;
+
+namespace Bluebird.Core;
 
 public class Globals
 {

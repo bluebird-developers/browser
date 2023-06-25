@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Bluebird.Pages.SettingPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:svsettctrl="using:SVSettingsControl"
     mc:Ignorable="d">
 
@@ -15,6 +16,12 @@
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="PasswordLockToggle" Margin="0,0,-80,0" />
         </svsettctrl:SettingsBlockControl>
+        <muxc:InfoBar
+            Title="Note"
+            IsClosable="False"
+            IsOpen="True"
+            Message="All settings below apply to new tabs only"
+            Severity="Warning" />
         <svsettctrl:SettingsBlockControl Title="Disable JavaScript" Description="This improves your privacy by blocking trackers at the expense of breaking all sites which rely on JavaScript">
             <svsettctrl:SettingsBlockControl.Icon>
                 <FontIcon Glyph="&#xE943;" />

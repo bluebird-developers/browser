@@ -1,5 +1,4 @@
 ﻿using Bluebird.Pages;
-using Microsoft.UI.Xaml.Controls;
 using Windows.UI;
 
 namespace Bluebird;
@@ -10,6 +9,7 @@ public sealed partial class MainPage : Page
     {
         this.InitializeComponent();
         CustomTitleBar();
+        DataContext = ViewModels.SettingsViewModel.SettingsVM;
     }
 
     private void CustomTitleBar()
@@ -71,8 +71,6 @@ public sealed partial class MainPage : Page
 
     private void Tabs_Loaded(object sender, RoutedEventArgs e)
     {
-        if (SettingsHelper.GetSetting("CompactTabs") == "true")
-            (sender as TabView).TabWidthMode = TabViewWidthMode.Compact;
         CreateWebTab();
     }
 

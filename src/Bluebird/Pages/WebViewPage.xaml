@@ -199,6 +199,7 @@
             Width="600"
             Height="32"
             Margin="10"
+            VerticalAlignment="{Binding UrlboxPos, Mode=OneWay}"
             Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
             CornerRadius="5">
             <TextBox

@@ -25,14 +25,24 @@ public sealed partial class Personalization : Page
     private void CompactTabsToggle_Toggled(object sender, RoutedEventArgs e)
     {
         if (CompactTabsToggle.IsOn)
+        {
             SettingsHelper.SetSetting("CompactTabs", "true");
+            ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Compact;
+        }
         else
-            SettingsHelper.SetSetting("CompactTabs", "true");
+        {
+            SettingsHelper.SetSetting("CompactTabs", "false");
+            ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Equal;
+        }
     }
 
     private void UrlboxPosSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         string selection = e.AddedItems[0].ToString();
+        if (selection == "Top")
+            ViewModels.SettingsViewModel.SettingsVM.UrlboxPos = VerticalAlignment.Top;
+        else
+            ViewModels.SettingsViewModel.SettingsVM.UrlboxPos = VerticalAlignment.Bottom;
         SettingsHelper.SetSetting("UrlboxPos", selection);
     }
 }

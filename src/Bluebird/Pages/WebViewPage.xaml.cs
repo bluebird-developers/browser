@@ -4,18 +4,14 @@ namespace Bluebird.Pages;
 
 public sealed partial class WebViewPage : Page
 {
-    private bool IsForceDarkMode;
     public WebViewPage()
     {
         this.InitializeComponent();
+        DataContext = ViewModels.SettingsViewModel.SettingsVM;
     }
 
     private void UrlBox_Loaded(object sender, RoutedEventArgs e)
     {
-        if (SettingsHelper.GetSetting("UrlboxPos") == "Top")
-            UrlBoxWrapper.VerticalAlignment = VerticalAlignment.Top;
-        else
-            UrlBoxWrapper.VerticalAlignment = VerticalAlignment.Bottom;
         UrlBox.Focus(FocusState.Programmatic);
     }
 
@@ -35,31 +31,27 @@ public sealed partial class WebViewPage : Page
         sender.CoreWebView2.FaviconChanged += CoreWebView2_FaviconChanged;
         sender.CoreWebView2.ScriptDialogOpening += CoreWebView2_ScriptDialogOpening;
         sender.CoreWebView2.ContainsFullScreenElementChanged += CoreWebView2_ContainsFullScreenElementChanged;
-        sender.CoreWebView2.Settings.UserAgent = $"{sender.CoreWebView2.Settings.UserAgent} Bluebird/{AppVersion.GetAppVersion()}";
         // Apply WebView2 settings
-        ApplyWebView2Settings();
+        ApplyWebView2Settings(sender);
         if (launchurl != null)
         {
-            WebViewControl.Source = new Uri(launchurl);
+            sender.Source = new Uri(launchurl);
             launchurl = null;
         }
         else
-            WebViewControl.Source = new Uri("https://bluebird-developers.github.io/ntp/");
+            sender.Source = new Uri("https://bluebird-developers.github.io/ntp/");
     }
 
-    private void ApplyWebView2Settings()
+    private void ApplyWebView2Settings(muxc.WebView2 sender)
     {
-        if (SettingsHelper.GetSetting("ForceDark") is "true")
-            IsForceDarkMode = true;
         if (SettingsHelper.GetSetting("DisableJavaScript") is "true")
-            WebViewControl.CoreWebView2.Settings.IsScriptEnabled = false;
+            sender.CoreWebView2.Settings.IsScriptEnabled = false;
         if (SettingsHelper.GetSetting("DisableGenAutoFill") is "true")
-            WebViewControl.CoreWebView2.Settings.IsGeneralAutofillEnabled = false;
-        if (SettingsHelper.GetSetting("DisableWebMess") is "true")
-            WebViewControl.CoreWebView2.Settings.IsWebMessageEnabled = false;
+            sender.CoreWebView2.Settings.IsGeneralAutofillEnabled = false;
         if (SettingsHelper.GetSetting("DisablePassSave") is "true")
-            WebViewControl.CoreWebView2.Settings.IsPasswordAutosaveEnabled = false;
-        WebViewControl.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = false;
+            sender.CoreWebView2.Settings.IsPasswordAutosaveEnabled = false;
+        sender.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = false;
+        sender.CoreWebView2.Settings.UserAgent = $"{sender.CoreWebView2.Settings.UserAgent} Bluebird/{AppVersion.GetAppVersion()}";
     }
 
     private void CoreWebView2_NavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
@@ -71,10 +63,10 @@ public sealed partial class WebViewPage : Page
 
     private async void CoreWebView2_DOMContentLoaded(CoreWebView2 sender, CoreWebView2DOMContentLoadedEventArgs args)
     {
-        if (IsForceDarkMode)
+        if (ViewModels.SettingsViewModel.SettingsVM.IsForceDarkEnabled)
         {
             string jscript = await Modules.ForceDark.ForceDarkHelper.GetForceDarkScriptAsync();
-            await WebViewControl.ExecuteScriptAsync(jscript);
+            await sender.ExecuteScriptAsync(jscript);
         }
         WebViewControl.Visibility = Visibility.Visible;
         LoadingRing.IsActive = false;
