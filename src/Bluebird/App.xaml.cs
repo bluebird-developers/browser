@@ -40,20 +40,27 @@ sealed partial class App : Application
         if (args.Kind == ActivationKind.Protocol)
         {
             Frame rootFrame = Window.Current.Content as Frame;
-            // Create a Frame to act as the navigation context and navigate to the first page
-            rootFrame = new();
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (rootFrame == null)
+            {
+                rootFrame = new();
 
-            rootFrame.NavigationFailed += OnNavigationFailed;
-            string PasswordLock = SettingsHelper.GetSetting("PasswordLock");
-            if (PasswordLock == "true")
-                rootFrame.Navigate(typeof(LoginPage));
+                rootFrame.NavigationFailed += OnNavigationFailed;
+                string PasswordLock = SettingsHelper.GetSetting("PasswordLock");
+                if (PasswordLock == "true")
+                    rootFrame.Navigate(typeof(LoginPage));
+                else
+                    rootFrame.Navigate(typeof(MainPage));
+
+                Window.Current.Activate();
+            }
             else
-                rootFrame.Navigate(typeof(MainPage));
-
-            Window.Current.Activate();
-
-            // Place the frame in the current Window
-            Window.Current.Content = rootFrame;
+            {
+                // Since we already have a window open
+                // we create a new tab with the uri
+                Core.Globals.MainPageContent.CreateWebTab();
+            }
         }
     }
 
