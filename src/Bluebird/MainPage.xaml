@@ -42,14 +42,14 @@
                                         <FontIcon Glyph="&#xE109;" />
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
-                                <MenuFlyoutItem
+                                <!--<MenuFlyoutItem
                                     Click="MoreFlyoutItem_Click"
                                     Tag="NewWindow"
                                     Text="New window">
                                     <MenuFlyoutItem.Icon>
                                         <FontIcon Glyph="&#xE17C;" />
                                     </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
+                                </MenuFlyoutItem>-->
                                 <MenuFlyoutSeparator />
                                 <MenuFlyoutItem
                                     Click="MoreFlyoutItem_Click"

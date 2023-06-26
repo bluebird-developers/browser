@@ -24,7 +24,7 @@ public sealed partial class MainPage : Page
         titleBar.ButtonBackgroundColor = Colors.Transparent;
     }
 
-    private async void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
+    private void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
         switch ((sender as MenuFlyoutItem).Tag)
         {
@@ -32,7 +32,6 @@ public sealed partial class MainPage : Page
                 CreateWebTab();
                 break;
             case "NewWindow":
-                await Launcher.LaunchUriAsync(new Uri("bluebird:"));
                 break;
             case "Downloads":
                 launchurl = "edge://downloads";
