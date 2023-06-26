@@ -23,6 +23,8 @@ sealed partial class App : Application
     private void LoadSettings()
     {
         SearchUrl = SettingsHelper.GetSetting("SearchUrl");
+        if (SettingsHelper.GetSetting("ForceDark") == "true")
+            ViewModels.SettingsViewModel.SettingsVM.IsForceDarkEnabled = true;
         if (SettingsHelper.GetSetting("CompactTabs") == "true")
             ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Compact;
         else
