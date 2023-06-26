@@ -11,7 +11,7 @@
     <muxc:TabView
         x:Name="Tabs"
         Grid.Column="1"
-        Margin="0,-5,0,0"
+        Margin="0,-7,0,0"
         VerticalAlignment="Stretch"
         AddTabButtonClick="Tabs_AddTabButtonClick"
         Loaded="Tabs_Loaded"
@@ -29,7 +29,7 @@
                     x:Name="CustomDragRegion"
                     Grid.Column="0"
                     Background="Transparent" />
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" Margin="0,6,10,0">
                     <Button Style="{StaticResource ToolbarButton}">
                         <FontIcon Glyph="&#xE10C;" />
                         <Button.Flyout>
