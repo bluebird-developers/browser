@@ -18,31 +18,20 @@
         TabCloseRequested="Tabs_TabCloseRequested"
         TabItemsChanged="Tabs_TabItemsChanged"
         TabWidthMode="{Binding TabWidthMode, Mode=OneWay}">
-        <muxc:TabView.TabStripFooter>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid
-                    x:Name="CustomDragRegion"
-                    Grid.Column="0"
-                    Background="Transparent" />
-                <Grid Grid.Column="1" Margin="0,6,10,0">
-                    <Button Style="{StaticResource ToolbarButton}">
-                        <FontIcon Glyph="&#xE10C;" />
-                        <Button.Flyout>
-                            <MenuFlyout x:Name="MoreFlyout" Placement="Bottom">
-                                <MenuFlyoutItem
-                                    Click="MoreFlyoutItem_Click"
-                                    Tag="NewTab"
-                                    Text="New tab">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE109;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <!--<MenuFlyoutItem
+        <muxc:TabView.TabStripHeader>
+            <Button Margin="0,7,0,0" Style="{StaticResource ToolbarButton}">
+                <FontIcon Glyph="&#xE10C;" />
+                <Button.Flyout>
+                    <MenuFlyout x:Name="MoreFlyout" Placement="Bottom">
+                        <MenuFlyoutItem
+                            Click="MoreFlyoutItem_Click"
+                            Tag="NewTab"
+                            Text="New tab">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE109;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <!--<MenuFlyoutItem
                                     Click="MoreFlyoutItem_Click"
                                     Tag="NewWindow"
                                     Text="New window">
@@ -50,58 +39,59 @@
                                         <FontIcon Glyph="&#xE17C;" />
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>-->
-                                <MenuFlyoutSeparator />
-                                <MenuFlyoutItem
-                                    Click="MoreFlyoutItem_Click"
-                                    Tag="Downloads"
-                                    Text="Downloads">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE896;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutItem
-                                    Click="MoreFlyoutItem_Click"
-                                    Tag="Favorites"
-                                    Text="Favorites">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE728;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutItem
-                                    Click="MoreFlyoutItem_Click"
-                                    Tag="History"
-                                    Text="History">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE81C;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutSeparator />
-                                <MenuFlyoutItem
-                                    Click="MoreFlyoutItem_Click"
-                                    Tag="Fullscreen"
-                                    Text="Full screen">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE1D9;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutSeparator />
-                                <MenuFlyoutItem
-                                    Click="MoreFlyoutItem_Click"
-                                    Tag="Settings"
-                                    Text="Settings">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE713;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                            </MenuFlyout>
-                        </Button.Flyout>
-                    </Button>
-                </Grid>
-                <Grid
-                    Grid.Column="2"
-                    Width="180"
-                    Background="Transparent" />
-            </Grid>
+                        <MenuFlyoutSeparator />
+                        <MenuFlyoutItem
+                            Click="MoreFlyoutItem_Click"
+                            Tag="Downloads"
+                            Text="Downloads">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE896;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem
+                            Click="MoreFlyoutItem_Click"
+                            Tag="Favorites"
+                            Text="Favorites">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE728;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem
+                            Click="MoreFlyoutItem_Click"
+                            Tag="History"
+                            Text="History">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE81C;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutSeparator />
+                        <MenuFlyoutItem
+                            Click="MoreFlyoutItem_Click"
+                            Tag="Fullscreen"
+                            Text="Full screen">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE1D9;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutSeparator />
+                        <MenuFlyoutItem
+                            Click="MoreFlyoutItem_Click"
+                            Tag="Settings"
+                            Text="Settings">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE713;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+        </muxc:TabView.TabStripHeader>
+        <muxc:TabView.TabStripFooter>
+            <Grid
+                x:Name="CustomDragRegion"
+                Grid.Column="0"
+                MinWidth="188"
+                Background="Transparent" />
         </muxc:TabView.TabStripFooter>
         <muxc:TabView.Resources>
             <ResourceDictionary>
