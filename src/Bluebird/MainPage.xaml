@@ -107,7 +107,7 @@
             <ResourceDictionary>
                 <ResourceDictionary.ThemeDictionaries>
                     <ResourceDictionary x:Key="Light">
-                        <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="Transparent" />
+                        <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="#BDF0F0F0" />
                     </ResourceDictionary>
                     <ResourceDictionary x:Key="Dark">
                         <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="#40000000" />
