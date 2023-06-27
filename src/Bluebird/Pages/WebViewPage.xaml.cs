@@ -24,13 +24,14 @@ public sealed partial class WebViewPage : Page
     {
         // WebViewEvents
         sender.CoreWebView2.NavigationStarting += CoreWebView2_NavigationStarting;
-        sender.CoreWebView2.DOMContentLoaded += CoreWebView2_DOMContentLoaded;
+        sender.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
         sender.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;
         sender.CoreWebView2.ContextMenuRequested += CoreWebView2_ContextMenuRequested;
         sender.CoreWebView2.DocumentTitleChanged += CoreWebView2_DocumentTitleChanged;
         sender.CoreWebView2.FaviconChanged += CoreWebView2_FaviconChanged;
         sender.CoreWebView2.ScriptDialogOpening += CoreWebView2_ScriptDialogOpening;
         sender.CoreWebView2.ContainsFullScreenElementChanged += CoreWebView2_ContainsFullScreenElementChanged;
+        sender.CoreWebView2.LaunchingExternalUriScheme += CoreWebView2_LaunchingExternalUriScheme;
         // Apply WebView2 settings
         ApplyWebView2Settings(sender);
         if (launchurl != null)
@@ -61,7 +62,7 @@ public sealed partial class WebViewPage : Page
         LoadingRing.IsActive = true;
     }
 
-    private async void CoreWebView2_DOMContentLoaded(CoreWebView2 sender, CoreWebView2DOMContentLoadedEventArgs args)
+    private async void CoreWebView2_NavigationCompleted(CoreWebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
     {
         if (ViewModels.SettingsViewModel.SettingsVM.IsForceDarkEnabled)
         {
@@ -143,6 +144,12 @@ public sealed partial class WebViewPage : Page
             WindowManager.EnterFullScreen(false);
     }
 
+    private async void CoreWebView2_LaunchingExternalUriScheme(CoreWebView2 sender, CoreWebView2LaunchingExternalUriSchemeEventArgs args)
+    {
+        var result = await UI.ShowDialogWithAction($"{sender.DocumentTitle} is trying to open an application", args.Uri, "Open", "Close");
+        if (result == ContentDialogResult.Primary)
+            await Launcher.LaunchUriAsync(new Uri(args.Uri));
+    }
 
     private async void AppBarButton_Click(object sender, RoutedEventArgs e)
     {
