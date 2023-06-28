@@ -1,4 +1,5 @@
 ﻿using Bluebird.Pages;
+using System;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml.Navigation;
 
@@ -38,37 +39,33 @@ sealed partial class App : Application
 
     protected override void OnActivated(IActivatedEventArgs args)
     {
-        ProtocolActivatedEventArgs eventArgs = args as ProtocolActivatedEventArgs;
-        string URI = eventArgs.Uri.ToString();
-        if (URI.StartsWith("bluebird:"))
-        {
-            string output = URI.Substring(URI.IndexOf("bluebird:") + "bluebird:".Length);
-            if (output != "")
-                launchurl = eventArgs.Uri.AbsolutePath;
-        }
-        else { launchurl = URI; }
         if (args.Kind == ActivationKind.Protocol)
         {
+            ProtocolActivatedEventArgs eventArgs = args as ProtocolActivatedEventArgs;
+            string URI = eventArgs.Uri.ToString();
+            launchurl = URI;
             Frame rootFrame = Window.Current.Content as Frame;
+
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)
             {
-                rootFrame = new();
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
+
+                Window.Current.Content = rootFrame;
                 string PasswordLock = SettingsHelper.GetSetting("PasswordLock");
                 if (PasswordLock == "true")
                     rootFrame.Navigate(typeof(LoginPage));
                 else
                     rootFrame.Navigate(typeof(MainPage));
-
+                // Ensure the current window is active
                 Window.Current.Activate();
             }
             else
             {
-                // Since we already have a window open
-                // we create a new tab with the uri
                 Core.Globals.MainPageContent.CreateWebTab();
             }
         }

@@ -75,7 +75,7 @@ public sealed partial class FavoritesPage : Page
         switch ((sender as AppBarButton).Tag)
         {
             case "OpenLnkInNewWindow":
-                await Launcher.LaunchUriAsync(new Uri($"bluebird:{ctmurl}"));
+                await Launcher.LaunchUriAsync(new Uri($"{ctmurl}"));
                 break;
             case "OpenLnkInNewTab":
                 launchurl = ctmurl;

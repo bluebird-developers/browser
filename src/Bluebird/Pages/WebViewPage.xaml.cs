@@ -180,9 +180,6 @@ public sealed partial class WebViewPage : Page
                 AddFavoriteFlyout.ShowAt(WebViewControl);
                 break;
             // text context menu
-            case "OpenLnkInNewWindow":
-                await Launcher.LaunchUriAsync(new Uri($"bluebird:{LinkUri}"));
-                break;
             case "OpenLnkInNewTab":
                 launchurl = LinkUri;
                 MainPageContent.CreateWebTab();

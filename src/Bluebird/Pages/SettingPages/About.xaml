@@ -36,10 +36,10 @@
                         <Paragraph>jarno9981</Paragraph>
                         <Paragraph>Pinguin2001</Paragraph>
                         <Paragraph>
-                            Chat with us on <Hyperlink NavigateUri="bluebird:https://discord.com/invite/CWGHdGVFFV">Discord</Hyperlink>
+                            Chat with us on <Hyperlink NavigateUri="https://discord.com/invite/CWGHdGVFFV">Discord</Hyperlink>
                             to get latest information and support</Paragraph>
                         <Paragraph>
-                            You can view the source code on <Hyperlink NavigateUri="bluebird:https://github.com/Pinguin2001/Bluebird-Browser">GitHub</Hyperlink>
+                            You can view the source code on <Hyperlink NavigateUri="https://github.com/Pinguin2001/Bluebird-Browser">GitHub</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                 </svsettctrl:SettingsBlockControl.ExpandableContent>
@@ -51,19 +51,19 @@
                 <svsettctrl:SettingsBlockControl.ExpandableContent>
                     <RichTextBlock>
                         <Paragraph>
-                            <Hyperlink NavigateUri="bluebird:https://github.com/microsoft/microsoft-ui-xaml">Microsoft.UI.Xaml</Hyperlink>
+                            <Hyperlink NavigateUri="https://github.com/microsoft/microsoft-ui-xaml">Microsoft.UI.Xaml</Hyperlink>
                             (MIT licence)</Paragraph>
                         <Paragraph>
-                            <Hyperlink NavigateUri="bluebird:https://github.com/JamesNK/Newtonsoft.Json">Newtonsoft.Json</Hyperlink>
+                            <Hyperlink NavigateUri="https://github.com/JamesNK/Newtonsoft.Json">Newtonsoft.Json</Hyperlink>
                             (MIT licence)</Paragraph>
                         <Paragraph>
-                            <Hyperlink NavigateUri="bluebird:https://github.com/gus33000/SVSettingsControl">SVSettingsControl</Hyperlink>
+                            <Hyperlink NavigateUri="https://github.com/gus33000/SVSettingsControl">SVSettingsControl</Hyperlink>
                             (MIT licence)</Paragraph>
                         <Paragraph>
-                            <Hyperlink NavigateUri="bluebird:https://github.com/mozilla/readability">Readability</Hyperlink>
+                            <Hyperlink NavigateUri="https://github.com/mozilla/readability">Readability</Hyperlink>
                             (Apache License, Version 2.0)</Paragraph>
                         <Paragraph>
-                            <Hyperlink NavigateUri="bluebird:https://github.com/publicsuffix/list">The Public Suffix List</Hyperlink>
+                            <Hyperlink NavigateUri="https://github.com/publicsuffix/list">The Public Suffix List</Hyperlink>
                             (MPL-2.0 license)</Paragraph>
                         <Paragraph>Many thanks to everyone who is distributing these libraries for free!</Paragraph>
                     </RichTextBlock>
@@ -73,7 +73,7 @@
                 <svsettctrl:SettingsBlockControl.ExpandableContent>
                     <RichTextBlock>
                         <Paragraph>
-                            Icon created by <Hyperlink NavigateUri="bluebird:https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
+                            Icon created by <Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                 </svsettctrl:SettingsBlockControl.ExpandableContent>
