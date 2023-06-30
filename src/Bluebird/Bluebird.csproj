@@ -152,7 +152,6 @@
     <Compile Include="Core\PasswordHelper.cs" />
     <Compile Include="Core\SettingsHelper.cs" />
     <Compile Include="Core\SystemHelper.cs" />
-    <Compile Include="Core\TLD.cs" />
     <Compile Include="Core\UI.cs" />
     <Compile Include="Core\UrlHelper.cs" />
     <Compile Include="Core\WindowManager.cs" />
@@ -203,9 +202,6 @@
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
-    <Content Include="Assets\public_domains.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\SmallTile.scale-100.png" />
     <Content Include="Assets\SmallTile.scale-125.png" />
     <Content Include="Assets\SmallTile.scale-150.png" />

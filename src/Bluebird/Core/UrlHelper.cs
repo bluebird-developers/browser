@@ -1,18 +1,16 @@
-﻿namespace Bluebird.Core;
+﻿using System.Text.RegularExpressions;
+
+namespace Bluebird.Core;
 
 public class UrlHelper
 {
     public static string GetInputType(string input)
     {
         string type;
-        string tld = TLD.GetTLDfromURL(input);
-        if (input.Contains("http://") || input.Contains("https://"))
+        Regex UrlMatch = new("^(http(s)?:\\/\\/.)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$", RegexOptions.Singleline);
+        if (UrlMatch.IsMatch(input))
         {
             type = "url";
-        }
-        else if (input.Contains(".") && TLD.KnownDomains.Any(tld.Contains))
-        {
-            type = "urlNOProtocol";
         }
         else
         {

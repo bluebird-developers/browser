@@ -240,8 +240,6 @@ public sealed partial class WebViewPage : Page
             string inputtype = UrlHelper.GetInputType(input);
             if (inputtype == "url")
                 NavigateToUrl(input.Trim());
-            else if (inputtype == "urlNOProtocol")
-                NavigateToUrl("https://" + input.Trim());
             else
             {
                 string searchurl;
