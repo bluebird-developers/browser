@@ -1,5 +1,4 @@
 ﻿using Bluebird.Pages;
-using System;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml.Navigation;
 
@@ -34,7 +33,6 @@ sealed partial class App : Application
             ViewModels.SettingsViewModel.SettingsVM.UrlboxPos = VerticalAlignment.Top;
         else
             ViewModels.SettingsViewModel.SettingsVM.UrlboxPos = VerticalAlignment.Bottom;
-        TLD.LoadKnownDomains();
     }
 
     protected override void OnActivated(IActivatedEventArgs args)
