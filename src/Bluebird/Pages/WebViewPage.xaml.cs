@@ -238,7 +238,9 @@ public sealed partial class WebViewPage : Page
         {
             string input = UrlBox.Text;
             string inputtype = UrlHelper.GetInputType(input);
-            if (inputtype == "url")
+            if (inputtype == "urlNOProtocol")
+                NavigateToUrl("https://" + input.Trim());
+            else if (inputtype == "url")
                 NavigateToUrl(input.Trim());
             else
             {

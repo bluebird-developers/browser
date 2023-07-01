@@ -8,9 +8,13 @@ public class UrlHelper
     {
         string type;
         Regex UrlMatch = new("^(http(s)?:\\/\\/.)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$", RegexOptions.Singleline);
-        if (UrlMatch.IsMatch(input))
+        if (input.StartsWith("http://") || input.StartsWith("https://"))
         {
             type = "url";
+        }
+        else if (UrlMatch.IsMatch(input))
+        {
+            type = "urlNOProtocol";
         }
         else
         {
