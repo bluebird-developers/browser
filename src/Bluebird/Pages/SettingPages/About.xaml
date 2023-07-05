@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:svsettctrl="using:SVSettingsControl"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d">
 
     <ScrollViewer>
@@ -36,10 +37,10 @@
                         <Paragraph>jarno9981</Paragraph>
                         <Paragraph>Pinguin2001</Paragraph>
                         <Paragraph>
-                            Chat with us on <Hyperlink NavigateUri="https://discord.com/invite/CWGHdGVFFV">Discord</Hyperlink>
+                            Chat with us on<Hyperlink NavigateUri="https://discord.com/invite/CWGHdGVFFV">Discord</Hyperlink>
                             to get latest information and support</Paragraph>
                         <Paragraph>
-                            You can view the source code on <Hyperlink NavigateUri="https://github.com/Pinguin2001/Bluebird-Browser">GitHub</Hyperlink>
+                            You can view the source code on<Hyperlink NavigateUri="https://github.com/Pinguin2001/Bluebird-Browser">GitHub</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                 </svsettctrl:SettingsBlockControl.ExpandableContent>
@@ -73,7 +74,7 @@
                 <svsettctrl:SettingsBlockControl.ExpandableContent>
                     <RichTextBlock>
                         <Paragraph>
-                            Icon created by <Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
+                            Icon created by<Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                 </svsettctrl:SettingsBlockControl.ExpandableContent>

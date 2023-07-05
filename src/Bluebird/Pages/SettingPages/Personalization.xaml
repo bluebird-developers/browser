@@ -6,6 +6,7 @@
     xmlns:local="using:Bluebird.Pages.SettingPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:svsettctrl="using:SVSettingsControl"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d">
 
     <StackPanel>

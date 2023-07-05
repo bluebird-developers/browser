@@ -1,4 +1,5 @@
 ﻿using Bluebird.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace Bluebird.Pages.SettingPages;
 
@@ -29,6 +30,15 @@ public sealed partial class Privacy : Page
         DisableJavaScriptToggle.Toggled += DisableJavaScriptToggle_Toggled;
         DisableGenaralAutoFillToggle.Toggled += DisableGenaralAutoFillToggle_Toggled;
         PasswordWebMessFillToggle.Toggled += PasswordWebMessFillToggle_Toggled;
+    }
+
+    protected override void OnNavigatedFrom(NavigationEventArgs e)
+    {
+        base.OnNavigatedFrom(e);
+        PasswordLockToggle.Toggled -= PasswordLockToggle_Toggled;
+        DisableJavaScriptToggle.Toggled -= DisableJavaScriptToggle_Toggled;
+        DisableGenaralAutoFillToggle.Toggled -= DisableGenaralAutoFillToggle_Toggled;
+        PasswordWebMessFillToggle.Toggled -= PasswordWebMessFillToggle_Toggled;
     }
 
     private async void PasswordLockToggle_Toggled(object sender, RoutedEventArgs e)

@@ -1,4 +1,6 @@
-﻿namespace Bluebird.Pages.SettingPages;
+﻿using Windows.UI.Xaml.Navigation;
+
+namespace Bluebird.Pages.SettingPages;
 
 public sealed partial class General : Page
 {
@@ -22,6 +24,13 @@ public sealed partial class General : Page
         // Set event handlers
         SearchEngineSelector.SelectionChanged += SearchEngineSelector_SelectionChanged;
         ForceDarkSwitch.Toggled += ForceDarkSwitch_Toggled;
+    }
+
+    protected override void OnNavigatedFrom(NavigationEventArgs e)
+    {
+        base.OnNavigatedFrom(e);
+        SearchEngineSelector.SelectionChanged -= SearchEngineSelector_SelectionChanged;
+        ForceDarkSwitch.Toggled -= ForceDarkSwitch_Toggled;
     }
 
     private void SearchEngineSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)

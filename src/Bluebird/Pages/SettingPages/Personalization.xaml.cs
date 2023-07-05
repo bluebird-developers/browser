@@ -1,4 +1,6 @@
-﻿namespace Bluebird.Pages.SettingPages;
+﻿using Windows.UI.Xaml.Navigation;
+
+namespace Bluebird.Pages.SettingPages;
 
 public sealed partial class Personalization : Page
 {
@@ -20,6 +22,13 @@ public sealed partial class Personalization : Page
         // Set event handlers
         CompactTabsToggle.Toggled += CompactTabsToggle_Toggled;
         UrlboxPosSelector.SelectionChanged += UrlboxPosSelector_SelectionChanged;
+    }
+
+    protected override void OnNavigatedFrom(NavigationEventArgs e)
+    {
+        base.OnNavigatedFrom(e);
+        CompactTabsToggle.Toggled -= CompactTabsToggle_Toggled;
+        UrlboxPosSelector.SelectionChanged -= UrlboxPosSelector_SelectionChanged;
     }
 
     private void CompactTabsToggle_Toggled(object sender, RoutedEventArgs e)
