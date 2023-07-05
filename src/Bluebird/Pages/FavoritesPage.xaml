@@ -22,14 +22,6 @@
             </AppBarButton>
             <AppBarButton
                 Click="FavContextItem_Click"
-                Tag="OpenLnkInNewWindow"
-                ToolTipService.ToolTip="Open link in new window">
-                <AppBarButton.Icon>
-                    <FontIcon Glyph="&#xE17C;" />
-                </AppBarButton.Icon>
-            </AppBarButton>
-            <AppBarButton
-                Click="FavContextItem_Click"
                 Tag="Copy"
                 ToolTipService.ToolTip="Copy link">
                 <AppBarButton.Icon>

@@ -77,17 +77,12 @@ public sealed partial class FavoritesPage : Page
             case "OpenLnkInNewWindow":
                 await Launcher.LaunchUriAsync(new Uri($"{ctmurl}"));
                 break;
-            case "OpenLnkInNewTab":
-                launchurl = ctmurl;
-                MainPageContent.CreateWebTab();
-                break;
             case "Copy":
                 SystemHelper.WriteStringToClipboard(ctmurl);
                 break;
             case "CopyText":
                 SystemHelper.WriteStringToClipboard(ctmtext);
                 break;
-            // link context menu
             case "ShareLink":
                 SystemHelper.ShowShareUIURL(ctmtext, ctmurl);
                 break;
