@@ -62,10 +62,8 @@
                             (MIT licence)</Paragraph>
                         <Paragraph>
                             <Hyperlink NavigateUri="https://github.com/mozilla/readability">Readability</Hyperlink>
-                            (Apache License, Version 2.0)</Paragraph>
-                        <Paragraph>
-                            <Hyperlink NavigateUri="https://github.com/publicsuffix/list">The Public Suffix List</Hyperlink>
-                            (MPL-2.0 license)</Paragraph>
+                            (Apache License, Version 2.0)
+                        </Paragraph>
                         <Paragraph>Many thanks to everyone who is distributing these libraries for free!</Paragraph>
                     </RichTextBlock>
                 </svsettctrl:SettingsBlockControl.ExpandableContent>
