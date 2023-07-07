@@ -132,7 +132,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ForceDark\Assets\forcedark.js" />
+    <Content Include="ForceDark\Assets\forcedark.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Readability\Assets\readability.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
