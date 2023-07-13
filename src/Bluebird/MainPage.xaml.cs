@@ -80,7 +80,7 @@ public sealed partial class MainPage : Page
 
     public void CreateWebTab()
     {
-        CreateTab("New tab", "\uE10F", typeof(WebViewPage));
+        CreateTab("New tab", "\uEC6C", typeof(WebViewPage));
     }
 
     public void CreateTab(string header, string glyph, Type page)
