@@ -4,15 +4,17 @@ namespace Bluebird.Core;
 
 public class UrlHelper
 {
+    private static readonly Regex UrlMatch = new("^(http(s)?:\\/\\/.)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$", RegexOptions.Singleline);
+    private static readonly Regex IPMatch = new("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(?::([0-9]{1,5}))?$", RegexOptions.Singleline);
     public static string GetInputType(string input)
     {
         string type;
-        Regex UrlMatch = new("^(http(s)?:\\/\\/.)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$", RegexOptions.Singleline);
+        
         if (input.StartsWith("http://") || input.StartsWith("https://") || input.StartsWith("edge://"))
         {
             type = "url";
         }
-        else if (UrlMatch.IsMatch(input))
+        else if (UrlMatch.IsMatch(input) || IPMatch.IsMatch(input))
         {
             type = "urlNOProtocol";
         }
