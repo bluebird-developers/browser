@@ -1,4 +1,6 @@
-﻿namespace Bluebird.FRE.Pages;
+﻿using Windows.UI.Xaml.Media.Animation;
+
+namespace Bluebird.FRE.Pages;
 
 /// <summary>
 /// The first FRE page
@@ -13,6 +15,6 @@ public sealed partial class FREPage1 : Page
 
     private void GetStartedButton_Click(object sender, RoutedEventArgs e)
     {
-        //Frame.Navigate(typeof(FREPage2));
+        //Frame.Navigate(typeof(FREPage2), null, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromRight });
     }
 }

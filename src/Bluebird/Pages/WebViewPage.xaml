@@ -180,14 +180,12 @@
         <Grid CornerRadius="7">
             <muxc:WebView2
                 x:Name="WebViewControl"
-                Grid.Column="0"
                 x:FieldModifier="public"
                 CoreWebView2Initialized="WebViewControl_CoreWebView2Initialized"
                 Loaded="WebViewControl_Loaded" />
         </Grid>
         <Grid
             x:Name="UrlBoxWrapper"
-            Grid.Column="0"
             Width="600"
             Height="32"
             Margin="10"
@@ -202,7 +200,12 @@
                 Loaded="UrlBox_Loaded"
                 PlaceholderText="Type here to search or enter url" />
         </Grid>
-        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+        <StackPanel
+            Margin="0,0,18,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+            CornerRadius="7">
             <Button
                 Click="ToolbarButton_Click"
                 IsEnabled="{x:Bind WebViewControl.CanGoBack, Mode=OneWay}"

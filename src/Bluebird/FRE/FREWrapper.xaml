@@ -14,6 +14,12 @@
             Width="700"
             Height="500"
             Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
-            CornerRadius="10" />
+            CornerRadius="10">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition />
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
     </Grid>
 </Page>

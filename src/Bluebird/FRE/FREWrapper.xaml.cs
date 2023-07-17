@@ -1,4 +1,5 @@
-﻿using FREPages = Bluebird.FRE.Pages;
+﻿using Windows.UI.Xaml.Media.Animation;
+using FREPages = Bluebird.FRE.Pages;
 
 namespace Bluebird.FRE;
 
@@ -10,6 +11,6 @@ public sealed partial class FREWrapper : Page
     public FREWrapper()
     {
         this.InitializeComponent();
-        FREWrapperFrame.Navigate(typeof(FREPages.FREPage1));
+        FREWrapperFrame.Navigate(typeof(FREPages.FREPage1), null, new DrillInNavigationTransitionInfo());
     }
 }
