@@ -156,11 +156,11 @@
     <Compile Include="Core\UI.cs" />
     <Compile Include="Core\UrlHelper.cs" />
     <Compile Include="Core\WindowManager.cs" />
-    <Compile Include="FRE\FREWrapper.xaml.cs">
-      <DependentUpon>FREWrapper.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FRE\Pages\FREPage1.xaml.cs">
       <DependentUpon>FREPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FRE\Pages\FREPage2.xaml.cs">
+      <DependentUpon>FREPage2.xaml</DependentUpon>
     </Compile>
     <Compile Include="GlobalUsings.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -277,11 +277,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="FRE\FREWrapper.xaml">
+    <Page Include="FRE\Pages\FREPage1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FRE\Pages\FREPage1.xaml">
+    <Page Include="FRE\Pages\FREPage2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -338,7 +338,7 @@
       <Version>2.8.5</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Web.WebView2">
-      <Version>1.0.1901.177</Version>
+      <Version>1.0.1988-prerelease</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>

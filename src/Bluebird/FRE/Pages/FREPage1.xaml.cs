@@ -15,6 +15,6 @@ public sealed partial class FREPage1 : Page
 
     private void GetStartedButton_Click(object sender, RoutedEventArgs e)
     {
-        //Frame.Navigate(typeof(FREPage2), null, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromRight });
+        Frame.Navigate(typeof(FREPage2), null, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromRight });
     }
 }
