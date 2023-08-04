@@ -14,18 +14,7 @@
             <svsettctrl:SettingsBlockControl.Icon>
                 <SymbolIcon Symbol="Find" />
             </svsettctrl:SettingsBlockControl.Icon>
-            <ComboBox x:Name="SearchEngineSelector">
-                <x:String>Ask</x:String>
-                <x:String>Baidu</x:String>
-                <x:String>Bing</x:String>
-                <x:String>DuckDuckGo</x:String>
-                <x:String>Ecosia</x:String>
-                <x:String>Google</x:String>
-                <x:String>Startpage</x:String>
-                <x:String>Qwant</x:String>
-                <x:String>Qwant Lite</x:String>
-                <x:String>Yahoo!</x:String>
-            </ComboBox>
+            <ComboBox x:Name="SearchEngineSelector" />
         </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl Title="Force dark mode for all websites">
             <svsettctrl:SettingsBlockControl.Icon>

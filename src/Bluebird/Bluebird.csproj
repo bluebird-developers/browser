@@ -150,6 +150,7 @@
     <Compile Include="Core\Globals.cs" />
     <Compile Include="Core\Json.cs" />
     <Compile Include="Core\PasswordHelper.cs" />
+    <Compile Include="Core\SearchEngineHelper.cs" />
     <Compile Include="Core\SettingsHelper.cs" />
     <Compile Include="Core\SystemHelper.cs" />
     <Compile Include="Core\UI.cs" />
