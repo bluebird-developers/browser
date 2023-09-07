@@ -68,12 +68,13 @@ public sealed partial class FavoritesPage : Page
         selectedItem = ((FrameworkElement)e.OriginalSource).DataContext as FavoriteItems;
     }
 
-    private async void FavContextItem_Click(object sender, RoutedEventArgs e)
+    private void FavContextItem_Click(object sender, RoutedEventArgs e)
     {
         switch ((sender as AppBarButton).Tag)
         {
-            case "OpenLnkInNewWindow":
-                await Launcher.LaunchUriAsync(new Uri(selectedItem.Url));
+            case "OpenLnkInNewTab":
+                launchurl = selectedItem.Url;
+                MainPageContent.CreateWebTab();
                 break;
             case "Copy":
                 SystemHelper.WriteStringToClipboard(selectedItem.Url);
