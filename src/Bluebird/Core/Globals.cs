@@ -4,7 +4,7 @@ namespace Bluebird.Core;
 
 public class Globals
 {
-    public class JsonItems
+    public class FavoriteItems
     {
         public string Title { get; set; }
         public string Url { get; set; }

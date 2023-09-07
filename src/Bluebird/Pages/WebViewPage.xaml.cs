@@ -228,7 +228,7 @@ public sealed partial class WebViewPage : Page
 
     private void AddFavoriteButton_Click(object sender, RoutedEventArgs e)
     {
-        FavoritesHelper.AddFavoritesItem(FavoriteTitle.Text, FavoriteUrl.Text);
+        FavoritesHelper.AddFavorite(FavoriteTitle.Text, FavoriteUrl.Text);
         AddFavoriteFlyout.Hide();
     }
 

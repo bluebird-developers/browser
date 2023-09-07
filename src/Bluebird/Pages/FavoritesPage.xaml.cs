@@ -2,7 +2,7 @@
 
 public sealed partial class FavoritesPage : Page
 {
-    public static List<JsonItems> FavoritesList;
+    public static List<FavoriteItems> FavoritesList;
     public FavoritesPage()
     {
         this.InitializeComponent();
@@ -11,7 +11,7 @@ public sealed partial class FavoritesPage : Page
 
     private async void LoadFavorites()
     {
-        FavoritesList = await Json.GetListFromJsonAsync("Favorites.json");
+        FavoritesList = await FavoritesHelper.GetFavoritesListAsync();
         if (FavoritesList != null)
             FavoritesListView.ItemsSource = FavoritesList;
         else
@@ -50,14 +50,13 @@ public sealed partial class FavoritesPage : Page
         if (listView.ItemsSource != null)
         {
             // Get selected item
-            JsonItems item = (JsonItems)listView.SelectedItem;
+            FavoriteItems item = (FavoriteItems)listView.SelectedItem;
             launchurl = item.Url;
             MainPageContent.CreateWebTab();
         }
     }
 
-    string ctmtext;
-    string ctmurl;
+    FavoriteItems selectedItem;
     private void FavoritesListView_RightTapped(object sender, RightTappedRoutedEventArgs e)
     {
         ListView listView = sender as ListView;
@@ -66,9 +65,7 @@ public sealed partial class FavoritesPage : Page
             Position = e.GetPosition(listView),
         };
         FavoritesContextMenu.ShowAt(listView, options);
-        var item = ((FrameworkElement)e.OriginalSource).DataContext as JsonItems;
-        ctmtext = item.Title;
-        ctmurl = item.Url;
+        selectedItem = ((FrameworkElement)e.OriginalSource).DataContext as FavoriteItems;
     }
 
     private async void FavContextItem_Click(object sender, RoutedEventArgs e)
@@ -76,16 +73,16 @@ public sealed partial class FavoritesPage : Page
         switch ((sender as AppBarButton).Tag)
         {
             case "OpenLnkInNewWindow":
-                await Launcher.LaunchUriAsync(new Uri($"{ctmurl}"));
+                await Launcher.LaunchUriAsync(new Uri(selectedItem.Url));
                 break;
             case "Copy":
-                SystemHelper.WriteStringToClipboard(ctmurl);
+                SystemHelper.WriteStringToClipboard(selectedItem.Url);
                 break;
             case "CopyText":
-                SystemHelper.WriteStringToClipboard(ctmtext);
+                SystemHelper.WriteStringToClipboard(selectedItem.Title);
                 break;
             case "ShareLink":
-                SystemHelper.ShowShareUIURL(ctmtext, ctmurl);
+                SystemHelper.ShowShareUIURL(selectedItem.Title, selectedItem.Url);
                 break;
         }
         FavoritesContextMenu.Hide();

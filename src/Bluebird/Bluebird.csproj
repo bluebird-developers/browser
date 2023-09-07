@@ -148,7 +148,6 @@
     <Compile Include="Core\FavoritesHelper.cs" />
     <Compile Include="Core\FileHelper.cs" />
     <Compile Include="Core\Globals.cs" />
-    <Compile Include="Core\Json.cs" />
     <Compile Include="Core\PasswordHelper.cs" />
     <Compile Include="Core\SearchEngineHelper.cs" />
     <Compile Include="Core\SettingsHelper.cs" />
