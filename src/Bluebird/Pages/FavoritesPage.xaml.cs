@@ -2,6 +2,7 @@
 
 public sealed partial class FavoritesPage : Page
 {
+    public static List<JsonItems> FavoritesList;
     public FavoritesPage()
     {
         this.InitializeComponent();
@@ -10,9 +11,9 @@ public sealed partial class FavoritesPage : Page
 
     private async void LoadFavorites()
     {
-        JsonItemsList = await Json.GetListFromJsonAsync("Favorites.json");
-        if (JsonItemsList != null)
-            FavoritesListView.ItemsSource = JsonItemsList;
+        FavoritesList = await Json.GetListFromJsonAsync("Favorites.json");
+        if (FavoritesList != null)
+            FavoritesListView.ItemsSource = FavoritesList;
         else
             FavoritesListView.ItemsSource = null;
     }
@@ -21,7 +22,7 @@ public sealed partial class FavoritesPage : Page
     {
         TextBox textbox = sender as TextBox;
         // Get all ListView items with the submitted search query
-        var SearchResults = from s in JsonItemsList where s.Title.Contains(textbox.Text, StringComparison.OrdinalIgnoreCase) select s;
+        var SearchResults = from s in FavoritesList where s.Title.Contains(textbox.Text, StringComparison.OrdinalIgnoreCase) select s;
         // Set SearchResults as ItemSource for HistoryListView
         FavoritesListView.ItemsSource = SearchResults;
     }
