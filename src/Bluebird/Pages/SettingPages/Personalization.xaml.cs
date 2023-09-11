@@ -7,11 +7,12 @@ public sealed partial class Personalization : Page
     public Personalization()
     {
         this.InitializeComponent();
-        GetSettings();
     }
 
-    private void GetSettings()
+    protected override void OnNavigatedTo(NavigationEventArgs e)
     {
+        base.OnNavigatedFrom(e);
+        // Get settings and display them in the UI
         if (SettingsHelper.GetSetting("CompactTabs") == "true")
             CompactTabsToggle.IsOn = true;
         string UrlboxPos = SettingsHelper.GetSetting("UrlboxPos");
@@ -19,6 +20,7 @@ public sealed partial class Personalization : Page
             UrlboxPosSelector.PlaceholderText = UrlboxPos;
         else
             UrlboxPosSelector.PlaceholderText = "Bottom";
+
         // Set event handlers
         CompactTabsToggle.Toggled += CompactTabsToggle_Toggled;
         UrlboxPosSelector.SelectionChanged += UrlboxPosSelector_SelectionChanged;

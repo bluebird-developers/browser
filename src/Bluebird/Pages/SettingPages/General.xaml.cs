@@ -7,11 +7,12 @@ public sealed partial class General : Page
     public General()
     {
         this.InitializeComponent();
-        GetSettings();
     }
 
-    private void GetSettings()
+    protected override void OnNavigatedTo(NavigationEventArgs e)
     {
+        base.OnNavigatedFrom(e);
+        // Get settings and display them in the UI
         SearchEngineSelector.ItemsSource = SearchEngineHelper.SearchEngines;
         string SearchEngine = SettingsHelper.GetSetting("EngineFriendlyName");
         if (SearchEngine != null)
@@ -21,7 +22,6 @@ public sealed partial class General : Page
 
         if (SettingsHelper.GetSetting("ForceDark") == "true")
             ForceDarkSwitch.IsOn = true;
-        
         // Set event handlers
         SearchEngineSelector.SelectionChanged += SearchEngineSelector_SelectionChanged;
         ForceDarkSwitch.Toggled += ForceDarkSwitch_Toggled;

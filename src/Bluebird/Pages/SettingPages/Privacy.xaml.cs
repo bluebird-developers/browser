@@ -8,11 +8,12 @@ public sealed partial class Privacy : Page
     public Privacy()
     {
         this.InitializeComponent();
-        GetSettings();
     }
 
-    private void GetSettings()
+    protected override void OnNavigatedTo(NavigationEventArgs e)
     {
+        base.OnNavigatedTo(e);
+        // Get settings and display them in the UI
         if (SettingsHelper.GetSetting("PasswordLock") == "true")
             PasswordLockToggle.IsOn = true;
 
@@ -24,7 +25,6 @@ public sealed partial class Privacy : Page
 
         if (SettingsHelper.GetSetting("DisablePassSave") == "true")
             PasswordWebMessFillToggle.IsOn = true;
-
         // Set event handlers
         PasswordLockToggle.Toggled += PasswordLockToggle_Toggled;
         DisableJavaScriptToggle.Toggled += DisableJavaScriptToggle_Toggled;
