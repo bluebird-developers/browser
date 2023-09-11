@@ -13,7 +13,6 @@
     <muxc:TabView
         x:Name="Tabs"
         Grid.Column="1"
-        Margin="0,-7,0,0"
         VerticalAlignment="Stretch"
         AddTabButtonClick="Tabs_AddTabButtonClick"
         Loaded="Tabs_Loaded"
