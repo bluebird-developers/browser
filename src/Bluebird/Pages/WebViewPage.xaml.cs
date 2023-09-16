@@ -137,9 +137,15 @@ public sealed partial class WebViewPage : Page
     {
         var view = ApplicationView.GetForCurrentView();
         if (!view.IsFullScreenMode)
+        {
             WindowManager.EnterFullScreen(true);
+            UrlBoxWrapper.Visibility = Visibility.Collapsed;
+        }
         else
+        {
             WindowManager.EnterFullScreen(false);
+            UrlBoxWrapper.Visibility = Visibility.Visible;
+        }
     }
 
     private async void CoreWebView2_LaunchingExternalUriScheme(CoreWebView2 sender, CoreWebView2LaunchingExternalUriSchemeEventArgs args)
