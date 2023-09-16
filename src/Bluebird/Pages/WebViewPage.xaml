@@ -6,6 +6,8 @@
     xmlns:local="using:Bluebird.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:viewmodels="using:Bluebird.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:SettingsViewModel}"
     mc:Ignorable="d">
     <Page.Resources>
         <Flyout x:Name="AddFavoriteFlyout" Placement="Left">
@@ -235,7 +237,8 @@
             <Button
                 Click="ToolbarButton_Click"
                 Style="{StaticResource ToolbarButton}"
-                Tag="ReadingMode">
+                Tag="ReadingMode"
+                Visibility="{Binding IsReadingModeEnabled, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <FontIcon Glyph="&#xE736;" />
             </Button>
             <Button
@@ -248,7 +251,8 @@
             <Button
                 Click="ToolbarButton_Click"
                 Style="{StaticResource ToolbarButton}"
-                Tag="Translate">
+                Tag="Translate"
+                Visibility="{Binding IsTranslateEnabled, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <FontIcon Glyph="&#xE775;" />
             </Button>
             <Button
@@ -260,7 +264,8 @@
             <Button
                 Click="ToolbarButton_Click"
                 Style="{StaticResource ToolbarButton}"
-                Tag="GenQRCode">
+                Tag="GenQRCode"
+                Visibility="{Binding IsQRCodeGenEnabled, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <FontIcon Glyph="&#xED14;" />
             </Button>
         </StackPanel>

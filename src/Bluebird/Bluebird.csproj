@@ -143,6 +143,7 @@
       <DependentUpon>SettingsDisplayControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\AppVersion.cs" />
+    <Compile Include="Core\BooleanToVisibilityConverter.cs" />
     <Compile Include="Core\ExceptionHelper.cs" />
     <Compile Include="Core\IconHelper.cs" />
     <Compile Include="Core\FavoritesHelper.cs" />

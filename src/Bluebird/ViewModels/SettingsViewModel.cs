@@ -13,7 +13,7 @@ public class SettingsViewModel : INotifyPropertyChanged
         get => forcedarkenabled;
         set
         {
-            if (value !=  forcedarkenabled)
+            if (value != forcedarkenabled)
             {
                 forcedarkenabled = value;
                 RaisePropertyChanged();
@@ -31,6 +31,48 @@ public class SettingsViewModel : INotifyPropertyChanged
             if (value != tabwidthmode)
             {
                 tabwidthmode = value;
+                RaisePropertyChanged();
+            }
+        }
+    }
+
+    private bool isreadingmodeenabled;
+    public bool IsReadingModeEnabled
+    {
+        get => isreadingmodeenabled;
+        set
+        {
+            if (value != isreadingmodeenabled)
+            {
+                isreadingmodeenabled = value;
+                RaisePropertyChanged();
+            }
+        }
+    }
+
+    private bool istranslateenabled;
+    public bool IsTranslateEnabled
+    {
+        get => istranslateenabled;
+        set
+        {
+            if (value != istranslateenabled)
+            {
+                istranslateenabled = value;
+                RaisePropertyChanged();
+            }
+        }
+    }
+
+    private bool isqrcodegenenabled;
+    public bool IsQRCodeGenEnabled
+    {
+        get => isqrcodegenenabled;
+        set
+        {
+            if (value != isqrcodegenenabled)
+            {
+                isqrcodegenenabled = value;
                 RaisePropertyChanged();
             }
         }

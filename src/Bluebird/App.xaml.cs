@@ -29,6 +29,14 @@ sealed partial class App : Application
             ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Compact;
         else
             ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Equal;
+
+        if (SettingsHelper.GetSetting("IsReadingModeEnabled") != "false")
+            ViewModels.SettingsViewModel.SettingsVM.IsReadingModeEnabled = true;
+        if (SettingsHelper.GetSetting("IsTranslateEnabled") != "false")
+            ViewModels.SettingsViewModel.SettingsVM.IsTranslateEnabled = true;
+        if (SettingsHelper.GetSetting("IsQRCodeGenEnabled") != "false")
+            ViewModels.SettingsViewModel.SettingsVM.IsQRCodeGenEnabled = true;
+
         if (SettingsHelper.GetSetting("UrlboxPos") == "Top")
             ViewModels.SettingsViewModel.SettingsVM.UrlboxPos = VerticalAlignment.Top;
         else

@@ -16,6 +16,39 @@
             </svsettctrl:SettingsBlockControl.Icon>
             <ToggleSwitch x:Name="CompactTabsToggle" Margin="0,0,-80,0" />
         </svsettctrl:SettingsBlockControl>
+        <svsettctrl:SettingsBlockControl Title="Toolbar button" Description="Add/remove items from the toolbar">
+            <svsettctrl:SettingsBlockControl.Icon>
+                <FontIcon Glyph="&#xEC7A;" />
+            </svsettctrl:SettingsBlockControl.Icon>
+            <svsettctrl:SettingsBlockControl.ExpandableContent>
+                <StackPanel>
+                    <CheckBox x:Name="ReadingModeToggle" Tag="IsReadingModeEnabled">
+                        <CheckBox.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <FontIcon Glyph="&#xE736;" />
+                                <TextBlock Text="Reading mode" />
+                            </StackPanel>
+                        </CheckBox.Content>
+                    </CheckBox>
+                    <CheckBox x:Name="TranslateToggle" Tag="IsTranslateEnabled">
+                        <CheckBox.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <FontIcon Glyph="&#xE775;" />
+                                <TextBlock Text="Translate website" />
+                            </StackPanel>
+                        </CheckBox.Content>
+                    </CheckBox>
+                    <CheckBox x:Name="QRCodeGenToggle" Tag="IsQRCodeGenEnabled">
+                        <CheckBox.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <FontIcon Glyph="&#xED14;" />
+                                <TextBlock Text="QRCode" />
+                            </StackPanel>
+                        </CheckBox.Content>
+                    </CheckBox>
+                </StackPanel>
+            </svsettctrl:SettingsBlockControl.ExpandableContent>
+        </svsettctrl:SettingsBlockControl>
         <svsettctrl:SettingsBlockControl Title="Urlbox position" Description="Control wether the Urlbox should be displayed on the bottom or top">
             <svsettctrl:SettingsBlockControl.Icon>
                 <FontIcon Glyph="&#xE721;" />
