@@ -7,6 +7,8 @@
 # Download
 <a href="https://www.microsoft.com/store/productId/9PNXW61T4T0V"><img src="https://raw.githubusercontent.com/Pinguin2001/Bluebird-Browser/main/images/msstorebadge.png" /></a>
 
+![Bluebird](images/heroimage.png)
+
 # Features:
 - Blazingly fast
 - Low ram usage
@@ -17,9 +19,6 @@
 - Password lock
 
 Check the app out to see them all! 
-
-# Screenshots
-TBD
 
 # Building from source
 
