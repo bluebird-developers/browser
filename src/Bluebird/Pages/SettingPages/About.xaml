@@ -34,13 +34,17 @@
                 </svsettctrl:SettingsBlockControl.Icon>
                 <svsettctrl:SettingsBlockControl.ExpandableContent>
                     <RichTextBlock>
-                        <Paragraph>jarno9981</Paragraph>
                         <Paragraph>Pinguin2001</Paragraph>
+                        <Paragraph>Many thanks to jarno9981 for various help with the application and maintaining the store version!</Paragraph>
                         <Paragraph>
-                            Chat with us on the <Hyperlink NavigateUri="https://discord.com/invite/AxmR3HGTnJ">Windows Apps Hub Discord</Hyperlink>
+                            Chat with us on the
+                            <Hyperlink NavigateUri="https://discord.com/invite/AxmR3HGTnJ">Developer Sanctuary</Hyperlink>
+                            or
+                            <Hyperlink NavigateUri="https://discord.com/invite/rdcYUZj3ej">Microsoft Edge Hub</Hyperlink>
                             to get latest information and support</Paragraph>
                         <Paragraph>
-                            You can view the source code on <Hyperlink NavigateUri="https://github.com/Pinguin2001/Bluebird-Browser">GitHub</Hyperlink>
+                            You can view the source code on
+                            <Hyperlink NavigateUri="https://github.com/bluebird-developers/browser">GitHub</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                 </svsettctrl:SettingsBlockControl.ExpandableContent>
@@ -53,13 +57,23 @@
                     <RichTextBlock>
                         <Paragraph>
                             <Hyperlink NavigateUri="https://github.com/microsoft/microsoft-ui-xaml">Microsoft.UI.Xaml</Hyperlink>
-                            (MIT licence)</Paragraph>
+                            (MIT licence)
+                        </Paragraph>
+                        <Paragraph>
+                            <Hyperlink NavigateUri="https://aka.ms/webview">Microsoft.Web.WebView2</Hyperlink>
+                        </Paragraph>
                         <Paragraph>
                             <Hyperlink NavigateUri="https://github.com/JamesNK/Newtonsoft.Json">Newtonsoft.Json</Hyperlink>
-                            (MIT licence)</Paragraph>
+                            (MIT licence)
+                        </Paragraph>
                         <Paragraph>
                             <Hyperlink NavigateUri="https://github.com/gus33000/SVSettingsControl">SVSettingsControl</Hyperlink>
-                            (MIT licence)</Paragraph>
+                            (MIT licence)
+                        </Paragraph>
+                        <Paragraph>
+                            <Hyperlink NavigateUri="https://github.com/codebude/QRCoder">QRCoder</Hyperlink>
+                            (MIT licence)
+                        </Paragraph>
                         <Paragraph>
                             <Hyperlink NavigateUri="https://github.com/mozilla/readability">Readability</Hyperlink>
                             (Apache License, Version 2.0)
@@ -72,7 +86,7 @@
                 <svsettctrl:SettingsBlockControl.ExpandableContent>
                     <RichTextBlock>
                         <Paragraph>
-                            Icon created by<Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
+                            Icon created by <Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                 </svsettctrl:SettingsBlockControl.ExpandableContent>
