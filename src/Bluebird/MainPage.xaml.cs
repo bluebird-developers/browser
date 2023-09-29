@@ -1,4 +1,5 @@
-﻿using Bluebird.Pages;
+﻿using Bluebird.Controls;
+using Bluebird.Pages;
 using Windows.UI;
 
 namespace Bluebird;
@@ -24,9 +25,9 @@ public sealed partial class MainPage : Page
         titleBar.ButtonBackgroundColor = Colors.Transparent;
     }
 
-    private void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
+    private async void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
-        switch ((sender as MenuFlyoutItem).Tag)
+        switch ((sender as AppBarButton).Tag)
         {
             case "NewTab":
                 CreateWebTab();
