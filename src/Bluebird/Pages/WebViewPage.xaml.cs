@@ -1,6 +1,4 @@
-﻿using Microsoft.Web.WebView2.Core;
-
-namespace Bluebird.Pages;
+﻿namespace Bluebird.Pages;
 
 public sealed partial class WebViewPage : Page
 {
@@ -17,7 +15,14 @@ public sealed partial class WebViewPage : Page
 
     private async void WebViewControl_Loaded(object sender, RoutedEventArgs e)
     {
-        await (sender as muxc.WebView2).EnsureCoreWebView2Async();
+        try
+        {
+            await (sender as muxc.WebView2).EnsureCoreWebView2Async();
+        }
+        catch
+        {
+            await UI.ShowDialog("Error", "WebView2 runtime is not installed!");
+        }
     }
 
     private void WebViewControl_CoreWebView2Initialized(muxc.WebView2 sender, muxc.CoreWebView2InitializedEventArgs args)
