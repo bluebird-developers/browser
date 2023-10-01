@@ -1,4 +1,6 @@
 ﻿global using Bluebird.Core;
+global using Microsoft.Web.WebView2.Core;
+global using muxc = Microsoft.UI.Xaml.Controls;
 global using Newtonsoft.Json;
 global using QRCoder;
 global using System;
@@ -19,4 +21,3 @@ global using Windows.UI.Xaml.Input;
 global using Windows.UI.Xaml.Markup;
 global using Windows.UI.Xaml.Media.Imaging;
 global using static Bluebird.Core.Globals;
-global using muxc = Microsoft.UI.Xaml.Controls;
