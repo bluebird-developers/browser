@@ -64,6 +64,11 @@
                                 Icon="Setting"
                                 Label="Settings"
                                 Tag="Settings" />
+                            <AppBarButton
+                                Click="MoreFlyoutItem_Click"
+                                Icon="Help"
+                                Label="Help"
+                                Tag="Help" />
                         </muxc:CommandBarFlyout.SecondaryCommands>
                     </muxc:CommandBarFlyout>
                 </Button.Flyout>

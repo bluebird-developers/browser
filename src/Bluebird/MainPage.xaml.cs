@@ -55,6 +55,9 @@ public sealed partial class MainPage : Page
             case "Settings":
                 CreateTab("Settings", "\uE115", typeof(SettingsPage));
                 break;
+            case "Help":
+                CreateTab("Help", "\uE11B", typeof(HelpPage));
+                break;
         }
     }
 
