@@ -69,6 +69,14 @@
                                 Icon="Help"
                                 Label="Help"
                                 Tag="Help" />
+                            <AppBarButton
+                                Click="MoreFlyoutItem_Click"
+                                Label="About"
+                                Tag="About">
+                                <AppBarButton.Icon>
+                                    <FontIcon Glyph="&#xE946;" />
+                                </AppBarButton.Icon>
+                            </AppBarButton>
                         </muxc:CommandBarFlyout.SecondaryCommands>
                     </muxc:CommandBarFlyout>
                 </Button.Flyout>

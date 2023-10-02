@@ -132,6 +132,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AboutContentDialog.xaml.cs">
+      <DependentUpon>AboutContentDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PasswordContentDialog.xaml.cs">
       <DependentUpon>PasswordContentDialog.xaml</DependentUpon>
     </Compile>
@@ -156,15 +159,12 @@
     <Compile Include="Core\UI.cs" />
     <Compile Include="Core\UrlHelper.cs" />
     <Compile Include="Core\WindowManager.cs" />
-    <Compile Include="FRE\Pages\FREPage1.xaml.cs">
-      <DependentUpon>FREPage1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FRE\Pages\FREPage2.xaml.cs">
-      <DependentUpon>FREPage2.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GlobalUsings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AttributionsPage.xaml.cs">
+      <DependentUpon>AttributionsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FavoritesPage.xaml.cs">
       <DependentUpon>FavoritesPage.xaml</DependentUpon>
@@ -174,9 +174,6 @@
     </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\SettingPages\About.xaml.cs">
-      <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingPages\Data.xaml.cs">
       <DependentUpon>Data.xaml</DependentUpon>
@@ -265,6 +262,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\AboutContentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\PasswordContentDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -277,17 +278,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="FRE\Pages\FREPage1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FRE\Pages\FREPage2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\AttributionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\FavoritesPage.xaml">
       <SubType>Designer</SubType>
@@ -300,10 +297,6 @@
     <Page Include="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\SettingPages\About.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\SettingPages\Data.xaml">
       <SubType>Designer</SubType>

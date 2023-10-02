@@ -58,6 +58,19 @@ public sealed partial class MainPage : Page
             case "Help":
                 CreateTab("Help", "\uE11B", typeof(HelpPage));
                 break;
+            case "About":
+                AboutContentDialog aboutDialog = new();
+                var result = await aboutDialog.ShowAsync();
+                if (result == ContentDialogResult.Primary)
+                {
+                    CreateTab("Attributions", "\uE946", typeof(AttributionsPage));
+                }
+                else if (result == ContentDialogResult.Secondary)
+                {
+                    launchurl = "https://github.com/bluebird-developers/browser";
+                    CreateWebTab();
+                }
+                break;
         }
     }
 
