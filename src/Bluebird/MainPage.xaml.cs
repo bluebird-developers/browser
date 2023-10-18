@@ -1,5 +1,4 @@
-﻿using Bluebird.Controls;
-using Bluebird.Pages;
+﻿using Bluebird.Pages;
 using Windows.UI;
 
 namespace Bluebird;
@@ -59,7 +58,7 @@ public sealed partial class MainPage : Page
                 // TODO: Add link to help site
                 break;
             case "About":
-                AboutContentDialog aboutDialog = new();
+                Dialogs.AboutContentDialog aboutDialog = new();
                 var result = await aboutDialog.ShowAsync();
                 if (result == ContentDialogResult.Primary)
                 {

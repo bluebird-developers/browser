@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Bluebird.Controls;
+namespace Bluebird.Dialogs;
 
 public sealed partial class AboutContentDialog : ContentDialog
 {

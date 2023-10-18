@@ -1,4 +1,4 @@
-﻿namespace Bluebird.Controls;
+﻿namespace Bluebird.Dialogs;
 
 public sealed partial class PasswordContentDialog : ContentDialog
 {

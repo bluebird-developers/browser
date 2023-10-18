@@ -1,5 +1,4 @@
-﻿using Bluebird.Controls;
-using Windows.UI.Xaml.Navigation;
+﻿using Windows.UI.Xaml.Navigation;
 
 namespace Bluebird.Pages.SettingPages;
 
@@ -45,7 +44,7 @@ public sealed partial class Privacy : Page
     {
         if (PasswordLockToggle.IsOn)
         {
-            PasswordContentDialog dialog = new();
+            Dialogs.PasswordContentDialog dialog = new();
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
                 SettingsHelper.SetSetting("PasswordLock", "true");
