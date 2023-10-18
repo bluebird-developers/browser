@@ -56,7 +56,7 @@ public sealed partial class MainPage : Page
                 CreateTab("Settings", "\uE115", typeof(SettingsPage));
                 break;
             case "Help":
-                CreateTab("Help", "\uE11B", typeof(HelpPage));
+                // TODO: Add link to help site
                 break;
             case "About":
                 AboutContentDialog aboutDialog = new();
