@@ -59,12 +59,6 @@ public sealed partial class FavoritesPage : Page
     FavoriteItems selectedItem;
     private void FavoritesListView_RightTapped(object sender, RightTappedRoutedEventArgs e)
     {
-        ListView listView = sender as ListView;
-        var options = new FlyoutShowOptions()
-        {
-            Position = e.GetPosition(listView),
-        };
-        FavoritesContextMenu.ShowAt(listView, options);
         selectedItem = ((FrameworkElement)e.OriginalSource).DataContext as FavoriteItems;
     }
 
