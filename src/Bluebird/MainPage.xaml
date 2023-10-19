@@ -23,7 +23,10 @@
             <Button Style="{StaticResource ToolbarButton}">
                 <FontIcon Glyph="&#xE10C;" />
                 <Button.Flyout>
-                    <muxc:CommandBarFlyout AlwaysExpanded="True" Placement="Bottom">
+                    <muxc:CommandBarFlyout
+                        x:Name="BrowserMenuFlyout"
+                        AlwaysExpanded="True"
+                        Placement="Bottom">
                         <AppBarButton
                             Click="MoreFlyoutItem_Click"
                             Icon="Add"

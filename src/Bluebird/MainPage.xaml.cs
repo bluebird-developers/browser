@@ -26,6 +26,7 @@ public sealed partial class MainPage : Page
 
     private async void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
+        BrowserMenuFlyout.Hide();
         switch ((sender as AppBarButton).Tag)
         {
             case "NewTab":
