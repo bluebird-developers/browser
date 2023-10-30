@@ -8,20 +8,8 @@ public sealed partial class MainPage : Page
     public MainPage()
     {
         this.InitializeComponent();
-        CustomTitleBar();
-        DataContext = ViewModels.SettingsViewModel.SettingsVM;
-    }
-
-    private void CustomTitleBar()
-    {
-        // Hide default title bar.
-        var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-        coreTitleBar.ExtendViewIntoTitleBar = true;
-        // Set custom XAML element as titlebar
         Window.Current.SetTitleBar(CustomDragRegion);
-        var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-        // Set colors
-        titleBar.ButtonBackgroundColor = Colors.Transparent;
+        DataContext = ViewModels.SettingsViewModel.SettingsVM;
     }
 
     private async void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
