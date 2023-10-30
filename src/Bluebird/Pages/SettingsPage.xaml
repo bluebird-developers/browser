@@ -12,12 +12,15 @@
         x:Name="NavView"
         IsBackButtonVisible="Collapsed"
         IsSettingsVisible="False"
-        ItemInvoked="NavigationView_ItemInvoked">
+        ItemInvoked="NavigationView_ItemInvoked"
+        OpenPaneLength="170"
+        PaneDisplayMode="Left"
+        PaneTitle="Settings">
         <muxc:NavigationView.HeaderTemplate>
             <DataTemplate>
                 <TextBlock
                     x:Name="appTitle"
-                    Margin="-11,-9,0,0"
+                    Margin="-30,-40,0,0"
                     VerticalAlignment="Center"
                     FontSize="24"
                     Text="{Binding}" />
@@ -45,6 +48,6 @@
                 </muxc:NavigationViewItem.Icon>
             </muxc:NavigationViewItem>
         </muxc:NavigationView.MenuItems>
-        <Frame x:Name="contentFrame" Margin="40,0,40,0" />
+        <Frame x:Name="contentFrame" Margin="25,-10,25,0" />
     </muxc:NavigationView>
 </Page>
