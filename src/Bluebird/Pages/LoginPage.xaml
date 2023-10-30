@@ -8,19 +8,48 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Image
-            Width="100"
-            Height="100"
-            Source="ms-appx:///Assets/Square44x44Logo.targetsize-256.png" />
-        <PasswordBox
+        <Grid x:Name="AppTitleBar">
+            <Image
+                Width="26"
+                Height="26"
+                Margin="12,5,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Source="ms-appx:///Assets/Square44x44Logo.png" />
+            <TextBlock
+                Margin="44,10,0,0"
+                Style="{StaticResource CaptionTextBlockStyle}"
+                Text="Bluebird" />
+        </Grid>
+        <Grid
             Grid.Row="1"
-            Width="300"
-            KeyDown="PasswordBox_KeyDown"
-            PlaceholderText="Enter your password" />
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <FontIcon
+                Margin="0,0,100,10"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                FontSize="25"
+                Glyph="&#xE72E;" />
+            <Image
+                Width="100"
+                Height="100"
+                Source="ms-appx:///Assets/Square44x44Logo.targetsize-256.png" />
+            <PasswordBox
+                Grid.Row="1"
+                Width="300"
+                KeyDown="PasswordBox_KeyDown"
+                PlaceholderText="Enter your password" />
+        </Grid>
+
     </Grid>
 </Page>
