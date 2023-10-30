@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:Bluebird"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:viewmodels="using:Bluebird.ViewModels"
@@ -13,6 +12,7 @@
     <muxc:TabView
         x:Name="Tabs"
         Grid.Column="1"
+        Margin="0,-7,0,0"
         VerticalAlignment="Stretch"
         AddTabButtonClick="Tabs_AddTabButtonClick"
         Loaded="Tabs_Loaded"
@@ -20,7 +20,7 @@
         TabItemsChanged="Tabs_TabItemsChanged"
         TabWidthMode="{Binding TabWidthMode, Mode=OneWay}">
         <muxc:TabView.TabStripHeader>
-            <Button Style="{StaticResource ToolbarButton}">
+            <Button VerticalAlignment="Bottom" Style="{StaticResource ToolbarButton}">
                 <FontIcon Glyph="&#xE10C;" />
                 <Button.Flyout>
                     <muxc:CommandBarFlyout
