@@ -19,6 +19,7 @@ sealed partial class App : Application
         this.InitializeComponent();
         this.Suspending += OnSuspending;
         LoadSettings();
+        FavoritesHelper.LoadFavoritesOnStartup();
     }
 
     private void LoadSettings()

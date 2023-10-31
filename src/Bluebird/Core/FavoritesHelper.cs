@@ -1,7 +1,17 @@
-﻿namespace Bluebird.Core;
+﻿using Bluebird.ViewModels;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace Bluebird.Core;
 
 public class FavoritesHelper
 {
+    public static async void LoadFavoritesOnStartup()
+    {
+        SettingsViewModel.SettingsVM.FavoritesList = await GetFavoritesListAsync();
+    }
+
     public static async void CreateFirstFavorite(string title, string url)
     {
         // Generate json
@@ -18,33 +28,41 @@ public class FavoritesHelper
         if (fileData == null) CreateFirstFavorite(title, url);
         else
         {
-            // get json file content
-            string json = await FileIO.ReadTextAsync((IStorageFile)fileData);
             // new historyitem
             FavoriteItems newFavoriteItem = new()
             {
                 Title = title,
                 Url = url
             };
-            // Convert json to list
-            List<FavoriteItems> FavoriteList = JsonConvert.DeserializeObject<List<FavoriteItems>>(json);
-            // Add new historyitem
-            FavoriteList.Insert(0, newFavoriteItem);
-            // Convert list to json
-            string newJson = JsonConvert.SerializeObject(FavoriteList);
-            // Write json to json file
-            await FileIO.WriteTextAsync((IStorageFile)fileData, newJson);
+            // add item to favorites list
+            SettingsViewModel.SettingsVM.FavoritesList.Insert(0, newFavoriteItem);
+            SaveListChangesToDisk();
         }
     }
 
-    public static async Task<List<FavoriteItems>> GetFavoritesListAsync()
+    public static void RemoveFavorite(FavoriteItems item)
+    {
+        SettingsViewModel.SettingsVM.FavoritesList.Remove(item);
+        SaveListChangesToDisk();
+    }
+
+    public static async Task<ObservableCollection<FavoriteItems>> GetFavoritesListAsync()
     {
         var fileData = await localFolder.TryGetItemAsync("Favorites.json");
         if (fileData == null) return null;
         else
         {
             string filecontent = await FileIO.ReadTextAsync((IStorageFile)fileData);
-            return JsonConvert.DeserializeObject<List<FavoriteItems>>(filecontent);
+            return JsonConvert.DeserializeObject<ObservableCollection<FavoriteItems>>(filecontent);
         }
+    }
+
+    private static async void SaveListChangesToDisk()
+    {
+        var fileData = await localFolder.TryGetItemAsync("Favorites.json");
+        // Convert list to json
+        string newJson = JsonConvert.SerializeObject(SettingsViewModel.SettingsVM.FavoritesList);
+        // Write json to json file
+        await FileIO.WriteTextAsync((IStorageFile)fileData, newJson);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Bluebird.Pages;
-using Windows.UI;
 
 namespace Bluebird;
 
@@ -27,7 +26,7 @@ public sealed partial class MainPage : Page
                 CreateTab("Downloads", "\uE896", typeof(WebViewPage));
                 break;
             case "Favorites":
-                CreateTab("Favorites", "\uE728", typeof(FavoritesPage));
+                FavoritesFlyout.ShowAt(BrowserMenuBtn);
                 break;
             case "History":
                 launchurl = "edge://history";
@@ -117,4 +116,47 @@ public sealed partial class MainPage : Page
             CoreApplication.Exit();
         }
     }
+
+    #region Favorites flyout
+    private void FavoritesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        // Get listview sender
+        ListView listView = sender as ListView;
+        if (listView.SelectedItem != null)
+        {
+            // Get selected item
+            FavoriteItems item = (FavoriteItems)listView.SelectedItem;
+            launchurl = item.Url;
+            CreateWebTab();
+            FavoritesFlyout.Hide();
+        }
+    }
+
+    FavoriteItems selectedItem;
+    private void FavoritesListView_RightTapped(object sender, RightTappedRoutedEventArgs e)
+    {
+        selectedItem = ((FrameworkElement)e.OriginalSource).DataContext as FavoriteItems;
+    }
+
+    private void FavContextItem_Click(object sender, RoutedEventArgs e)
+    {
+        switch ((sender as AppBarButton).Tag)
+        {
+            case "Copy":
+                SystemHelper.WriteStringToClipboard(selectedItem.Url);
+                break;
+            case "ShareLink":
+                SystemHelper.ShowShareUIURL(selectedItem.Title, selectedItem.Url);
+                break;
+            case "Delete":
+                FavoritesListView.SelectedItem = null;
+                FavoritesHelper.RemoveFavorite(selectedItem);
+                break;
+            case "CopyText":
+                SystemHelper.WriteStringToClipboard(selectedItem.Title);
+                break;
+        }
+        FavoritesContextMenu.Hide();
+    }
+    #endregion
 }

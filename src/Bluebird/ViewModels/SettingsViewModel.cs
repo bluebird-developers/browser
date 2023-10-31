@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Bluebird.ViewModels;
@@ -6,6 +7,8 @@ namespace Bluebird.ViewModels;
 public class SettingsViewModel : INotifyPropertyChanged
 {
     public static SettingsViewModel SettingsVM = new();
+    public ObservableCollection<FavoriteItems> FavoritesList { get; set; } = new ObservableCollection<FavoriteItems>();
+
     // General
     private bool forcedarkenabled;
     public bool IsForceDarkEnabled

@@ -166,9 +166,6 @@
     <Compile Include="Pages\AttributionsPage.xaml.cs">
       <DependentUpon>AttributionsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FavoritesPage.xaml.cs">
-      <DependentUpon>FavoritesPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -280,10 +277,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\AttributionsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\FavoritesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
