@@ -13,6 +13,7 @@ public class SearchEngineHelper
         if (selection == "Ask") SetEngine("Ask", "https://www.ask.com/web?q=");
         if (selection == "Baidu") SetEngine("Baidu", "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=");
         if (selection == "Bing") SetEngine("Bing", "https://www.bing.com?q=");
+        if (selection == "Brave Search") SetEngine("Brave Search", "https://search.brave.com/search?q=");
         if (selection == "DuckDuckGo") SetEngine("DuckDuckGo", "https://www.duckduckgo.com?q=");
         if (selection == "Ecosia") SetEngine("Ecosia", "https://www.ecosia.org/search?q=");
         if (selection == "Google") SetEngine("Google", "https://www.google.com/search?q=");
@@ -34,6 +35,7 @@ public class SearchEngineHelper
             "Ask",
             "Baidu",
             "Bing",
+            "Brave Search",
             "DuckDuckGo",
             "Ecosia",
             "Google",
