@@ -310,25 +310,8 @@ public sealed partial class WebViewPage : Page
                 WebViewControl.CoreWebView2.OpenDefaultDownloadDialog();
                 break;
             case "GenQRCode":
-                //Create raw qr code data
-                QRCodeGenerator qrGenerator = new();
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(WebViewControl.CoreWebView2.Source.ToString(), QRCodeGenerator.ECCLevel.M);
-
-                //Create byte/raw bitmap qr code
-                BitmapByteQRCode qrCodeBmp = new(qrCodeData);
-                byte[] qrCodeImageBmp = qrCodeBmp.GetGraphic(20);
-                using (InMemoryRandomAccessStream stream = new())
-                {
-                    using (DataWriter writer = new(stream.GetOutputStreamAt(0)))
-                    {
-                        writer.WriteBytes(qrCodeImageBmp);
-                        await writer.StoreAsync();
-                    }
-                    var image = new BitmapImage();
-                    await image.SetSourceAsync(stream);
-                    // set image as image source for element
-                    QRCodeImage.Source = image;
-                }
+                BitmapImage QrCode = await QRCodeHelper.GenerateQRCodeFromUrlAsync(WebViewControl.CoreWebView2.Source);
+                QRCodeImage.Source = QrCode;
                 QRCodeFlyout.ShowAt(sender as Button);
                 break;
         }

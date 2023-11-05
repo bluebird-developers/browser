@@ -122,6 +122,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ForceDark\ForceDarkHelper.cs" />
+    <Compile Include="QRCodeGen\AbstractQRCode.cs" />
+    <Compile Include="QRCodeGen\BitmapByteQRCode.cs" />
+    <Compile Include="QRCodeGen\Exceptions\DataTooLongException.cs" />
+    <Compile Include="QRCodeGen\Framework4.0Methods\Stream4Methods.cs" />
+    <Compile Include="QRCodeGen\Framework4.0Methods\String4Methods.cs" />
+    <Compile Include="QRCodeGen\PayloadGenerator.cs" />
+    <Compile Include="QRCodeGen\QRCodeData.cs" />
+    <Compile Include="QRCodeGen\QRCodeGenerator.cs" />
     <Compile Include="Readability\ReadabilityHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Bluebird.Modules.rd.xml" />

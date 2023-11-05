@@ -132,6 +132,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\QRCodeHelper.cs" />
     <Compile Include="Dialogs\AboutContentDialog.xaml.cs">
       <DependentUpon>AboutContentDialog.xaml</DependentUpon>
     </Compile>
@@ -325,9 +326,6 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
-    </PackageReference>
-    <PackageReference Include="QRCoder">
-      <Version>1.4.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

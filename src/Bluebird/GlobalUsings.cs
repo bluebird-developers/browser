@@ -2,7 +2,6 @@
 global using Microsoft.Web.WebView2.Core;
 global using muxc = Microsoft.UI.Xaml.Controls;
 global using Newtonsoft.Json;
-global using QRCoder;
 global using System;
 global using System.Collections.Generic;
 global using System.Linq;
