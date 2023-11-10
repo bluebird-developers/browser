@@ -111,6 +111,14 @@
                             ToolTipService.ToolTip="New tab" />
                         <AppBarButton
                             Click="MoreFlyoutItem_Click"
+                            Tag="NewSplitTab"
+                            ToolTipService.ToolTip="New split tab">
+                            <AppBarButton.Icon>
+                                <FontIcon Glyph="&#xF57C;" />
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                        <AppBarButton
+                            Click="MoreFlyoutItem_Click"
                             Icon="Download"
                             Tag="Downloads"
                             ToolTipService.ToolTip="Downloads" />
@@ -122,15 +130,17 @@
                                 <FontIcon Glyph="&#xE728;" />
                             </AppBarButton.Icon>
                         </AppBarButton>
-                        <AppBarButton
-                            Click="MoreFlyoutItem_Click"
-                            Tag="History"
-                            ToolTipService.ToolTip="History">
-                            <AppBarButton.Icon>
-                                <FontIcon Glyph="&#xE81C;" />
-                            </AppBarButton.Icon>
-                        </AppBarButton>
                         <muxc:CommandBarFlyout.SecondaryCommands>
+                            <AppBarButton
+                                Click="MoreFlyoutItem_Click"
+                                Label="History"
+                                Tag="History"
+                                ToolTipService.ToolTip="History">
+                                <AppBarButton.Icon>
+                                    <FontIcon Glyph="&#xE81C;" />
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+                            <AppBarSeparator />
                             <AppBarButton
                                 Click="MoreFlyoutItem_Click"
                                 Label="Fullscreen"
@@ -139,6 +149,7 @@
                                     <FontIcon Glyph="&#xE1D9;" />
                                 </AppBarButton.Icon>
                             </AppBarButton>
+                            <AppBarSeparator />
                             <AppBarButton
                                 Click="MoreFlyoutItem_Click"
                                 Icon="Setting"

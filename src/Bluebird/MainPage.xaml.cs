@@ -19,6 +19,9 @@ public sealed partial class MainPage : Page
             case "NewTab":
                 CreateWebTab();
                 break;
+            case "NewSplitTab":
+                CreateTab("New split tab", "\uF57C", typeof(SplitTabPage));
+                break;
             case "NewWindow":
                 break;
             case "Downloads":
@@ -106,6 +109,7 @@ public sealed partial class MainPage : Page
         muxc.TabViewItem selectedItem = args.Tab;
         var tabcontent = (Frame)selectedItem.Content;
         if (tabcontent.Content is WebViewPage) (tabcontent.Content as WebViewPage).WebViewControl.Close();
+        if (tabcontent.Content is SplitTabPage) (tabcontent.Content as SplitTabPage).CloseWebViews();
         sender.TabItems.Remove(args.Tab);
         // Workaround for memory leak in TabView
         // microsoft-ui-xaml issue #3597
