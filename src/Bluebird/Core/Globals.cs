@@ -1,15 +1,7 @@
-﻿using Bluebird.ViewModels;
-
-namespace Bluebird.Core;
+﻿namespace Bluebird.Core;
 
 public class Globals
 {
-    public class FavoriteItems
-    {
-        public string Title { get; set; }
-        public string Url { get; set; }
-    }
-
     // Access public elements/methods from MainPage
     public static MainPage MainPageContent
     {
