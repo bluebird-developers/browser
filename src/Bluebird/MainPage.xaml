@@ -155,11 +155,11 @@
                                 Icon="Setting"
                                 Label="Settings"
                                 Tag="Settings" />
-                            <AppBarButton
+                            <!--<AppBarButton
                                 Click="MoreFlyoutItem_Click"
                                 Icon="Help"
                                 Label="Help"
-                                Tag="Help" />
+                                Tag="Help" />-->
                             <AppBarButton
                                 Click="MoreFlyoutItem_Click"
                                 Label="About"
