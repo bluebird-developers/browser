@@ -84,7 +84,6 @@
     </Page.Resources>
     <muxc:TabView
         x:Name="Tabs"
-        Grid.Column="1"
         Margin="0,-7,0,0"
         VerticalAlignment="Stretch"
         AddTabButtonClick="Tabs_AddTabButtonClick"
@@ -155,11 +154,6 @@
                                 Icon="Setting"
                                 Label="Settings"
                                 Tag="Settings" />
-                            <!--<AppBarButton
-                                Click="MoreFlyoutItem_Click"
-                                Icon="Help"
-                                Label="Help"
-                                Tag="Help" />-->
                             <AppBarButton
                                 Click="MoreFlyoutItem_Click"
                                 Label="About"
