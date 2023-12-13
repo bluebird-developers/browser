@@ -174,10 +174,6 @@
         </muxc:CommandBarFlyout>
     </Page.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
         <Grid CornerRadius="7">
             <muxc:WebView2
                 x:Name="WebViewControl"
@@ -271,7 +267,6 @@
         </StackPanel>
         <muxc:ProgressRing
             x:Name="LoadingRing"
-            Grid.Column="0"
             Width="40"
             Height="40"
             HorizontalAlignment="Center"

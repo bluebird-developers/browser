@@ -27,9 +27,6 @@
                             <Hyperlink NavigateUri="https://aka.ms/webview">Microsoft.Web.WebView2</Hyperlink>
                         </Paragraph>
                         <Paragraph>
-                            <Hyperlink NavigateUri="https://github.com/JamesNK/Newtonsoft.Json">Newtonsoft.Json</Hyperlink>
-                            (MIT licence)</Paragraph>
-                        <Paragraph>
                             <Hyperlink NavigateUri="https://github.com/gus33000/SVSettingsControl">SVSettingsControl</Hyperlink>
                             (MIT licence)</Paragraph>
                         <Paragraph>

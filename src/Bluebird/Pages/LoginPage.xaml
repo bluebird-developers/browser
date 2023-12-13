@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid x:Name="AppTitleBar">
+        <Grid x:Name="AppTitleBar" Grid.Row="0">
             <Image
                 Width="26"
                 Height="26"
