@@ -199,6 +199,7 @@
                 PlaceholderText="Type here to search or enter url" />
         </Grid>
         <StackPanel
+            x:Name="Toolbar"
             Margin="0,0,18,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"

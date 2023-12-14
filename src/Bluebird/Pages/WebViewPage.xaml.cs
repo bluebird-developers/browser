@@ -145,11 +145,13 @@ public sealed partial class WebViewPage : Page
         {
             WindowManager.EnterFullScreen(true);
             UrlBoxWrapper.Visibility = Visibility.Collapsed;
+            Toolbar.Visibility = Visibility.Collapsed;
         }
         else
         {
             WindowManager.EnterFullScreen(false);
             UrlBoxWrapper.Visibility = Visibility.Visible;
+            Toolbar.Visibility = Visibility.Visible;
         }
     }
 
