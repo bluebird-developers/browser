@@ -21,7 +21,11 @@ public sealed partial class WebViewPage : Page
         }
         catch
         {
-            await UI.ShowDialog("Error", "WebView2 runtime is not installed!");
+            var result = await UI.ShowDialogWithAction("Error", "WebView2 Runtime is not installed which is required to display webpages", "Download WebView2 Runtime", "Close App");
+            if (result == ContentDialogResult.Primary)
+                await Launcher.LaunchUriAsync(new Uri("https://go.microsoft.com/fwlink/p/?LinkId=2124703"));
+            else
+                CoreApplication.Exit();
         }
     }
 
