@@ -21,7 +21,7 @@ public class FavoritesHelper
     public static async void CreateFirstFavorite(string title, string url)
     {
         // Generate json
-        string json = "[{\"title\":\"" + title + "\"," + "\"url\":\"" + url + "\"}]";
+        string json = "[{\"Title\":\"" + title + "\"," + "\"Url\":\"" + url + "\"}]";
         // create json file
         var file = await localFolder.CreateFileAsync("Favorites.json", CreationCollisionOption.ReplaceExisting);
         // write json to json file
@@ -71,7 +71,8 @@ public class FavoritesHelper
         else
         {
             string filecontent = await FileIO.ReadTextAsync((IStorageFile)fileData);
-            return JsonSerializer.Deserialize<ObservableCollection<FavoriteItems>>(filecontent);
+            ObservableCollection<FavoriteItems> Items = JsonSerializer.Deserialize<ObservableCollection<FavoriteItems>>(filecontent);
+            return Items;
         }
     }
 
