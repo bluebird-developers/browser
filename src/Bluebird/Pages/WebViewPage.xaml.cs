@@ -185,11 +185,6 @@ public sealed partial class WebViewPage : Page
             case "SelectAll":
                 await WebViewControl.CoreWebView2.ExecuteScriptAsync("document.execCommand(\"selectAll\");");
                 break;
-            case "ShowAddFavoriteFlyout":
-                FavoriteTitle.Text = WebViewControl.CoreWebView2.DocumentTitle;
-                FavoriteUrl.Text = WebViewControl.CoreWebView2.Source;
-                AddFavoriteFlyout.ShowAt(WebViewControl);
-                break;
             // text context menu
             case "OpenLnkInNewTab":
                 launchurl = LinkUri;
