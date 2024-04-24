@@ -67,7 +67,7 @@ public sealed partial class WebViewPage : Page
     private void CoreWebView2_NavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
     {
         UrlBox.Text = args.Uri != "https://bluebird-developers.github.io/ntp/" ? args.Uri : UrlBox.Text;
-        LoadingRing.IsActive = true;
+        LoadingBar.Visibility = Visibility.Visible;
     }
 
     private async void CoreWebView2_NavigationCompleted(CoreWebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
@@ -77,7 +77,7 @@ public sealed partial class WebViewPage : Page
             string jscript = await Modules.ForceDark.ForceDarkHelper.GetForceDarkScriptAsync();
             await sender.ExecuteScriptAsync(jscript);
         }
-        LoadingRing.IsActive = false;
+        LoadingBar.Visibility = Visibility.Collapsed;
     }
 
     private async void CoreWebView2_ScriptDialogOpening(CoreWebView2 sender, CoreWebView2ScriptDialogOpeningEventArgs args)

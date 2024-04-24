@@ -266,12 +266,6 @@
                 <FontIcon Glyph="&#xED14;" />
             </Button>
         </StackPanel>
-        <muxc:ProgressRing
-            x:Name="LoadingRing"
-            Width="40"
-            Height="40"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            IsActive="False" />
+        <muxc:ProgressBar x:Name="LoadingBar" HorizontalContentAlignment="Stretch" VerticalAlignment="Top" IsIndeterminate="True" />
     </Grid>
 </Page>
