@@ -37,7 +37,7 @@
                                     TextTrimming="CharacterEllipsis" />
                                 <TextBlock
                                     FontSize="12"
-                                    Foreground="{ThemeResource SystemAccentColorLight3}"
+                                    Foreground="{ThemeResource SystemAccentColorDark1}"
                                     Text="{Binding Url}"
                                     TextTrimming="CharacterEllipsis" />
                             </StackPanel>
