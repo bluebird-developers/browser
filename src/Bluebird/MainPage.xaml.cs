@@ -11,7 +11,7 @@ public sealed partial class MainPage : Page
         DataContext = ViewModels.SettingsViewModel.SettingsVM;
     }
 
-    private async void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
+    private void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
         BrowserMenuFlyout.Hide();
         switch ((sender as AppBarButton).Tag)
@@ -44,22 +44,6 @@ public sealed partial class MainPage : Page
                 break;
             case "Settings":
                 CreateTab("Settings", "\uE115", typeof(SettingsPage));
-                break;
-            case "Help":
-                // TODO: Add link to help site
-                break;
-            case "About":
-                Dialogs.AboutContentDialog aboutDialog = new();
-                var result = await aboutDialog.ShowAsync();
-                if (result == ContentDialogResult.Primary)
-                {
-                    CreateTab("Attributions", "\uE946", typeof(AttributionsPage));
-                }
-                else if (result == ContentDialogResult.Secondary)
-                {
-                    launchurl = "https://github.com/bluebird-developers/browser";
-                    CreateWebTab();
-                }
                 break;
         }
     }
