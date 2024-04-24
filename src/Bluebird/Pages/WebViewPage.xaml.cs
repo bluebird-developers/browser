@@ -209,7 +209,7 @@ public sealed partial class WebViewPage : Page
             case "Search":
                 string searchurl;
                 if (SearchUrl == null)
-                    searchurl = "https://lite.qwant.com/?q=";
+                    searchurl = "https://www.qwant.com/?q=";
                 else
                     searchurl = SearchUrl;
                 string link = searchurl + SelectionText;

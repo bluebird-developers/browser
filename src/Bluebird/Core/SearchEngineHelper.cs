@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bluebird.Core;
+﻿namespace Bluebird.Core;
 
 public class SearchEngineHelper
 {
@@ -19,7 +13,6 @@ public class SearchEngineHelper
         if (selection == "Google") SetEngine("Google", "https://www.google.com/search?q=");
         if (selection == "Startpage") SetEngine("Startpage", "https://www.startpage.com/search?q=");
         if (selection == "Qwant") SetEngine("Qwant", "https://www.qwant.com/?q=");
-        if (selection == "Qwant Lite") SetEngine("Qwant Lite", "https://lite.qwant.com/?q=");
         if (selection == "Yahoo!") SetEngine("Yahoo!", "https://search.yahoo.com/search?p=");
     }
 
@@ -41,7 +34,6 @@ public class SearchEngineHelper
             "Google",
             "Startpage",
             "Qwant",
-            "Qwant Lite",
             "Yahoo!"
     };
 }
