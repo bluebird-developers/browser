@@ -25,15 +25,15 @@ public class SearchEngineHelper
 
     public static List<string> SearchEngines = new()
     {
-            "Ask",
-            "Baidu",
-            "Bing",
-            "Brave Search",
-            "DuckDuckGo",
-            "Ecosia",
-            "Google",
-            "Startpage",
-            "Qwant",
-            "Yahoo!"
+        "Ask",
+        "Baidu",
+        "Bing",
+        "Brave Search",
+        "DuckDuckGo",
+        "Ecosia",
+        "Google",
+        "Startpage",
+        "Qwant",
+        "Yahoo!"
     };
 }

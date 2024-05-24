@@ -2,7 +2,6 @@
 
 public class UI
 {
-    // Show dialog
     public static async Task ShowDialog(string title, string content)
     {
         ContentDialog dialog = new()

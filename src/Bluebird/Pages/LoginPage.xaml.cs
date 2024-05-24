@@ -2,10 +2,7 @@
 
 public sealed partial class LoginPage : Page
 {
-    public LoginPage()
-    {
-        this.InitializeComponent();
-    }
+    public LoginPage() => this.InitializeComponent();
 
     private async void PasswordBox_KeyDown(object sender, KeyRoutedEventArgs e)
     {
@@ -18,7 +15,7 @@ public sealed partial class LoginPage : Page
                 if (passwordBox.Password == password)
                     Frame.Navigate(typeof(MainPage));
                 else
-                    await UI.ShowDialog("Error", "The password your entered is not correct");
+                    await UI.ShowDialog("Error", "The password is incorrect");
             }
         }
     }

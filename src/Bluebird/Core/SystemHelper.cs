@@ -4,17 +4,6 @@ namespace Bluebird.Core;
 
 public static class SystemHelper
 {
-    public static async void RestartApp()
-    {
-        AppRestartFailureReason result = await CoreApplication.RequestRestartAsync("restart");
-
-        if (result == AppRestartFailureReason.NotInForeground
-            || result == AppRestartFailureReason.Other)
-        {
-            await UI.ShowDialog("Error", "Couldn´t restart Bluebird, please close the app manually");
-        }
-    }
-
     public static void ShowShareUIURL(string title, string url)
     {
         var dt = DataTransferManager.GetForCurrentView();

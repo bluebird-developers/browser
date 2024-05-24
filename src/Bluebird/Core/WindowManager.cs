@@ -21,14 +21,13 @@ public class WindowManager
 
     public static void EnterFullScreen(bool fs)
     {
+        var view = ApplicationView.GetForCurrentView();
         if (fs)
         {
-            var view = ApplicationView.GetForCurrentView();
             view.TryEnterFullScreenMode();
         }
         else
         {
-            var view = ApplicationView.GetForCurrentView();
             view.ExitFullScreenMode();
         }
     }
