@@ -12,8 +12,21 @@
     <Page.Resources>
         <Flyout x:Name="FavoritesFlyout">
             <Grid Margin="-5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <FontIcon Grid.Column="0" Glyph="&#xE728;" />
+                    <TextBlock FontSize="20" Margin="5,0,0,0" Grid.Column="1" Text="Favorites" />
+                </Grid>
                 <ListView
                     x:Name="FavoritesListView"
+                    Grid.Row="1"
                     Width="300"
                     MaxHeight="500"
                     ItemsSource="{Binding FavoritesList}"
