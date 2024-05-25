@@ -192,7 +192,7 @@
             MinWidth="300"
             MaxWidth="600"
             Margin="10"
-            VerticalAlignment="{Binding UrlboxPos, Mode=OneWay}"
+            VerticalAlignment="Bottom"
             Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
             CornerRadius="5">
             <TextBox

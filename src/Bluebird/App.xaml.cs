@@ -38,11 +38,6 @@ sealed partial class App : Application
             ViewModels.SettingsViewModel.SettingsVM.IsTranslateEnabled = true;
         if (SettingsHelper.GetSetting("IsQRCodeGenEnabled") != "false")
             ViewModels.SettingsViewModel.SettingsVM.IsQRCodeGenEnabled = true;
-
-        if (SettingsHelper.GetSetting("UrlboxPos") == "Top")
-            ViewModels.SettingsViewModel.SettingsVM.UrlboxPos = VerticalAlignment.Top;
-        else
-            ViewModels.SettingsViewModel.SettingsVM.UrlboxPos = VerticalAlignment.Bottom;
     }
 
     protected override void OnActivated(IActivatedEventArgs args)
