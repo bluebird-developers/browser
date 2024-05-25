@@ -194,6 +194,10 @@ public sealed partial class WebViewPage : Page
             case "SaveAs":
                 await WebViewControl.CoreWebView2.ShowSaveAsUIAsync();
                 break;
+            case "Translate":
+                string url = WebViewControl.CoreWebView2.Source;
+                WebViewControl.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
+                break;
             // text context menu
             case "OpenLnkInNewTab":
                 launchurl = LinkUri;
@@ -301,10 +305,6 @@ public sealed partial class WebViewPage : Page
             case "ReadingMode":
                 string jscript = await Modules.Readability.ReadabilityHelper.GetReadabilityScriptAsync();
                 await WebViewControl.CoreWebView2.ExecuteScriptAsync(jscript);
-                break;
-            case "Translate":
-                string url = WebViewControl.CoreWebView2.Source;
-                WebViewControl.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
                 break;
             case "AddFavoriteFlyout":
                 FavoriteTitle.Text = WebViewControl.CoreWebView2.DocumentTitle;

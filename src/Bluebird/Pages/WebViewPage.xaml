@@ -74,6 +74,11 @@
                         <FontIcon Glyph="&#xE792;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
+                <AppBarButton Click="AppBarButton_Click" Label="Translate" Tag="Translate">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE775;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
                 <AppBarSeparator />
                 <AppBarButton Label="Advanced">
                     <AppBarButton.Icon>
@@ -248,12 +253,6 @@
                 Style="{StaticResource ToolbarButton}"
                 Tag="AddFavoriteFlyout">
                 <FontIcon Glyph="&#xE734;" />
-            </Button>
-            <Button
-                Click="ToolbarButton_Click"
-                Style="{StaticResource ToolbarButton}"
-                Tag="Translate">
-                <FontIcon Glyph="&#xE775;" />
             </Button>
             <Button
                 Click="ToolbarButton_Click"
