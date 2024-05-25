@@ -69,6 +69,11 @@
                         <FontIcon Glyph="&#xE14E;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
+                <AppBarButton Click="AppBarButton_Click" Label="Save as.." Tag="SaveAs">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE792;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
                 <AppBarSeparator />
                 <AppBarButton Label="Advanced">
                     <AppBarButton.Icon>

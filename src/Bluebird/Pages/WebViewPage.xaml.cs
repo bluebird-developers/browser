@@ -191,6 +191,9 @@ public sealed partial class WebViewPage : Page
             case "SelectAll":
                 await WebViewControl.CoreWebView2.ExecuteScriptAsync("document.execCommand(\"selectAll\");");
                 break;
+            case "SaveAs":
+                await WebViewControl.CoreWebView2.ShowSaveAsUIAsync();
+                break;
             // text context menu
             case "OpenLnkInNewTab":
                 launchurl = LinkUri;
