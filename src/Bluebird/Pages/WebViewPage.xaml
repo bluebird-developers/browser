@@ -198,7 +198,7 @@
             MaxWidth="600"
             Margin="10"
             VerticalAlignment="Bottom"
-            Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+            Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
             CornerRadius="5">
             <TextBox
                 x:Name="UrlBox"
@@ -213,7 +213,7 @@
             Margin="0,0,18,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
-            Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+            Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
             CornerRadius="7">
             <Button
                 Click="ToolbarButton_Click"
