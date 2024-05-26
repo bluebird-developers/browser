@@ -54,12 +54,6 @@ public sealed partial class WebViewPage : Page
 
     private void ApplyWebView2Settings(muxc.WebView2 sender)
     {
-        if (SettingsHelper.GetSetting("DisableJavaScript") is "true")
-            sender.CoreWebView2.Settings.IsScriptEnabled = false;
-        if (SettingsHelper.GetSetting("DisableGenAutoFill") is "true")
-            sender.CoreWebView2.Settings.IsGeneralAutofillEnabled = false;
-        if (SettingsHelper.GetSetting("DisablePassSave") is "true")
-            sender.CoreWebView2.Settings.IsPasswordAutosaveEnabled = false;
         sender.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = false;
         sender.CoreWebView2.Settings.UserAgent = $"{sender.CoreWebView2.Settings.UserAgent} Bluebird/{AppVersion.GetAppVersion()}";
     }
