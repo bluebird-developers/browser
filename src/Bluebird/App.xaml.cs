@@ -24,7 +24,8 @@ sealed partial class App : Application
 
     private void LoadSettings()
     {
-        SearchUrl = SettingsHelper.GetSetting("SearchUrl");
+        SearchUrl = SettingsHelper.GetSetting("SearchUrl") ?? "https://www.qwant.com/?q=";
+
         if (SettingsHelper.GetSetting("ForceDark") == "true")
             ViewModels.SettingsViewModel.SettingsVM.IsForceDarkEnabled = true;
         if (SettingsHelper.GetSetting("CompactTabs") == "true")

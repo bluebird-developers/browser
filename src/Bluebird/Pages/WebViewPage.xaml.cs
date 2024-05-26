@@ -214,12 +214,7 @@ public sealed partial class WebViewPage : Page
                 SystemHelper.ShowShareUIURL(SelectionText, LinkUri);
                 break;
             case "Search":
-                string searchurl;
-                if (SearchUrl == null)
-                    searchurl = "https://www.qwant.com/?q=";
-                else
-                    searchurl = SearchUrl;
-                string link = searchurl + SelectionText;
+                string link = SearchUrl + SelectionText;
                 launchurl = link;
                 MainPageContent.CreateWebTab();
                 break;
@@ -263,13 +258,7 @@ public sealed partial class WebViewPage : Page
                 NavigateToUrl(input.Trim());
             else
             {
-                string searchurl;
-                if (SearchUrl == null) searchurl = "https://lite.qwant.com/?q=";
-                else
-                {
-                    searchurl = SearchUrl;
-                }
-                string query = searchurl + input;
+                string query = SearchUrl + input;
                 NavigateToUrl(query);
             }
         }
