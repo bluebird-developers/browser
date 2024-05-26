@@ -47,6 +47,11 @@ public sealed partial class SettingsPage : Page
         SearchEngineHelper.SetSearchEngine(selection);
     }
 
+    private void ClearUserDataButton_Click(object sender, RoutedEventArgs e)
+    {
+        WebView2ProfileDataHelper.ClearAllProfileData();
+    }
+
     private void ForceDarkSwitch_Toggled(object sender, RoutedEventArgs e)
     {
         if (ForceDarkSwitch.IsOn)

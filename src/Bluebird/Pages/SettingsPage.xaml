@@ -35,6 +35,14 @@
             <toolkit:SettingsCard Header="Search engine" HeaderIcon="Find">
                 <ComboBox x:Name="SearchEngineSelector" />
             </toolkit:SettingsCard>
+            <!-- Data -->
+            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Personalization" />
+            <toolkit:SettingsCard Description="Clear all user data" Header="Clear data">
+                <toolkit:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xE74E;" />
+                </toolkit:SettingsCard.HeaderIcon>
+                <Button Content="Clear all data" Click="ClearUserDataButton_Click" />
+            </toolkit:SettingsCard>
             <!--  Personalization  -->
             <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Personalization" />
             <toolkit:SettingsCard Description="Force dark mode for all websites" Header="Force dark mode">
