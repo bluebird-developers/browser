@@ -244,6 +244,12 @@
             <Button
                 Click="ToolbarButton_Click"
                 Style="{StaticResource ToolbarButton}"
+                Tag="ToggleAISearchBox">
+                <TextBlock FontSize="20" Text="✨" />
+            </Button>
+            <Button
+                Click="ToolbarButton_Click"
+                Style="{StaticResource ToolbarButton}"
                 Tag="ReadingMode">
                 <FontIcon Glyph="&#xE736;" />
             </Button>
@@ -268,5 +274,18 @@
             </Button>
         </StackPanel>
         <muxc:ProgressBar x:Name="LoadingBar" HorizontalContentAlignment="Stretch" VerticalAlignment="Top" IsIndeterminate="True" />
+        <Grid x:Name="AISearchBoxWrapper" Visibility="Collapsed" CornerRadius="5" Padding="5" Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}" Height="70" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Margin="5" FontSize="20" Text="✨" />
+            <TextBox Grid.Column="1" Grid.Row="0" x:Name="AISearchBox" KeyDown="AISearchBox_KeyDown"  Height="40" FontSize="20" PlaceholderText="Ask ai.." />
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="powered by perplexity.ai" />
+        </Grid>
     </Grid>
 </Page>
