@@ -185,9 +185,9 @@ public sealed partial class WebViewPage : Page
             case "SelectAll":
                 await WebViewControl.CoreWebView2.ExecuteScriptAsync("document.execCommand(\"selectAll\");");
                 break;
-            case "SaveAs":
+            /*case "SaveAs":
                 await WebViewControl.CoreWebView2.ShowSaveAsUIAsync();
-                break;
+                break;*/
             case "Translate":
                 string url = WebViewControl.CoreWebView2.Source;
                 WebViewControl.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
