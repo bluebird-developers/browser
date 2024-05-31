@@ -67,7 +67,7 @@
             </toolkit:SettingsCard>
             <!--  About  -->
             <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
-            <toolkit:SettingsExpander Description="Your next-gen browser, brought to by Pinguin2001" Header="Bluebird">
+            <toolkit:SettingsExpander Description="Your next-gen browser" Header="Bluebird">
                 <toolkit:SettingsExpander.HeaderIcon>
                     <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Square44x44Logo.png" />
                 </toolkit:SettingsExpander.HeaderIcon>
