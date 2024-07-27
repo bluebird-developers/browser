@@ -256,7 +256,7 @@
       <Version>1.0.2592.51</Version>
     </PackageReference>
     <PackageReference Include="System.Text.Json">
-      <Version>8.0.3</Version>
+      <Version>8.0.4</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
