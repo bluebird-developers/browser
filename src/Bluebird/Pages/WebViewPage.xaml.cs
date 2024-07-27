@@ -185,9 +185,6 @@ public sealed partial class WebViewPage : Page
             case "SelectAll":
                 await WebViewControl.CoreWebView2.ExecuteScriptAsync("document.execCommand(\"selectAll\");");
                 break;
-            /*case "SaveAs":
-                await WebViewControl.CoreWebView2.ShowSaveAsUIAsync();
-                break;*/
             case "Translate":
                 string url = WebViewControl.CoreWebView2.Source;
                 WebViewControl.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
@@ -217,10 +214,23 @@ public sealed partial class WebViewPage : Page
         flyout.Hide();
     }
 
-    private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+    private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
         switch ((sender as MenuFlyoutItem).Tag)
         {
+            case "ExportAsPdf":
+                string websitetitle = WebViewControl.CoreWebView2.DocumentTitle;
+                using (IRandomAccessStream fileStream = await WebViewControl.CoreWebView2.PrintToPdfStreamAsync(null))
+                {
+                    using (var reader = new DataReader(fileStream.GetInputStreamAt(0)))
+                    {
+                        await reader.LoadAsync((uint)fileStream.Size);
+                        var buffer = new byte[(int)fileStream.Size];
+                        reader.ReadBytes(buffer);
+                        await FileHelper.SaveBytesAsFileAsync($"{websitetitle}.pdf", buffer);
+                    }
+                }
+                break;
             case "ViewSource":
                 launchurl = "view-source:" + WebViewControl.Source;
                 MainPageContent.CreateWebTab();

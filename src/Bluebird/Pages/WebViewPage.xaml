@@ -69,15 +69,26 @@
                         <FontIcon Glyph="&#xE14E;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
-                <!--<AppBarButton Click="AppBarButton_Click" Label="Save as.." Tag="SaveAs">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE792;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>-->
-                <AppBarButton Click="AppBarButton_Click" Label="Translate" Tag="Translate">
+                <AppBarButton
+                    Click="AppBarButton_Click"
+                    Label="Translate"
+                    Tag="Translate">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE775;" />
                     </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton Label="Export as..">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE792;" />
+                    </AppBarButton.Icon>
+                    <AppBarButton.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click"
+                                Tag="ExportAsPdf"
+                                Text="Export as pdf" />
+                        </MenuFlyout>
+                    </AppBarButton.Flyout>
                 </AppBarButton>
                 <AppBarSeparator />
                 <AppBarButton Label="Advanced">
@@ -275,18 +286,19 @@
         </StackPanel>
         <muxc:ProgressBar
             x:Name="LoadingBar"
-            HorizontalContentAlignment="Stretch"
             VerticalAlignment="Top"
+            HorizontalContentAlignment="Stretch"
             IsIndeterminate="True" />
-        <Grid x:Name="AISearchBoxWrapper"
-              Visibility="Collapsed"
-              CornerRadius="5"
-              Padding="5"
-              Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
-              Height="70"
-              Width="500"
-              VerticalAlignment="Center"
-              HorizontalAlignment="Center">
+        <Grid
+            x:Name="AISearchBoxWrapper"
+            Width="500"
+            Height="70"
+            Padding="5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
+            CornerRadius="5"
+            Visibility="Collapsed">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
@@ -296,22 +308,22 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <TextBlock
-                Grid.Column="0"
                 Grid.Row="0"
+                Grid.Column="0"
                 Margin="5"
                 FontSize="20"
                 Text="✨" />
             <TextBox
-                Grid.Column="1"
-                Grid.Row="0"
                 x:Name="AISearchBox"
-                KeyDown="AISearchBox_KeyDown"
+                Grid.Row="0"
+                Grid.Column="1"
                 Height="40"
                 FontSize="20"
+                KeyDown="AISearchBox_KeyDown"
                 PlaceholderText="Ask ai.." />
             <TextBlock
-                Grid.Column="1"
                 Grid.Row="1"
+                Grid.Column="1"
                 Text="powered by perplexity.ai" />
         </Grid>
     </Grid>
