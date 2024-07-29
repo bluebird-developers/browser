@@ -227,7 +227,7 @@ public sealed partial class WebViewPage : Page
                         await reader.LoadAsync((uint)fileStream.Size);
                         var buffer = new byte[(int)fileStream.Size];
                         reader.ReadBytes(buffer);
-                        await FileHelper.SaveBytesAsFileAsync($"{websitetitle}.pdf", buffer);
+                        await FileHelper.SaveBytesAsFileAsync($"{websitetitle}.pdf", buffer, "Portable Document File", ".pdf");
                     }
                 }
                 break;

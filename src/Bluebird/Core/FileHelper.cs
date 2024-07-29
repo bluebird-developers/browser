@@ -6,15 +6,17 @@ namespace Bluebird.Core;
 
 public class FileHelper
 {
-    public static async Task SaveBytesAsFileAsync(string fileName, byte[] buffer)
+    public static async Task SaveBytesAsFileAsync(string fileName, byte[] buffer, string filetypefriendlyname, string filetype)
     {
         // Create a file picker
-        FileSavePicker savePicker = new Windows.Storage.Pickers.FileSavePicker();
+        FileSavePicker savePicker = new()
+        {
+            // Set options for your file picker
+            SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+        };
 
-        // Set options for your file picker
-        savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
         // Dropdown of file types the user can save the file as
-        savePicker.FileTypeChoices.Add("PDF", new List<string>() { ".pdf" });
+        savePicker.FileTypeChoices.Add(filetypefriendlyname, new List<string>() { filetype });
         // Default file name if the user does not type one in or select a file to replace
         savePicker.SuggestedFileName = fileName;
 
@@ -42,7 +44,7 @@ public class FileHelper
             }
             else
             {
-                //SaveFileOutputTextBlock.Text = "File " + file.Name + " couldn't be saved.";
+                await UI.ShowDialog("Error", "File" + file.Name + " couldn't be saved.");
             }
         }
         else
