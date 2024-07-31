@@ -22,7 +22,11 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <FontIcon Grid.Column="0" Glyph="&#xE728;" />
-                    <TextBlock FontSize="20" Margin="5,0,0,0" Grid.Column="1" Text="Favorites" />
+                    <TextBlock
+                        Grid.Column="1"
+                        Margin="5,0,0,0"
+                        FontSize="20"
+                        Text="Favorites" />
                 </Grid>
                 <ListView
                     x:Name="FavoritesListView"
@@ -88,7 +92,7 @@
     </Page.Resources>
     <muxc:TabView
         x:Name="Tabs"
-        Margin="0,-7,0,0"
+        Margin="0,-8,0,0"
         VerticalAlignment="Stretch"
         AddTabButtonClick="Tabs_AddTabButtonClick"
         Background="Transparent"
