@@ -10,15 +10,19 @@
 ![Bluebird](images/heroimage.png)
 
 ## Features:
-- Blazingly fast
-- Low ram usage
 - Browse the web
+- Responsive UI and quick startup time
 - Reading mode
 - Force dark mode for all websites
+- Quick shortcuts on new tab page
 - Translate websites
 - Password lock
+- Export page to pdf (version 5.1 and newer)
 
-Check the app out to see them all! 
+### Upcoming:
+- Timeline
+
+Check the app out to see them in action! 
 
 ## Building from source
 
@@ -33,7 +37,7 @@ git clone https://github.com/bluebird-developers/browser.git
 ```
 
 ### 3. Build the app
-In the newly cloned folder, navigate into the src folder and open Bluebird.sln
+In the newly cloned folder, navigate into the src folder and open Bluebird.slnx
 On the top, select your configuration and platform and click on the play icon.
 Now VS should start building the app and will start it shortly.
 
