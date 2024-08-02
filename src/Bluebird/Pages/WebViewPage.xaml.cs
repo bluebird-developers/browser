@@ -290,6 +290,7 @@ public sealed partial class WebViewPage : Page
         WebViewControl.CoreWebView2.Navigate(uri);
     }
 
+    byte[] QrCode;
     private async void ToolbarButton_Click(object sender, RoutedEventArgs e)
     {
         switch((sender as Button).Tag)
@@ -323,10 +324,16 @@ public sealed partial class WebViewPage : Page
                 WebViewControl.CoreWebView2.OpenDefaultDownloadDialog();
                 break;
             case "GenQRCode":
-                BitmapImage QrCode = await QRCodeHelper.GenerateQRCodeFromUrlAsync(WebViewControl.CoreWebView2.Source);
-                QRCodeImage.Source = QrCode;
+                QrCode = await QRCodeHelper.GenerateQRCodeFromUrlAsync(WebViewControl.CoreWebView2.Source);
+                BitmapImage QrCodeImage = await QRCodeHelper.ConvertBitmapBytesToImage(QrCode);
+                QRCodeImage.Source = QrCodeImage;
                 QRCodeFlyout.ShowAt(sender as Button);
                 break;
         }
+    }
+
+    private async void QRCodeButton_Click(object sender, RoutedEventArgs e)
+    {
+        await FileHelper.SaveBytesAsFileAsync("QRCode", QrCode, "Bitmap", ".bmp");
     }
 }

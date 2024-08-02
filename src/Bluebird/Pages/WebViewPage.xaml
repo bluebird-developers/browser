@@ -25,10 +25,34 @@
             </StackPanel>
         </Flyout>
         <Flyout x:Name="QRCodeFlyout" Placement="Left">
-            <Image
-                x:Name="QRCodeImage"
-                Width="160"
-                Height="160" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid CornerRadius="5">
+                    <Image
+                        x:Name="QRCodeImage"
+                        Grid.Row="0"
+                        Width="160"
+                        Height="160" />
+                </Grid>
+                <StackPanel
+                    Grid.Row="1"
+                    Margin="0,10,0,-5"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <FontIcon
+                        Margin="0,0,10,0"
+                        Glyph="&#xE946;"
+                        ToolTipService.ToolTip="To scan this code, you can use a QR scanner app on your phone, or a special app on another device." />
+                    <Button Click="QRCodeButton_Click">
+                        <Button.Content>
+                            <FontIcon Glyph="&#xE792;" />
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Grid>
         </Flyout>
         <muxc:CommandBarFlyout
             x:Name="PageContextMenu"
