@@ -1,4 +1,6 @@
-﻿namespace Bluebird.Core
+﻿using Bluebird.ViewModels;
+
+namespace Bluebird.Core
 {
     public static class WebView2ProfileDataHelper
     {
@@ -12,8 +14,8 @@
                 await profile.ClearBrowsingDataAsync();
             }
             HeadlessWebView2.Close();
-            StorageFile file = await localFolder.GetFileAsync("Favorites.json");
-            await file.DeleteAsync();
+            await FileHelper.DeleteLocalFile("Favorites.json");
+            SettingsViewModel.SettingsVM.FavoritesList.Clear();
         }
     }
 }
