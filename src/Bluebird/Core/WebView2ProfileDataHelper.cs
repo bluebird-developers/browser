@@ -16,6 +16,8 @@ namespace Bluebird.Core
             HeadlessWebView2.Close();
             await FileHelper.DeleteLocalFile("Favorites.json");
             SettingsViewModel.SettingsVM.FavoritesList.Clear();
+
+            await UI.ShowDialog("Info", "User data was cleared");
         }
     }
 }
