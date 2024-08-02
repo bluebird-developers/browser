@@ -37,14 +37,11 @@ public class FileHelper
             if (status == FileUpdateStatus.Complete)
             {
                 //SaveFileOutputTextBlock.Text = "File " + file.Name + " was saved.";
-            }
-            else if (status == FileUpdateStatus.CompleteAndRenamed)
-            {
-                //SaveFileOutputTextBlock.Text = "File " + file.Name + " was renamed and saved.";
+                NotificationHelper.NotifyUser("Success", "File " +  file.Name + " was saved to\n" + file.Path);
             }
             else
             {
-                await UI.ShowDialog("Error", "File" + file.Name + " couldn't be saved.");
+                await UI.ShowDialog("Error", "File " + file.Name + " couldn't be saved.");
             }
         }
         else
