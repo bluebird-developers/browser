@@ -6,14 +6,29 @@ public static class IconHelper
     {
         try
         {
-            Uri faviconUrl = new(url);
-            muxc.BitmapIconSource iconsource = new() { UriSource = faviconUrl, ShowAsMonochrome = false };
-            return iconsource;
+            if (url != string.Empty)
+            {
+                Uri faviconUrl = new(url);
+                muxc.BitmapIconSource iconsource = new() { UriSource = faviconUrl, ShowAsMonochrome = false };
+                return iconsource;
+            }
+            else
+            {
+                return GetFallbackFavicon();
+            }
         }
         catch
         {
-            muxc.IconSource iconsource = new muxc.SymbolIconSource() { Symbol = Symbol.Document };
-            return iconsource;
+#if DEBUG
+            System.Diagnostics.Debug.WriteLine("URL:" + url);
+#endif
+            return GetFallbackFavicon();
         }
+    }
+
+    private static muxc.IconSource GetFallbackFavicon()
+    {
+        muxc.IconSource iconsource = new muxc.SymbolIconSource() { Symbol = Symbol.Document };
+        return iconsource;
     }
 }
