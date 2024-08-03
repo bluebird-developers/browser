@@ -1,11 +1,15 @@
 <div align="center">
   <img src="src/Bluebird/Assets/Square44x44Logo.scale-200.png" height="75" width="75" />
-  <h2>Bluebird</h2>
-  <a>Your next-gen webbrowser</a>
+  <p style="font-size:25px;">Bluebird</p>
 </div>
 
 ## Download
-<a href="https://www.microsoft.com/store/productId/9PNXW61T4T0V"><img src="https://raw.githubusercontent.com/Pinguin2001/Bluebird-Browser/main/images/msstorebadge.png" /></a>
+<div style="display:flex;">
+  <a href="https://www.microsoft.com/store/productId/9PNXW61T4T0V" target="_blank"><img src="images/msstorebadge.png" /></a>
+
+  <a href="https://bluebird-developers.github.io/releases/bluebird.appinstaller" target="_blank"><img src="images/ghreleasesbadge.png" /></a>
+</div>
+
 
 ![Bluebird](images/heroimage.png)
 
@@ -17,6 +21,7 @@
 - Quick shortcuts on new tab page
 - Translate websites
 - Password lock
+- Generate QRCode for website
 - Export page to pdf (version 5.1 and newer)
 
 ### Upcoming:
