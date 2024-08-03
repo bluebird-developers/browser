@@ -1,15 +1,10 @@
 <div align="center">
   <img src="src/Bluebird/Assets/Square44x44Logo.scale-200.png" height="75" width="75" />
-  <p style="font-size:25px;">Bluebird</p>
+  <h3>Bluebird</h3>
 </div>
 
 ## Download
-<div style="display:flex;">
-  <a href="https://www.microsoft.com/store/productId/9PNXW61T4T0V" target="_blank"><img src="images/msstorebadge.png" /></a>
-
-  <a href="https://bluebird-developers.github.io/releases/bluebird.appinstaller" target="_blank"><img src="images/ghreleasesbadge.png" /></a>
-</div>
-
+<a href="https://www.microsoft.com/store/productId/9PNXW61T4T0V" target="_blank"><img src="images/msstorebadge.png" /></a> <a href="https://bluebird-developers.github.io/releases/bluebird.appinstaller" target="_blank"><img src="images/ghreleasesbadge.png" /></a>
 
 ![Bluebird](images/heroimage.png)
 
