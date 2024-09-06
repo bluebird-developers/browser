@@ -14,6 +14,7 @@ public class SearchEngineHelper
         if (selection == "Startpage") SetEngine("Startpage", "https://www.startpage.com/search?q=");
         if (selection == "Qwant") SetEngine("Qwant", "https://www.qwant.com/?q=");
         if (selection == "Yahoo!") SetEngine("Yahoo!", "https://search.yahoo.com/search?p=");
+        if (selection == "Yandex") SetEngine("Yandex", "https://yandex.com/search/?text=");
     }
 
     private static void SetEngine(string EngineFriendlyName, string SearchUrl)
@@ -34,6 +35,7 @@ public class SearchEngineHelper
         "Google",
         "Startpage",
         "Qwant",
-        "Yahoo!"
+        "Yahoo!",
+        "Yandex"
     };
 }
