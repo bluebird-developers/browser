@@ -47,9 +47,18 @@ public sealed partial class SettingsPage : Page
         SearchEngineHelper.SetSearchEngine(selection);
     }
 
-    private void ClearUserDataButton_Click(object sender, RoutedEventArgs e)
+    private async void ClearUserDataButton_Click(object sender, RoutedEventArgs e)
     {
-        WebView2ProfileDataHelper.ClearAllProfileData();
+        var result = await UI.ShowDialogWithAction($"Question", "Do you really want to clear all user data?", "Yes", "No");
+        if (result == ContentDialogResult.Primary)
+        {
+            ClearUserDataProgressRing.IsActive = true;
+            ClearUserDataBtn.IsEnabled = false;
+            await WebView2ProfileDataHelper.ClearAllProfileDataAsync();
+            ClearUserDataProgressRing.IsActive = false;
+            ClearUserDataBtn.IsEnabled = true;
+            await UI.ShowDialog("Info", "User data was cleared");
+        }
     }
 
     private void ForceDarkSwitch_Toggled(object sender, RoutedEventArgs e)

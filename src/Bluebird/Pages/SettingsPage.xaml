@@ -35,13 +35,23 @@
             <toolkit:SettingsCard Header="Search engine" HeaderIcon="Find">
                 <ComboBox x:Name="SearchEngineSelector" />
             </toolkit:SettingsCard>
-            <!-- Data -->
+            <!--  Data  -->
             <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Personalization" />
             <toolkit:SettingsCard Description="Clear all user data" Header="Clear data">
                 <toolkit:SettingsCard.HeaderIcon>
                     <FontIcon Glyph="&#xE74E;" />
                 </toolkit:SettingsCard.HeaderIcon>
-                <Button Content="Clear all data" Click="ClearUserDataButton_Click" />
+                <Grid>
+                    <muxc:ProgressRing
+                        x:Name="ClearUserDataProgressRing"
+                        Width="25"
+                        Height="25"
+                        IsActive="False" />
+                    <Button
+                        x:Name="ClearUserDataBtn"
+                        Click="ClearUserDataButton_Click"
+                        Content="Clear all data" />
+                </Grid>
             </toolkit:SettingsCard>
             <!--  Personalization  -->
             <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Personalization" />
@@ -98,14 +108,13 @@
                             <HyperlinkButton Content="Microsoft.Web.WebView2" NavigateUri="https://aka.ms/webview" />
                         </StackPanel>
                     </toolkit:SettingsCard>
-                    <toolkit:SettingsCard 
+                    <toolkit:SettingsCard
                         HorizontalContentAlignment="Left"
                         ContentAlignment="Vertical"
                         Header="Attributions">
                         <RichTextBlock>
                             <Paragraph>
-                                Bluebird icon created by
-                                <Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
+                                Bluebird icon created by <Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
                             </Paragraph>
                         </RichTextBlock>
                     </toolkit:SettingsCard>

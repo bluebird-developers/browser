@@ -4,7 +4,7 @@ namespace Bluebird.Core
 {
     public static class WebView2ProfileDataHelper
     {
-        public static async void ClearAllProfileData()
+        public static async Task ClearAllProfileDataAsync()
         {
             muxc.WebView2 HeadlessWebView2 = new();
             await HeadlessWebView2.EnsureCoreWebView2Async();
@@ -16,8 +16,6 @@ namespace Bluebird.Core
             HeadlessWebView2.Close();
             await FileHelper.DeleteLocalFile("Favorites.json");
             SettingsViewModel.SettingsVM.FavoritesList.Clear();
-
-            await UI.ShowDialog("Info", "User data was cleared");
         }
     }
 }
