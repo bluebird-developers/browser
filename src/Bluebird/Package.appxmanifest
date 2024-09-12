@@ -50,12 +50,6 @@
       </uap:VisualElements>
 		<Extensions>
 			<uap:Extension Category="windows.protocol">
-				<uap:Protocol Name="bluebird">
-					<uap:DisplayName>Bluebird internal protocol</uap:DisplayName>
-					<uap:Logo>Assets/FileIcons/link.png</uap:Logo>
-				</uap:Protocol>
-			</uap:Extension>
-			<uap:Extension Category="windows.protocol">
 				<uap:Protocol Name="http">
 					<uap:DisplayName>Bluebird</uap:DisplayName>
 					<uap:Logo>Assets/FileIcons/link.png</uap:Logo>
