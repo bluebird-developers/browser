@@ -64,9 +64,22 @@ public sealed partial class MainPage : Page
         CreateWebTab();
     }
 
-    private void Tabs_AddTabButtonClick(muxc.TabView sender, object args)
+    private void NewTabButton_Click(muxc.SplitButton sender, muxc.SplitButtonClickEventArgs args)
     {
         CreateWebTab();
+    }
+
+    private void NewTabFlyoutItem_Click(object sender, RoutedEventArgs e)
+    {
+        switch ((sender as MenuFlyoutItem).Tag)
+        {
+            case "NewTab":
+                CreateWebTab();
+                break;
+            case "NewSplitTab":
+                CreateTab("New split tab", "\uF57C", typeof(SplitTabPage));
+                break;
+        }
     }
 
     public void CreateWebTab()
