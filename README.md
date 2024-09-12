@@ -19,17 +19,14 @@
 - Generate QRCode for website
 - Export page to pdf (version 5.1 and newer)
 
-### Upcoming:
-- Timeline
-
 Check the app out to see them in action! 
 
 ## Building from source
 
 ### 1. Prerequisites
-- Visual Studio 2022
-- Windows 11 SDK (10.0.22621.0)
-- UWP Workload
+- Visual Studio 2022, version 17.11 or newer
+- Windows 11 SDK (10.0.26100.0)
+- Windows Application Workload + Universal Windows Platform Tools
 
 ### 2. Clone the repository
 ```batch
@@ -37,10 +34,9 @@ git clone https://github.com/bluebird-developers/browser.git
 ```
 
 ### 3. Build the app
-In the newly cloned folder, navigate into the src folder and open Bluebird.slnx
+In the newly cloned folder, navigate into the src folder and open Bluebird.sln
 On the top, select your configuration and platform and click on the play icon.
 Now VS should start building the app and will start it shortly.
-
 
 ## License
 GPL v3.0
