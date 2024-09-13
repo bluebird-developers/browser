@@ -11,25 +11,18 @@ public sealed partial class MainPage : Page
         DataContext = ViewModels.SettingsViewModel.SettingsVM;
     }
 
-    private void MoreFlyoutItem_Click(object sender, RoutedEventArgs e)
+    private void BrowserMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
-        BrowserMenuFlyout.Hide();
-        switch ((sender as AppBarButton).Tag)
+        //BrowserMenuFlyout.Hide();
+        switch ((sender as MenuFlyoutItem).Tag)
         {
-            case "NewTab":
-                CreateWebTab();
-                break;
-            case "NewSplitTab":
-                CreateTab("New split tab", "\uF57C", typeof(SplitTabPage));
-                break;
-            case "NewWindow":
-                break;
             case "Downloads":
                 launchurl = "edge://downloads";
                 CreateTab("Downloads", "\uE896", typeof(WebViewPage));
                 break;
             case "Favorites":
                 FavoritesFlyout.ShowAt(BrowserMenuBtn);
+                FavoritesListView.SelectedItem = null;
                 break;
             case "History":
                 launchurl = "edge://history";

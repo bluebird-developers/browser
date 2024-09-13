@@ -107,63 +107,65 @@
                 Style="{StaticResource ToolbarButton}">
                 <FontIcon Glyph="&#xE10C;" />
                 <Button.Flyout>
-                    <muxc:CommandBarFlyout
-                        x:Name="BrowserMenuFlyout"
-                        AlwaysExpanded="True"
-                        Placement="Bottom">
-                        <AppBarButton
-                            Click="MoreFlyoutItem_Click"
-                            Icon="Add"
-                            Tag="NewTab"
-                            ToolTipService.ToolTip="New tab" />
-                        <AppBarButton
-                            Click="MoreFlyoutItem_Click"
-                            Tag="NewSplitTab"
-                            ToolTipService.ToolTip="New split tab">
-                            <AppBarButton.Icon>
-                                <FontIcon Glyph="&#xF57C;" />
-                            </AppBarButton.Icon>
-                        </AppBarButton>
-                        <AppBarButton
-                            Click="MoreFlyoutItem_Click"
+                    <MenuFlyout Placement="Bottom">
+                        <MenuFlyoutSubItem Text="New tab..">
+                            <MenuFlyoutSubItem.Icon>
+                                <FontIcon Glyph="&#xEC6C;" />
+                            </MenuFlyoutSubItem.Icon>
+                            <MenuFlyoutItem
+                                Click="NewTabFlyoutItem_Click"
+                                Tag="NewTab"
+                                Text="New tab">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xEC6C;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem
+                                Click="NewTabFlyoutItem_Click"
+                                Tag="NewSplitTab"
+                                Text="New split tab">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xF57C;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuFlyoutSubItem>
+                        <MenuFlyoutItem
+                            Click="BrowserMenuFlyoutItem_Click"
                             Icon="Download"
                             Tag="Downloads"
-                            ToolTipService.ToolTip="Downloads" />
-                        <AppBarButton
-                            Click="MoreFlyoutItem_Click"
+                            Text="Downloads" />
+                        <MenuFlyoutItem
+                            Click="BrowserMenuFlyoutItem_Click"
                             Tag="Favorites"
-                            ToolTipService.ToolTip="Favorites">
-                            <AppBarButton.Icon>
+                            Text="Favorites">
+                            <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE728;" />
-                            </AppBarButton.Icon>
-                        </AppBarButton>
-                        <muxc:CommandBarFlyout.SecondaryCommands>
-                            <AppBarButton
-                                Click="MoreFlyoutItem_Click"
-                                Label="History"
-                                Tag="History"
-                                ToolTipService.ToolTip="History">
-                                <AppBarButton.Icon>
-                                    <FontIcon Glyph="&#xE81C;" />
-                                </AppBarButton.Icon>
-                            </AppBarButton>
-                            <AppBarSeparator />
-                            <AppBarButton
-                                Click="MoreFlyoutItem_Click"
-                                Label="Fullscreen"
-                                Tag="Fullscreen">
-                                <AppBarButton.Icon>
-                                    <FontIcon Glyph="&#xE1D9;" />
-                                </AppBarButton.Icon>
-                            </AppBarButton>
-                            <AppBarSeparator />
-                            <AppBarButton
-                                Click="MoreFlyoutItem_Click"
-                                Icon="Setting"
-                                Label="Settings"
-                                Tag="Settings" />
-                        </muxc:CommandBarFlyout.SecondaryCommands>
-                    </muxc:CommandBarFlyout>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem
+                            Click="BrowserMenuFlyoutItem_Click"
+                            Tag="History"
+                            Text="History">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE81C;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutSeparator />
+                        <MenuFlyoutItem
+                            Click="BrowserMenuFlyoutItem_Click"
+                            Tag="Fullscreen"
+                            Text="Fullscreen">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE1D9;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutSeparator />
+                        <MenuFlyoutItem
+                            Click="BrowserMenuFlyoutItem_Click"
+                            Icon="Setting"
+                            Tag="Settings"
+                            Text="Settings" />
+                    </MenuFlyout>
                 </Button.Flyout>
             </Button>
         </muxc:TabView.TabStripHeader>
