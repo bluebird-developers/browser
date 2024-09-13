@@ -219,13 +219,11 @@
         </muxc:CommandBarFlyout>
     </Page.Resources>
     <Grid>
-        <Grid CornerRadius="7">
-            <muxc:WebView2
-                x:Name="WebViewControl"
-                x:FieldModifier="public"
-                CoreWebView2Initialized="WebViewControl_CoreWebView2Initialized"
-                Loaded="WebViewControl_Loaded" />
-        </Grid>
+        <muxc:WebView2
+            x:Name="WebViewControl"
+            x:FieldModifier="public"
+            CoreWebView2Initialized="WebViewControl_CoreWebView2Initialized"
+            Loaded="WebViewControl_Loaded" />
         <Grid
             x:Name="UrlBoxWrapper"
             Height="32"
