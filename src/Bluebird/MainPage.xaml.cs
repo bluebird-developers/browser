@@ -13,7 +13,6 @@ public sealed partial class MainPage : Page
 
     private void BrowserMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
-        //BrowserMenuFlyout.Hide();
         switch ((sender as MenuFlyoutItem).Tag)
         {
             case "Downloads":
@@ -144,11 +143,9 @@ public sealed partial class MainPage : Page
     #region Favorites flyout
     private void FavoritesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        // Get listview sender
         ListView listView = sender as ListView;
         if (listView.SelectedItem != null)
         {
-            // Get selected item
             FavoriteItems item = (FavoriteItems)listView.SelectedItem;
             CreateWebTab(item.Url);
             FavoritesFlyout.Hide();

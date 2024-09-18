@@ -9,7 +9,7 @@ namespace Bluebird.Core
 {
     internal class NotificationHelper
     {
-        public static async void NotifyUser(string header, string content)
+        public static void NotifyUser(string header, string content)
         {
             var builder = new ToastContentBuilder()
                 .AddText(header)
