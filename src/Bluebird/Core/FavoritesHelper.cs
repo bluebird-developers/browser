@@ -1,8 +1,14 @@
 ﻿using Bluebird.ViewModels;
 using System.Collections.ObjectModel;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Bluebird.Core;
+
+[JsonSerializable(typeof(ObservableCollection<FavoriteItems>))]
+public partial class MyJsonSerializerContext : JsonSerializerContext
+{
+}
 
 public class FavoriteItems
 {
@@ -71,7 +77,7 @@ public class FavoritesHelper
         else
         {
             string filecontent = await FileIO.ReadTextAsync((IStorageFile)fileData);
-            ObservableCollection<FavoriteItems> Items = JsonSerializer.Deserialize<ObservableCollection<FavoriteItems>>(filecontent);
+            ObservableCollection<FavoriteItems> Items = JsonSerializer.Deserialize(filecontent, MyJsonSerializerContext.Default.ObservableCollectionFavoriteItems);
             return Items;
         }
     }
@@ -86,7 +92,7 @@ public class FavoritesHelper
         else
         {
             // Convert list to json
-            string newJson = JsonSerializer.Serialize(SettingsViewModel.SettingsVM.FavoritesList);
+            string newJson = JsonSerializer.Serialize(SettingsViewModel.SettingsVM.FavoritesList, MyJsonSerializerContext.Default.ObservableCollectionFavoriteItems);
             // Write json to json file
             await FileIO.WriteTextAsync((IStorageFile)fileData, newJson);
         }
