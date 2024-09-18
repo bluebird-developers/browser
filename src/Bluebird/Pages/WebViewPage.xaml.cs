@@ -1,11 +1,26 @@
-﻿namespace Bluebird.Pages;
+﻿using Windows.UI.Xaml.Navigation;
+
+namespace Bluebird.Pages;
 
 public sealed partial class WebViewPage : Page
 {
+    private string launchurl;
     public WebViewPage()
     {
         this.InitializeComponent();
         DataContext = ViewModels.SettingsViewModel.SettingsVM;
+    }
+
+    protected override void OnNavigatedTo(NavigationEventArgs e)
+    {
+        base.OnNavigatedTo(e);
+
+        if (e.Parameter != null)
+        {
+            var parameters = (WebTabCreationParams)e.Parameter;
+
+            launchurl = parameters.Url;
+        }
     }
 
     private void UrlBox_Loaded(object sender, RoutedEventArgs e)
@@ -86,8 +101,7 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_NewWindowRequested(CoreWebView2 sender, CoreWebView2NewWindowRequestedEventArgs args)
     {
-        launchurl = args.Uri;
-        MainPageContent.CreateWebTab();
+        MainPageContent.CreateWebTab(args.Uri);
         args.Handled = true;
     }
 
@@ -191,8 +205,7 @@ public sealed partial class WebViewPage : Page
                 break;
             // text context menu
             case "OpenLnkInNewTab":
-                launchurl = LinkUri;
-                MainPageContent.CreateWebTab();
+                MainPageContent.CreateWebTab(LinkUri);
                 break;
             case "Copy":
                 SystemHelper.WriteStringToClipboard(LinkUri);
@@ -206,8 +219,7 @@ public sealed partial class WebViewPage : Page
                 break;
             case "Search":
                 string link = SearchUrl + SelectionText;
-                launchurl = link;
-                MainPageContent.CreateWebTab();
+                MainPageContent.CreateWebTab(link);
                 break;
         }
         var flyout = FlyoutBase.GetAttachedFlyout(WebViewControl);
@@ -232,8 +244,7 @@ public sealed partial class WebViewPage : Page
                 }
                 break;
             case "ViewSource":
-                launchurl = "view-source:" + WebViewControl.Source;
-                MainPageContent.CreateWebTab();
+                MainPageContent.CreateWebTab("view-source:" + WebViewControl.Source);
                 break;
             case "DevTools":
                 WebViewControl.CoreWebView2.OpenDevToolsWindow();

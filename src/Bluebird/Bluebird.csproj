@@ -109,8 +109,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\AppStartupHelper.cs" />
     <Compile Include="Core\NotificationHelper.cs" />
     <Compile Include="Core\QRCodeHelper.cs" />
+    <Compile Include="Core\WebTabCreationParams.cs" />
     <Compile Include="Core\WebView2ProfileDataHelper.cs" />
     <Compile Include="Dialogs\PasswordContentDialog.xaml.cs">
       <DependentUpon>PasswordContentDialog.xaml</DependentUpon>

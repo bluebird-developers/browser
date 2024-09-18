@@ -17,16 +17,22 @@ public sealed partial class MainPage : Page
         switch ((sender as MenuFlyoutItem).Tag)
         {
             case "Downloads":
-                launchurl = "edge://downloads";
-                CreateTab("Downloads", "\uE896", typeof(WebViewPage));
+                WebTabCreationParams downloadParameter = new()
+                {
+                    Url = "edge://downloads"
+                };
+                CreateTab("Downloads", "\uE896", typeof(WebViewPage), downloadParameter);
                 break;
             case "Favorites":
                 FavoritesFlyout.ShowAt(BrowserMenuBtn);
                 FavoritesListView.SelectedItem = null;
                 break;
             case "History":
-                launchurl = "edge://history";
-                CreateTab("History", "\uE81C", typeof(WebViewPage));
+                WebTabCreationParams historyParameter = new()
+                {
+                    Url = "edge://history"
+                };
+                CreateTab("History", "\uE81C", typeof(WebViewPage), historyParameter);
                 break;
             case "Fullscreen":
                 var view = ApplicationView.GetForCurrentView();
@@ -54,6 +60,12 @@ public sealed partial class MainPage : Page
 
     private void Tabs_Loaded(object sender, RoutedEventArgs e)
     {
+        string startupurl = AppStartupHelper.GetStartupUrl();
+        if (startupurl != null)
+        {
+            CreateWebTab(startupurl);
+            return;
+        }
         CreateWebTab();
     }
 
@@ -75,12 +87,22 @@ public sealed partial class MainPage : Page
         }
     }
 
-    public void CreateWebTab()
+    public void CreateWebTab(string url = null)
     {
+        if (url != null)
+        {
+            WebTabCreationParams parameters = new()
+            {
+                Url = url
+            };
+            CreateTab("New tab", "\uEC6C", typeof(WebViewPage), parameters);
+            return;
+        }
+
         CreateTab("New tab", "\uEC6C", typeof(WebViewPage));
     }
 
-    public void CreateTab(string header, string glyph, Type page)
+    public void CreateTab(string header, string glyph, Type page, WebTabCreationParams parameters = null)
     {
         Frame frame = new();
         muxc.TabViewItem newItem = new()
@@ -89,7 +111,11 @@ public sealed partial class MainPage : Page
             IconSource = new muxc.FontIconSource { FontFamily = new Windows.UI.Xaml.Media.FontFamily("Segoe MDL2 Assets"), Glyph = glyph },
             Content = frame,
         };
-        frame.Navigate(page);
+        if (parameters != null)
+            frame.Navigate(page, parameters);
+        else
+            frame.Navigate(page);
+        
         Tabs.TabItems.Add(newItem);
         Tabs.SelectedItem = newItem;
     }
@@ -124,8 +150,7 @@ public sealed partial class MainPage : Page
         {
             // Get selected item
             FavoriteItems item = (FavoriteItems)listView.SelectedItem;
-            launchurl = item.Url;
-            CreateWebTab();
+            CreateWebTab(item.Url);
             FavoritesFlyout.Hide();
         }
     }

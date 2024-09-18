@@ -39,8 +39,7 @@ sealed partial class App : Application
         if (args.Kind == ActivationKind.Protocol)
         {
             ProtocolActivatedEventArgs eventArgs = args as ProtocolActivatedEventArgs;
-            string URI = eventArgs.Uri.ToString();
-            launchurl = URI;
+            StartupUrl = eventArgs.Uri.ToString();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -65,7 +64,7 @@ sealed partial class App : Application
             }
             else
             {
-                MainPageContent.CreateWebTab();
+                MainPageContent.CreateWebTab(StartupUrl);
             }
         }
     }

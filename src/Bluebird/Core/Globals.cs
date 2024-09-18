@@ -12,7 +12,5 @@ public class Globals
 
     public static string HomepageUrl { get; set; }
     public static string SearchUrl { get; set; }
-
-    // Varible which defines which url should be launched when a new tab is created
-    public static string launchurl { get; set; }
+    public static string StartupUrl { get; set; }
 }
