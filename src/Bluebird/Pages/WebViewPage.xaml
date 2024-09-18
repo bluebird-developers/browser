@@ -129,14 +129,16 @@
                                     <FontIcon Glyph="&#xE943;" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem
+                            <!--  Disabled due to UWP apps not being allowed to use WebView2 DevTools  -->
+                            <!--  It is being kept for a potential migration to WinUI or another platform  -->
+                            <!--<MenuFlyoutItem
                                 Click="MenuFlyoutItem_Click"
                                 Tag="DevTools"
                                 Text="DevTools">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xEC7A;" />
                                 </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
+                            </MenuFlyoutItem>-->
                             <MenuFlyoutItem
                                 Click="MenuFlyoutItem_Click"
                                 Tag="TaskManager"

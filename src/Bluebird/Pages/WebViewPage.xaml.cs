@@ -246,9 +246,9 @@ public sealed partial class WebViewPage : Page
             case "ViewSource":
                 MainPageContent.CreateWebTab("view-source:" + WebViewControl.Source);
                 break;
-            case "DevTools":
+            /*case "DevTools":
                 WebViewControl.CoreWebView2.OpenDevToolsWindow();
-                break;
+                break;*/
             case "TaskManager":
                 WebViewControl.CoreWebView2.OpenTaskManagerWindow();
                 break;
