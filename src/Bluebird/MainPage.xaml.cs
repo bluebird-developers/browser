@@ -136,7 +136,7 @@ public sealed partial class MainPage : Page
     {
         if (sender.TabItems.Count == 0)
         {
-            CoreApplication.Exit();
+            Application.Current.Exit();
         }
     }
 
