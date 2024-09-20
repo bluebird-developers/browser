@@ -108,27 +108,6 @@
                 <FontIcon Glyph="&#xE10C;" />
                 <Button.Flyout>
                     <MenuFlyout Placement="Bottom">
-                        <MenuFlyoutSubItem Text="New tab..">
-                            <MenuFlyoutSubItem.Icon>
-                                <FontIcon Glyph="&#xEC6C;" />
-                            </MenuFlyoutSubItem.Icon>
-                            <MenuFlyoutItem
-                                Click="NewTabFlyoutItem_Click"
-                                Tag="NewTab"
-                                Text="New tab">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xEC6C;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                            <MenuFlyoutItem
-                                Click="NewTabFlyoutItem_Click"
-                                Tag="NewSplitTab"
-                                Text="New split tab">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xF57C;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                        </MenuFlyoutSubItem>
                         <MenuFlyoutItem
                             Click="BrowserMenuFlyoutItem_Click"
                             Icon="Download"
