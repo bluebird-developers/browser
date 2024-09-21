@@ -117,7 +117,7 @@ public sealed partial class WebViewPage : Page
         }
 
         else if (args.ContextMenuTarget.Kind == CoreWebView2ContextMenuTargetKind.Image)
-            flyout = null;
+            return;
 
         else if (args.ContextMenuTarget.HasLinkUri)
         {
@@ -127,7 +127,7 @@ public sealed partial class WebViewPage : Page
         }
 
         else if (args.ContextMenuTarget.IsEditable)
-            flyout = null;
+            return;
 
         else
             flyout = (muxc.CommandBarFlyout)Resources["PageContextMenu"];
