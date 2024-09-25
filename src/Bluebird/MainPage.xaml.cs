@@ -65,12 +65,12 @@ public sealed partial class MainPage : Page
             CreateWebTab(startupurl);
             return;
         }
-        CreateWebTab();
+        CreateTab("New tab", "\uEC6C", typeof(NewTabPage));
     }
 
     private void NewTabButton_Click(muxc.SplitButton sender, muxc.SplitButtonClickEventArgs args)
     {
-        CreateWebTab();
+        CreateTab("New tab", "\uEC6C", typeof(NewTabPage));
     }
 
     private void NewTabFlyoutItem_Click(object sender, RoutedEventArgs e)
@@ -78,7 +78,7 @@ public sealed partial class MainPage : Page
         switch ((sender as MenuFlyoutItem).Tag)
         {
             case "NewTab":
-                CreateWebTab();
+                CreateTab("New tab", "\uEC6C", typeof(NewTabPage));
                 break;
             case "NewSplitTab":
                 CreateTab("New split tab", "\uF57C", typeof(SplitTabPage));
