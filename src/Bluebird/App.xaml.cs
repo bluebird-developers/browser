@@ -25,6 +25,10 @@ sealed partial class App : Application
             ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Compact;
         else
             ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Equal;
+        if (SettingsHelper.GetSetting("IsNewTabWallpaperDisabled") == "true")
+            ViewModels.SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled = true;
+        else
+            ViewModels.SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled = false;
     }
 
     protected override void OnActivated(IActivatedEventArgs args)

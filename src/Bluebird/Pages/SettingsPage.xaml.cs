@@ -30,6 +30,9 @@ public sealed partial class SettingsPage : Page
         if (SettingsHelper.GetSetting("CompactTabs") == "true")
             CompactTabsToggle.IsOn = true;
 
+        if (SettingsHelper.GetSetting("IsNewTabWallpaperDisabled") == "true")
+            NewTabBgImageToggle.IsOn = true;
+
         // Privacy
         if (SettingsHelper.GetSetting("PasswordLock") == "true")
             PasswordLockToggle.IsOn = true;
@@ -38,6 +41,7 @@ public sealed partial class SettingsPage : Page
         SearchEngineSelector.SelectionChanged += SearchEngineSelector_SelectionChanged;
         ForceDarkSwitch.Toggled += ForceDarkSwitch_Toggled;
         CompactTabsToggle.Toggled += CompactTabsToggle_Toggled;
+        NewTabBgImageToggle.Toggled += NewTabBgImageToggle_Toggled;
         PasswordLockToggle.Toggled += PasswordLockToggle_Toggled;
     }
 
@@ -86,6 +90,20 @@ public sealed partial class SettingsPage : Page
         {
             SettingsHelper.SetSetting("CompactTabs", "false");
             ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Equal;
+        }
+    }
+
+    private void NewTabBgImageToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (NewTabBgImageToggle.IsOn)
+        {
+            SettingsHelper.SetSetting("IsNewTabWallpaperDisabled", "true");
+            ViewModels.SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled = true;
+        }
+        else
+        {
+            SettingsHelper.SetSetting("IsNewTabWallpaperDisabled", "false");
+            ViewModels.SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled = false;
         }
     }
 

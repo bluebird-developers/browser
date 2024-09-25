@@ -67,6 +67,16 @@
                 </toolkit:SettingsCard.HeaderIcon>
                 <ToggleSwitch x:Name="CompactTabsToggle" />
             </toolkit:SettingsCard>
+            <toolkit:SettingsExpander Description="Configure settings related to the new tab page" Header="New tab settings">
+                <toolkit:SettingsExpander.HeaderIcon>
+                    <FontIcon Glyph="&#xEC6C;" />
+                </toolkit:SettingsExpander.HeaderIcon>
+                <toolkit:SettingsExpander.Items>
+                    <toolkit:SettingsCard Header="Disable background image">
+                        <ToggleSwitch x:Name="NewTabBgImageToggle" />
+                    </toolkit:SettingsCard>
+                </toolkit:SettingsExpander.Items>
+            </toolkit:SettingsExpander>
             <!--  Privacy  -->
             <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Privacy" />
             <toolkit:SettingsCard Description="Require a password to open Bluebird" Header="Password lock">
@@ -114,7 +124,7 @@
                         Header="Attributions">
                         <RichTextBlock>
                             <Paragraph>
-                                Bluebird icon created by <Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
+                                Bluebird icon created by<Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
                             </Paragraph>
                         </RichTextBlock>
                     </toolkit:SettingsCard>

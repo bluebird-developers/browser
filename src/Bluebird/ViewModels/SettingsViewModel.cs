@@ -95,6 +95,19 @@ public class SettingsViewModel : INotifyPropertyChanged
         }
     }
 
+    private bool isnewtabwallpaperdisabled;
+    public bool IsNewTabWallpaperDisabled
+    {
+        get => isnewtabwallpaperdisabled;
+        set
+        {
+            if (value != isnewtabwallpaperdisabled)
+            {
+                isnewtabwallpaperdisabled = value;
+            }
+        }
+    }
+
     public SettingsViewModel()
     {
     }

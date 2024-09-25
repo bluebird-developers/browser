@@ -9,8 +9,11 @@ namespace Bluebird.Pages
         {
             this.InitializeComponent();
             //UserFavoritesListView.ItemsSource = SettingsViewModel.SettingsVM.FavoritesList;
-            string wallpaperPath = NewTabHelper.GetRandomWallpaper();
-            rootGrid.Background = new ImageBrush { ImageSource = new BitmapImage(new Uri(wallpaperPath)), Stretch = Stretch.UniformToFill };
+            if (!ViewModels.SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled)
+            {
+                string wallpaperPath = NewTabHelper.GetRandomWallpaper();
+                rootGrid.Background = new ImageBrush { ImageSource = new BitmapImage(new Uri(wallpaperPath)), Stretch = Stretch.UniformToFill };
+            }
         }
 
         private void UrlBox_Loaded(object sender, RoutedEventArgs e)
