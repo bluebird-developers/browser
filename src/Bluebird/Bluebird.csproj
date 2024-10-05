@@ -110,6 +110,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\AppStartupHelper.cs" />
+    <Compile Include="Core\HomeTabCreationParams.cs" />
     <Compile Include="Core\NewTabHelper.cs" />
     <Compile Include="Core\NotificationHelper.cs" />
     <Compile Include="Core\QRCodeHelper.cs" />

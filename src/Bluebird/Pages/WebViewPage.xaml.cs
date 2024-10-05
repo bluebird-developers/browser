@@ -5,6 +5,9 @@ namespace Bluebird.Pages;
 public sealed partial class WebViewPage : Page
 {
     private string launchurl;
+    private muxc.TabViewItem myTab;
+    
+
     public WebViewPage()
     {
         this.InitializeComponent();
@@ -20,6 +23,7 @@ public sealed partial class WebViewPage : Page
             var parameters = (WebTabCreationParams)e.Parameter;
 
             launchurl = parameters.Url;
+            myTab = parameters.myTab;
         }
     }
 
@@ -96,7 +100,7 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_FaviconChanged(CoreWebView2 sender, object args)
     {
-        MainPageContent.SelectedTab.IconSource = IconHelper.ConvFavURLToIconSource(sender.FaviconUri);
+        myTab.IconSource = IconHelper.ConvFavURLToIconSource(sender.FaviconUri);
     }
 
     private void CoreWebView2_NewWindowRequested(CoreWebView2 sender, CoreWebView2NewWindowRequestedEventArgs args)
@@ -147,7 +151,7 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_DocumentTitleChanged(CoreWebView2 sender, object args)
     {
-        MainPageContent.SelectedTab.Header = sender.DocumentTitle;
+        myTab.Header = sender.DocumentTitle;
     }
 
     private void CoreWebView2_ContainsFullScreenElementChanged(CoreWebView2 sender, object args)

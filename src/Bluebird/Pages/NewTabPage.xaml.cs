@@ -1,10 +1,14 @@
-﻿using Windows.UI.Xaml.Media;
+﻿using Windows.System;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
+using Windows.UI.Xaml.Navigation;
 
 namespace Bluebird.Pages
 {
     public sealed partial class NewTabPage : Page
     {
+        private muxc.TabViewItem myTab;
+
         public NewTabPage()
         {
             this.InitializeComponent();
@@ -13,6 +17,18 @@ namespace Bluebird.Pages
             {
                 string wallpaperPath = NewTabHelper.GetRandomWallpaper();
                 rootGrid.Background = new ImageBrush { ImageSource = new BitmapImage(new Uri(wallpaperPath)), Stretch = Stretch.UniformToFill };
+            }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (e.Parameter != null)
+            {
+                var parameters = (XAMLTabCreationParams)e.Parameter;
+
+                myTab = parameters.myTab;
             }
         }
 
@@ -41,7 +57,7 @@ namespace Bluebird.Pages
 
         private void NavigateToUrl(string query)
         {
-            WebTabCreationParams parameters = new() { Url = query };
+            WebTabCreationParams parameters = new() { Url = query, myTab = myTab };
             Frame.Navigate(typeof(WebViewPage), parameters, new DrillInNavigationTransitionInfo());
         }
 

@@ -16,22 +16,14 @@ public sealed partial class MainPage : Page
         switch ((sender as MenuFlyoutItem).Tag)
         {
             case "Downloads":
-                WebTabCreationParams downloadParameter = new()
-                {
-                    Url = "edge://downloads"
-                };
-                CreateTab("Downloads", "\uE896", typeof(WebViewPage), downloadParameter);
+                CreateTab("Downloads", "\uE896", typeof(WebViewPage), "edge://downloads");
                 break;
             case "Favorites":
                 FavoritesFlyout.ShowAt(BrowserMenuBtn);
                 FavoritesListView.SelectedItem = null;
                 break;
             case "History":
-                WebTabCreationParams historyParameter = new()
-                {
-                    Url = "edge://history"
-                };
-                CreateTab("History", "\uE81C", typeof(WebViewPage), historyParameter);
+                CreateTab("History", "\uE81C", typeof(WebViewPage), "edge://history");
                 break;
             case "Fullscreen":
                 var view = ApplicationView.GetForCurrentView();
@@ -90,18 +82,14 @@ public sealed partial class MainPage : Page
     {
         if (url != null)
         {
-            WebTabCreationParams parameters = new()
-            {
-                Url = url
-            };
-            CreateTab("New tab", "\uEC6C", typeof(WebViewPage), parameters);
+            CreateTab("New tab", "\uEC6C", typeof(WebViewPage), url);
             return;
         }
 
         CreateTab("New tab", "\uEC6C", typeof(WebViewPage));
     }
 
-    public void CreateTab(string header, string glyph, Type page, WebTabCreationParams parameters = null)
+    public void CreateTab(string header, string glyph, Type page, string url = null)
     {
         Frame frame = new();
         muxc.TabViewItem newItem = new()
@@ -110,10 +98,24 @@ public sealed partial class MainPage : Page
             IconSource = new muxc.FontIconSource { FontFamily = new Windows.UI.Xaml.Media.FontFamily("Segoe MDL2 Assets"), Glyph = glyph },
             Content = frame,
         };
-        if (parameters != null)
+
+        if (url != null)
+        {
+            WebTabCreationParams parameters = new()
+            {
+                Url = url,
+                myTab = newItem
+            };
             frame.Navigate(page, parameters);
+        }
         else
-            frame.Navigate(page);
+        {
+            XAMLTabCreationParams parameters = new()
+            {
+                myTab = newItem
+            };
+            frame.Navigate(page, parameters);
+        }
         
         Tabs.TabItems.Add(newItem);
         Tabs.SelectedItem = newItem;

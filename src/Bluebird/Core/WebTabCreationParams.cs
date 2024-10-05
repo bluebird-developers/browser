@@ -3,5 +3,6 @@
     public class WebTabCreationParams
     {
         public string Url { get; set; }
+        public muxc.TabViewItem myTab {  get; set; }
     }
 }
