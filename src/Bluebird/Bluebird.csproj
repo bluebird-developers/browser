@@ -110,7 +110,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\AppStartupHelper.cs" />
-    <Compile Include="Core\HomeTabCreationParams.cs" />
+    <Compile Include="Core\XAMLTabCreationParams.cs" />
     <Compile Include="Core\NewTabHelper.cs" />
     <Compile Include="Core\NotificationHelper.cs" />
     <Compile Include="Core\QRCodeHelper.cs" />
@@ -305,7 +305,7 @@
       <Version>2.8.6</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Web.WebView2">
-      <Version>1.0.2739.15</Version>
+      <Version>1.0.2792.45</Version>
     </PackageReference>
     <PackageReference Include="PolySharp">
       <Version>1.14.1</Version>
