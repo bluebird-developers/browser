@@ -110,6 +110,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\AppStartupHelper.cs" />
+    <Compile Include="Core\ModernBlankPage.cs" />
     <Compile Include="Core\XAMLTabCreationParams.cs" />
     <Compile Include="Core\NewTabHelper.cs" />
     <Compile Include="Core\NotificationHelper.cs" />

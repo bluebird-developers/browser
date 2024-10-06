@@ -69,7 +69,9 @@ public sealed partial class WebViewPage : Page
             launchurl = null;
         }
         else
-            sender.Source = new Uri("https://bluebird-developers.github.io/ntp/");
+        {
+            sender.NavigateToString(ModernBlankPage.MinifiedModernBlackPageHTML);
+        }
     }
 
     private void ApplyWebView2Settings(muxc.WebView2 sender)
@@ -80,7 +82,9 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_NavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
     {
-        UrlBox.Text = args.Uri;
+        string uri = args.Uri;
+        if (uri != "data:text/html;charset=utf-8;base64,PCFET0NUWVBFIGh0bWw+PGhlYWQ+PHRpdGxlPkJsYW5rIHBhZ2U8L3RpdGxlPjwvaGVhZD48Ym9keT48c3R5bGU+QG1lZGlhKHByZWZlcnMtY29sb3Itc2NoZW1lOmxpZ2h0KXtib2R5e2JhY2tncm91bmQtY29sb3I6I2YzZjNmMzt9fUBtZWRpYShwcmVmZXJzLWNvbG9yLXNjaGVtZTpkYXJrKXtib2R5e2JhY2tncm91bmQtY29sb3I6IzIwMjAyMDt9fTwvc3R5bGU+PC9ib2R5Pg==")
+            UrlBox.Text = args.Uri;
         LoadingBar.Visibility = Visibility.Visible;
     }
 
