@@ -73,7 +73,7 @@ public sealed partial class MainPage : Page
                 CreateTab("New tab", "\uEC6C", typeof(NewTabPage));
                 break;
             case "NewSplitTab":
-                CreateTab("New split tab", "\uF57C", typeof(SplitTabPage));
+                CreateTab("Split tab", "\uF57C", typeof(SplitTabPage));
                 break;
         }
     }

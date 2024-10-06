@@ -6,7 +6,7 @@ public sealed partial class WebViewPage : Page
 {
     private string launchurl;
     private muxc.TabViewItem myTab;
-    
+    private bool IsSplitTab;
 
     public WebViewPage()
     {
@@ -24,6 +24,7 @@ public sealed partial class WebViewPage : Page
 
             launchurl = parameters.Url;
             myTab = parameters.myTab;
+            IsSplitTab = parameters.IsSplitTab;
         }
     }
 
@@ -100,6 +101,8 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_FaviconChanged(CoreWebView2 sender, object args)
     {
+        if (IsSplitTab)
+            return;
         myTab.IconSource = IconHelper.ConvFavURLToIconSource(sender.FaviconUri);
     }
 
@@ -151,6 +154,8 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_DocumentTitleChanged(CoreWebView2 sender, object args)
     {
+        if (IsSplitTab)
+            return;
         myTab.Header = sender.DocumentTitle;
     }
 

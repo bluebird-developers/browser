@@ -5,8 +5,12 @@ public sealed partial class SplitTabPage : Page
     public SplitTabPage()
     {
         this.InitializeComponent();
-        LeftFrame.Navigate(typeof(WebViewPage));
-        RightFrame.Navigate(typeof(WebViewPage));
+        WebTabCreationParams webTabCreationParams = new()
+        {
+            IsSplitTab = true
+        };
+        LeftFrame.Navigate(typeof(WebViewPage), webTabCreationParams);
+        RightFrame.Navigate(typeof(WebViewPage), webTabCreationParams);
     }
 
     public void CloseWebViews()
