@@ -86,7 +86,7 @@ public sealed partial class WebViewPage : Page
     private void CoreWebView2_NavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
     {
         string uri = args.Uri;
-        if (uri != "data:text/html;charset=utf-8;base64,PCFET0NUWVBFIGh0bWw+PGhlYWQ+PHRpdGxlPkJsYW5rIHBhZ2U8L3RpdGxlPjwvaGVhZD48Ym9keT48c3R5bGU+QG1lZGlhKHByZWZlcnMtY29sb3Itc2NoZW1lOmxpZ2h0KXtib2R5e2JhY2tncm91bmQtY29sb3I6I2YzZjNmMzt9fUBtZWRpYShwcmVmZXJzLWNvbG9yLXNjaGVtZTpkYXJrKXtib2R5e2JhY2tncm91bmQtY29sb3I6IzIwMjAyMDt9fTwvc3R5bGU+PC9ib2R5Pg==")
+        if (uri != "data:text/html;charset=utf-8;base64,PGh0bWw+PGhlYWQ+PHN0eWxlPkBtZWRpYShwcmVmZXJzLWNvbG9yLXNjaGVtZTpsaWdodCl7aHRtbHtiYWNrZ3JvdW5kLWNvbG9yOiNmM2YzZjM7fX1AbWVkaWEocHJlZmVycy1jb2xvci1zY2hlbWU6ZGFyayl7aHRtbHtiYWNrZ3JvdW5kLWNvbG9yOiMyMDIwMjA7fX08L3N0eWxlPjwvaGVhZD48L2h0bWw+")
             UrlBox.Text = args.Uri;
         LoadingBar.Visibility = Visibility.Visible;
     }
