@@ -56,8 +56,11 @@ public sealed partial class WebViewPage : Page
         sender.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
         sender.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;
         sender.CoreWebView2.ContextMenuRequested += CoreWebView2_ContextMenuRequested;
-        sender.CoreWebView2.DocumentTitleChanged += CoreWebView2_DocumentTitleChanged;
-        sender.CoreWebView2.FaviconChanged += CoreWebView2_FaviconChanged;
+        if (!IsSplitTab)
+        {
+            sender.CoreWebView2.DocumentTitleChanged += CoreWebView2_DocumentTitleChanged;
+            sender.CoreWebView2.FaviconChanged += CoreWebView2_FaviconChanged;
+        }
         sender.CoreWebView2.ScriptDialogOpening += CoreWebView2_ScriptDialogOpening;
         sender.CoreWebView2.ContainsFullScreenElementChanged += CoreWebView2_ContainsFullScreenElementChanged;
         sender.CoreWebView2.LaunchingExternalUriScheme += CoreWebView2_LaunchingExternalUriScheme;
@@ -105,8 +108,6 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_FaviconChanged(CoreWebView2 sender, object args)
     {
-        if (IsSplitTab)
-            return;
         myTab.IconSource = IconHelper.ConvFavURLToIconSource(sender.FaviconUri);
     }
 
@@ -158,8 +159,6 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_DocumentTitleChanged(CoreWebView2 sender, object args)
     {
-        if (IsSplitTab)
-            return;
         myTab.Header = sender.DocumentTitle;
     }
 
