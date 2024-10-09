@@ -67,12 +67,12 @@ public sealed partial class SettingsPage : Page
         if (ForceDarkSwitch.IsOn)
         {
             SettingsHelper.SetSetting("ForceDark", "true");
-            ViewModels.SettingsViewModel.SettingsVM.IsForceDarkEnabled = true;
+            SettingsViewModel.SettingsVM.IsForceDarkEnabled = true;
         }
         else
         {
             SettingsHelper.SetSetting("ForceDark", "false");
-            ViewModels.SettingsViewModel.SettingsVM.IsForceDarkEnabled = false;
+            SettingsViewModel.SettingsVM.IsForceDarkEnabled = false;
         }
     }
 
@@ -81,12 +81,12 @@ public sealed partial class SettingsPage : Page
         if (CompactTabsToggle.IsOn)
         {
             SettingsHelper.SetSetting("CompactTabs", "true");
-            ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Compact;
+            SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Compact;
         }
         else
         {
             SettingsHelper.SetSetting("CompactTabs", "false");
-            ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Equal;
+            SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Equal;
         }
     }
 
@@ -95,12 +95,12 @@ public sealed partial class SettingsPage : Page
         if (NewTabBgImageToggle.IsOn)
         {
             SettingsHelper.SetSetting("IsNewTabWallpaperDisabled", "true");
-            ViewModels.SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled = true;
+            SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled = true;
         }
         else
         {
             SettingsHelper.SetSetting("IsNewTabWallpaperDisabled", "false");
-            ViewModels.SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled = false;
+            SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled = false;
         }
     }
 

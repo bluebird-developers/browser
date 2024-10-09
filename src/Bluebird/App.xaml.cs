@@ -15,15 +15,15 @@ sealed partial class App : Application
         SearchUrl = SettingsHelper.GetSetting("SearchUrl") ?? "https://www.qwant.com/?q=";
 
         if (SettingsHelper.GetSetting("ForceDark") == "true")
-            ViewModels.SettingsViewModel.SettingsVM.IsForceDarkEnabled = true;
+            SettingsViewModel.SettingsVM.IsForceDarkEnabled = true;
         if (SettingsHelper.GetSetting("CompactTabs") == "true")
-            ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Compact;
+            SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Compact;
         else
-            ViewModels.SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Equal;
+            SettingsViewModel.SettingsVM.TabWidthMode = muxc.TabViewWidthMode.Equal;
         if (SettingsHelper.GetSetting("IsNewTabWallpaperDisabled") == "true")
-            ViewModels.SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled = true;
+            SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled = true;
         else
-            ViewModels.SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled = false;
+            SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled = false;
     }
 
     protected override void OnActivated(IActivatedEventArgs args)

@@ -9,7 +9,7 @@ public sealed partial class WebViewPage : Page
     public WebViewPage()
     {
         this.InitializeComponent();
-        DataContext = ViewModels.SettingsViewModel.SettingsVM;
+        DataContext = SettingsViewModel.SettingsVM;
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -91,7 +91,7 @@ public sealed partial class WebViewPage : Page
 
     private async void CoreWebView2_NavigationCompleted(CoreWebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
     {
-        if (ViewModels.SettingsViewModel.SettingsVM.IsForceDarkEnabled)
+        if (SettingsViewModel.SettingsVM.IsForceDarkEnabled)
         {
             string jscript = await Modules.ForceDark.ForceDarkHelper.GetForceDarkScriptAsync();
             await sender.ExecuteScriptAsync(jscript);

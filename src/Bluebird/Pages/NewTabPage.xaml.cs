@@ -8,7 +8,7 @@ public sealed partial class NewTabPage : Page
     {
         this.InitializeComponent();
         //UserFavoritesListView.ItemsSource = SettingsViewModel.SettingsVM.FavoritesList;
-        if (!ViewModels.SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled)
+        if (!SettingsViewModel.SettingsVM.IsNewTabWallpaperDisabled)
         {
             string wallpaperPath = NewTabHelper.GetRandomWallpaper();
             rootGrid.Background = new ImageBrush { ImageSource = new BitmapImage(new Uri(wallpaperPath)), Stretch = Stretch.UniformToFill };

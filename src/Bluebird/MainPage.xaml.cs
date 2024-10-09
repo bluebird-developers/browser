@@ -6,7 +6,7 @@ public sealed partial class MainPage : Page
     {
         this.InitializeComponent();
         Window.Current.SetTitleBar(CustomDragRegion);
-        DataContext = ViewModels.SettingsViewModel.SettingsVM;
+        DataContext = SettingsViewModel.SettingsVM;
     }
 
     private void BrowserMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
