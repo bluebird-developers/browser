@@ -1,9 +1,4 @@
-﻿using Bluebird.Pages;
-using Windows.ApplicationModel.Activation;
-using Windows.UI;
-using Windows.UI.Xaml.Navigation;
-
-namespace Bluebird;
+﻿namespace Bluebird;
 
 sealed partial class App : Application
 {

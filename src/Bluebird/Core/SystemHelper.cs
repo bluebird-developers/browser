@@ -1,6 +1,4 @@
-﻿using Windows.ApplicationModel.DataTransfer;
-
-namespace Bluebird.Core;
+﻿namespace Bluebird.Core;
 
 public static class SystemHelper
 {

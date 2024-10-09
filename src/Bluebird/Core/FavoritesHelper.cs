@@ -1,9 +1,4 @@
-﻿using Bluebird.ViewModels;
-using System.Collections.ObjectModel;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
-namespace Bluebird.Core;
+﻿namespace Bluebird.Core;
 
 [JsonSerializable(typeof(ObservableCollection<FavoriteItems>))]
 public partial class MyJsonSerializerContext : JsonSerializerContext

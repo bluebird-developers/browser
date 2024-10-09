@@ -1,6 +1,4 @@
-﻿using Bluebird.ViewModels;
-
-namespace Bluebird.Core
+﻿namespace Bluebird.Core
 {
     public static class WebView2ProfileDataHelper
     {

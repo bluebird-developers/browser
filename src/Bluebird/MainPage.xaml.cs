@@ -1,6 +1,4 @@
-﻿using Bluebird.Pages;
-
-namespace Bluebird;
+﻿namespace Bluebird;
 
 public sealed partial class MainPage : Page
 {

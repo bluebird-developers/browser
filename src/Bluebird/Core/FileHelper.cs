@@ -1,8 +1,4 @@
-﻿using System.IO;
-using Windows.Storage.Pickers;
-using Windows.Storage.Provider;
-
-namespace Bluebird.Core;
+﻿namespace Bluebird.Core;
 
 public class FileHelper
 {

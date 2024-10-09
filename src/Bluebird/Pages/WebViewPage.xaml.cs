@@ -1,6 +1,4 @@
-﻿using Windows.UI.Xaml.Navigation;
-
-namespace Bluebird.Pages;
+﻿namespace Bluebird.Pages;
 
 public sealed partial class WebViewPage : Page
 {

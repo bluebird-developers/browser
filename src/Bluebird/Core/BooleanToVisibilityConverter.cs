@@ -22,8 +22,6 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
-using Windows.UI.Xaml.Data;
-
 namespace Bluebird.Core;
 
 /// <summary>

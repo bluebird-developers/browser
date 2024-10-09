@@ -1,7 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using Windows.UI.Xaml.Navigation;
-
-namespace Bluebird.Pages;
+﻿namespace Bluebird.Pages;
 
 public sealed partial class SettingsPage : Page
 {

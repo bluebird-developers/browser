@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-namespace Bluebird.ViewModels;
+﻿namespace Bluebird.ViewModels;
 
 public class SettingsViewModel : INotifyPropertyChanged
 {

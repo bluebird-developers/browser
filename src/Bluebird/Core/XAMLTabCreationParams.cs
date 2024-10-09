@@ -1,7 +1,6 @@
-﻿namespace Bluebird.Core
+﻿namespace Bluebird.Core;
+
+class XAMLTabCreationParams
 {
-    class XAMLTabCreationParams
-    {
-        public muxc.TabViewItem myTab { get; set; }
-    }
+    public muxc.TabViewItem myTab { get; set; }
 }
