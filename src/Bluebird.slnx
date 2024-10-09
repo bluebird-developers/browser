@@ -4,15 +4,18 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Bluebird.Modules\Bluebird.Modules.csproj" Type="Classic C#">
-    <Configuration Solution="*|ARM64" Project="*|ARM64" />
-    <Configuration Solution="*|x64" Project="*|x64" />
-    <Configuration Solution="*|x86" Project="*|x86" />
+  <Project Path="Bluebird.Modules\Bluebird.Modules.csproj" Type="C#">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
   </Project>
-  <Project Path="Bluebird\Bluebird.csproj" Type="Classic C#">
-    <Configuration Solution="*|*" Project="*|*|Deploy" />
-    <Configuration Solution="*|ARM64" Project="*|ARM64|Deploy" />
-    <Configuration Solution="*|x64" Project="*|x64|Deploy" />
-    <Configuration Solution="*|x86" Project="*|x86|Deploy" />
+  <Project Path="Bluebird\Bluebird.csproj" Type="C#">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+    <Deploy />
   </Project>
+  <Properties Name="Visual Studio">
+    <Property Name="OpenWith" Value="Visual Studio Version 17" />
+  </Properties>
 </Solution>
