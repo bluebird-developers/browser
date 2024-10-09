@@ -314,7 +314,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="System.Text.Json">
-      <Version>9.0.0-rc.1.24431.7</Version>
+      <Version>9.0.0-rc.2.24473.5</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
