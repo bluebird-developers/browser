@@ -23,7 +23,7 @@
                         ContentTransitions="{TemplateBinding ContentTransitions}"
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <ContentPresenter.BackgroundTransition>
-                            <BrushTransition Duration="0:0:0.083" />
+                            <BrushTransition Duration="0:0:0.135" />
                         </ContentPresenter.BackgroundTransition>
 
                         <VisualStateManager.VisualStateGroups>
