@@ -16,14 +16,14 @@
             x:Name="LeftFrame"
             Grid.Column="0"
             Margin="5,5,3,5"
-            BorderBrush="Gray"
+            BorderBrush="{StaticResource ControlElevationBorderBrush}"
             BorderThickness="2"
             CornerRadius="5" />
         <Frame
             x:Name="RightFrame"
             Grid.Column="1"
             Margin="3,5,5,5"
-            BorderBrush="Gray"
+            BorderBrush="{StaticResource ControlElevationBorderBrush}"
             BorderThickness="2"
             CornerRadius="5" />
     </Grid>

@@ -8,6 +8,7 @@
             <core:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <ResourceDictionary Source="Styles/PageBorder.xaml" />
                 <ResourceDictionary Source="Styles/SidebarButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

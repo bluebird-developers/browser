@@ -290,12 +290,7 @@
                 <FontIcon Glyph="&#xED14;" />
             </Button>
         </StackPanel>
-        <Grid
-            Grid.Column="1"
-            Margin="5"
-            BorderBrush="{StaticResource ControlElevationBorderBrush}"
-            BorderThickness="2"
-            CornerRadius="5">
+        <Grid Grid.Column="1" Style="{StaticResource PageBorder}">
             <!--  required to round wv2  -->
             <Grid CornerRadius="5">
                 <muxc:WebView2
