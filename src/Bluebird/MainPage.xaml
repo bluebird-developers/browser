@@ -104,7 +104,7 @@
             <Button
                 x:Name="BrowserMenuBtn"
                 VerticalAlignment="Bottom"
-                Style="{StaticResource ToolbarButton}">
+                Style="{StaticResource SidebarButton}">
                 <FontIcon Glyph="&#xE10C;" />
                 <Button.Flyout>
                     <MenuFlyout Placement="Bottom">

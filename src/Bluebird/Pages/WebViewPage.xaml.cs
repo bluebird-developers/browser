@@ -167,13 +167,13 @@ public sealed partial class WebViewPage : Page
         {
             WindowManager.EnterFullScreen(true);
             UrlBoxWrapper.Visibility = Visibility.Collapsed;
-            Toolbar.Visibility = Visibility.Collapsed;
+            Sidebar.Visibility = Visibility.Collapsed;
         }
         else
         {
             WindowManager.EnterFullScreen(false);
             UrlBoxWrapper.Visibility = Visibility.Visible;
-            Toolbar.Visibility = Visibility.Visible;
+            Sidebar.Visibility = Visibility.Visible;
         }
     }
 
@@ -312,7 +312,7 @@ public sealed partial class WebViewPage : Page
     }
 
     byte[] QrCode;
-    private async void ToolbarButton_Click(object sender, RoutedEventArgs e)
+    private async void SidebarButton_Click(object sender, RoutedEventArgs e)
     {
         switch((sender as Button).Tag)
         {

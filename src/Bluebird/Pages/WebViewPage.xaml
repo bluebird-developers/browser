@@ -10,7 +10,7 @@
     NavigationCacheMode="Required"
     mc:Ignorable="d">
     <Page.Resources>
-        <Flyout x:Name="AddFavoriteFlyout" Placement="Left">
+        <Flyout x:Name="AddFavoriteFlyout" Placement="Right">
             <StackPanel>
                 <TextBlock MinWidth="300" FontSize="20">
                     Add favorite
@@ -25,7 +25,7 @@
                     Tag="AddFavorite" />
             </StackPanel>
         </Flyout>
-        <Flyout x:Name="QRCodeFlyout" Placement="Left">
+        <Flyout x:Name="QRCodeFlyout" Placement="Right">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -222,13 +222,92 @@
         </muxc:CommandBarFlyout>
     </Page.Resources>
     <Grid>
-        <muxc:WebView2
-            x:Name="WebViewControl"
-            x:FieldModifier="public"
-            CoreWebView2Initialized="WebViewControl_CoreWebView2Initialized"
-            Loaded="WebViewControl_Loaded" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            x:Name="Sidebar"
+            Grid.Column="0"
+            Margin="5,0,0,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center">
+            <Button
+                Click="SidebarButton_Click"
+                IsEnabled="{x:Bind WebViewControl.CanGoBack, Mode=OneWay}"
+                Style="{StaticResource SidebarButton}"
+                Tag="Back">
+                <FontIcon Glyph="&#xE112;" />
+            </Button>
+            <Button
+                Click="SidebarButton_Click"
+                Style="{StaticResource SidebarButton}"
+                Tag="Refresh">
+                <FontIcon Glyph="&#xE149;" />
+            </Button>
+            <Button
+                Click="SidebarButton_Click"
+                IsEnabled="{x:Bind WebViewControl.CanGoForward, Mode=OneWay}"
+                Style="{StaticResource SidebarButton}"
+                Tag="Forward">
+                <FontIcon Glyph="&#xE111;" />
+            </Button>
+            <Button
+                Click="SidebarButton_Click"
+                Style="{StaticResource SidebarButton}"
+                Tag="ToggleUrlBox">
+                <FontIcon Glyph="&#xE721;" />
+            </Button>
+            <Button
+                Click="SidebarButton_Click"
+                Style="{StaticResource SidebarButton}"
+                Tag="ToggleAISearchBox">
+                <TextBlock FontSize="20" Text="✨" />
+            </Button>
+            <Button
+                Click="SidebarButton_Click"
+                Style="{StaticResource SidebarButton}"
+                Tag="ReadingMode">
+                <FontIcon Glyph="&#xE736;" />
+            </Button>
+            <Button
+                Click="SidebarButton_Click"
+                Flyout="{x:Bind AddFavoriteFlyout}"
+                Style="{StaticResource SidebarButton}"
+                Tag="AddFavoriteFlyout">
+                <FontIcon Glyph="&#xE734;" />
+            </Button>
+            <Button
+                Click="SidebarButton_Click"
+                Style="{StaticResource SidebarButton}"
+                Tag="Downloads">
+                <FontIcon Glyph="&#xE118;" />
+            </Button>
+            <Button
+                Click="SidebarButton_Click"
+                Style="{StaticResource SidebarButton}"
+                Tag="GenQRCode">
+                <FontIcon Glyph="&#xED14;" />
+            </Button>
+        </StackPanel>
+        <Grid
+            Grid.Column="1"
+            Margin="5"
+            BorderBrush="{StaticResource ControlElevationBorderBrush}"
+            BorderThickness="2"
+            CornerRadius="5">
+            <!--  required to round wv2  -->
+            <Grid CornerRadius="5">
+                <muxc:WebView2
+                    x:Name="WebViewControl"
+                    x:FieldModifier="public"
+                    CoreWebView2Initialized="WebViewControl_CoreWebView2Initialized"
+                    Loaded="WebViewControl_Loaded" />
+            </Grid>
+        </Grid>
         <Grid
             x:Name="UrlBoxWrapper"
+            Grid.Column="1"
             Height="32"
             MinWidth="300"
             MaxWidth="600"
@@ -244,78 +323,15 @@
                 Loaded="UrlBox_Loaded"
                 PlaceholderText="Type here to search or enter url" />
         </Grid>
-        <StackPanel
-            x:Name="Toolbar"
-            Margin="0,0,18,0"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
-            CornerRadius="7">
-            <Button
-                Click="ToolbarButton_Click"
-                IsEnabled="{x:Bind WebViewControl.CanGoBack, Mode=OneWay}"
-                Style="{StaticResource ToolbarButton}"
-                Tag="Back">
-                <FontIcon Glyph="&#xE112;" />
-            </Button>
-            <Button
-                Click="ToolbarButton_Click"
-                Style="{StaticResource ToolbarButton}"
-                Tag="Refresh">
-                <FontIcon Glyph="&#xE149;" />
-            </Button>
-            <Button
-                Click="ToolbarButton_Click"
-                IsEnabled="{x:Bind WebViewControl.CanGoForward, Mode=OneWay}"
-                Style="{StaticResource ToolbarButton}"
-                Tag="Forward">
-                <FontIcon Glyph="&#xE111;" />
-            </Button>
-            <Button
-                Click="ToolbarButton_Click"
-                Style="{StaticResource ToolbarButton}"
-                Tag="ToggleUrlBox">
-                <FontIcon Glyph="&#xE721;" />
-            </Button>
-            <Button
-                Click="ToolbarButton_Click"
-                Style="{StaticResource ToolbarButton}"
-                Tag="ToggleAISearchBox">
-                <TextBlock FontSize="20" Text="✨" />
-            </Button>
-            <Button
-                Click="ToolbarButton_Click"
-                Style="{StaticResource ToolbarButton}"
-                Tag="ReadingMode">
-                <FontIcon Glyph="&#xE736;" />
-            </Button>
-            <Button
-                Click="ToolbarButton_Click"
-                Flyout="{x:Bind AddFavoriteFlyout}"
-                Style="{StaticResource ToolbarButton}"
-                Tag="AddFavoriteFlyout">
-                <FontIcon Glyph="&#xE734;" />
-            </Button>
-            <Button
-                Click="ToolbarButton_Click"
-                Style="{StaticResource ToolbarButton}"
-                Tag="Downloads">
-                <FontIcon Glyph="&#xE118;" />
-            </Button>
-            <Button
-                Click="ToolbarButton_Click"
-                Style="{StaticResource ToolbarButton}"
-                Tag="GenQRCode">
-                <FontIcon Glyph="&#xED14;" />
-            </Button>
-        </StackPanel>
         <muxc:ProgressBar
             x:Name="LoadingBar"
+            Grid.Column="1"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Stretch"
             IsIndeterminate="True" />
         <Grid
             x:Name="AISearchBoxWrapper"
+            Grid.Column="1"
             Width="500"
             Height="70"
             Padding="5"
