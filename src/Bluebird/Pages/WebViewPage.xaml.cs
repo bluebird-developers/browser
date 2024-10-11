@@ -284,18 +284,6 @@ public sealed partial class WebViewPage : Page
         }
     }
 
-    private void AISearchBox_KeyDown(object sender, KeyRoutedEventArgs e)
-    {
-        if (e.Key == VirtualKey.Enter)
-        {
-            string input = (sender as TextBox).Text;
-            string url = "https://www.perplexity.ai/search?q=" + input;
-            NavigateToUrl(url);
-            AISearchBoxWrapper.Visibility = Visibility.Collapsed;
-            UrlBoxWrapper.Visibility = Visibility.Collapsed;
-        }
-    }
-
     private void UrlBox_GotFocus(object sender, RoutedEventArgs e)
     {
         UrlBox.SelectAll();
@@ -320,10 +308,6 @@ public sealed partial class WebViewPage : Page
             case "ToggleUrlBox":
                 UrlBoxWrapper.Visibility = UrlBoxWrapper.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
                 UrlBox.Focus(FocusState.Keyboard);
-                break;
-            case "ToggleAISearchBox":
-                AISearchBoxWrapper.Visibility = AISearchBoxWrapper.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                AISearchBox.Focus(FocusState.Keyboard);
                 break;
             case "Forward":
                 WebViewControl.GoForward();

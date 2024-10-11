@@ -261,12 +261,6 @@
             <Button
                 Click="SidebarButton_Click"
                 Style="{StaticResource SidebarButton}"
-                Tag="ToggleAISearchBox">
-                <TextBlock FontSize="20" Text="✨" />
-            </Button>
-            <Button
-                Click="SidebarButton_Click"
-                Style="{StaticResource SidebarButton}"
                 Tag="ReadingMode">
                 <FontIcon Glyph="&#xE736;" />
             </Button>
@@ -323,43 +317,5 @@
             VerticalAlignment="Top"
             HorizontalContentAlignment="Stretch"
             IsIndeterminate="True" />
-        <Grid
-            x:Name="AISearchBoxWrapper"
-            Grid.Column="1"
-            Width="500"
-            Height="70"
-            Padding="5"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
-            CornerRadius="5"
-            Visibility="Collapsed">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                Grid.Row="0"
-                Grid.Column="0"
-                Margin="5"
-                FontSize="20"
-                Text="✨" />
-            <TextBox
-                x:Name="AISearchBox"
-                Grid.Row="0"
-                Grid.Column="1"
-                Height="40"
-                FontSize="20"
-                KeyDown="AISearchBox_KeyDown"
-                PlaceholderText="Ask ai.." />
-            <TextBlock
-                Grid.Row="1"
-                Grid.Column="1"
-                Text="powered by perplexity.ai" />
-        </Grid>
     </Grid>
 </Page>

@@ -37,16 +37,7 @@ public sealed partial class NewTabPage : Page
         if (e.Key == VirtualKey.Enter)
         {
             string input = (sender as TextBox).Text;
-            string inputtype = UrlHelper.GetInputType(input);
-            if (inputtype == "urlNOProtocol")
-                NavigateToUrl("https://" + input.Trim());
-            else if (inputtype == "url")
-                NavigateToUrl(input.Trim());
-            else
-            {
-                string query = SearchUrl + input;
-                NavigateToUrl(query);
-            }
+            ProcessQueryAndGo(input);
         }
     }
 
@@ -54,6 +45,37 @@ public sealed partial class NewTabPage : Page
     {
         WebTabCreationParams parameters = new() { Url = query, myTab = myTab };
         Frame.Navigate(typeof(WebViewPage), parameters, new DrillInNavigationTransitionInfo());
+    }
+
+    private void SearchButton_Click(object sender, RoutedEventArgs e)
+    {
+        string query = UrlBox.Text;
+        if (!string.IsNullOrEmpty(query))
+        {
+            switch ((sender as Button).Tag)
+            {
+                case "Search":
+                    ProcessQueryAndGo(query);
+                    break;
+                case "AISearch":
+                    NavigateToUrl("https://www.perplexity.ai/search?q=" + query);
+                    break;
+            }
+        }
+    }
+
+    private void ProcessQueryAndGo(string input)
+    {
+        string inputtype = UrlHelper.GetInputType(input);
+        if (inputtype == "urlNOProtocol")
+            NavigateToUrl("https://" + input.Trim());
+        else if (inputtype == "url")
+            NavigateToUrl(input.Trim());
+        else
+        {
+            string query = SearchUrl + input;
+            NavigateToUrl(query);
+        }
     }
 
     /*private void UserFavoritesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

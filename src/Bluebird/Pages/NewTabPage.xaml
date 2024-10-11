@@ -42,13 +42,40 @@
                         FontSize="30"
                         Text="Bluebird" />
                 </StackPanel>
-                <TextBox
-                    Grid.Row="1"
-                    Width="400"
-                    IsSpellCheckEnabled="False"
-                    KeyDown="UrlBox_KeyDown"
-                    Loaded="UrlBox_Loaded"
-                    PlaceholderText="Type here to search or enter url" />
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox
+                        x:Name="UrlBox"
+                        Width="400"
+                        IsSpellCheckEnabled="False"
+                        KeyDown="UrlBox_KeyDown"
+                        Loaded="UrlBox_Loaded"
+                        PlaceholderText="Type here to search or enter url" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="5,0,0,0"
+                        Orientation="Horizontal">
+                        <Button
+                            Grid.Column="0"
+                            Height="32"
+                            Click="SearchButton_Click"
+                            Tag="Search">
+                            <Button.Content>
+                                <FontIcon Glyph="&#xE721;" />
+                            </Button.Content>
+                        </Button>
+                        <Button
+                            Grid.Column="1"
+                            Height="32"
+                            Margin="5,0,0,0"
+                            Click="SearchButton_Click"
+                            Content="✨"
+                            Tag="AISearch" />
+                    </StackPanel>
+                </Grid>
             </Grid>
             <!--<ListView
                 x:Name="UserFavoritesListView"
