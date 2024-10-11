@@ -315,7 +315,6 @@
                 GotFocus="UrlBox_GotFocus"
                 IsSpellCheckEnabled="False"
                 KeyDown="UrlBox_KeyDown"
-                Loaded="UrlBox_Loaded"
                 PlaceholderText="Type here to search or enter url" />
         </Grid>
         <muxc:ProgressBar

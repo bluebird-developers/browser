@@ -26,11 +26,6 @@ public sealed partial class WebViewPage : Page
         }
     }
 
-    private void UrlBox_Loaded(object sender, RoutedEventArgs e)
-    {
-        UrlBox.Focus(FocusState.Programmatic);
-    }
-
     private async void WebViewControl_Loaded(object sender, RoutedEventArgs e)
     {
         try
