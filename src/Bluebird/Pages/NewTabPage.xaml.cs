@@ -37,7 +37,10 @@ public sealed partial class NewTabPage : Page
         if (e.Key == VirtualKey.Enter)
         {
             string input = (sender as TextBox).Text;
-            ProcessQueryAndGo(input);
+            if (!string.IsNullOrEmpty(input))
+            {
+                ProcessQueryAndGo(input);
+            }
         }
     }
 
@@ -47,20 +50,12 @@ public sealed partial class NewTabPage : Page
         Frame.Navigate(typeof(WebViewPage), parameters, new DrillInNavigationTransitionInfo());
     }
 
-    private void SearchButton_Click(object sender, RoutedEventArgs e)
+    private void AISearchButton_Click(object sender, RoutedEventArgs e)
     {
         string query = UrlBox.Text;
         if (!string.IsNullOrEmpty(query))
         {
-            switch ((sender as Button).Tag)
-            {
-                case "Search":
-                    ProcessQueryAndGo(query);
-                    break;
-                case "AISearch":
-                    NavigateToUrl("https://www.perplexity.ai/search?q=" + query);
-                    break;
-            }
+            NavigateToUrl("https://www.perplexity.ai/search?q=" + query);
         }
     }
 

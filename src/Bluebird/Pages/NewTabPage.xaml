@@ -49,32 +49,19 @@
                     </Grid.ColumnDefinitions>
                     <TextBox
                         x:Name="UrlBox"
+                        Grid.Column="0"
                         Width="400"
                         IsSpellCheckEnabled="False"
                         KeyDown="UrlBox_KeyDown"
                         Loaded="UrlBox_Loaded"
                         PlaceholderText="Type here to search or enter url" />
-                    <StackPanel
+                    <Button
                         Grid.Column="1"
+                        Height="32"
                         Margin="5,0,0,0"
-                        Orientation="Horizontal">
-                        <Button
-                            Grid.Column="0"
-                            Height="32"
-                            Click="SearchButton_Click"
-                            Tag="Search">
-                            <Button.Content>
-                                <FontIcon Glyph="&#xE721;" />
-                            </Button.Content>
-                        </Button>
-                        <Button
-                            Grid.Column="1"
-                            Height="32"
-                            Margin="5,0,0,0"
-                            Click="SearchButton_Click"
-                            Content="✨"
-                            Tag="AISearch" />
-                    </StackPanel>
+                        Click="AISearchButton_Click"
+                        Content="✨"
+                        ToolTipService.ToolTip="Search with AI" />
                 </Grid>
             </Grid>
             <!--<ListView
