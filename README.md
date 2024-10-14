@@ -9,15 +9,16 @@
 ![Bluebird](images/heroimage.png)
 
 ## Features:
-- Browse the web
 - Responsive UI and quick startup time
+- Integrates nicely with other native Windows apps 
+- Split tabs
 - Reading mode
 - Force dark mode for all websites
-- Quick shortcuts on new tab page
 - Translate websites
 - Password lock
 - Generate QRCode for website
 - Export page to pdf (version 5.1 and newer)
+- New tab background images (you can disable them)
 
 Check the app out to see them in action! 
 
@@ -25,7 +26,7 @@ Check the app out to see them in action!
 
 ### 1. Prerequisites
 - Visual Studio 2022, version 17.11 or newer
-- Windows 11 SDK (10.0.26100.0)
+- Windows 11 SDK (currently 10.0.22621.0, soon 10.0.26100.0)
 - Windows Application Workload + Universal Windows Platform Tools
 
 ### 2. Clone the repository
