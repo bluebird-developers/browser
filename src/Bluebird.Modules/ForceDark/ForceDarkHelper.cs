@@ -11,7 +11,6 @@ public class ForceDarkHelper
     {
         if (jscript == null)
         {
-            System.Diagnostics.Debug.WriteLine("Forcedark initially loaded!");
             StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Bluebird.Modules/ForceDark/Assets/forcedark.min.js"));
             jscript = await FileIO.ReadTextAsync(file);
         }
