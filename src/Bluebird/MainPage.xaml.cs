@@ -36,17 +36,6 @@ public sealed partial class MainPage : Page
         }
     }
 
-    public muxc.TabViewItem SelectedTab
-    {
-        get
-        {
-            muxc.TabViewItem selectedItem = (muxc.TabViewItem)Tabs.SelectedItem;
-            if (selectedItem != null)
-                return selectedItem;
-            return null;
-        }
-    }
-
     private void Tabs_Loaded(object sender, RoutedEventArgs e)
     {
         string startupurl = AppStartupHelper.GetStartupUrl();
