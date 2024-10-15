@@ -6,10 +6,15 @@ namespace Bluebird.Modules.ForceDark;
 
 public class ForceDarkHelper
 {
+    public static string jscript { private set; get; }
     public static async Task<string> GetForceDarkScriptAsync()
     {
-        StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Bluebird.Modules/ForceDark/Assets/forcedark.min.js"));
-        string jscript = await FileIO.ReadTextAsync(file);
+        if (jscript == null)
+        {
+            System.Diagnostics.Debug.WriteLine("Forcedark initially loaded!");
+            StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Bluebird.Modules/ForceDark/Assets/forcedark.min.js"));
+            jscript = await FileIO.ReadTextAsync(file);
+        }
         return jscript;
     }
 }
