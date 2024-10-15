@@ -284,6 +284,15 @@ public sealed partial class WebViewPage : Page
         }
     }
 
+    private void AISearchButton_Click(object sender, RoutedEventArgs e)
+    {
+        string query = UrlBox.Text;
+        if (!string.IsNullOrEmpty(query))
+        {
+            NavigateToUrl("https://www.perplexity.ai/search?q=" + query);
+        }
+    }
+
     private void UrlBox_GotFocus(object sender, RoutedEventArgs e)
     {
         UrlBox.SelectAll();

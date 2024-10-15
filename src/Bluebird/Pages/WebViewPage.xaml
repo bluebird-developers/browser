@@ -302,14 +302,36 @@
             MaxWidth="600"
             Margin="10"
             VerticalAlignment="Bottom"
-            Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
             CornerRadius="5">
-            <TextBox
-                x:Name="UrlBox"
-                GotFocus="UrlBox_GotFocus"
-                IsSpellCheckEnabled="False"
-                KeyDown="UrlBox_KeyDown"
-                PlaceholderText="Type here to search or enter url" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid
+                Grid.Column="0"
+                Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
+                CornerRadius="5">
+                <TextBox
+                    x:Name="UrlBox"
+                    Grid.Column="0"
+                    GotFocus="UrlBox_GotFocus"
+                    IsSpellCheckEnabled="False"
+                    KeyDown="UrlBox_KeyDown"
+                    PlaceholderText="Type here to search or enter url" />
+            </Grid>
+            <Border Grid.Column="1" />
+            <Grid
+                Grid.Column="2"
+                Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
+                CornerRadius="5">
+                <Button
+                    Grid.Column="1"
+                    Height="32"
+                    Click="AISearchButton_Click"
+                    Content="✨"
+                    ToolTipService.ToolTip="Search with AI" />
+            </Grid>
         </Grid>
         <muxc:ProgressBar
             x:Name="LoadingBar"
