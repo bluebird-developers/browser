@@ -1,6 +1,6 @@
 ﻿namespace Bluebird.Core;
 
-internal class NotificationHelper
+public static class NotificationHelper
 {
     private static XmlDocument xmlDoc;
     public static void NotifyUser(string header, string content)

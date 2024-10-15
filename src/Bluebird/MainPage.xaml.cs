@@ -146,16 +146,16 @@ public sealed partial class MainPage : Page
         ListView listView = sender as ListView;
         if (listView.SelectedItem != null)
         {
-            FavoriteItems item = (FavoriteItems)listView.SelectedItem;
+            FavoriteItem item = (FavoriteItem)listView.SelectedItem;
             CreateWebTab(item.Url);
             FavoritesFlyout.Hide();
         }
     }
 
-    FavoriteItems selectedItem;
+    FavoriteItem selectedItem;
     private void FavoritesListView_RightTapped(object sender, RightTappedRoutedEventArgs e)
     {
-        selectedItem = ((FrameworkElement)e.OriginalSource).DataContext as FavoriteItems;
+        selectedItem = ((FrameworkElement)e.OriginalSource).DataContext as FavoriteItem;
     }
 
     private void FavContextItem_Click(object sender, RoutedEventArgs e)

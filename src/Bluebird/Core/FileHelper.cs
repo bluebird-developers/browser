@@ -32,7 +32,6 @@ public class FileHelper
             FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
             if (status == FileUpdateStatus.Complete)
             {
-                //SaveFileOutputTextBlock.Text = "File " + file.Name + " was saved.";
                 NotificationHelper.NotifyUser("Success", "File " +  file.Name + " was saved to\n" + file.Path);
             }
             else
@@ -40,12 +39,9 @@ public class FileHelper
                 await UI.ShowDialog("Error", "File " + file.Name + " couldn't be saved.");
             }
         }
-        else
-        {
-            //SaveFileOutputTextBlock.Text = "Operation cancelled.";
-        }
 
     }
+
     public static async Task DeleteLocalFile(string fileName)
     {
         var file = await ApplicationData.Current.LocalFolder.TryGetItemAsync(fileName);

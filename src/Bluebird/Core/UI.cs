@@ -1,6 +1,6 @@
 ﻿namespace Bluebird.Core;
 
-public class UI
+public static class UI
 {
     public static async Task ShowDialog(string title, string content)
     {
