@@ -125,7 +125,7 @@ public sealed partial class MainPage : Page
         var tabcontent = (Frame)selectedItem.Content;
         if (tabcontent.Content is WebViewPage) (tabcontent.Content as WebViewPage).WebViewControl.Close();
         if (tabcontent.Content is SplitTabPage) (tabcontent.Content as SplitTabPage).CloseWebViews();
-        sender.TabItems.Remove(args.Tab);
+        sender.TabItems.Remove(selectedItem);
         // Workaround for memory leak in TabView
         // microsoft-ui-xaml issue #3597
         // https://github.com/microsoft/microsoft-ui-xaml/issues/3597
