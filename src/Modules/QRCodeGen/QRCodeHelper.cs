@@ -4,22 +4,28 @@ namespace Bluebird.Core;
 
 public static class QRCodeHelper
 {
-    public static async Task<byte[]> GenerateQRCodeFromUrlAsync(string url)
+    public static Task<byte[]> GenerateQRCodeFromUrlAsync(string url)
     {
-        //Create raw qr code data
-        QRCodeGenerator qrGenerator = new();
-        QRCodeData qrCodeData = qrGenerator.CreateQrCode(url, QRCodeGenerator.ECCLevel.M);
+        try
+        {
+            //Create raw qr code data
+            QRCodeGenerator qrGenerator = new();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(url, QRCodeGenerator.ECCLevel.M);
 
-        //Create byte/raw bitmap qr code
-        BitmapByteQRCode qrCodeBmp = new(qrCodeData);
-        byte[] qrCodeImageBmp = qrCodeBmp.GetGraphic(20);
-        
-        return qrCodeImageBmp;
+            //Create byte/raw bitmap qr code
+            BitmapByteQRCode qrCodeBmp = new(qrCodeData);
+            byte[] qrCodeImageBmp = qrCodeBmp.GetGraphic(20);
+
+            return Task.FromResult(qrCodeImageBmp);
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     public static async Task<BitmapImage> ConvertBitmapBytesToImage(byte[] bytes)
     {
-
         var image = new BitmapImage();
         using (InMemoryRandomAccessStream stream = new())
         {

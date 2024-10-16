@@ -11,4 +11,6 @@ public class Globals
     public static StorageFolder localFolder = ApplicationData.Current.LocalFolder;
     public static string SearchUrl { get; set; }
     public static string StartupUrl { get; set; }
+
+    public static string AppVersion = AppVersionHelper.GetAppVersion();
 }

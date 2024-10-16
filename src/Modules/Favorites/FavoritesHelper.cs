@@ -1,15 +1,4 @@
-﻿namespace Bluebird.Core;
-
-[JsonSerializable(typeof(ObservableCollection<FavoriteItem>))]
-public partial class MyJsonSerializerContext : JsonSerializerContext
-{
-}
-
-public class FavoriteItem
-{
-    public string Title { get; set; }
-    public string Url { get; set; }
-}
+﻿namespace Bluebird.Modules.Favorites;
 
 public class FavoritesHelper
 {

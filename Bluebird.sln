@@ -2,9 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bluebird", "Bluebird\Bluebird.csproj", "{3226F93F-C704-419D-A116-C5C02F81C7C6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bluebird.Modules", "Bluebird.Modules\Bluebird.Modules.csproj", "{ADE50839-AA20-4503-872C-E85EF1928BD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bluebird", "src\Bluebird.csproj", "{3226F93F-C704-419D-A116-C5C02F81C7C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,18 +32,6 @@ Global
 		{3226F93F-C704-419D-A116-C5C02F81C7C6}.Release|x86.ActiveCfg = Release|x86
 		{3226F93F-C704-419D-A116-C5C02F81C7C6}.Release|x86.Build.0 = Release|x86
 		{3226F93F-C704-419D-A116-C5C02F81C7C6}.Release|x86.Deploy.0 = Release|x86
-		{ADE50839-AA20-4503-872C-E85EF1928BD9}.Debug|ARM64.ActiveCfg = Debug|ARM64
-		{ADE50839-AA20-4503-872C-E85EF1928BD9}.Debug|ARM64.Build.0 = Debug|ARM64
-		{ADE50839-AA20-4503-872C-E85EF1928BD9}.Debug|x64.ActiveCfg = Debug|x64
-		{ADE50839-AA20-4503-872C-E85EF1928BD9}.Debug|x64.Build.0 = Debug|x64
-		{ADE50839-AA20-4503-872C-E85EF1928BD9}.Debug|x86.ActiveCfg = Debug|x86
-		{ADE50839-AA20-4503-872C-E85EF1928BD9}.Debug|x86.Build.0 = Debug|x86
-		{ADE50839-AA20-4503-872C-E85EF1928BD9}.Release|ARM64.ActiveCfg = Release|ARM64
-		{ADE50839-AA20-4503-872C-E85EF1928BD9}.Release|ARM64.Build.0 = Release|ARM64
-		{ADE50839-AA20-4503-872C-E85EF1928BD9}.Release|x64.ActiveCfg = Release|x64
-		{ADE50839-AA20-4503-872C-E85EF1928BD9}.Release|x64.Build.0 = Release|x64
-		{ADE50839-AA20-4503-872C-E85EF1928BD9}.Release|x86.ActiveCfg = Release|x86
-		{ADE50839-AA20-4503-872C-E85EF1928BD9}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

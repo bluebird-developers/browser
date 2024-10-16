@@ -7,7 +7,6 @@
     <!-- disables generation of exception messages in framework-thrown exceptions -->
     <DisableExceptionMessages>true</DisableExceptionMessages>
   </PropertyGroup>
-  
   <PropertyGroup>
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
     <LangVersion>12</LangVersion>
@@ -121,17 +120,18 @@
     <Compile Include="Core\XAMLTabCreationParams.cs" />
     <Compile Include="Core\NewTabHelper.cs" />
     <Compile Include="Core\NotificationHelper.cs" />
-    <Compile Include="Core\QRCodeHelper.cs" />
+    <Compile Include="Modules\Favorites\FavoriteItem.cs" />
+    <Compile Include="Modules\QRCodeGen\QRCodeHelper.cs" />
     <Compile Include="Core\WebTabCreationParams.cs" />
     <Compile Include="Core\WebView2ProfileDataHelper.cs" />
     <Compile Include="Dialogs\PasswordContentDialog.xaml.cs">
       <DependentUpon>PasswordContentDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\AppVersion.cs" />
+    <Compile Include="Core\AppVersionHelper.cs" />
     <Compile Include="Core\BooleanToVisibilityConverter.cs" />
     <Compile Include="Core\ExceptionHelper.cs" />
     <Compile Include="Core\IconHelper.cs" />
-    <Compile Include="Core\FavoritesHelper.cs" />
+    <Compile Include="Modules\Favorites\FavoritesHelper.cs" />
     <Compile Include="Core\FileHelper.cs" />
     <Compile Include="Core\Globals.cs" />
     <Compile Include="Core\PasswordHelper.cs" />
@@ -145,6 +145,14 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\ForceDark\ForceDarkHelper.cs" />
+    <Compile Include="Modules\QRCodeGen\AbstractQRCode.cs" />
+    <Compile Include="Modules\QRCodeGen\BitmapByteQRCode.cs" />
+    <Compile Include="Modules\QRCodeGen\Exceptions\DataTooLongException.cs" />
+    <Compile Include="Modules\QRCodeGen\PayloadGenerator.cs" />
+    <Compile Include="Modules\QRCodeGen\QRCodeData.cs" />
+    <Compile Include="Modules\QRCodeGen\QRCodeGenerator.cs" />
+    <Compile Include="Modules\Readability\ReadabilityHelper.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -249,6 +257,12 @@
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Modules\ForceDark\Assets\forcedark.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Modules\Readability\Assets\readability.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Properties\Default.rd.xml" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -324,12 +338,6 @@
     <PackageReference Include="System.Text.Json">
       <Version>9.0.0-rc.2.24473.5</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Bluebird.Modules\Bluebird.Modules.csproj">
-      <Project>{ade50839-aa20-4503-872c-e85ef1928bd9}</Project>
-      <Name>Bluebird.Modules</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

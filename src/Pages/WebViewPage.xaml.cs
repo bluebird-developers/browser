@@ -73,7 +73,7 @@ public sealed partial class WebViewPage : Page
     private void ApplyWebView2Settings(muxc.WebView2 sender)
     {
         sender.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = false;
-        sender.CoreWebView2.Settings.UserAgent = $"{sender.CoreWebView2.Settings.UserAgent} Bluebird/{AppVersion.GetAppVersion()}";
+        sender.CoreWebView2.Settings.UserAgent = $"{sender.CoreWebView2.Settings.UserAgent} Bluebird/{AppVersion}";
     }
 
     private void CoreWebView2_NavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
@@ -334,6 +334,11 @@ public sealed partial class WebViewPage : Page
                 break;
             case "GenQRCode":
                 QrCode = await QRCodeHelper.GenerateQRCodeFromUrlAsync(WebViewControl.CoreWebView2.Source);
+                if (QrCode == null)
+                {
+                    await UI.ShowDialog("Error", "An error occured while trying to create a qr code for this website");
+                    break;
+                }
                 BitmapImage QrCodeImage = await QRCodeHelper.ConvertBitmapBytesToImage(QrCode);
                 QRCodeImage.Source = QrCodeImage;
                 QRCodeFlyout.ShowAt(sender as Button);

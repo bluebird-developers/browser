@@ -128,7 +128,7 @@ public sealed partial class SettingsPage : Page
 
     private void VersionTextBlock_Loaded(object sender, RoutedEventArgs e)
     {
-        string appversion = AppVersion.GetAppVersion();
+        string appversion = AppVersion;
         string apparch = RuntimeInformation.ProcessArchitecture.ToString();
         (sender as TextBlock).Text = $"v{appversion} | {apparch}";
     }

@@ -1,6 +1,6 @@
 ﻿namespace Bluebird.Core;
 
-public class AppVersion
+public class AppVersionHelper
 {
     public static string GetAppVersion()
     {

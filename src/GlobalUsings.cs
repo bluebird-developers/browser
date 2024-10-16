@@ -1,5 +1,6 @@
 ﻿global using Bluebird.Core;
 global using static Bluebird.Core.Globals;
+global using Bluebird.Modules.Favorites;
 global using Bluebird.Pages;
 global using Bluebird.ViewModels;
 global using Microsoft.Web.WebView2.Core;
