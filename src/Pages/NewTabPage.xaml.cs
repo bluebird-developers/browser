@@ -78,8 +78,8 @@ public sealed partial class NewTabPage : Page
         ListView listView = sender as ListView;
         if (listView.SelectedItem != null)
         {
-            FavoriteItems item = (FavoriteItems)listView.SelectedItem;
-            NavigateToUrl(item.Url)
+            FavoriteItem item = (FavoriteItem)listView.SelectedItem;
+            NavigateToUrl(item.Url);
         }
     }*/
 }

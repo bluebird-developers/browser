@@ -12,7 +12,7 @@ public class ReadabilityHelper
     {
         if (jscript == null)
         {
-            StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Bluebird.Modules/Readability/Assets/readability.js"));
+            StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Modules/Readability/Assets/readability.js"));
             jscript = await FileIO.ReadTextAsync(file);
         }
         return jscript;

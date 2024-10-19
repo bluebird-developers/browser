@@ -17,7 +17,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <!--<RowDefinition Height="Auto" />-->
             </Grid.RowDefinitions>
             <Grid
                 Grid.Row="0"
@@ -66,7 +65,9 @@
             </Grid>
             <!--<ListView
                 x:Name="UserFavoritesListView"
-                Grid.Row="2"
+                MaxWidth="450"
+                Margin="0,120,0,0"
+                CornerRadius="5"
                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
                 ScrollViewer.HorizontalScrollMode="Enabled"
                 ScrollViewer.IsHorizontalRailEnabled="True"
@@ -93,5 +94,6 @@
                 </ListView.ItemsPanel>
             </ListView>-->
         </Grid>
+
     </Grid>
 </Page>
