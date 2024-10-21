@@ -57,6 +57,8 @@ public sealed partial class WebViewPage : Page
         sender.CoreWebView2.ScriptDialogOpening += CoreWebView2_ScriptDialogOpening;
         sender.CoreWebView2.ContainsFullScreenElementChanged += CoreWebView2_ContainsFullScreenElementChanged;
         sender.CoreWebView2.LaunchingExternalUriScheme += CoreWebView2_LaunchingExternalUriScheme;
+        sender.CoreWebView2.IsDocumentPlayingAudioChanged += CoreWebView2_IsDocumentPlayingAudioChanged;
+        sender.CoreWebView2.IsMutedChanged += CoreWebView2_IsMutedChanged;
         // Apply WebView2 settings
         ApplyWebView2Settings(sender);
         if (launchurl != null)
@@ -67,6 +69,40 @@ public sealed partial class WebViewPage : Page
         else
         {
             sender.NavigateToString(ModernBlankPage.MinifiedModernBlackPageHTML);
+        }
+    }
+
+    private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+    {
+        ToggleSwitch toggleSwitch = sender as ToggleSwitch;
+        WebViewControl.CoreWebView2.IsMuted = toggleSwitch.IsOn;
+    }
+
+    private void CoreWebView2_IsMutedChanged(CoreWebView2 sender, object args)
+    {
+        if (sender.IsMuted)
+        {
+            MuteBtn.Content = new FontIcon { FontFamily = new FontFamily("Segoe MDL2 Assets"), Glyph = "\uE74F" };
+            return;
+        }
+        if (!sender.IsMuted)
+        {
+            MuteBtn.Content = new FontIcon { FontFamily = new FontFamily("Segoe MDL2 Assets"), Glyph = "\uE767" };
+        }
+    }
+
+    private void CoreWebView2_IsDocumentPlayingAudioChanged(CoreWebView2 sender, object args)
+    {
+        if (sender.IsDocumentPlayingAudio)
+        {
+            MuteBtn.Visibility = Visibility.Visible;
+            return;
+        }
+
+        if (!sender.IsDocumentPlayingAudio)
+        {
+            MuteBtn.Visibility = Visibility.Collapsed;
+            return;
         }
     }
 

@@ -284,6 +284,24 @@
                 <FontIcon Glyph="&#xED14;" />
             </Button>
         </StackPanel>
+        <Button
+            x:Name="MuteBtn"
+            Margin="5,0,0,5"
+            VerticalAlignment="Bottom"
+            Style="{StaticResource SidebarButton}"
+            Visibility="Collapsed">
+            <Button.Content>
+                <FontIcon Glyph="&#xE767;" />
+            </Button.Content>
+            <Button.Flyout>
+                <Flyout>
+                    <ToggleSwitch
+                        OffContent="Mute"
+                        OnContent="Muted"
+                        Toggled="ToggleSwitch_Toggled" />
+                </Flyout>
+            </Button.Flyout>
+        </Button>
         <Grid Grid.Column="1" Style="{StaticResource PageBorder}">
             <!--  required to round wv2  -->
             <Grid CornerRadius="5">
