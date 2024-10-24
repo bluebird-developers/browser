@@ -2,11 +2,24 @@
 
 public sealed partial class MainPage : Page
 {
+    private muxc.WebView2 mainWebView { get; set; }
+
     public MainPage()
     {
         this.InitializeComponent();
         Window.Current.SetTitleBar(CustomDragRegion);
         DataContext = SettingsViewModel.SettingsVM;
+        InitWebView();
+    }
+
+    private async void InitWebView()
+    {
+        // preloads WebView2 for faster initial navigation
+        await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+        {
+            mainWebView = new muxc.WebView2();
+            await mainWebView.EnsureCoreWebView2Async();
+        });
     }
 
     private void BrowserMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
