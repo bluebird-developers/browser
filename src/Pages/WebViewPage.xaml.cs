@@ -63,7 +63,7 @@ public sealed partial class WebViewPage : Page
         ApplyWebView2Settings(sender);
         if (launchurl != null)
         {
-            sender.Source = new Uri(launchurl);
+            NavigateToUrl(launchurl);
             launchurl = null;
         }
         else
