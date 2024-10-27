@@ -298,7 +298,7 @@
                     <ToggleSwitch
                         OffContent="Mute"
                         OnContent="Muted"
-                        Toggled="ToggleSwitch_Toggled" />
+                        Toggled="MuteSwitch_Toggled" />
                 </Flyout>
             </Button.Flyout>
         </Button>

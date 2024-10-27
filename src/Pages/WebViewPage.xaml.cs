@@ -72,7 +72,7 @@ public sealed partial class WebViewPage : Page
         }
     }
 
-    private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+    private void MuteSwitch_Toggled(object sender, RoutedEventArgs e)
     {
         ToggleSwitch toggleSwitch = sender as ToggleSwitch;
         WebViewControl.CoreWebView2.IsMuted = toggleSwitch.IsOn;
