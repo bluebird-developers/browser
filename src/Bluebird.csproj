@@ -124,9 +124,6 @@
     <Compile Include="Modules\QRCodeGen\QRCodeHelper.cs" />
     <Compile Include="Core\WebTabCreationParams.cs" />
     <Compile Include="Core\WebView2ProfileDataHelper.cs" />
-    <Compile Include="Dialogs\PasswordContentDialog.xaml.cs">
-      <DependentUpon>PasswordContentDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Core\AppVersionHelper.cs" />
     <Compile Include="Core\BooleanToVisibilityConverter.cs" />
     <Compile Include="Core\ExceptionHelper.cs" />
@@ -276,10 +273,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Dialogs\PasswordContentDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

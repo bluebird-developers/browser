@@ -108,21 +108,39 @@ public sealed partial class SettingsPage : Page
     {
         if (PasswordLockToggle.IsOn)
         {
-            Dialogs.PasswordContentDialog dialog = new();
+            PasswordBox pwBox = new();
+            ContentDialog dialog = new()
+            {
+                Title = "Set password",
+                Content = pwBox,
+                PrimaryButtonText = "Save",
+                SecondaryButtonText = "Cancel"
+            };
             var result = await dialog.ShowAsync();
+
             if (result == ContentDialogResult.Primary)
-                SettingsHelper.SetSetting("PasswordLock", "true");
-            else
+            {
+                string password = pwBox.Password;
+                if (password != string.Empty)
+                {
+                    PasswordHelper.SaveCredential("User", password);
+                    SettingsHelper.SetSetting("PasswordLock", "true");
+                    return;
+                }
+                PasswordLockToggle.IsOn = false;
+                SettingsHelper.SetSetting("PasswordLock", "false");
+                return;
+            }
+            if (result == ContentDialogResult.Secondary || result == ContentDialogResult.None)
             {
                 PasswordLockToggle.IsOn = false;
                 SettingsHelper.SetSetting("PasswordLock", "false");
-                PasswordHelper.RemoveCredential("User");
+                return;
             }
         }
-        else
+        if (!PasswordLockToggle.IsOn)
         {
             SettingsHelper.SetSetting("PasswordLock", "false");
-            PasswordHelper.RemoveCredential("User");
         }
     }
 
