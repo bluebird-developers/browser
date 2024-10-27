@@ -28,28 +28,30 @@
         </Grid>
         <Grid
             Grid.Row="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
             Style="{StaticResource PageBorder}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <FontIcon
-                Margin="0,0,100,10"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                FontSize="25"
-                Glyph="&#xE72E;" />
-            <Image
-                Width="100"
-                Height="100"
-                Source="ms-appx:///Assets/Square44x44Logo.targetsize-256.png" />
-            <PasswordBox
-                Grid.Row="1"
-                Width="300"
-                KeyDown="PasswordBox_KeyDown"
-                PlaceholderText="Enter your password" />
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <FontIcon
+                    Margin="0,0,100,10"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    FontSize="25"
+                    Glyph="&#xE72E;" />
+                <Image
+                    Width="100"
+                    Height="100"
+                    Source="ms-appx:///Assets/Square44x44Logo.targetsize-256.png" />
+                <PasswordBox
+                    Grid.Row="1"
+                    Width="300"
+                    KeyDown="PasswordBox_KeyDown"
+                    PlaceholderText="Enter your password" />
+            </Grid>
         </Grid>
     </Grid>
 </Page>
