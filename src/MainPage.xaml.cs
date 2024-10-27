@@ -106,7 +106,7 @@ public sealed partial class MainPage : Page
                 Url = url,
                 myTab = newItem
             };
-            frame.Navigate(page, parameters);
+            frame.Navigate(page, parameters, new DrillInNavigationTransitionInfo());
         }
         else
         {
@@ -114,7 +114,7 @@ public sealed partial class MainPage : Page
             {
                 myTab = newItem
             };
-            frame.Navigate(page, parameters);
+            frame.Navigate(page, parameters, new DrillInNavigationTransitionInfo());
         }
         
         Tabs.TabItems.Add(newItem);

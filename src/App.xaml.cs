@@ -48,9 +48,9 @@ sealed partial class App : Application
                 SetupTitleBar();
                 string PasswordLock = SettingsHelper.GetSetting("PasswordLock");
                 if (PasswordLock == "true")
-                    rootFrame.Navigate(typeof(LoginPage));
+                    rootFrame.Navigate(typeof(LoginPage), null, new DrillInNavigationTransitionInfo());
                 else
-                    rootFrame.Navigate(typeof(MainPage));
+                    rootFrame.Navigate(typeof(MainPage), null, new DrillInNavigationTransitionInfo());
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
@@ -97,9 +97,9 @@ sealed partial class App : Application
                 SetupTitleBar();
                 string PasswordLock = SettingsHelper.GetSetting("PasswordLock");
                 if (PasswordLock == "true")
-                    rootFrame.Navigate(typeof(LoginPage));
+                    rootFrame.Navigate(typeof(LoginPage), null, new DrillInNavigationTransitionInfo());
                 else
-                    rootFrame.Navigate(typeof(MainPage));
+                    rootFrame.Navigate(typeof(MainPage), null, new DrillInNavigationTransitionInfo());
 
             }
             // Ensure the current window is active

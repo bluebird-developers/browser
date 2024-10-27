@@ -13,7 +13,7 @@ public sealed partial class LoginPage : Page
             {
                 string password = PasswordHelper.GetCredential();
                 if (passwordBox.Password == password)
-                    Frame.Navigate(typeof(MainPage));
+                    Frame.Navigate(typeof(MainPage), null, new DrillInNavigationTransitionInfo());
                 else
                     await UI.ShowDialog("Error", "The password is incorrect");
             }
