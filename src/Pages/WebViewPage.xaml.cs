@@ -48,6 +48,7 @@ public sealed partial class WebViewPage : Page
         sender.CoreWebView2.NavigationStarting += CoreWebView2_NavigationStarting;
         sender.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
         sender.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;
+        sender.CoreWebView2.SourceChanged += CoreWebView2_SourceChanged;
         sender.CoreWebView2.ContextMenuRequested += CoreWebView2_ContextMenuRequested;
         if (!IsSplitTab)
         {
@@ -114,9 +115,6 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_NavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
     {
-        string uri = args.Uri;
-        if (uri != "data:text/html;charset=utf-8;base64,PGh0bWw+PGhlYWQ+PHN0eWxlPkBtZWRpYShwcmVmZXJzLWNvbG9yLXNjaGVtZTpsaWdodCl7aHRtbHtiYWNrZ3JvdW5kLWNvbG9yOiNmM2YzZjM7fX1AbWVkaWEocHJlZmVycy1jb2xvci1zY2hlbWU6ZGFyayl7aHRtbHtiYWNrZ3JvdW5kLWNvbG9yOiMyMDIwMjA7fX08L3N0eWxlPjwvaGVhZD48L2h0bWw+")
-            UrlBox.Text = args.Uri;
         LoadingBar.Visibility = Visibility.Visible;
     }
 
@@ -128,6 +126,12 @@ public sealed partial class WebViewPage : Page
             await sender.ExecuteScriptAsync(jscript);
         }
         LoadingBar.Visibility = Visibility.Collapsed;
+    }
+
+    private void CoreWebView2_SourceChanged(CoreWebView2 sender, CoreWebView2SourceChangedEventArgs args)
+    {
+        string uri = sender.Source;
+        UrlBox.Text = uri;
     }
 
     private async void CoreWebView2_ScriptDialogOpening(CoreWebView2 sender, CoreWebView2ScriptDialogOpeningEventArgs args)
