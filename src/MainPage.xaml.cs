@@ -15,11 +15,22 @@ public sealed partial class MainPage : Page
     private async void InitWebView()
     {
         // preloads WebView2 for faster initial navigation
-        await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+        try
         {
-            mainWebView = new muxc.WebView2();
-            await mainWebView.EnsureCoreWebView2Async();
-        });
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                mainWebView = new muxc.WebView2();
+                await mainWebView.EnsureCoreWebView2Async();
+            });
+        }
+        catch
+        {
+            var result = await UI.ShowDialogWithAction("Error", "WebView2 Runtime is not installed which is required to display webpages", "Download WebView2 Runtime", "Close App");
+            if (result == ContentDialogResult.Primary)
+                await Launcher.LaunchUriAsync(new Uri("https://go.microsoft.com/fwlink/p/?LinkId=2124703"));
+            else
+                CoreApplication.Exit();
+        }
     }
 
     private void BrowserMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
