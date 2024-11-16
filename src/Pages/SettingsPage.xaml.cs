@@ -155,4 +155,14 @@ public sealed partial class SettingsPage : Page
     {
         await Launcher.LaunchUriAsync(new Uri("https://github.com/bluebird-developers/browser"));
     }
+
+    private async void OpenDevSanxDiscord_Click(object sender, RoutedEventArgs e)
+    {
+        await Launcher.LaunchUriAsync(new Uri("https://discord.com/invite/windows-apps-hub-714581497222398064"));
+    }
+
+    private async void OpenDonateLink_Click(object sender, RoutedEventArgs e)
+    {
+        await Launcher.LaunchUriAsync(new Uri("https://paypal.me/julianhasreiter"));
+    }
 }

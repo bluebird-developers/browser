@@ -89,6 +89,30 @@
                 </toolkit:SettingsCard>
                 <!--  About  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
+                <toolkit:SettingsCard
+                    Click="OpenDevSanxDiscord_Click"
+                    Description="A discord server about Windows Apps"
+                    Header="Join the discussion on Developer Sanctuary"
+                    IsClickEnabled="True">
+                    <toolkit:SettingsCard.ActionIcon>
+                        <FontIcon Glyph="&#xE8A7;" />
+                    </toolkit:SettingsCard.ActionIcon>
+                    <toolkit:SettingsCard.HeaderIcon>
+                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/DevSanx.png" />
+                    </toolkit:SettingsCard.HeaderIcon>
+                </toolkit:SettingsCard>
+                <toolkit:SettingsCard
+                    Click="OpenDonateLink_Click"
+                    Description="On PayPal"
+                    Header="Support the development"
+                    IsClickEnabled="True">
+                    <toolkit:SettingsCard.ActionIcon>
+                        <FontIcon Glyph="&#xE8A7;" />
+                    </toolkit:SettingsCard.ActionIcon>
+                    <toolkit:SettingsCard.HeaderIcon>
+                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/paypal.png" />
+                    </toolkit:SettingsCard.HeaderIcon>
+                </toolkit:SettingsCard>
                 <toolkit:SettingsExpander Description="Your next-gen browser" Header="Bluebird">
                     <toolkit:SettingsExpander.HeaderIcon>
                         <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Square44x44Logo.png" />
