@@ -343,6 +343,7 @@ public sealed partial class WebViewPage : Page
         WebViewControl.CoreWebView2.Navigate(uri);
     }
 
+    bool IsInReadingMode = false;
     byte[] QrCode;
     private async void SidebarButton_Click(object sender, RoutedEventArgs e)
     {
@@ -362,8 +363,24 @@ public sealed partial class WebViewPage : Page
                 WebViewControl.GoForward();
                 break;
             case "ReadingMode":
-                string jscript = await Modules.Readability.ReadabilityHelper.GetReadabilityScriptAsync();
-                await WebViewControl.CoreWebView2.ExecuteScriptAsync(jscript);
+                if (IsInReadingMode)
+                {
+                    (sender as Button).Background = null;
+                    WebViewControl.Reload();
+                    UrlBoxWrapper.Visibility = Visibility.Visible;
+                    IsInReadingMode = false;
+                    break;
+                }
+                if (!IsInReadingMode)
+                {
+                    string jscript = await Modules.Readability.ReadabilityHelper.GetReadabilityScriptAsync();
+                    await WebViewControl.CoreWebView2.ExecuteScriptAsync(jscript);
+                    Brush accentBrush = Application.Current.Resources["SystemControlHighlightAccentBrush"] as SolidColorBrush;
+                    (sender as Button).Background = accentBrush;
+                    UrlBoxWrapper.Visibility = Visibility.Collapsed;
+                    IsInReadingMode = true;
+                    break;
+                }
                 break;
             case "AddFavoriteFlyout":
                 FavoriteTitle.Text = WebViewControl.CoreWebView2.DocumentTitle;
