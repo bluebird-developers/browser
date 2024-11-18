@@ -150,7 +150,7 @@
                             Header="Attributions">
                             <RichTextBlock>
                                 <Paragraph>
-                                    Bluebird icon created by<Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
+                                    Bluebird icon created by <Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
                                 </Paragraph>
                             </RichTextBlock>
                         </toolkit:SettingsCard>
