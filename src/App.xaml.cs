@@ -6,8 +6,15 @@ sealed partial class App : Application
     {
         this.InitializeComponent();
         this.Suspending += OnSuspending;
+        this.UnhandledException += App_UnhandledException;
         LoadSettings();
         FavoritesHelper.LoadFavoritesOnStartup();
+    }
+
+    private void App_UnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
+    {
+        NotificationHelper.NotifyUser("An error occured", "An unhandled exception occured, the app my be in an unstable state.\nPlease restart Bluebird as soon as possible.");
+        e.Handled = true;
     }
 
     private void LoadSettings()

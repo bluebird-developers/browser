@@ -1,12 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <!-- disable generation of stack trace metadata (needed by Exception.ToString() in NET Native) -->
-    <DisableStackTraceMetadata>true</DisableStackTraceMetadata>
-    <!-- disables generation of exception messages in framework-thrown exceptions -->
-    <DisableExceptionMessages>true</DisableExceptionMessages>
-  </PropertyGroup>
   <PropertyGroup>
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
     <LangVersion>12</LangVersion>
@@ -117,6 +111,7 @@
     </Compile>
     <Compile Include="Core\AppStartupHelper.cs" />
     <Compile Include="Core\ModernBlankPage.cs" />
+    <Compile Include="Core\WebView2CreationError.cs" />
     <Compile Include="Core\XAMLTabCreationParams.cs" />
     <Compile Include="Core\NewTabHelper.cs" />
     <Compile Include="Core\NotificationHelper.cs" />
@@ -161,6 +156,9 @@
     </Compile>
     <Compile Include="Pages\SplitTabPage.xaml.cs">
       <DependentUpon>SplitTabPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebViewErrorPage.xaml.cs">
+      <DependentUpon>WebViewErrorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\WebViewPage.xaml.cs">
       <DependentUpon>WebViewPage.xaml</DependentUpon>
@@ -298,6 +296,10 @@
     <Page Include="Pages\SplitTabPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WebViewErrorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\WebViewPage.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -32,13 +32,10 @@ public sealed partial class WebViewPage : Page
         {
             await (sender as muxc.WebView2).EnsureCoreWebView2Async();
         }
-        catch
+        catch (Exception ex)
         {
-            var result = await UI.ShowDialogWithAction("Error", "WebView2 Runtime is not installed which is required to display webpages", "Download WebView2 Runtime", "Close App");
-            if (result == ContentDialogResult.Primary)
-                await Launcher.LaunchUriAsync(new Uri("https://go.microsoft.com/fwlink/p/?LinkId=2124703"));
-            else
-                CoreApplication.Exit();
+            WebViewControl?.Close();
+            Frame.Navigate(typeof(WebViewErrorPage), new WebView2CreationError(ex.StackTrace), new DrillInNavigationTransitionInfo());
         }
     }
 
