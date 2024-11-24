@@ -1,4 +1,6 @@
-﻿namespace Bluebird.Pages;
+﻿using Windows.UI.Popups;
+
+namespace Bluebird.Pages;
 
 public sealed partial class SettingsPage : Page
 {
@@ -58,7 +60,22 @@ public sealed partial class SettingsPage : Page
             await WebView2ProfileDataHelper.ClearAllProfileDataAsync();
             ClearUserDataProgressRing.IsActive = false;
             ClearUserDataBtn.IsEnabled = true;
-            await UI.ShowDialog("Info", "User data was cleared");
+            ContentDialog dialog = new()
+            {
+                Title = "Info",
+                Content = "User data was cleared",
+                PrimaryButtonText = "Ok & restart app"
+            };
+
+            ContentDialogResult contentDialogResult = await dialog.ShowAsync();
+            if (contentDialogResult == ContentDialogResult.Primary)
+            {
+                var appRestart = await CoreApplication.RequestRestartAsync(string.Empty);
+                if (appRestart == AppRestartFailureReason.NotInForeground || appRestart == AppRestartFailureReason.RestartPending || appRestart == AppRestartFailureReason.Other)
+                {
+                    NotificationHelper.NotifyUser("Error", "Please restart Bluebird manually");
+                }
+            }
         }
     }
 

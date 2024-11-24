@@ -4,14 +4,14 @@ public static class WebView2ProfileDataHelper
 {
     public static async Task ClearAllProfileDataAsync()
     {
-        muxc.WebView2 HeadlessWebView2 = new();
-        await HeadlessWebView2.EnsureCoreWebView2Async();
-        if (HeadlessWebView2.CoreWebView2 != null)
-        {
-            CoreWebView2Profile profile = HeadlessWebView2.CoreWebView2.Profile;
+        if (MainPageContent.mainWebView.CoreWebView2 != null) {
+            CoreWebView2Profile profile = MainPageContent.mainWebView.CoreWebView2.Profile;
             await profile.ClearBrowsingDataAsync();
         }
-        HeadlessWebView2.Close();
+        else
+        {
+            NotificationHelper.NotifyUser("Error", "An error occurred while trying to clear user profile data");
+        }
         await FileHelper.DeleteLocalFile("Favorites.json");
         SettingsViewModel.SettingsVM.FavoritesList.Clear();
     }

@@ -2,7 +2,7 @@
 
 public sealed partial class MainPage : Page
 {
-    private muxc.WebView2 mainWebView { get; set; }
+    public muxc.WebView2 mainWebView { get; set; }
 
     public MainPage()
     {
