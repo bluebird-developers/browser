@@ -52,7 +52,6 @@ public sealed partial class WebViewPage : Page
             sender.CoreWebView2.DocumentTitleChanged += CoreWebView2_DocumentTitleChanged;
             sender.CoreWebView2.FaviconChanged += CoreWebView2_FaviconChanged;
         }
-        sender.CoreWebView2.ScriptDialogOpening += CoreWebView2_ScriptDialogOpening;
         sender.CoreWebView2.ContainsFullScreenElementChanged += CoreWebView2_ContainsFullScreenElementChanged;
         sender.CoreWebView2.LaunchingExternalUriScheme += CoreWebView2_LaunchingExternalUriScheme;
         sender.CoreWebView2.IsDocumentPlayingAudioChanged += CoreWebView2_IsDocumentPlayingAudioChanged;
@@ -129,11 +128,6 @@ public sealed partial class WebViewPage : Page
     {
         string uri = sender.Source;
         UrlBox.Text = uri;
-    }
-
-    private async void CoreWebView2_ScriptDialogOpening(CoreWebView2 sender, CoreWebView2ScriptDialogOpeningEventArgs args)
-    {
-        await UI.ShowDialog($"{sender.DocumentTitle} says", args.Message);
     }
 
     private void CoreWebView2_FaviconChanged(CoreWebView2 sender, object args)
