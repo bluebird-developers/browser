@@ -17,10 +17,14 @@ public sealed partial class SettingsPage : Page
         // General
         SearchEngineSelector.ItemsSource = SearchEngineHelper.SearchEngines;
         string SearchEngine = SettingsHelper.GetSetting("EngineFriendlyName");
-        if (SearchEngine != null)
-            SearchEngineSelector.PlaceholderText = SearchEngine;
-        else
-            SearchEngineSelector.PlaceholderText = "Qwant";
+
+        foreach (SearchEngine engine in SearchEngineHelper.SearchEngines)
+        {
+            if (engine.SearchUrl == SearchUrl)
+            {
+                SearchEngineSelector.SelectedItem = engine;
+            }
+        }
 
         if (SettingsHelper.GetSetting("ForceDark") == "true")
             ForceDarkSwitch.IsOn = true;
@@ -46,8 +50,8 @@ public sealed partial class SettingsPage : Page
 
     private void SearchEngineSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string selection = e.AddedItems[0].ToString();
-        SearchEngineHelper.SetSearchEngine(selection);
+        SearchEngine engine = e.AddedItems[0] as SearchEngine;
+        SearchEngineHelper.SetSearchEngine(engine);
     }
 
     private async void ClearUserDataButton_Click(object sender, RoutedEventArgs e)

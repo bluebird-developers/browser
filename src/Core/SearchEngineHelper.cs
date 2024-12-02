@@ -2,40 +2,25 @@
 
 public class SearchEngineHelper
 {
-    public static void SetSearchEngine(string selection)
+    public static void SetSearchEngine(SearchEngine engine)
     {
-        if (selection == "Ask") SetEngine("Ask", "https://www.ask.com/web?q=");
-        if (selection == "Baidu") SetEngine("Baidu", "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=");
-        if (selection == "Bing") SetEngine("Bing", "https://www.bing.com?q=");
-        if (selection == "Brave Search") SetEngine("Brave Search", "https://search.brave.com/search?q=");
-        if (selection == "DuckDuckGo") SetEngine("DuckDuckGo", "https://www.duckduckgo.com?q=");
-        if (selection == "Ecosia") SetEngine("Ecosia", "https://www.ecosia.org/search?q=");
-        if (selection == "Google") SetEngine("Google", "https://www.google.com/search?q=");
-        if (selection == "Startpage") SetEngine("Startpage", "https://www.startpage.com/search?q=");
-        if (selection == "Qwant") SetEngine("Qwant", "https://www.qwant.com/?q=");
-        if (selection == "Yahoo!") SetEngine("Yahoo!", "https://search.yahoo.com/search?p=");
-        if (selection == "Yandex") SetEngine("Yandex", "https://yandex.com/search/?text=");
+        SettingsHelper.SetSetting("EngineFriendlyName", engine.EngineFriendlyName);
+        SettingsHelper.SetSetting("SearchUrl", engine.SearchUrl);
+        SearchUrl = engine.SearchUrl;
     }
 
-    private static void SetEngine(string EngineFriendlyName, string SearchUrl)
-    {
-        SettingsHelper.SetSetting("EngineFriendlyName", EngineFriendlyName);
-        SettingsHelper.SetSetting("SearchUrl", SearchUrl);
-        Globals.SearchUrl = SearchUrl;
-    }
-
-    public static List<string> SearchEngines = new()
-    {
-        "Ask",
-        "Baidu",
-        "Bing",
-        "Brave Search",
-        "DuckDuckGo",
-        "Ecosia",
-        "Google",
-        "Startpage",
-        "Qwant",
-        "Yahoo!",
-        "Yandex"
-    };
+    public static List<SearchEngine> SearchEngines =
+    [
+        new SearchEngine("Ask", "https://www.ask.com/web?q="),
+        new SearchEngine("Baidu", "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd="),
+        new SearchEngine("Bing", "https://www.bing.com?q="),
+        new SearchEngine("Brave Search", "https://search.brave.com/search?q="),
+        new SearchEngine("DuckDuckGo", "https://www.duckduckgo.com?q="),
+        new SearchEngine("Ecosia", "https://www.ecosia.org/search?q="),
+        new SearchEngine("Google", "https://www.google.com/search?q="),
+        new SearchEngine("Startpage", "https://www.startpage.com/search?q="),
+        new SearchEngine("Qwant", "https://www.qwant.com/?q="),
+        new SearchEngine("Yahoo!", "https://search.yahoo.com/search?p="),
+        new SearchEngine("Yandex", "https://yandex.com/search/?text=")
+    ];
 }

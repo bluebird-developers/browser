@@ -2,6 +2,7 @@
     x:Class="Bluebird.Pages.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="using:Bluebird.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Bluebird.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -35,7 +36,13 @@
                 <!--  General  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="General" />
                 <toolkit:SettingsCard Header="Search engine" HeaderIcon="Find">
-                    <ComboBox x:Name="SearchEngineSelector" />
+                    <ComboBox x:Name="SearchEngineSelector">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="core:SearchEngine">
+                                <TextBlock Text="{x:Bind EngineFriendlyName}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </toolkit:SettingsCard>
                 <!--  Data  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Personalization" />

@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="Core\AppStartupHelper.cs" />
     <Compile Include="Core\ModernBlankPage.cs" />
+    <Compile Include="Core\SearchEngine.cs" />
     <Compile Include="Core\WebView2CreationError.cs" />
     <Compile Include="Core\XAMLTabCreationParams.cs" />
     <Compile Include="Core\NewTabHelper.cs" />
