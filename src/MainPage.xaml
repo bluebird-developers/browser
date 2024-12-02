@@ -16,18 +16,10 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <FontIcon Grid.Column="0" Glyph="&#xE728;" />
-                    <TextBlock
-                        Grid.Column="1"
-                        Margin="5,0,0,0"
-                        FontSize="20"
-                        Text="Favorites" />
-                </Grid>
+                <TextBlock
+                    Grid.Row="0"
+                    FontSize="20"
+                    Text="Favorites" />
                 <ListView
                     x:Name="FavoritesListView"
                     Grid.Row="1"
@@ -101,52 +93,55 @@
         TabItemsChanged="Tabs_TabItemsChanged"
         TabWidthMode="{Binding TabWidthMode, Mode=OneWay}">
         <muxc:TabView.TabStripHeader>
-            <Button
-                x:Name="BrowserMenuBtn"
-                VerticalAlignment="Bottom"
-                Style="{StaticResource SidebarButton}">
-                <FontIcon Glyph="&#xE10C;" />
-                <Button.Flyout>
-                    <MenuFlyout Placement="Bottom">
-                        <MenuFlyoutItem
-                            Click="BrowserMenuFlyoutItem_Click"
-                            Icon="Download"
-                            Tag="Downloads"
-                            Text="Downloads" />
-                        <MenuFlyoutItem
-                            Click="BrowserMenuFlyoutItem_Click"
-                            Tag="Favorites"
-                            Text="Favorites">
-                            <MenuFlyoutItem.Icon>
-                                <FontIcon Glyph="&#xE728;" />
-                            </MenuFlyoutItem.Icon>
-                        </MenuFlyoutItem>
-                        <MenuFlyoutItem
-                            Click="BrowserMenuFlyoutItem_Click"
-                            Tag="History"
-                            Text="History">
-                            <MenuFlyoutItem.Icon>
-                                <FontIcon Glyph="&#xE81C;" />
-                            </MenuFlyoutItem.Icon>
-                        </MenuFlyoutItem>
-                        <MenuFlyoutSeparator />
-                        <MenuFlyoutItem
-                            Click="BrowserMenuFlyoutItem_Click"
-                            Tag="Fullscreen"
-                            Text="Fullscreen">
-                            <MenuFlyoutItem.Icon>
-                                <FontIcon Glyph="&#xE1D9;" />
-                            </MenuFlyoutItem.Icon>
-                        </MenuFlyoutItem>
-                        <MenuFlyoutSeparator />
-                        <MenuFlyoutItem
-                            Click="BrowserMenuFlyoutItem_Click"
-                            Icon="Setting"
-                            Tag="Settings"
-                            Text="Settings" />
-                    </MenuFlyout>
-                </Button.Flyout>
-            </Button>
+            <StackPanel Orientation="Horizontal">
+                <Button
+                    x:Name="BrowserMenuBtn"
+                    VerticalAlignment="Bottom"
+                    Style="{StaticResource SidebarButton}">
+                    <FontIcon Glyph="&#xE10C;" />
+                    <Button.Flyout>
+                        <MenuFlyout Placement="Bottom">
+                            <MenuFlyoutItem
+                                Click="BrowserMenuFlyoutItem_Click"
+                                Icon="Download"
+                                Tag="Downloads"
+                                Text="Downloads" />
+                            <MenuFlyoutItem
+                                Click="BrowserMenuFlyoutItem_Click"
+                                Tag="History"
+                                Text="History">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE81C;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutSeparator />
+                            <MenuFlyoutItem
+                                Click="BrowserMenuFlyoutItem_Click"
+                                Tag="Fullscreen"
+                                Text="Fullscreen">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE1D9;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutSeparator />
+                            <MenuFlyoutItem
+                                Click="BrowserMenuFlyoutItem_Click"
+                                Icon="Setting"
+                                Tag="Settings"
+                                Text="Settings" />
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+                <Button
+                    x:Name="FavoritesFlyoutButton"
+                    VerticalAlignment="Bottom"
+                    Click="FavoritesFlyoutButton_Click"
+                    Style="{StaticResource SidebarButton}">
+                    <Button.Content>
+                        <FontIcon Glyph="&#xE728;" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
         </muxc:TabView.TabStripHeader>
         <muxc:TabView.TabStripFooter>
             <Grid>

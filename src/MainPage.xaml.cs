@@ -40,10 +40,6 @@ public sealed partial class MainPage : Page
             case "Downloads":
                 CreateTab("Downloads", "\uE896", typeof(WebViewPage), "edge://downloads");
                 break;
-            case "Favorites":
-                FavoritesFlyout.ShowAt(BrowserMenuBtn);
-                FavoritesListView.SelectedItem = null;
-                break;
             case "History":
                 CreateTab("History", "\uE81C", typeof(WebViewPage), "edge://history");
                 break;
@@ -154,6 +150,12 @@ public sealed partial class MainPage : Page
     }
 
     #region Favorites flyout
+    private void FavoritesFlyoutButton_Click(object sender, RoutedEventArgs e)
+    {
+        FavoritesFlyout.ShowAt(BrowserMenuBtn);
+        FavoritesListView.SelectedItem = null;
+    }
+
     private void FavoritesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         ListView listView = sender as ListView;
