@@ -200,14 +200,7 @@
         </muxc:TabView.TabStripFooter>
         <muxc:TabView.Resources>
             <ResourceDictionary>
-                <ResourceDictionary.ThemeDictionaries>
-                    <ResourceDictionary x:Key="Light">
-                        <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="#BDF0F0F0" />
-                    </ResourceDictionary>
-                    <ResourceDictionary x:Key="Dark">
-                        <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="#60000000" />
-                    </ResourceDictionary>
-                </ResourceDictionary.ThemeDictionaries>
+                <StaticResource x:Key="TabViewItemHeaderBackgroundSelected" ResourceKey="LayerFillColorDefaultBrush" />
             </ResourceDictionary>
         </muxc:TabView.Resources>
     </muxc:TabView>
