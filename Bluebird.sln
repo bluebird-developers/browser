@@ -1,8 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 17
+# Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bluebird", "src\Bluebird.csproj", "{3226F93F-C704-419D-A116-C5C02F81C7C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRCoder", "external\QRCoder\QRCoder.csproj", "{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,18 @@ Global
 		{3226F93F-C704-419D-A116-C5C02F81C7C6}.Release|x86.ActiveCfg = Release|x86
 		{3226F93F-C704-419D-A116-C5C02F81C7C6}.Release|x86.Build.0 = Release|x86
 		{3226F93F-C704-419D-A116-C5C02F81C7C6}.Release|x86.Deploy.0 = Release|x86
+		{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}.Debug|x64.Build.0 = Debug|Any CPU
+		{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}.Debug|x86.Build.0 = Debug|Any CPU
+		{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}.Release|ARM64.Build.0 = Release|Any CPU
+		{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}.Release|x64.ActiveCfg = Release|Any CPU
+		{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}.Release|x64.Build.0 = Release|Any CPU
+		{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}.Release|x86.ActiveCfg = Release|Any CPU
+		{59967C6A-4C1B-45CF-A9AC-E7664E2E49AC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

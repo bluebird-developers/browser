@@ -1,4 +1,4 @@
-﻿using Bluebird.Modules.QRCodeGen;
+﻿using QRCoder;
 
 namespace Bluebird.Core;
 

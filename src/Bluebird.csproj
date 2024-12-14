@@ -139,12 +139,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\ForceDark\ForceDarkHelper.cs" />
-    <Compile Include="Modules\QRCodeGen\AbstractQRCode.cs" />
-    <Compile Include="Modules\QRCodeGen\BitmapByteQRCode.cs" />
-    <Compile Include="Modules\QRCodeGen\Exceptions\DataTooLongException.cs" />
-    <Compile Include="Modules\QRCodeGen\PayloadGenerator.cs" />
-    <Compile Include="Modules\QRCodeGen\QRCodeData.cs" />
-    <Compile Include="Modules\QRCodeGen\QRCodeGenerator.cs" />
     <Compile Include="Modules\Readability\ReadabilityHelper.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -340,6 +334,12 @@
     <PackageReference Include="System.Text.Json">
       <Version>9.0.0</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\external\QRCoder\QRCoder.csproj">
+      <Project>{59967c6a-4c1b-45cf-a9ac-e7664e2e49ac}</Project>
+      <Name>QRCoder</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
