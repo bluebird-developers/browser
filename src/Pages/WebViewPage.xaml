@@ -12,14 +12,15 @@
     <Page.Resources>
         <Flyout x:Name="AddFavoriteFlyout" Placement="Right">
             <StackPanel>
-                <TextBlock MinWidth="300" FontSize="20">
+                <TextBlock Width="300" FontSize="20">
                     Add favorite
                 </TextBlock>
-                <TextBlock>Name</TextBlock>
-                <TextBox x:Name="FavoriteTitle" />
+                <TextBlock Margin="0,5,0,0">Name</TextBlock>
+                <TextBox x:Name="FavoriteTitle" Width="300" />
                 <TextBlock>Url</TextBlock>
-                <TextBox x:Name="FavoriteUrl" />
+                <TextBox x:Name="FavoriteUrl" Width="300" />
                 <Button
+                    Margin="0,5,0,0"
                     Click="AddFavoriteButton_Click"
                     Content="Add"
                     Tag="AddFavorite" />
