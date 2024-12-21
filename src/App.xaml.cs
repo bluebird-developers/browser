@@ -143,5 +143,6 @@ sealed partial class App : Application
         var titleBar = ApplicationView.GetForCurrentView().TitleBar;
         // Set colors
         titleBar.ButtonBackgroundColor = Colors.Transparent;
+        titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
     }
 }
