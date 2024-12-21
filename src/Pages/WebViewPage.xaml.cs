@@ -69,12 +69,6 @@ public sealed partial class WebViewPage : Page
         }
     }
 
-    private void MuteSwitch_Toggled(object sender, RoutedEventArgs e)
-    {
-        ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-        WebViewControl.CoreWebView2.IsMuted = toggleSwitch.IsOn;
-    }
-
     private void CoreWebView2_IsMutedChanged(CoreWebView2 sender, object args)
     {
         if (sender.IsMuted)
@@ -390,6 +384,9 @@ public sealed partial class WebViewPage : Page
                 BitmapImage QrCodeImage = await QRCodeHelper.ConvertBitmapBytesToImage(QrCode);
                 QRCodeImage.Source = QrCodeImage;
                 QRCodeFlyout.ShowAt(sender as Button);
+                break;
+            case "Mute":
+                WebViewControl.CoreWebView2.IsMuted = !WebViewControl.CoreWebView2.IsMuted;
                 break;
         }
     }
