@@ -84,7 +84,7 @@
     </Page.Resources>
     <muxc:TabView
         x:Name="Tabs"
-        Margin="0,-8,0,0"
+        Margin="0,-7,0,0"
         VerticalAlignment="Stretch"
         Background="Transparent"
         IsAddTabButtonVisible="False"
