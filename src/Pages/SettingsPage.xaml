@@ -7,7 +7,7 @@
     xmlns:local="using:Bluebird.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:toolkitc="using:CommunityToolkit.WinUI.Controls"
     NavigationCacheMode="Required"
     mc:Ignorable="d">
     <Page.Resources>
@@ -35,7 +35,7 @@
                     Text="Settings" />
                 <!--  General  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="General" />
-                <toolkit:SettingsCard Header="Search engine" HeaderIcon="Find">
+                <toolkitc:SettingsCard Header="Search engine" HeaderIcon="Find">
                     <ComboBox x:Name="SearchEngineSelector">
                         <ComboBox.ItemTemplate>
                             <DataTemplate x:DataType="core:SearchEngine">
@@ -43,13 +43,13 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                </toolkit:SettingsCard>
+                </toolkitc:SettingsCard>
                 <!--  Data  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Personalization" />
-                <toolkit:SettingsCard Description="Clear all user data" Header="Clear data">
-                    <toolkit:SettingsCard.HeaderIcon>
+                <toolkitc:SettingsCard Description="Clear all user data" Header="Clear data">
+                    <toolkitc:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE74E;" />
-                    </toolkit:SettingsCard.HeaderIcon>
+                    </toolkitc:SettingsCard.HeaderIcon>
                     <Grid>
                         <muxc:ProgressRing
                             x:Name="ClearUserDataProgressRing"
@@ -61,84 +61,84 @@
                             Click="ClearUserDataButton_Click"
                             Content="Clear all data" />
                     </Grid>
-                </toolkit:SettingsCard>
+                </toolkitc:SettingsCard>
                 <!--  Personalization  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Personalization" />
-                <toolkit:SettingsCard Description="Force dark mode for all websites" Header="Force dark mode">
-                    <toolkit:SettingsCard.HeaderIcon>
+                <toolkitc:SettingsCard Description="Force dark mode for all websites" Header="Force dark mode">
+                    <toolkitc:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE790;" />
-                    </toolkit:SettingsCard.HeaderIcon>
+                    </toolkitc:SettingsCard.HeaderIcon>
                     <ToggleSwitch x:Name="ForceDarkSwitch" />
-                </toolkit:SettingsCard>
-                <toolkit:SettingsCard Description="View more tabs at a glance" Header="Compact tabs">
-                    <toolkit:SettingsCard.HeaderIcon>
+                </toolkitc:SettingsCard>
+                <toolkitc:SettingsCard Description="View more tabs at a glance" Header="Compact tabs">
+                    <toolkitc:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE737;" />
-                    </toolkit:SettingsCard.HeaderIcon>
+                    </toolkitc:SettingsCard.HeaderIcon>
                     <ToggleSwitch x:Name="CompactTabsToggle" />
-                </toolkit:SettingsCard>
-                <toolkit:SettingsExpander Description="Configure settings related to the new tab page" Header="New tab settings">
-                    <toolkit:SettingsExpander.HeaderIcon>
+                </toolkitc:SettingsCard>
+                <toolkitc:SettingsExpander Description="Configure settings related to the new tab page" Header="New tab settings">
+                    <toolkitc:SettingsExpander.HeaderIcon>
                         <FontIcon Glyph="&#xEC6C;" />
-                    </toolkit:SettingsExpander.HeaderIcon>
-                    <toolkit:SettingsExpander.Items>
-                        <toolkit:SettingsCard Header="Disable background image">
+                    </toolkitc:SettingsExpander.HeaderIcon>
+                    <toolkitc:SettingsExpander.Items>
+                        <toolkitc:SettingsCard Header="Disable background image">
                             <ToggleSwitch x:Name="NewTabBgImageToggle" />
-                        </toolkit:SettingsCard>
-                    </toolkit:SettingsExpander.Items>
-                </toolkit:SettingsExpander>
+                        </toolkitc:SettingsCard>
+                    </toolkitc:SettingsExpander.Items>
+                </toolkitc:SettingsExpander>
                 <!--  Privacy  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Privacy" />
-                <toolkit:SettingsCard Description="Require a password to open Bluebird" Header="Password lock">
-                    <toolkit:SettingsCard.HeaderIcon>
+                <toolkitc:SettingsCard Description="Require a password to open Bluebird" Header="Password lock">
+                    <toolkitc:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE192;" />
-                    </toolkit:SettingsCard.HeaderIcon>
+                    </toolkitc:SettingsCard.HeaderIcon>
                     <ToggleSwitch x:Name="PasswordLockToggle" />
-                </toolkit:SettingsCard>
+                </toolkitc:SettingsCard>
                 <!--  About  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
-                <toolkit:SettingsCard
+                <toolkitc:SettingsCard
                     Click="OpenDevSanxDiscord_Click"
                     Description="A discord server about Windows Apps"
                     Header="Join the discussion on Developer Sanctuary"
                     IsClickEnabled="True">
-                    <toolkit:SettingsCard.ActionIcon>
+                    <toolkitc:SettingsCard.ActionIcon>
                         <FontIcon Glyph="&#xE8A7;" />
-                    </toolkit:SettingsCard.ActionIcon>
-                    <toolkit:SettingsCard.HeaderIcon>
+                    </toolkitc:SettingsCard.ActionIcon>
+                    <toolkitc:SettingsCard.HeaderIcon>
                         <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/DevSanx.png" />
-                    </toolkit:SettingsCard.HeaderIcon>
-                </toolkit:SettingsCard>
-                <toolkit:SettingsCard
+                    </toolkitc:SettingsCard.HeaderIcon>
+                </toolkitc:SettingsCard>
+                <toolkitc:SettingsCard
                     Click="OpenDonateLink_Click"
                     Description="On PayPal"
                     Header="Support the development"
                     IsClickEnabled="True">
-                    <toolkit:SettingsCard.ActionIcon>
+                    <toolkitc:SettingsCard.ActionIcon>
                         <FontIcon Glyph="&#xE8A7;" />
-                    </toolkit:SettingsCard.ActionIcon>
-                    <toolkit:SettingsCard.HeaderIcon>
+                    </toolkitc:SettingsCard.ActionIcon>
+                    <toolkitc:SettingsCard.HeaderIcon>
                         <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/paypal.png" />
-                    </toolkit:SettingsCard.HeaderIcon>
-                </toolkit:SettingsCard>
-                <toolkit:SettingsExpander Description="Your next-gen browser" Header="Bluebird">
-                    <toolkit:SettingsExpander.HeaderIcon>
+                    </toolkitc:SettingsCard.HeaderIcon>
+                </toolkitc:SettingsCard>
+                <toolkitc:SettingsExpander Description="Your next-gen browser" Header="Bluebird">
+                    <toolkitc:SettingsExpander.HeaderIcon>
                         <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Square44x44Logo.png" />
-                    </toolkit:SettingsExpander.HeaderIcon>
+                    </toolkitc:SettingsExpander.HeaderIcon>
                     <TextBlock
                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                         IsTextSelectionEnabled="True"
                         Loaded="VersionTextBlock_Loaded" />
-                    <toolkit:SettingsExpander.Items>
-                        <toolkit:SettingsCard
+                    <toolkitc:SettingsExpander.Items>
+                        <toolkitc:SettingsCard
                             Click="OpenGitHubSettingsCard_Click"
                             Description="On GitHub"
                             Header="File a bug or request a new feature"
                             IsClickEnabled="True">
-                            <toolkit:SettingsCard.ActionIcon>
+                            <toolkitc:SettingsCard.ActionIcon>
                                 <FontIcon Glyph="&#xE8A7;" />
-                            </toolkit:SettingsCard.ActionIcon>
-                        </toolkit:SettingsCard>
-                        <toolkit:SettingsCard
+                            </toolkitc:SettingsCard.ActionIcon>
+                        </toolkitc:SettingsCard>
+                        <toolkitc:SettingsCard
                             HorizontalContentAlignment="Left"
                             ContentAlignment="Vertical"
                             Header="Dependencies &amp; references">
@@ -150,19 +150,19 @@
                                 <HyperlinkButton Content="Bluebird.Modules.Forcedark" NavigateUri="https://github.com/bluebird-developers/Bluebird.Modules.Forcedark" />
                                 <HyperlinkButton Content="Microsoft.Web.WebView2" NavigateUri="https://aka.ms/webview" />
                             </StackPanel>
-                        </toolkit:SettingsCard>
-                        <toolkit:SettingsCard
+                        </toolkitc:SettingsCard>
+                        <toolkitc:SettingsCard
                             HorizontalContentAlignment="Left"
                             ContentAlignment="Vertical"
                             Header="Attributions">
                             <RichTextBlock>
                                 <Paragraph>
-                                    Bluebird icon created by <Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
+                                    Bluebird icon created by<Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
                                 </Paragraph>
                             </RichTextBlock>
-                        </toolkit:SettingsCard>
-                    </toolkit:SettingsExpander.Items>
-                </toolkit:SettingsExpander>
+                        </toolkitc:SettingsCard>
+                    </toolkitc:SettingsExpander.Items>
+                </toolkitc:SettingsExpander>
             </StackPanel>
         </ScrollViewer>
     </Grid>
