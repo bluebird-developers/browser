@@ -4,27 +4,29 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkitc="using:CommunityToolkit.WinUI.Controls"
     NavigationCacheMode="Required"
     mc:Ignorable="d">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition MinWidth="200" />
+            <ColumnDefinition MinWidth="200" />
         </Grid.ColumnDefinitions>
         <Frame
             x:Name="LeftFrame"
             Grid.Column="0"
-            Margin="5,5,3,5"
-            BorderBrush="{StaticResource ControlElevationBorderBrush}"
-            BorderThickness="2"
-            CornerRadius="5" />
+            Margin="0,0,-5,0" />
         <Frame
             x:Name="RightFrame"
             Grid.Column="1"
-            Margin="3,5,5,5"
-            BorderBrush="{StaticResource ControlElevationBorderBrush}"
-            BorderThickness="2"
-            CornerRadius="5" />
+            Margin="20,0,0,0" />
+        <toolkitc:GridSplitter
+            Grid.Column="1"
+            Width="16"
+            Margin="4,0,0,0"
+            HorizontalAlignment="Left"
+            ResizeBehavior="BasedOnAlignment"
+            ResizeDirection="Columns" />
     </Grid>
 </Page>
