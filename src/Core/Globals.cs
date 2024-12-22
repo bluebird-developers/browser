@@ -9,6 +9,7 @@ public class Globals
     }
     // Global variables
     public static StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+    public static string AISearchUrl { get; set; }
     public static string SearchUrl { get; set; }
     public static string StartupUrl { get; set; }
 

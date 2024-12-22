@@ -44,6 +44,18 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                 </toolkitc:SettingsCard>
+                <toolkitc:SettingsCard Header="AI search engine">
+                    <toolkitc:SettingsCard.HeaderIcon>
+                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/AISparkles.png" />
+                    </toolkitc:SettingsCard.HeaderIcon>
+                    <ComboBox x:Name="AISearchEngineSelector">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="core:SearchEngine">
+                                <TextBlock Text="{x:Bind EngineFriendlyName}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </toolkitc:SettingsCard>
                 <!--  Data  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Personalization" />
                 <toolkitc:SettingsCard Description="Clear all user data" Header="Clear data">

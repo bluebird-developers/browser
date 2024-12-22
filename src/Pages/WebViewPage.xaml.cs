@@ -314,7 +314,7 @@ public sealed partial class WebViewPage : Page
         string query = UrlBox.Text;
         if (!string.IsNullOrEmpty(query))
         {
-            NavigateToUrl("https://www.perplexity.ai/search?q=" + query);
+            NavigateToUrl(AISearchUrl + query);
         }
     }
 

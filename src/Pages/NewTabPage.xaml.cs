@@ -55,7 +55,7 @@ public sealed partial class NewTabPage : Page
         string query = UrlBox.Text;
         if (!string.IsNullOrEmpty(query))
         {
-            NavigateToUrl("https://www.perplexity.ai/search?q=" + query);
+            NavigateToUrl(AISearchUrl + query);
         }
     }
 

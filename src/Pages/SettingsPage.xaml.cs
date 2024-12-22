@@ -17,12 +17,21 @@ public sealed partial class SettingsPage : Page
         // General
         SearchEngineSelector.ItemsSource = SearchEngineHelper.SearchEngines;
         string SearchEngine = SettingsHelper.GetSetting("EngineFriendlyName");
-
         foreach (SearchEngine engine in SearchEngineHelper.SearchEngines)
         {
             if (engine.SearchUrl == SearchUrl)
             {
                 SearchEngineSelector.SelectedItem = engine;
+            }
+        }
+
+        AISearchEngineSelector.ItemsSource = SearchEngineHelper.AISearchEngines;
+        string AISearchEngine = SettingsHelper.GetSetting("AIEngineFriendlyName");
+        foreach (SearchEngine AIengine in SearchEngineHelper.AISearchEngines)
+        {
+            if (AIengine.SearchUrl == AISearchUrl)
+            {
+                AISearchEngineSelector.SelectedItem = AIengine;
             }
         }
 
@@ -42,6 +51,7 @@ public sealed partial class SettingsPage : Page
 
         // Set event handlers
         SearchEngineSelector.SelectionChanged += SearchEngineSelector_SelectionChanged;
+        AISearchEngineSelector.SelectionChanged += AISearchEngineSelector_SelectionChanged;
         ForceDarkSwitch.Toggled += ForceDarkSwitch_Toggled;
         CompactTabsToggle.Toggled += CompactTabsToggle_Toggled;
         NewTabBgImageToggle.Toggled += NewTabBgImageToggle_Toggled;
@@ -51,7 +61,13 @@ public sealed partial class SettingsPage : Page
     private void SearchEngineSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         SearchEngine engine = e.AddedItems[0] as SearchEngine;
-        SearchEngineHelper.SetSearchEngine(engine);
+        SearchEngineHelper.SetSearchEngine(engine, SearchEngineType.Classic);
+    }
+
+    private void AISearchEngineSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        SearchEngine engine = e.AddedItems[0] as SearchEngine;
+        SearchEngineHelper.SetSearchEngine(engine, SearchEngineType.AI);
     }
 
     private async void ClearUserDataButton_Click(object sender, RoutedEventArgs e)

@@ -2,11 +2,23 @@
 
 public class SearchEngineHelper
 {
-    public static void SetSearchEngine(SearchEngine engine)
+    public static void SetSearchEngine(SearchEngine engine, SearchEngineType engineType)
     {
-        SettingsHelper.SetSetting("EngineFriendlyName", engine.EngineFriendlyName);
-        SettingsHelper.SetSetting("SearchUrl", engine.SearchUrl);
-        SearchUrl = engine.SearchUrl;
+        if (engineType == SearchEngineType.AI)
+        {
+            SettingsHelper.SetSetting("AIEngineFriendlyName", engine.EngineFriendlyName);
+            SettingsHelper.SetSetting("AISearchUrl", engine.SearchUrl);
+            AISearchUrl = engine.SearchUrl;
+            return;
+        }
+
+        if (engineType == SearchEngineType.Classic)
+        {
+            SettingsHelper.SetSetting("EngineFriendlyName", engine.EngineFriendlyName);
+            SettingsHelper.SetSetting("SearchUrl", engine.SearchUrl);
+            SearchUrl = engine.SearchUrl;
+            return;
+        }
     }
 
     public static List<SearchEngine> SearchEngines =
@@ -22,5 +34,11 @@ public class SearchEngineHelper
         new SearchEngine("Qwant", "https://www.qwant.com/?q="),
         new SearchEngine("Yahoo!", "https://search.yahoo.com/search?p="),
         new SearchEngine("Yandex", "https://yandex.com/search/?text=")
+    ];
+
+    public static List<SearchEngine> AISearchEngines =
+    [
+        new SearchEngine("ChatGPT", "https://chatgpt.com/?q="),
+        new SearchEngine("Perplexity.ai", "https://www.perplexity.ai/search?q=")
     ];
 }
