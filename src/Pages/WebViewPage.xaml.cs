@@ -27,14 +27,19 @@ public sealed partial class WebViewPage : Page
 
     private async void WebViewControl_Loaded(object sender, RoutedEventArgs e)
     {
-        try
+        // check if CoreWebView2 has been initalized
+        // if not, ensure it has been initialized
+        if (WebViewControl.CoreWebView2 == null)
         {
-            await (sender as muxc.WebView2).EnsureCoreWebView2Async();
-        }
-        catch (Exception ex)
-        {
-            WebViewControl?.Close();
-            Frame.Navigate(typeof(WebViewErrorPage), new WebView2CreationError(ex.StackTrace), new DrillInNavigationTransitionInfo());
+            try
+            {
+                await (sender as muxc.WebView2).EnsureCoreWebView2Async();
+            }
+            catch (Exception ex)
+            {
+                WebViewControl?.Close();
+                Frame.Navigate(typeof(WebViewErrorPage), new WebView2CreationError(ex.StackTrace), new DrillInNavigationTransitionInfo());
+            }
         }
     }
 
