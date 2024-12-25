@@ -104,6 +104,7 @@ public sealed partial class WebViewPage : Page
 
     private void CoreWebView2_NavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
     {
+        LoadingBar.IsIndeterminate = true;
         LoadingBar.Visibility = Visibility.Visible;
     }
 
@@ -115,6 +116,7 @@ public sealed partial class WebViewPage : Page
             await sender.ExecuteScriptAsync(jscript);
         }
         LoadingBar.Visibility = Visibility.Collapsed;
+        LoadingBar.IsIndeterminate = false;
     }
 
     private void CoreWebView2_SourceChanged(CoreWebView2 sender, CoreWebView2SourceChangedEventArgs args)
