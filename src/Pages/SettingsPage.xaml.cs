@@ -1,6 +1,4 @@
-﻿using Windows.UI.Popups;
-
-namespace Bluebird.Pages;
+﻿namespace Bluebird.Pages;
 
 public sealed partial class SettingsPage : Page
 {
@@ -185,7 +183,7 @@ public sealed partial class SettingsPage : Page
     {
         string appversion = AppVersion;
         string apparch = RuntimeInformation.ProcessArchitecture.ToString();
-        (sender as TextBlock).Text = $"v{appversion} | {apparch}";
+        (sender as TextBlock).Text = $"Version {appversion} | {apparch}";
     }
 
     private async void OpenGitHubSettingsCard_Click(object sender, RoutedEventArgs e)
