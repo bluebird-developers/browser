@@ -3,10 +3,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:favorites="using:Bluebird.Modules.Favorites"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:viewmodels="using:Bluebird.ViewModels"
-    d:DataContext="{d:DesignInstance Type=viewmodels:SettingsViewModel}"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
     mc:Ignorable="d">
     <Page.Resources>
@@ -25,20 +25,20 @@
                     Grid.Row="1"
                     Width="300"
                     MaxHeight="500"
-                    ItemsSource="{Binding FavoritesList}"
+                    ItemsSource="{x:Bind viewmodels:SettingsViewModel.SettingsVM.FavoritesList, Mode=TwoWay}"
                     RightTapped="FavoritesListView_RightTapped"
                     SelectionChanged="FavoritesList_SelectionChanged">
                     <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="0,10,0,10" ToolTipService.ToolTip="{Binding Url}">
+                        <DataTemplate x:DataType="favorites:FavoriteItem">
+                            <StackPanel Margin="0,10,0,10" ToolTipService.ToolTip="{x:Bind Url}">
                                 <TextBlock
                                     FontSize="18"
-                                    Text="{Binding Title}"
+                                    Text="{x:Bind Title}"
                                     TextTrimming="CharacterEllipsis" />
                                 <TextBlock
                                     FontSize="12"
                                     Foreground="{ThemeResource SystemAccentColorDark1}"
-                                    Text="{Binding Url}"
+                                    Text="{x:Bind Url}"
                                     TextTrimming="CharacterEllipsis" />
                             </StackPanel>
                         </DataTemplate>
@@ -91,7 +91,7 @@
         Loaded="Tabs_Loaded"
         TabCloseRequested="Tabs_TabCloseRequested"
         TabItemsChanged="Tabs_TabItemsChanged"
-        TabWidthMode="{Binding TabWidthMode, Mode=OneWay}">
+        TabWidthMode="{x:Bind viewmodels:SettingsViewModel.SettingsVM.TabWidthMode, Mode=OneWay}">
         <muxc:TabView.TabStripHeader>
             <StackPanel Orientation="Horizontal">
                 <Button

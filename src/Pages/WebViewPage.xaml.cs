@@ -9,7 +9,6 @@ public sealed partial class WebViewPage : Page
     public WebViewPage()
     {
         this.InitializeComponent();
-        DataContext = SettingsViewModel.SettingsVM;
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)

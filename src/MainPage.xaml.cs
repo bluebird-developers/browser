@@ -8,7 +8,6 @@ public sealed partial class MainPage : Page
     {
         this.InitializeComponent();
         Window.Current.SetTitleBar(CustomDragRegion);
-        DataContext = SettingsViewModel.SettingsVM;
         InitWebView();
     }
 
