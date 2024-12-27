@@ -47,7 +47,20 @@ sealed partial class App : Application
         {
             CommandLineActivatedEventArgs CommandEventArgs = args as CommandLineActivatedEventArgs;
             CommandLineActivationOperation operation = CommandEventArgs.Operation;
-            StartupUrl = operation.Arguments;
+            string input = operation.Arguments;
+
+            // input validation to prevent various issues
+            // keep in sync with WebViewPage.xaml.cs and NewTabPage.xaml.cs
+            string inputtype = UrlHelper.GetInputType(input);
+            if (inputtype == "urlNOProtocol")
+                StartupUrl = "https://" + input.Trim();
+            else if (inputtype == "url")
+                StartupUrl = input.Trim();
+            else
+            {
+                string query = SearchUrl + input;
+                StartupUrl = query;
+            }
             UnifiedArgumentStartup();
         }
     }
