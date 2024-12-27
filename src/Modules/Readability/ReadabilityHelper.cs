@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Windows.Storage;
-
-namespace Bluebird.Modules.Readability;
+﻿namespace Bluebird.Modules.Readability;
 
 public class ReadabilityHelper
 {

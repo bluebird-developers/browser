@@ -35,7 +35,7 @@
                     <Image
                         Width="64"
                         Height="64"
-                        Source="ms-appx:///Assets/Square44x44Logo.targetsize-256.png" />
+                        Source="/Assets/AppIcons/Square44x44Logo.targetsize-256.png" />
                     <TextBlock
                         VerticalAlignment="Center"
                         FontSize="30"

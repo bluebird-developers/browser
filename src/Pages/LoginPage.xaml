@@ -20,7 +20,7 @@
                 Margin="12,5,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Source="ms-appx:///Assets/Square44x44Logo.png" />
+                Source="/Assets/AppIcons/Square44x44Logo.png" />
             <TextBlock
                 Margin="44,10,0,0"
                 Style="{StaticResource CaptionTextBlockStyle}"
@@ -45,7 +45,7 @@
                 <Image
                     Width="100"
                     Height="100"
-                    Source="ms-appx:///Assets/Square44x44Logo.targetsize-256.png" />
+                    Source="/Assets/AppIcons/Square44x44Logo.targetsize-256.png" />
                 <PasswordBox
                     Grid.Row="1"
                     Width="300"

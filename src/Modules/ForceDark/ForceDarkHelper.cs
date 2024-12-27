@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Windows.Storage;
-
-namespace Bluebird.Modules.ForceDark;
+﻿namespace Bluebird.Modules.ForceDark;
 
 public class ForceDarkHelper
 {

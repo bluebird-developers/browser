@@ -46,7 +46,7 @@
                 </toolkitc:SettingsCard>
                 <toolkitc:SettingsCard Header="AI search engine">
                     <toolkitc:SettingsCard.HeaderIcon>
-                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/AISparkles.png" />
+                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Icons/AISparkles.png" />
                     </toolkitc:SettingsCard.HeaderIcon>
                     <ComboBox x:Name="AISearchEngineSelector">
                         <ComboBox.ItemTemplate>
@@ -117,7 +117,7 @@
                         <FontIcon Glyph="&#xE8A7;" />
                     </toolkitc:SettingsCard.ActionIcon>
                     <toolkitc:SettingsCard.HeaderIcon>
-                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/DevSanx.png" />
+                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Icons/DevSanx.png" />
                     </toolkitc:SettingsCard.HeaderIcon>
                 </toolkitc:SettingsCard>
                 <toolkitc:SettingsCard
@@ -129,12 +129,12 @@
                         <FontIcon Glyph="&#xE8A7;" />
                     </toolkitc:SettingsCard.ActionIcon>
                     <toolkitc:SettingsCard.HeaderIcon>
-                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/paypal.png" />
+                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Icons/paypal.png" />
                     </toolkitc:SettingsCard.HeaderIcon>
                 </toolkitc:SettingsCard>
                 <toolkitc:SettingsExpander Description="Your next-gen browser" Header="Bluebird">
                     <toolkitc:SettingsExpander.HeaderIcon>
-                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Square44x44Logo.png" />
+                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/AppIcons/Square44x44Logo.png" />
                     </toolkitc:SettingsExpander.HeaderIcon>
                     <TextBlock
                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
