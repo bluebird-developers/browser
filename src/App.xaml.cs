@@ -38,34 +38,47 @@ sealed partial class App : Application
     {
         if (args.Kind == ActivationKind.Protocol)
         {
-            ProtocolActivatedEventArgs eventArgs = args as ProtocolActivatedEventArgs;
-            StartupUrl = eventArgs.Uri.ToString();
-            Frame rootFrame = Window.Current.Content as Frame;
+            ProtocolActivatedEventArgs ProtocolEventArgs = args as ProtocolActivatedEventArgs;
+            StartupUrl = ProtocolEventArgs.Uri.ToString();
+            UnifiedArgumentStartup();
+        }
 
-            // Do not repeat app initialization when the Window already has content,
-            // just ensure that the window is active
-            if (rootFrame == null)
-            {
-                // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new();
+        if (args.Kind == ActivationKind.CommandLineLaunch)
+        {
+            CommandLineActivatedEventArgs CommandEventArgs = args as CommandLineActivatedEventArgs;
+            CommandLineActivationOperation operation = CommandEventArgs.Operation;
+            StartupUrl = operation.Arguments;
+            UnifiedArgumentStartup();
+        }
+    }
 
-                rootFrame.NavigationFailed += OnNavigationFailed;
+    private void UnifiedArgumentStartup()
+    {
+        Frame rootFrame = Window.Current.Content as Frame;
 
-                Window.Current.Content = rootFrame;
+        // Do not repeat app initialization when the Window already has content,
+        // just ensure that the window is active
+        if (rootFrame == null)
+        {
+            // Create a Frame to act as the navigation context and navigate to the first page
+            rootFrame = new();
 
-                SetupTitleBar();
-                string PasswordLock = SettingsHelper.GetSetting("PasswordLock");
-                if (PasswordLock == "true")
-                    rootFrame.Navigate(typeof(LoginPage), null, new DrillInNavigationTransitionInfo());
-                else
-                    rootFrame.Navigate(typeof(MainPage), null, new DrillInNavigationTransitionInfo());
-                // Ensure the current window is active
-                Window.Current.Activate();
-            }
+            rootFrame.NavigationFailed += OnNavigationFailed;
+
+            Window.Current.Content = rootFrame;
+
+            SetupTitleBar();
+            string PasswordLock = SettingsHelper.GetSetting("PasswordLock");
+            if (PasswordLock == "true")
+                rootFrame.Navigate(typeof(LoginPage), null, new DrillInNavigationTransitionInfo());
             else
-            {
-                MainPageContent.CreateWebTab(StartupUrl);
-            }
+                rootFrame.Navigate(typeof(MainPage), null, new DrillInNavigationTransitionInfo());
+            // Ensure the current window is active
+            Window.Current.Activate();
+        }
+        else
+        {
+            MainPageContent.CreateWebTab(StartupUrl);
         }
     }
 

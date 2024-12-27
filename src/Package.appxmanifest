@@ -64,6 +64,14 @@
             <uap:Logo>Assets/FileIcons/link.png</uap:Logo>
           </uap:Protocol>
         </uap:Extension>
+        <uap5:Extension
+          Category="windows.appExecutionAlias"
+          Executable="Bluebird.exe"
+          EntryPoint="Bluebird.App">
+          <uap5:AppExecutionAlias>
+            <uap5:ExecutionAlias Alias="Bluebird.exe" />
+          </uap5:AppExecutionAlias>
+        </uap5:Extension>
       </Extensions>
     </Application>
   </Applications>
