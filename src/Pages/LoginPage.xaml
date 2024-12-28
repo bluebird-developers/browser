@@ -30,6 +30,7 @@
             Grid.Row="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
+            Background="{StaticResource LayerFillColorDefaultBrush}"
             Style="{StaticResource PageBorder}">
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.RowDefinitions>
