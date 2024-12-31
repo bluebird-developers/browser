@@ -60,7 +60,7 @@ public class FavoritesHelper
         else
         {
             string filecontent = await FileIO.ReadTextAsync((IStorageFile)fileData);
-            ObservableCollection<FavoriteItem> Items = JsonSerializer.Deserialize(filecontent, MyJsonSerializerContext.Default.ObservableCollectionFavoriteItem);
+            ObservableCollection<FavoriteItem> Items = JsonSerializer.Deserialize(filecontent, FavoriteItemSerializerContext.Default.ObservableCollectionFavoriteItem);
             return Items;
         }
     }
@@ -75,7 +75,7 @@ public class FavoritesHelper
         else
         {
             // Convert list to json
-            string newJson = JsonSerializer.Serialize(SettingsViewModel.SettingsVM.FavoritesList, MyJsonSerializerContext.Default.ObservableCollectionFavoriteItem);
+            string newJson = JsonSerializer.Serialize(SettingsViewModel.SettingsVM.FavoritesList, FavoriteItemSerializerContext.Default.ObservableCollectionFavoriteItem);
             // Write json to json file
             await FileIO.WriteTextAsync((IStorageFile)fileData, newJson);
         }

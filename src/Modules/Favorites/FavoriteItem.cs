@@ -1,7 +1,7 @@
 ﻿namespace Bluebird.Modules.Favorites;
 
 [JsonSerializable(typeof(ObservableCollection<FavoriteItem>))]
-public partial class MyJsonSerializerContext : JsonSerializerContext
+public partial class FavoriteItemSerializerContext : JsonSerializerContext
 {
 }
 
