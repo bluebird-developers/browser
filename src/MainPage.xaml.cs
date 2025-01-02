@@ -8,7 +8,22 @@ public sealed partial class MainPage : Page
     {
         this.InitializeComponent();
         Window.Current.SetTitleBar(CustomDragRegion);
+        var coreWindow = CoreWindow.GetForCurrentThread();
+        coreWindow.KeyDown += CoreWindow_KeyDown;
+
         InitWebView();
+    }
+
+    private void CoreWindow_KeyDown(CoreWindow sender, KeyEventArgs args)
+    {
+        var ctrlState = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Control);
+        var isCtrlDown = (ctrlState & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
+
+        if (isCtrlDown && args.VirtualKey == VirtualKey.T)
+        {
+            CreateTab("New tab", "\uEC6C", typeof(NewTabPage));
+            args.Handled = true;
+        }
     }
 
     private async void InitWebView()
@@ -129,11 +144,11 @@ public sealed partial class MainPage : Page
 
     private void Tabs_TabCloseRequested(muxc.TabView sender, muxc.TabViewTabCloseRequestedEventArgs args)
     {
-        muxc.TabViewItem selectedItem = args.Tab;
-        var tabcontent = (Frame)selectedItem.Content;
+        muxc.TabViewItem tab = args.Tab;
+        var tabcontent = (Frame)tab.Content;
         if (tabcontent.Content is WebViewPage) (tabcontent.Content as WebViewPage).WebViewControl.Close();
         if (tabcontent.Content is SplitTabPage) (tabcontent.Content as SplitTabPage).CloseWebViews();
-        sender.TabItems.Remove(selectedItem);
+        Tabs.TabItems.Remove(tab);
         // Workaround for memory leak in TabView
         // microsoft-ui-xaml issue #3597
         // https://github.com/microsoft/microsoft-ui-xaml/issues/3597

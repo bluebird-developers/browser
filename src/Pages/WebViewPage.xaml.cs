@@ -60,6 +60,7 @@ public sealed partial class WebViewPage : Page
         sender.CoreWebView2.LaunchingExternalUriScheme += CoreWebView2_LaunchingExternalUriScheme;
         sender.CoreWebView2.IsDocumentPlayingAudioChanged += CoreWebView2_IsDocumentPlayingAudioChanged;
         sender.CoreWebView2.IsMutedChanged += CoreWebView2_IsMutedChanged;
+        sender.WebMessageReceived += Sender_WebMessageReceived;
         // Apply WebView2 settings
         ApplyWebView2Settings(sender);
         if (launchurl != null)
@@ -70,6 +71,16 @@ public sealed partial class WebViewPage : Page
         else
         {
             sender.NavigateToString(ModernBlankPage.MinifiedModernBlackPageHTML);
+        }
+    }
+
+    private void Sender_WebMessageReceived(muxc.WebView2 sender, CoreWebView2WebMessageReceivedEventArgs args)
+    {
+        // this input has been treated as VERY unsecure input
+        // DO NOT add anything which could be slighly insecure
+        if (args.TryGetWebMessageAsString() == "ControlT")
+        {
+            MainPageContent.CreateTab("New tab", "\uEC6C", typeof(NewTabPage));
         }
     }
 
@@ -120,6 +131,8 @@ public sealed partial class WebViewPage : Page
             string jscript = await Modules.ForceDark.ForceDarkHelper.GetForceDarkScriptAsync();
             await sender.ExecuteScriptAsync(jscript);
         }
+        string mainscript = "document.addEventListener('keydown', function(event) { if (event.ctrlKey && event.key === 't') { event.preventDefault(); window.chrome.webview.postMessage('ControlT'); } });";
+        await sender.ExecuteScriptAsync(mainscript);
         LoadingBar.Visibility = Visibility.Collapsed;
         LoadingBar.IsIndeterminate = false;
     }
