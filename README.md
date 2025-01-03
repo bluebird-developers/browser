@@ -26,8 +26,8 @@ Check the app out to see them in action!
 ## Building from source
 
 ### 1. Prerequisites
-- Visual Studio 2022, version 17.11 or newer
-- Windows 11 SDK (currently 10.0.22621.0, soon 10.0.26100.0)
+- Visual Studio 2022, version 17.X (version 17.12.X recommendend)
+- Windows 11 SDK (10.0.26100.0)
 - Windows Application Workload + Universal Windows Platform Tools
 
 ### 2. Clone the repository
