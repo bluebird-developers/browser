@@ -2,7 +2,11 @@
 
 public class FileHelper
 {
-    public static async Task SaveBytesAsFileAsync(string fileName, byte[] buffer, string filetypefriendlyname, string filetype)
+    public static async Task SaveBytesAsFileAsync(string fileName, byte[] buffer, string filetypefriendlyname, string filetype) => await SaveFileAsync(fileName, filetypefriendlyname, filetype, buffer, null);
+
+    public static async Task SaveStringAsFileAsync(string fileName, string fileContent, string filetypefriendlyname, string filetype) => await SaveFileAsync(fileName, filetypefriendlyname, filetype, null, fileContent);
+
+    private static async Task SaveFileAsync(string fileName, string filetypefriendlyname, string filetype, byte[] BytesFileContent = null, string TextFileContent = null)
     {
         // Create a file picker
         FileSavePicker savePicker = new()
@@ -24,48 +28,15 @@ public class FileHelper
             CachedFileManager.DeferUpdates(file);
 
             // write to file
-            // Another way to write a string to the file is to use this instead:
-            await FileIO.WriteBytesAsync(file, buffer);
-
-            // Let Windows know that we're finished changing the file so the other app can update the remote version of the file.
-            // Completing updates may require Windows to ask for user input.
-            FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
-            if (status == FileUpdateStatus.Complete)
+            // depending on which type we either write bytes or text
+            if (BytesFileContent != null)
             {
-                NotificationHelper.NotifyUser("Success", "File " +  file.Name + " was saved to\n" + file.Path);
+                await FileIO.WriteBytesAsync(file, BytesFileContent);
             }
-            else
+            if (TextFileContent != null)
             {
-                await UI.ShowDialog("Error", "File " + file.Name + " couldn't be saved.");
+                await FileIO.WriteTextAsync(file, TextFileContent);
             }
-        }
-
-    }
-
-    public static async Task SaveStringAsFileAsync(string fileName, string fileContent, string filetypefriendlyname, string filetype)
-    {
-        // Create a file picker
-        FileSavePicker savePicker = new()
-        {
-            // Set options for your file picker
-            SuggestedStartLocation = PickerLocationId.DocumentsLibrary
-        };
-
-        // Dropdown of file types the user can save the file as
-        savePicker.FileTypeChoices.Add(filetypefriendlyname, new List<string>() { filetype });
-        // Default file name if the user does not type one in or select a file to replace
-        savePicker.SuggestedFileName = fileName;
-
-        // Open the picker for the user to pick a file
-        StorageFile file = await savePicker.PickSaveFileAsync();
-        if (file != null)
-        {
-            // Prevent updates to the remote version of the file until we finish making changes and call CompleteUpdatesAsync.
-            CachedFileManager.DeferUpdates(file);
-
-            // write to file
-            // Another way to write a string to the file is to use this instead:
-            await FileIO.WriteTextAsync(file, fileContent);
 
             // Let Windows know that we're finished changing the file so the other app can update the remote version of the file.
             // Completing updates may require Windows to ask for user input.
@@ -79,7 +50,6 @@ public class FileHelper
                 await UI.ShowDialog("Error", "File " + file.Name + " couldn't be saved.");
             }
         }
-
     }
 
     public static async Task DeleteLocalFile(string fileName)
