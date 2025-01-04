@@ -4,8 +4,8 @@ public static class WebView2ProfileDataHelper
 {
     public static async Task ClearAllProfileDataAsync()
     {
-        if (MainPageContent.mainWebView.CoreWebView2 != null) {
-            CoreWebView2Profile profile = MainPageContent.mainWebView.CoreWebView2.Profile;
+        if (MainPageContent.MainWebView.CoreWebView2 != null) {
+            CoreWebView2Profile profile = MainPageContent.MainWebView.CoreWebView2.Profile;
             await profile.ClearBrowsingDataAsync();
         }
         else

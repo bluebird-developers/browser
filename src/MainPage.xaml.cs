@@ -2,7 +2,7 @@
 
 public sealed partial class MainPage : Page
 {
-    public muxc.WebView2 mainWebView { get; set; }
+    public muxc.WebView2 MainWebView { get; set; }
 
     public MainPage()
     {
@@ -10,7 +10,6 @@ public sealed partial class MainPage : Page
         Window.Current.SetTitleBar(CustomDragRegion);
         var coreWindow = CoreWindow.GetForCurrentThread();
         coreWindow.KeyDown += CoreWindow_KeyDown;
-
         InitWebView();
     }
 
@@ -33,8 +32,8 @@ public sealed partial class MainPage : Page
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
-                mainWebView = new muxc.WebView2();
-                await mainWebView.EnsureCoreWebView2Async();
+                MainWebView = new muxc.WebView2();
+                await MainWebView.EnsureCoreWebView2Async();
             });
         }
         catch
