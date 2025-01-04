@@ -14,11 +14,11 @@
 - Integrates nicely with other native Windows apps 
 - Split tabs
 - Reading mode
-- Force dark mode for all websites
 - Translate websites
 - Password lock
 - Generate QRCode for website
 - Export page to pdf (version 5.1 and newer)
+- Export page text content as txt (version 7.5 and newer)
 - New tab background images (you can disable them)
 
 Check the app out to see them in action! 
