@@ -43,7 +43,7 @@ public sealed partial class WebViewPage : Page
         }
     }
 
-    private void WebViewControl_CoreWebView2Initialized(muxc.WebView2 sender, muxc.CoreWebView2InitializedEventArgs args)
+    private async void WebViewControl_CoreWebView2Initialized(muxc.WebView2 sender, muxc.CoreWebView2InitializedEventArgs args)
     {
         // WebViewEvents
         sender.CoreWebView2.NavigationStarting += CoreWebView2_NavigationStarting;
@@ -60,9 +60,11 @@ public sealed partial class WebViewPage : Page
         sender.CoreWebView2.LaunchingExternalUriScheme += CoreWebView2_LaunchingExternalUriScheme;
         sender.CoreWebView2.IsDocumentPlayingAudioChanged += CoreWebView2_IsDocumentPlayingAudioChanged;
         sender.CoreWebView2.IsMutedChanged += CoreWebView2_IsMutedChanged;
-        sender.WebMessageReceived += Sender_WebMessageReceived;
+        sender.WebMessageReceived += CoreWebView2_WebMessageReceived;
         // Apply WebView2 settings
         ApplyWebView2Settings(sender);
+        string mainscript = "document.addEventListener('keydown', function(event) { if (event.ctrlKey && event.key === 't') { event.preventDefault(); window.chrome.webview.postMessage('ControlT'); } });";
+        await sender.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(mainscript);
         if (launchurl != null)
         {
             NavigateToUrl(launchurl);
@@ -71,44 +73,6 @@ public sealed partial class WebViewPage : Page
         else
         {
             sender.NavigateToString(ModernBlankPage.MinifiedModernBlackPageHTML);
-        }
-    }
-
-    private void Sender_WebMessageReceived(muxc.WebView2 sender, CoreWebView2WebMessageReceivedEventArgs args)
-    {
-        // this input has been treated as VERY unsecure input
-        // DO NOT add anything which could be slighly insecure
-        if (args.TryGetWebMessageAsString() == "ControlT")
-        {
-            MainPageContent.CreateTab("New tab", "\uEC6C", typeof(NewTabPage));
-        }
-    }
-
-    private void CoreWebView2_IsMutedChanged(CoreWebView2 sender, object args)
-    {
-        if (sender.IsMuted)
-        {
-            MuteBtn.Content = new FontIcon { FontFamily = new FontFamily("Segoe MDL2 Assets"), Glyph = "\uE74F" };
-            return;
-        }
-        if (!sender.IsMuted)
-        {
-            MuteBtn.Content = new FontIcon { FontFamily = new FontFamily("Segoe MDL2 Assets"), Glyph = "\uE767" };
-        }
-    }
-
-    private void CoreWebView2_IsDocumentPlayingAudioChanged(CoreWebView2 sender, object args)
-    {
-        if (sender.IsDocumentPlayingAudio)
-        {
-            MuteBtn.Visibility = Visibility.Visible;
-            return;
-        }
-
-        if (!sender.IsDocumentPlayingAudio)
-        {
-            MuteBtn.Visibility = Visibility.Collapsed;
-            return;
         }
     }
 
@@ -124,23 +88,15 @@ public sealed partial class WebViewPage : Page
         LoadingBar.Visibility = Visibility.Visible;
     }
 
-    private async void CoreWebView2_NavigationCompleted(CoreWebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
+    private void CoreWebView2_NavigationCompleted(CoreWebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
     {
-        if (SettingsViewModel.SettingsVM.IsForceDarkEnabled)
-        {
-            string jscript = await Modules.ForceDark.ForceDarkHelper.GetForceDarkScriptAsync();
-            await sender.ExecuteScriptAsync(jscript);
-        }
-        string mainscript = "document.addEventListener('keydown', function(event) { if (event.ctrlKey && event.key === 't') { event.preventDefault(); window.chrome.webview.postMessage('ControlT'); } });";
-        await sender.ExecuteScriptAsync(mainscript);
         LoadingBar.Visibility = Visibility.Collapsed;
         LoadingBar.IsIndeterminate = false;
     }
 
     private void CoreWebView2_SourceChanged(CoreWebView2 sender, CoreWebView2SourceChangedEventArgs args)
     {
-        string uri = sender.Source;
-        UrlBox.Text = uri;
+        UrlBox.Text = sender.Source;
     }
 
     private void CoreWebView2_FaviconChanged(CoreWebView2 sender, object args)
@@ -223,6 +179,44 @@ public sealed partial class WebViewPage : Page
             await Launcher.LaunchUriAsync(new Uri(args.Uri));
     }
 
+    private void CoreWebView2_IsDocumentPlayingAudioChanged(CoreWebView2 sender, object args)
+    {
+        if (sender.IsDocumentPlayingAudio)
+        {
+            MuteBtn.Visibility = Visibility.Visible;
+            return;
+        }
+
+        if (!sender.IsDocumentPlayingAudio)
+        {
+            MuteBtn.Visibility = Visibility.Collapsed;
+            return;
+        }
+    }
+
+    private void CoreWebView2_IsMutedChanged(CoreWebView2 sender, object args)
+    {
+        if (sender.IsMuted)
+        {
+            MuteBtn.Content = new FontIcon { FontFamily = new FontFamily("Segoe MDL2 Assets"), Glyph = "\uE74F" };
+            return;
+        }
+        if (!sender.IsMuted)
+        {
+            MuteBtn.Content = new FontIcon { FontFamily = new FontFamily("Segoe MDL2 Assets"), Glyph = "\uE767" };
+        }
+    }
+
+    private void CoreWebView2_WebMessageReceived(muxc.WebView2 sender, CoreWebView2WebMessageReceivedEventArgs args)
+    {
+        // this input has been treated as VERY unsecure input
+        // DO NOT add anything which could be slighly insecure
+        if (args.TryGetWebMessageAsString() == "ControlT")
+        {
+            MainPageContent.CreateTab("New tab", "\uEC6C", typeof(NewTabPage));
+        }
+    }
+
     private async void AppBarButton_Click(object sender, RoutedEventArgs e)
     {
         switch ((sender as AppBarButton).Tag)
@@ -280,7 +274,6 @@ public sealed partial class WebViewPage : Page
         switch ((sender as MenuFlyoutItem).Tag)
         {
             case "ExportAsPdf":
-                string websitetitle = WebViewControl.CoreWebView2.DocumentTitle;
                 using (IRandomAccessStream fileStream = await WebViewControl.CoreWebView2.PrintToPdfStreamAsync(null))
                 {
                     using (var reader = new DataReader(fileStream.GetInputStreamAt(0)))
@@ -288,9 +281,14 @@ public sealed partial class WebViewPage : Page
                         await reader.LoadAsync((uint)fileStream.Size);
                         var buffer = new byte[(int)fileStream.Size];
                         reader.ReadBytes(buffer);
-                        await FileHelper.SaveBytesAsFileAsync($"{websitetitle}.pdf", buffer, "Portable Document File", ".pdf");
+                        await FileHelper.SaveBytesAsFileAsync($"{WebViewControl.CoreWebView2.DocumentTitle}.pdf", buffer, "Portable Document File", ".pdf");
                     }
                 }
+                break;
+            case "ExportAsTxt":
+                string script = "document.body.innerText";
+                string textContent = await WebViewControl.CoreWebView2.ExecuteScriptAsync(script);
+                await FileHelper.SaveStringAsFileAsync($"{WebViewControl.CoreWebView2.DocumentTitle}", textContent, "Text file", ".txt");
                 break;
             case "ViewSource":
                 MainPageContent.CreateWebTab("view-source:" + WebViewControl.Source);
@@ -309,6 +307,9 @@ public sealed partial class WebViewPage : Page
         FavoritesHelper.AddFavorite(FavoriteTitle.Text, FavoriteUrl.Text);
         AddFavoriteFlyout.Hide();
     }
+
+    #region "UrlBox event handlers"
+    private void UrlBox_GotFocus(object sender, RoutedEventArgs e) => (sender as TextBox).SelectAll();
 
     private void UrlBox_KeyDown(object sender, KeyRoutedEventArgs e)
     {
@@ -336,11 +337,7 @@ public sealed partial class WebViewPage : Page
             NavigateToUrl(AISearchUrl + query);
         }
     }
-
-    private void UrlBox_GotFocus(object sender, RoutedEventArgs e)
-    {
-        UrlBox.SelectAll();
-    }
+    #endregion
 
     private void NavigateToUrl(string uri)
     {

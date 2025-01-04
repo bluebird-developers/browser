@@ -111,7 +111,19 @@
                             <MenuFlyoutItem
                                 Click="MenuFlyoutItem_Click"
                                 Tag="ExportAsPdf"
-                                Text="Export as pdf" />
+                                Text="Export as pdf">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xEA90;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click"
+                                Tag="ExportAsTxt"
+                                Text="Export as txt">
+                                <MenuFlyoutItem.Icon>
+                                    <SymbolIcon Symbol="Document" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
                         </MenuFlyout>
                     </AppBarButton.Flyout>
                 </AppBarButton>

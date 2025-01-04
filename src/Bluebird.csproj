@@ -138,7 +138,6 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Modules\ForceDark\ForceDarkHelper.cs" />
     <Compile Include="Modules\Readability\ReadabilityHelper.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -256,9 +255,6 @@
     <Content Include="Assets\AppIcons\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\AppIcons\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\AppIcons\Wide310x150Logo.scale-400.png" />
-    <Content Include="Modules\ForceDark\Assets\forcedark.min.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Modules\Readability\Assets\readability.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
