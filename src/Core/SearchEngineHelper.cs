@@ -39,6 +39,7 @@ public class SearchEngineHelper
     public static List<SearchEngine> AISearchEngines =
     [
         new SearchEngine("ChatGPT", "https://chatgpt.com/?q="),
+        new SearchEngine("Microsoft Copilot", "https://copilot.microsoft.com/?q="),
         new SearchEngine("Perplexity.ai", "https://www.perplexity.ai/search?q=")
     ];
 }
