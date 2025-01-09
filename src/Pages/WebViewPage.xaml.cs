@@ -114,6 +114,12 @@ public sealed partial class WebViewPage : Page
     string LinkUri;
     private void CoreWebView2_ContextMenuRequested(CoreWebView2 sender, CoreWebView2ContextMenuRequestedEventArgs args)
     {
+        if (sender.Source == "about:blank")
+        {
+            args.Handled = true;
+            return;
+        }
+
         muxc.CommandBarFlyout flyout;
         if (args.ContextMenuTarget.Kind == CoreWebView2ContextMenuTargetKind.SelectedText)
         {
