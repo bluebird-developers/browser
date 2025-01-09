@@ -130,6 +130,9 @@ public sealed partial class WebViewPage : Page
         else if (args.ContextMenuTarget.Kind == CoreWebView2ContextMenuTargetKind.Image)
             return;
 
+        else if (args.ContextMenuTarget.Kind == CoreWebView2ContextMenuTargetKind.Video)
+            return;
+
         else if (args.ContextMenuTarget.HasLinkUri)
         {
             flyout = (muxc.CommandBarFlyout)Resources["LinkContextMenu"];
