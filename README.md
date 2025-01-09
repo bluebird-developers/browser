@@ -9,7 +9,9 @@
     <img src="images/ghreleasesbadge.png" /></a>
 </p>
 
-## Features:
+Bluebird is a modern webbrowser which enhances your browsing experience. It has been in active development for over two years, and is being constantly updated with bug fixes, performance improvements and new features.
+
+## Headline features:
 - Responsive UI and quick startup time
 - Integrates nicely with other native Windows apps 
 - Split tabs
@@ -22,6 +24,20 @@
 - New tab background images (you can disable them)
 
 Check the app out to see them in action! 
+
+## Contributing
+
+### Contributing source code
+You would like to contribute to this project?
+
+Awesome! Please first create an issue, so we can talk about the changes you like to implement
+
+### Support the project by donating
+You would like to support this project because you love it, but do not have the time or expertise to contribute source code?
+
+A donation would be highly appreciated, and it helps me out a lot. Thanks :)
+
+[PayPal](https://www.paypal.com/paypalme/julianhasreiter)
 
 ## Building from source
 
