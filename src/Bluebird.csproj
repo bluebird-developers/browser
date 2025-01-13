@@ -265,6 +265,9 @@
     <Content Include="Assets\AppIcons\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\AppIcons\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\AppIcons\Wide310x150Logo.scale-200.png" />
+    <PRIResource Include="Strings\fr\Resources.resw" />
+    <PRIResource Include="Strings\de\Resources.resw" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

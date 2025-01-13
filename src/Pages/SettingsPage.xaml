@@ -30,9 +30,9 @@
             <StackPanel>
                 <TextBlock
                     x:Name="PageHeader"
+                    x:Uid="Settings"
                     Margin="0,24,0,0"
-                    Style="{StaticResource TitleTextBlockStyle}"
-                    Text="Settings" />
+                    Style="{StaticResource TitleTextBlockStyle}" />
                 <!--  General  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="General" />
                 <toolkitc:SettingsCard Header="Search engine" HeaderIcon="Find">
