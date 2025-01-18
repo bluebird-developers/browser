@@ -173,6 +173,15 @@
                                 </Paragraph>
                             </RichTextBlock>
                         </toolkitc:SettingsCard>
+                        <toolkitc:SettingsCard
+                            Click="DebugSettingsCard_Click"
+                            Description="These settings are not intented for normal use"
+                            Header="Open debug settings"
+                            IsClickEnabled="True">
+                            <toolkitc:SettingsCard.ActionIcon>
+                                <FontIcon Glyph="&#xE8A7;" />
+                            </toolkitc:SettingsCard.ActionIcon>
+                        </toolkitc:SettingsCard>
                     </toolkitc:SettingsExpander.Items>
                 </toolkitc:SettingsExpander>
             </StackPanel>

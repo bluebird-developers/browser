@@ -200,4 +200,9 @@ public sealed partial class SettingsPage : Page
     {
         await Launcher.LaunchUriAsync(new Uri("https://paypal.me/julianhasreiter"));
     }
+
+    private void DebugSettingsCard_Click(object sender, RoutedEventArgs e)
+    {
+        MainPageContent.CreateTab("Debug settings", "\uF1AD", typeof(DebugSettings));
+    }
 }

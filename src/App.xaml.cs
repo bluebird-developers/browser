@@ -172,16 +172,4 @@ sealed partial class App : Application
         titleBar.ButtonBackgroundColor = Colors.Transparent;
         titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
     }
-
-#if DEBUG
-    private void OverrideLanguage(string langCode)
-    {
-        Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = langCode;
-    }
-
-    private string GetPreferredLanguage()
-    {
-        return Windows.Globalization.ApplicationLanguages.Languages[0];
-    }
-#endif
 }
