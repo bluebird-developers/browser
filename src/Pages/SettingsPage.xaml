@@ -35,7 +35,7 @@
                     Style="{StaticResource TitleTextBlockStyle}" />
                 <!--  General  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="General" />
-                <toolkitc:SettingsCard Header="Search engine" HeaderIcon="Find">
+                <toolkitc:SettingsCard x:Uid="SearchEngine" HeaderIcon="Find">
                     <ComboBox x:Name="SearchEngineSelector">
                         <ComboBox.ItemTemplate>
                             <DataTemplate x:DataType="core:SearchEngine">
@@ -44,7 +44,7 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                 </toolkitc:SettingsCard>
-                <toolkitc:SettingsCard Header="AI search engine">
+                <toolkitc:SettingsCard x:Uid="AISearchEngine">
                     <toolkitc:SettingsCard.HeaderIcon>
                         <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Icons/AISparkles.png" />
                     </toolkitc:SettingsCard.HeaderIcon>

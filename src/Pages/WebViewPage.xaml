@@ -84,43 +84,42 @@
             <AppBarButton
                 Click="AppBarButton_Click"
                 Icon="Share"
-                Tag="Share"
-                ToolTipService.ToolTip="Share" />
+                Tag="Share" />
             <muxc:CommandBarFlyout.SecondaryCommands>
                 <AppBarButton
+                    x:Uid="SelectAll"
                     Click="AppBarButton_Click"
-                    Label="Select all"
                     Tag="SelectAll">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE14E;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
                 <AppBarButton
+                    x:Uid="Translate"
                     Click="AppBarButton_Click"
-                    Label="Translate"
                     Tag="Translate">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE775;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
-                <AppBarButton Label="Export as..">
+                <AppBarButton x:Uid="ExportAs">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE792;" />
                     </AppBarButton.Icon>
                     <AppBarButton.Flyout>
                         <MenuFlyout>
                             <MenuFlyoutItem
+                                x:Uid="ExportAsPdf"
                                 Click="MenuFlyoutItem_Click"
-                                Tag="ExportAsPdf"
                                 Text="Export as pdf">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xEA90;" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
                             <MenuFlyoutItem
+                                x:Uid="ExportAsTxt"
                                 Click="MenuFlyoutItem_Click"
-                                Tag="ExportAsTxt"
-                                Text="Export as txt">
+                                Tag="ExportAsTxt">
                                 <MenuFlyoutItem.Icon>
                                     <SymbolIcon Symbol="Document" />
                                 </MenuFlyoutItem.Icon>
@@ -129,16 +128,16 @@
                     </AppBarButton.Flyout>
                 </AppBarButton>
                 <AppBarSeparator />
-                <AppBarButton Label="Advanced">
+                <AppBarButton x:Uid="Advanced">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xEC7A;" />
                     </AppBarButton.Icon>
                     <AppBarButton.Flyout>
                         <MenuFlyout>
                             <MenuFlyoutItem
+                                x:Uid="ViewSource"
                                 Click="MenuFlyoutItem_Click"
-                                Tag="ViewSource"
-                                Text="View source">
+                                Tag="ViewSource">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xE943;" />
                                 </MenuFlyoutItem.Icon>
@@ -154,9 +153,9 @@
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>-->
                             <MenuFlyoutItem
+                                x:Uid="TaskManager"
                                 Click="MenuFlyoutItem_Click"
-                                Tag="TaskManager"
-                                Text="Browser task manager">
+                                Tag="TaskManager">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xE9D9;" />
                                 </MenuFlyoutItem.Icon>
@@ -171,6 +170,7 @@
             AlwaysExpanded="True"
             Placement="BottomEdgeAlignedLeft">
             <AppBarButton
+                x:Uid="CopyText"
                 Click="AppBarButton_Click"
                 Tag="CopyText"
                 ToolTipService.ToolTip="Copy text">
@@ -180,16 +180,16 @@
             </AppBarButton>
             <muxc:CommandBarFlyout.SecondaryCommands>
                 <AppBarButton
+                    x:Uid="SelectAll"
                     Click="AppBarButton_Click"
-                    Label="Select all"
                     Tag="SelectAll">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE14E;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
                 <AppBarButton
+                    x:Uid="SearchSelectionOnTheWeb"
                     Click="AppBarButton_Click"
-                    Label="Search the web..."
                     Tag="Search">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE721;" />
@@ -202,30 +202,30 @@
             AlwaysExpanded="True"
             Placement="BottomEdgeAlignedLeft">
             <AppBarButton
+                x:Uid="OpenLnkInNewTab"
                 Click="AppBarButton_Click"
-                Tag="OpenLnkInNewTab"
-                ToolTipService.ToolTip="Open link in new tab">
+                Tag="OpenLnkInNewTab">
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xE8A7;" />
                 </AppBarButton.Icon>
             </AppBarButton>
             <AppBarButton
+                x:Uid="CopyLink"
                 Click="AppBarButton_Click"
-                Tag="Copy"
-                ToolTipService.ToolTip="Copy link">
+                Tag="Copy">
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xE16F;" />
                 </AppBarButton.Icon>
             </AppBarButton>
             <AppBarButton
+                x:Uid="ShareLink"
                 Click="AppBarButton_Click"
                 Icon="Share"
-                Tag="ShareLink"
-                ToolTipService.ToolTip="Share selected link" />
+                Tag="ShareLink" />
             <muxc:CommandBarFlyout.SecondaryCommands>
                 <AppBarButton
+                    x:Uid="CopyLinkText"
                     Click="AppBarButton_Click"
-                    Label="Copy link text"
                     Tag="CopyText">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE16F;" />

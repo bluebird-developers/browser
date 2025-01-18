@@ -123,14 +123,32 @@
   <data name="AddFavorite.Text" xml:space="preserve">
     <value>Ajouter un favori</value>
   </data>
+  <data name="Advanced.Label" xml:space="preserve">
+    <value>Avancé</value>
+  </data>
+  <data name="AISearchEngine.Header" xml:space="preserve">
+    <value>Moteur de recherche d'IA</value>
+  </data>
   <data name="CopyLink.ToolTipService.ToolTip" xml:space="preserve">
     <value>Copier le lien</value>
   </data>
   <data name="CopyLinkText.Label" xml:space="preserve">
     <value>Copier le texte du lien</value>
   </data>
+  <data name="CopyText.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Copier le texte</value>
+  </data>
   <data name="Downloads.Text" xml:space="preserve">
     <value>Téléchargements</value>
+  </data>
+  <data name="ExportAs.Label" xml:space="preserve">
+    <value>Exporter en..</value>
+  </data>
+  <data name="ExportAsPdf.Text" xml:space="preserve">
+    <value>Exporter en pdf</value>
+  </data>
+  <data name="ExportAsTxt.Text" xml:space="preserve">
+    <value>Exporter en txt</value>
   </data>
   <data name="Favorites.Text" xml:space="preserve">
     <value>Favoris</value>
@@ -147,11 +165,23 @@
   <data name="NewTab.Text" xml:space="preserve">
     <value>Nouvel onglet</value>
   </data>
+  <data name="OpenLnkInNewTab.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Ouvrir le lien dans un nouvel onglet</value>
+  </data>
   <data name="QRCodeNotice.ToolTipService.ToolTip" xml:space="preserve">
     <value>Pour scanner ce code, vous pouvez utiliser une application de scanner QR sur votre téléphone ou une application spéciale sur un autre appareil.</value>
   </data>
+  <data name="SearchEngine.Header" xml:space="preserve">
+    <value>Moteur de recherche</value>
+  </data>
+  <data name="SearchSelectionOnTheWeb.Label" xml:space="preserve">
+    <value>Rechercher sur internet..</value>
+  </data>
   <data name="SearchWithAl.ToolTipService.ToolTip" xml:space="preserve">
     <value>Rechercher avec l'IA</value>
+  </data>
+  <data name="SelectAll.Label" xml:space="preserve">
+    <value>Tout sélectionner</value>
   </data>
   <data name="Settings.Text" xml:space="preserve">
     <value>Paramètres</value>
@@ -159,7 +189,16 @@
   <data name="ShareLink.ToolTipService.ToolTip" xml:space="preserve">
     <value>Partager le lien</value>
   </data>
+  <data name="TaskManager.Text" xml:space="preserve">
+    <value>Gestionnaire des tâches</value>
+  </data>
+  <data name="Translate.Label" xml:space="preserve">
+    <value>Traduire</value>
+  </data>
   <data name="UrlBox.PlaceholderText" xml:space="preserve">
     <value>Tapez ici pour rechercher ou entrer l'url</value>
+  </data>
+  <data name="ViewSource.Text" xml:space="preserve">
+    <value>Afficher le code source de la page</value>
   </data>
 </root>
