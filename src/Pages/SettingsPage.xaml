@@ -109,10 +109,11 @@
                 <!--  About  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
                 <toolkitc:SettingsCard
-                    Click="OpenDevSanxDiscord_Click"
+                    Click="SettingsCardClickHandler"
                     Description="A discord server about Windows Apps"
                     Header="Join the discussion on Developer Sanctuary"
-                    IsClickEnabled="True">
+                    IsClickEnabled="True"
+                    Tag="DevSanx">
                     <toolkitc:SettingsCard.ActionIcon>
                         <FontIcon Glyph="&#xE8A7;" />
                     </toolkitc:SettingsCard.ActionIcon>
@@ -121,10 +122,11 @@
                     </toolkitc:SettingsCard.HeaderIcon>
                 </toolkitc:SettingsCard>
                 <toolkitc:SettingsCard
-                    Click="OpenDonateLink_Click"
+                    Click="SettingsCardClickHandler"
                     Description="On PayPal"
                     Header="Support the development"
-                    IsClickEnabled="True">
+                    IsClickEnabled="True"
+                    Tag="Donate">
                     <toolkitc:SettingsCard.ActionIcon>
                         <FontIcon Glyph="&#xE8A7;" />
                     </toolkitc:SettingsCard.ActionIcon>
@@ -142,10 +144,11 @@
                         Loaded="VersionTextBlock_Loaded" />
                     <toolkitc:SettingsExpander.Items>
                         <toolkitc:SettingsCard
-                            Click="OpenGitHubSettingsCard_Click"
+                            Click="SettingsCardClickHandler"
                             Description="On GitHub"
                             Header="File a bug or request a new feature"
-                            IsClickEnabled="True">
+                            IsClickEnabled="True"
+                            Tag="GitHub">
                             <toolkitc:SettingsCard.ActionIcon>
                                 <FontIcon Glyph="&#xE8A7;" />
                             </toolkitc:SettingsCard.ActionIcon>
@@ -174,10 +177,11 @@
                             </RichTextBlock>
                         </toolkitc:SettingsCard>
                         <toolkitc:SettingsCard
-                            Click="DebugSettingsCard_Click"
+                            Click="SettingsCardClickHandler"
                             Description="These settings are not intented for normal use"
                             Header="Open debug settings"
-                            IsClickEnabled="True">
+                            IsClickEnabled="True"
+                            Tag="DebugSettings">
                             <toolkitc:SettingsCard.ActionIcon>
                                 <FontIcon Glyph="&#xE8A7;" />
                             </toolkitc:SettingsCard.ActionIcon>

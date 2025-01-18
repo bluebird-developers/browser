@@ -1,4 +1,7 @@
-﻿namespace Bluebird.Pages;
+﻿using CommunityToolkit.WinUI.Controls;
+using System.Threading;
+
+namespace Bluebird.Pages;
 
 public sealed partial class SettingsPage : Page
 {
@@ -186,23 +189,22 @@ public sealed partial class SettingsPage : Page
         (sender as TextBlock).Text = $"Version {appversion} | {apparch}";
     }
 
-    private async void OpenGitHubSettingsCard_Click(object sender, RoutedEventArgs e)
+    private async void SettingsCardClickHandler(object sender, RoutedEventArgs e)
     {
-        await Launcher.LaunchUriAsync(new Uri("https://github.com/bluebird-developers/browser"));
-    }
-
-    private async void OpenDevSanxDiscord_Click(object sender, RoutedEventArgs e)
-    {
-        await Launcher.LaunchUriAsync(new Uri("https://discord.com/invite/windows-apps-hub-714581497222398064"));
-    }
-
-    private async void OpenDonateLink_Click(object sender, RoutedEventArgs e)
-    {
-        await Launcher.LaunchUriAsync(new Uri("https://paypal.me/julianhasreiter"));
-    }
-
-    private void DebugSettingsCard_Click(object sender, RoutedEventArgs e)
-    {
-        MainPageContent.CreateTab("Debug settings", "\uF1AD", typeof(DebugSettings));
-    }
+        switch((sender as SettingsCard).Tag)
+        {
+            case "GitHub":
+                await Launcher.LaunchUriAsync(new Uri("https://github.com/bluebird-developers/browser"));
+                break;
+            case "DevSanx":
+                await Launcher.LaunchUriAsync(new Uri("https://discord.com/invite/windows-apps-hub-714581497222398064"));
+                break;
+            case "Donate":
+                await Launcher.LaunchUriAsync(new Uri("https://paypal.me/julianhasreiter"));
+                break;
+            case "DebugSettings":
+                MainPageContent.CreateTab("Debug settings", "\uF1AD", typeof(DebugSettings));
+                break;
+        }
+    } 
 }
