@@ -21,7 +21,7 @@ public class SearchEngineHelper
         }
     }
 
-    public static List<SearchEngine> SearchEngines =
+    public static IReadOnlyList<SearchEngine> SearchEngines =
     [
         new SearchEngine("Ask", "https://www.ask.com/web?q="),
         new SearchEngine("Baidu", "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd="),
@@ -36,7 +36,7 @@ public class SearchEngineHelper
         new SearchEngine("Yandex", "https://yandex.com/search/?text=")
     ];
 
-    public static List<SearchEngine> AISearchEngines =
+    public static IReadOnlyList<SearchEngine> AISearchEngines =
     [
         new SearchEngine("ChatGPT", "https://chatgpt.com/?q="),
         new SearchEngine("Microsoft Copilot", "https://copilot.microsoft.com/?q="),
