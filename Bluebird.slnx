@@ -5,7 +5,7 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="external/QRCoder/QRCoder.csproj" />
-  <Project Path="src/Bluebird.csproj">
+  <Project Path="src/Bluebird.csproj" Id="3226f93f-c704-419d-a116-c5c02f81c7c6">
     <Platform Solution="*|ARM64" Project="ARM64" />
     <Platform Solution="*|x64" Project="x64" />
     <Platform Solution="*|x86" Project="x86" />
