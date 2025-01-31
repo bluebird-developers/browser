@@ -341,7 +341,8 @@
                     Grid.Column="0"
                     GotFocus="UrlBox_GotFocus"
                     IsSpellCheckEnabled="False"
-                    KeyDown="UrlBox_KeyDown" />
+                    KeyDown="UrlBox_KeyDown"
+                    MaxLength="2048" />
             </Grid>
             <Border Grid.Column="1" />
             <Grid

@@ -53,7 +53,8 @@
                         Width="400"
                         IsSpellCheckEnabled="False"
                         KeyDown="UrlBox_KeyDown"
-                        Loaded="UrlBox_Loaded" />
+                        Loaded="UrlBox_Loaded"
+                        MaxLength="2048" />
                     <Button
                         x:Uid="SearchWithAI"
                         Grid.Column="1"
