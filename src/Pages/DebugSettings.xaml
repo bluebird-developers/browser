@@ -38,7 +38,10 @@
                     Tag="PrintAppInfo" />
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Internalization" />
                 <toolkitc:SettingsCard Header="Override app language">
-                    <TextBox KeyDown="AppLangInput_KeyDown" PlaceholderText="en-US" />
+                    <TextBox
+                        KeyDown="AppLangInput_KeyDown"
+                        MaxLength="5"
+                        PlaceholderText="en-US" />
                 </toolkitc:SettingsCard>
             </StackPanel>
         </ScrollViewer>

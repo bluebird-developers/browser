@@ -16,9 +16,15 @@
                     Width="300"
                     FontSize="20" />
                 <TextBlock Margin="0,5,0,0">Name</TextBlock>
-                <TextBox x:Name="FavoriteTitle" Width="300" />
+                <TextBox
+                    x:Name="FavoriteTitle"
+                    Width="300"
+                    MaxLength="100" />
                 <TextBlock>Url</TextBlock>
-                <TextBox x:Name="FavoriteUrl" Width="300" />
+                <TextBox
+                    x:Name="FavoriteUrl"
+                    Width="300"
+                    MaxLength="2048" />
                 <Button
                     x:Uid="Add"
                     Margin="0,5,0,0"
