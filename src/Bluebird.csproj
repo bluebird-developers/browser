@@ -1,9 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!-- .NET Project Properties-->
   <PropertyGroup>
-    <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
-    <LangVersion>13.0</LangVersion>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <Nullable>enable</Nullable>
+    <UseUwp>true</UseUwp>
+    <Platforms>x86;x64;arm64</Platforms>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <PublishAot>true</PublishAot>
+    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
+    <DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
+    <EnableMsixTooling>true</EnableMsixTooling>
+  </PropertyGroup>
+  <!-- MSIX Packaging-->
+  <PropertyGroup>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <PackageCertificateKeyFile>Bluebird_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
@@ -14,338 +26,18 @@
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
   </PropertyGroup>
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{3226F93F-C704-419D-A116-C5C02F81C7C6}</ProjectGuid>
-    <OutputType>AppContainerExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bluebird</RootNamespace>
-    <AssemblyName>Bluebird</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.26100.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <Optimize>true</Optimize>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\ARM64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>ARM64</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
-    <OutputPath>bin\ARM64\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <Optimize>true</Optimize>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>ARM64</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <Optimize>true</Optimize>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
-  </PropertyGroup>
-  <PropertyGroup>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\AppStartupHelper.cs" />
-    <Compile Include="Core\ModernBlankPage.cs" />
-    <Compile Include="Core\MultiLanguageHelper.cs" />
-    <Compile Include="Core\SearchEngine.cs" />
-    <Compile Include="Core\WebView2CreationError.cs" />
-    <Compile Include="Core\XAMLTabCreationParams.cs" />
-    <Compile Include="Core\NewTabHelper.cs" />
-    <Compile Include="Core\NotificationHelper.cs" />
-    <Compile Include="Modules\Favorites\FavoriteItem.cs" />
-    <Compile Include="Modules\QRCodeGen\QRCodeHelper.cs" />
-    <Compile Include="Core\WebTabCreationParams.cs" />
-    <Compile Include="Core\WebView2ProfileDataHelper.cs" />
-    <Compile Include="Core\AppVersionHelper.cs" />
-    <Compile Include="Core\BooleanToVisibilityConverter.cs" />
-    <Compile Include="Core\ExceptionHelper.cs" />
-    <Compile Include="Core\IconHelper.cs" />
-    <Compile Include="Modules\Favorites\FavoritesHelper.cs" />
-    <Compile Include="Core\FileHelper.cs" />
-    <Compile Include="Core\Globals.cs" />
-    <Compile Include="Core\PasswordHelper.cs" />
-    <Compile Include="Core\SearchEngineHelper.cs" />
-    <Compile Include="Core\SettingsHelper.cs" />
-    <Compile Include="Core\SystemHelper.cs" />
-    <Compile Include="Core\UI.cs" />
-    <Compile Include="Core\UrlHelper.cs" />
-    <Compile Include="Core\WindowManager.cs" />
-    <Compile Include="GlobalUsings.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Readability\ReadabilityHelper.cs" />
-    <Compile Include="Pages\DebugSettings.xaml.cs">
-      <DependentUpon>DebugSettings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\NewTabPage.xaml.cs">
-      <DependentUpon>NewTabPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\SettingsPage.xaml.cs">
-      <DependentUpon>SettingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\SplitTabPage.xaml.cs">
-      <DependentUpon>SplitTabPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\WebViewErrorPage.xaml.cs">
-      <DependentUpon>WebViewErrorPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\WebViewPage.xaml.cs">
-      <DependentUpon>WebViewPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\SettingsViewModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest">
-      <SubType>Designer</SubType>
-    </AppxManifest>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Assets\Icons\AISparkles.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Backgrounds\Attributions.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Backgrounds\Background_1.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Backgrounds\Background_2.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Backgrounds\Background_3.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Backgrounds\Background_4.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Backgrounds\Background_5.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Backgrounds\Background_6.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Backgrounds\Background_7.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Backgrounds\Background_8.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Backgrounds\Background_9.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Backgrounds\Background_10.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Icons\DevSanx.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\FileIcons\document.png" />
-    <Content Include="Assets\FileIcons\link.png" />
-    <Content Include="Assets\AppIcons\LargeTile.scale-100.png" />
-    <Content Include="Assets\AppIcons\LargeTile.scale-125.png" />
-    <Content Include="Assets\AppIcons\LargeTile.scale-150.png" />
-    <Content Include="Assets\AppIcons\LargeTile.scale-200.png" />
-    <Content Include="Assets\AppIcons\LargeTile.scale-400.png" />
-    <Content Include="Assets\Icons\paypal.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\AppIcons\SmallTile.scale-100.png" />
-    <Content Include="Assets\AppIcons\SmallTile.scale-125.png" />
-    <Content Include="Assets\AppIcons\SmallTile.scale-150.png" />
-    <Content Include="Assets\AppIcons\SmallTile.scale-200.png" />
-    <Content Include="Assets\AppIcons\SmallTile.scale-400.png" />
-    <Content Include="Assets\AppIcons\SplashScreen.scale-100.png" />
-    <Content Include="Assets\AppIcons\SplashScreen.scale-125.png" />
-    <Content Include="Assets\AppIcons\SplashScreen.scale-150.png" />
-    <Content Include="Assets\AppIcons\SplashScreen.scale-400.png" />
-    <Content Include="Assets\AppIcons\Square150x150Logo.scale-100.png" />
-    <Content Include="Assets\AppIcons\Square150x150Logo.scale-125.png" />
-    <Content Include="Assets\AppIcons\Square150x150Logo.scale-150.png" />
-    <Content Include="Assets\AppIcons\Square150x150Logo.scale-400.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.altform-unplated_targetsize-16.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.altform-unplated_targetsize-256.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.altform-unplated_targetsize-32.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.altform-unplated_targetsize-48.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.scale-100.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.scale-125.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.scale-150.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.scale-400.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.targetsize-16.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.targetsize-24.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.targetsize-256.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.targetsize-32.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.targetsize-48.png" />
-    <Content Include="Assets\AppIcons\StoreLogo.scale-100.png" />
-    <Content Include="Assets\AppIcons\StoreLogo.scale-125.png" />
-    <Content Include="Assets\AppIcons\StoreLogo.scale-150.png" />
-    <Content Include="Assets\AppIcons\StoreLogo.scale-200.png" />
-    <Content Include="Assets\AppIcons\StoreLogo.scale-400.png" />
-    <Content Include="Assets\AppIcons\Wide310x150Logo.scale-100.png" />
-    <Content Include="Assets\AppIcons\Wide310x150Logo.scale-125.png" />
-    <Content Include="Assets\AppIcons\Wide310x150Logo.scale-150.png" />
-    <Content Include="Assets\AppIcons\Wide310x150Logo.scale-400.png" />
-    <Content Include="Modules\Readability\Assets\readability.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Properties\Default.rd.xml" />
-    <None Include="Package.StoreAssociation.xml" />
-    <Content Include="Assets\AppIcons\SplashScreen.scale-200.png" />
-    <Content Include="Assets\AppIcons\Square150x150Logo.scale-200.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\AppIcons\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\AppIcons\Wide310x150Logo.scale-200.png" />
-    <PRIResource Include="Strings\fr\Resources.resw" />
-    <PRIResource Include="Strings\de\Resources.resw" />
-    <PRIResource Include="Strings\en-US\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\DebugSettings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\LoginPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\NewTabPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\SettingsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\SplitTabPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\WebViewErrorPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\WebViewPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\PageBorder.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\TabViewSplitButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\SidebarButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Uwp.Controls.SettingsControls">
-      <Version>8.1.240916</Version>
+      <Version>8.2.250129-preview2</Version>
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Uwp.Controls.Sizers">
-      <Version>8.1.240916</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.14</Version>
+      <Version>8.2.250129-preview2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.8.7</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Web.WebView2">
-      <Version>1.0.3065.39</Version>
-    </PackageReference>
-    <PackageReference Include="PolySharp">
-      <Version>1.15.0</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="System.Text.Json">
-      <Version>9.0.2</Version>
+      <Version>1.0.3116-prerelease</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -354,15 +46,4 @@
       <Name>QRCoder</Name>
     </ProjectReference>
   </ItemGroup>
-  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
-    <VisualStudioVersion>14.0</VisualStudioVersion>
-  </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
