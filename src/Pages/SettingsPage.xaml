@@ -58,7 +58,7 @@
                     </ComboBox>
                 </toolkitc:SettingsCard>
                 <!--  Data  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Personalization" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Data" />
                 <toolkitc:SettingsCard Description="Clear all user data" Header="Clear data">
                     <toolkitc:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE74E;" />
