@@ -77,12 +77,6 @@
                 </toolkitc:SettingsCard>
                 <!--  Personalization  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Personalization" />
-                <toolkitc:SettingsCard Description="Force dark mode for all websites" Header="Force dark mode">
-                    <toolkitc:SettingsCard.HeaderIcon>
-                        <FontIcon Glyph="&#xE790;" />
-                    </toolkitc:SettingsCard.HeaderIcon>
-                    <ToggleSwitch x:Name="ForceDarkSwitch" />
-                </toolkitc:SettingsCard>
                 <toolkitc:SettingsCard Description="View more tabs at a glance" Header="Compact tabs">
                     <toolkitc:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE737;" />

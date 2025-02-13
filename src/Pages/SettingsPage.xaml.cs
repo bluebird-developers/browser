@@ -36,9 +36,6 @@ public sealed partial class SettingsPage : Page
             }
         }
 
-        if (SettingsHelper.GetSetting("ForceDark") == "true")
-            ForceDarkSwitch.IsOn = true;
-
         // Personalization
         if (SettingsHelper.GetSetting("CompactTabs") == "true")
             CompactTabsToggle.IsOn = true;
@@ -53,7 +50,6 @@ public sealed partial class SettingsPage : Page
         // Set event handlers
         SearchEngineSelector.SelectionChanged += SearchEngineSelector_SelectionChanged;
         AISearchEngineSelector.SelectionChanged += AISearchEngineSelector_SelectionChanged;
-        ForceDarkSwitch.Toggled += ForceDarkSwitch_Toggled;
         CompactTabsToggle.Toggled += CompactTabsToggle_Toggled;
         NewTabBgImageToggle.Toggled += NewTabBgImageToggle_Toggled;
         PasswordLockToggle.Toggled += PasswordLockToggle_Toggled;
@@ -97,20 +93,6 @@ public sealed partial class SettingsPage : Page
                     NotificationHelper.NotifyUser("Error", "Please restart Bluebird manually");
                 }
             }
-        }
-    }
-
-    private void ForceDarkSwitch_Toggled(object sender, RoutedEventArgs e)
-    {
-        if (ForceDarkSwitch.IsOn)
-        {
-            SettingsHelper.SetSetting("ForceDark", "true");
-            SettingsViewModel.SettingsVM.IsForceDarkEnabled = true;
-        }
-        else
-        {
-            SettingsHelper.SetSetting("ForceDark", "false");
-            SettingsViewModel.SettingsVM.IsForceDarkEnabled = false;
         }
     }
 
