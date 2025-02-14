@@ -42,8 +42,9 @@ A donation would be highly appreciated, and it helps me out a lot. Thanks :)
 ## Building from source
 
 ### 1. Prerequisites
-- Visual Studio 2022, version 17.X (version 17.12.X recommendend)
+- Visual Studio 2022, version 17.13 or newer
 - Windows 11 SDK (10.0.26100.0)
+- .NET 9 SDK
 - Windows Application Workload + Universal Windows Platform Tools
 
 ### 2. Clone the repository
