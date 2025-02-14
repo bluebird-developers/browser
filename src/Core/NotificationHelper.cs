@@ -10,8 +10,7 @@ public static class NotificationHelper
         xmlDoc.LoadXml(xmlString);
         ToastNotification notification = new(xmlDoc)
         {
-            ExpirationTime = DateTime.Now.AddMinutes(5),
-            ExpiresOnReboot = true
+            ExpirationTime = DateTime.Now.AddMinutes(5)
         };
         ToastNotificationManager.CreateToastNotifier().Show(notification);
     }
