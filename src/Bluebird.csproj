@@ -49,4 +49,9 @@
       <Name>QRCoder</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Update="Modules\Readability\Assets\readability.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
