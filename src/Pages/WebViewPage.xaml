@@ -356,6 +356,7 @@
                 Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
                 CornerRadius="5">
                 <Button
+                    x:Uid="SearchWithAI"
                     Grid.Column="1"
                     Height="32"
                     Click="AISearchButton_Click"
