@@ -117,7 +117,7 @@
                             <MenuFlyoutItem
                                 x:Uid="ExportAsPdf"
                                 Click="MenuFlyoutItem_Click"
-                                Text="Export as pdf">
+                                Tag="ExportAsPdf">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xEA90;" />
                                 </MenuFlyoutItem.Icon>
