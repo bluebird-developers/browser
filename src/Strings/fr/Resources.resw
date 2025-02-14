@@ -177,8 +177,8 @@
   <data name="SearchSelectionOnTheWeb.Label" xml:space="preserve">
     <value>Rechercher sur internet..</value>
   </data>
-  <data name="SearchWithAl.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Rechercher avec l'IA</value>
+  <data name="SearchWithAI.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Rechercher avec l'IA..</value>
   </data>
   <data name="SelectAll.Label" xml:space="preserve">
     <value>Tout sélectionner</value>
