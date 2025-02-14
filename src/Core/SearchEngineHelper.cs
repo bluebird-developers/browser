@@ -21,25 +21,25 @@ public class SearchEngineHelper
         }
     }
 
-    public static IReadOnlyList<SearchEngine> SearchEngines =
-    [
-        new SearchEngine("Ask", "https://www.ask.com/web?q="),
-        new SearchEngine("Baidu", "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd="),
-        new SearchEngine("Bing", "https://www.bing.com?q="),
-        new SearchEngine("Brave Search", "https://search.brave.com/search?q="),
-        new SearchEngine("DuckDuckGo", "https://www.duckduckgo.com?q="),
-        new SearchEngine("Ecosia", "https://www.ecosia.org/search?q="),
-        new SearchEngine("Google", "https://www.google.com/search?q="),
-        new SearchEngine("Startpage", "https://www.startpage.com/search?q="),
-        new SearchEngine("Qwant", "https://www.qwant.com/?q="),
-        new SearchEngine("Yahoo!", "https://search.yahoo.com/search?p="),
-        new SearchEngine("Yandex", "https://yandex.com/search/?text=")
-    ];
+    public static IReadOnlyList<SearchEngine> SearchEngines = new SearchEngine[]
+    {
+        new("Ask", "https://www.ask.com/web?q="),
+        new("Baidu", "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd="),
+        new("Bing", "https://www.bing.com?q="),
+        new("Brave Search", "https://search.brave.com/search?q="),
+        new("DuckDuckGo", "https://www.duckduckgo.com?q="),
+        new("Ecosia", "https://www.ecosia.org/search?q="),
+        new("Google", "https://www.google.com/search?q="),
+        new("Startpage", "https://www.startpage.com/search?q="),
+        new("Qwant", "https://www.qwant.com/?q="),
+        new("Yahoo!", "https://search.yahoo.com/search?p="),
+        new("Yandex", "https://yandex.com/search/?text=")
+    };
 
-    public static IReadOnlyList<SearchEngine> AISearchEngines =
-    [
-        new SearchEngine("ChatGPT", "https://chatgpt.com/?q="),
-        new SearchEngine("Microsoft Copilot", "https://copilot.microsoft.com/?q="),
-        new SearchEngine("Perplexity.ai", "https://www.perplexity.ai/search?q=")
-    ];
+    public static IReadOnlyList<SearchEngine> AISearchEngines = new SearchEngine[]
+    {
+        new("ChatGPT", "https://chatgpt.com/?q="),
+        new("Microsoft Copilot", "https://copilot.microsoft.com/?q="),
+        new("Perplexity.ai", "https://www.perplexity.ai/search?q=")
+    };
 }
