@@ -38,7 +38,7 @@
         DisplayName="Bluebird"
         Square150x150Logo="Assets\AppIcons\Square150x150Logo.png"
         Square44x44Logo="Assets\AppIcons\Square44x44Logo.png"
-        Description="Bluebird"
+        Description="Bluebird is your next-gen webbrowser, lightning fast and open-source, powered by WinUI"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\AppIcons\Wide310x150Logo.png" ShortName="Bluebird"
           Square71x71Logo="Assets\AppIcons\SmallTile.png"
