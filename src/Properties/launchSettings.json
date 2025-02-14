@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Bluebird": {
+      "commandName": "MsixPackage"
+    }
+  }
+}
