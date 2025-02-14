@@ -157,7 +157,6 @@
                                 <HyperlinkButton Content="Windows Community Toolkit" NavigateUri="https://github.com/CommunityToolkit/Windows" />
                                 <HyperlinkButton Content="QRCoder" NavigateUri="https://github.com/codebude/QRCoder" />
                                 <HyperlinkButton Content="Mozilla Readability" NavigateUri="https://github.com/mozilla/readability" />
-                                <HyperlinkButton Content="Bluebird.Modules.Forcedark" NavigateUri="https://github.com/bluebird-developers/Bluebird.Modules.Forcedark" />
                                 <HyperlinkButton Content="Microsoft.Web.WebView2" NavigateUri="https://aka.ms/webview" />
                             </StackPanel>
                         </toolkitc:SettingsCard>
