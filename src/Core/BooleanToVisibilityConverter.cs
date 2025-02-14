@@ -27,7 +27,7 @@ namespace Bluebird.Core;
 /// <summary>
 /// Converts between Boolean and Visibility values. 
 /// </summary>
-public class BooleanToVisibilityConverter : IValueConverter
+public partial class BooleanToVisibilityConverter : IValueConverter
 {
     /// <summary>
     /// Converts true values to Visibility.Visible and false values to
