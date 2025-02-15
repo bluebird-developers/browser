@@ -20,7 +20,7 @@ sealed partial class App : Application
     private void LoadSettings()
     {
         AISearchUrl = SettingsHelper.GetSetting("AISearchUrl") ?? "https://www.perplexity.ai/search?q=";
-        SearchUrl = SettingsHelper.GetSetting("SearchUrl") ?? "https://www.qwant.com/?q=";
+        SearchUrl = SettingsHelper.GetSetting("SearchUrl") ?? "https://www.duckduckgo.com?q=";
 
         if (SettingsHelper.GetSetting("ForceDark") == "true")
             SettingsViewModel.SettingsVM.IsForceDarkEnabled = true;
