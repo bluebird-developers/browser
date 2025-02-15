@@ -400,13 +400,13 @@ public sealed partial class WebViewPage : Page
                 WebViewControl.CoreWebView2.OpenDefaultDownloadDialog();
                 break;
             case "GenQRCode":
-                QrCode = await QRCodeHelper.GenerateQRCodeFromUrlAsync(WebViewControl.CoreWebView2.Source);
+                QrCode = await Modules.QRCodeGen.QRCodeHelper.GenerateQRCodeFromUrlAsync(WebViewControl.CoreWebView2.Source);
                 if (QrCode == null)
                 {
                     await UI.ShowDialog("Error", "An error occured while trying to create a qr code for this website");
                     break;
                 }
-                BitmapImage QrCodeImage = await QRCodeHelper.ConvertBitmapBytesToImage(QrCode);
+                BitmapImage QrCodeImage = await Modules.QRCodeGen.QRCodeHelper.ConvertBitmapBytesToImage(QrCode);
                 QRCodeImage.Source = QrCodeImage;
                 QRCodeFlyout.ShowAt(sender as Button);
                 break;

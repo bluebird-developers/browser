@@ -1,6 +1,6 @@
 ﻿using QRCoder;
 
-namespace Bluebird.Core;
+namespace Bluebird.Modules.QRCodeGen;
 
 public static class QRCodeHelper
 {
