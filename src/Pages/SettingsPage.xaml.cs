@@ -128,7 +128,10 @@ public sealed partial class SettingsPage : Page
     {
         if (PasswordLockToggle.IsOn)
         {
-            PasswordBox pwBox = new();
+            PasswordBox pwBox = new()
+            {
+                MaxLength = 128
+            };
             ContentDialog dialog = new()
             {
                 Title = "Set password",

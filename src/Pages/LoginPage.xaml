@@ -51,6 +51,7 @@
                     Grid.Row="1"
                     Width="300"
                     KeyDown="PasswordBox_KeyDown"
+                    MaxLength="10000"
                     PlaceholderText="Enter your password" />
             </Grid>
         </Grid>
