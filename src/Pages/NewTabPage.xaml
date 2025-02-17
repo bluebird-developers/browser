@@ -32,10 +32,11 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
-                    <Image
+                    <BitmapIcon
                         Width="64"
                         Height="64"
-                        Source="/Assets/AppIcons/Square44x44Logo.targetsize-256.png" />
+                        ShowAsMonochrome="False"
+                        UriSource="/Assets/AppIcons/Square44x44Logo.png" />
                     <TextBlock
                         VerticalAlignment="Center"
                         FontSize="30"
