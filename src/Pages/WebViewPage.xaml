@@ -250,7 +250,8 @@
             Grid.Column="0"
             Margin="5,0,0,0"
             HorizontalAlignment="Right"
-            VerticalAlignment="Center">
+            VerticalAlignment="Center"
+            Visibility="Collapsed">
             <Button
                 Click="SidebarButton_Click"
                 IsEnabled="{x:Bind WebViewControl.CanGoBack, Mode=OneWay}"
@@ -302,20 +303,21 @@
                 Tag="GenQRCode">
                 <FontIcon Glyph="&#xED14;" />
             </Button>
+            <Button
+                x:Name="MuteBtn"
+                Click="SidebarButton_Click"
+                Style="{StaticResource SidebarButton}"
+                Tag="Mute"
+                Visibility="Collapsed">
+                <FontIcon Glyph="&#xE767;" />
+            </Button>
         </StackPanel>
-        <Button
-            x:Name="MuteBtn"
-            Margin="5,0,0,5"
-            VerticalAlignment="Bottom"
-            Click="SidebarButton_Click"
-            Style="{StaticResource SidebarButton}"
-            Tag="Mute"
-            Visibility="Collapsed">
-            <FontIcon Glyph="&#xE767;" />
-        </Button>
-        <Grid Grid.Column="1" Style="{StaticResource PageBorder}">
+        <Grid
+            x:Name="WebViewChrome"
+            Grid.Column="1"
+            Style="{StaticResource PageBorder}">
             <!--  required to round wv2  -->
-            <Grid CornerRadius="5">
+            <Grid x:Name="WebViewChromeRound" CornerRadius="5">
                 <muxc:WebView2
                     x:Name="WebViewControl"
                     x:FieldModifier="public"

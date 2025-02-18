@@ -172,12 +172,18 @@ public sealed partial class WebViewPage : Page
             WindowManager.EnterFullScreen(true);
             UrlBoxWrapper.Visibility = Visibility.Collapsed;
             Sidebar.Visibility = Visibility.Collapsed;
+            WebViewChrome.Margin = new Thickness(-2, -35, -2, -2);
+            WebViewChrome.CornerRadius = new CornerRadius(0);
+            WebViewChromeRound.CornerRadius = new CornerRadius(0);
         }
         else
         {
             WindowManager.EnterFullScreen(false);
             UrlBoxWrapper.Visibility = Visibility.Visible;
             Sidebar.Visibility = Visibility.Visible;
+            WebViewChrome.Margin = new Thickness(5);
+            WebViewChrome.CornerRadius = new CornerRadius(5);
+            WebViewChromeRound.CornerRadius = new CornerRadius(5);
         }
     }
 
