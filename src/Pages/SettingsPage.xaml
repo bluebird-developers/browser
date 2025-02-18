@@ -59,7 +59,7 @@
                 </toolkitc:SettingsCard>
                 <!--  Data  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Data" />
-                <toolkitc:SettingsCard Description="Clear all user data" Header="Clear data">
+                <toolkitc:SettingsCard x:Uid="ClearData">
                     <toolkitc:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE74E;" />
                     </toolkitc:SettingsCard.HeaderIcon>
@@ -71,8 +71,8 @@
                             IsActive="False" />
                         <Button
                             x:Name="ClearUserDataBtn"
-                            Click="ClearUserDataButton_Click"
-                            Content="Clear all data" />
+                            x:Uid="Clear"
+                            Click="ClearUserDataButton_Click" />
                     </Grid>
                 </toolkitc:SettingsCard>
                 <!--  Personalization  -->
@@ -104,9 +104,8 @@
                 <!--  About  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
                 <toolkitc:SettingsCard
+                    x:Uid="JoinDevSanx"
                     Click="SettingsCardClickHandler"
-                    Description="A discord server about Windows Apps"
-                    Header="Join the discussion on Developer Sanctuary"
                     IsClickEnabled="True"
                     Tag="DevSanx">
                     <toolkitc:SettingsCard.ActionIcon>
@@ -117,9 +116,8 @@
                     </toolkitc:SettingsCard.HeaderIcon>
                 </toolkitc:SettingsCard>
                 <toolkitc:SettingsCard
+                    x:Uid="Donate"
                     Click="SettingsCardClickHandler"
-                    Description="On PayPal"
-                    Header="Support the development"
                     IsClickEnabled="True"
                     Tag="Donate">
                     <toolkitc:SettingsCard.ActionIcon>
@@ -166,7 +164,7 @@
                             Header="Attributions">
                             <RichTextBlock>
                                 <Paragraph>
-                                    Bluebird icon created by <Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
+                                    Bluebird icon created by<Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
                                 </Paragraph>
                             </RichTextBlock>
                         </toolkitc:SettingsCard>
