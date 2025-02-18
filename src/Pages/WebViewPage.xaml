@@ -250,8 +250,7 @@
             Grid.Column="0"
             Margin="5,0,0,0"
             HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            Visibility="Collapsed">
+            VerticalAlignment="Center">
             <Button
                 Click="SidebarButton_Click"
                 IsEnabled="{x:Bind WebViewControl.CanGoBack, Mode=OneWay}"
