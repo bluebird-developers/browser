@@ -187,6 +187,9 @@ public sealed partial class SettingsPage : Page
             case "Donate":
                 await Launcher.LaunchUriAsync(new Uri("https://paypal.me/julianhasreiter"));
                 break;
+            case "FreepikOnFlaticon":
+                await Launcher.LaunchUriAsync(new Uri("https://www.flaticon.com/authors/freepik"));
+                break;
             case "DebugSettings":
                 MainPageContent.CreateTab("Debug settings", "\uF1AD", typeof(DebugSettings));
                 break;

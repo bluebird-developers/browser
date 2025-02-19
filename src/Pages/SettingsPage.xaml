@@ -159,14 +159,14 @@
                             </StackPanel>
                         </toolkitc:SettingsCard>
                         <toolkitc:SettingsCard
-                            HorizontalContentAlignment="Left"
-                            ContentAlignment="Vertical"
-                            Header="Attributions">
-                            <RichTextBlock>
-                                <Paragraph>
-                                    Bluebird icon created by<Hyperlink NavigateUri="https://www.flaticon.com/authors/freepik">Freepik</Hyperlink>
-                                </Paragraph>
-                            </RichTextBlock>
+                            Click="SettingsCardClickHandler"
+                            Description="Bluebird icon created by Freepik on Flaticon"
+                            Header="Attributions"
+                            IsClickEnabled="True"
+                            Tag="FreepikOnFlaticon">
+                            <toolkitc:SettingsCard.ActionIcon>
+                                <FontIcon Glyph="&#xE8A7;" />
+                            </toolkitc:SettingsCard.ActionIcon>
                         </toolkitc:SettingsCard>
                         <toolkitc:SettingsCard
                             Click="SettingsCardClickHandler"
