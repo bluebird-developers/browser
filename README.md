@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This branch contains the old .NET Native based source and is no longer supported. It is kept here for archival purposes.
+
 <p align="center">
   <img src="images/HeroImage.jpg" alt="Bluebird screenshot" />
 </p>
