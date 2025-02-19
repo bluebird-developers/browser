@@ -108,6 +108,14 @@
                         <FontIcon Glyph="&#xE775;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
+                <AppBarButton
+                    Click="AppBarButton_Click"
+                    Label="Focus mode"
+                    Tag="FocusMode">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xEC46;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
                 <AppBarButton x:Uid="ExportAs">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE792;" />

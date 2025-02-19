@@ -63,7 +63,7 @@ public sealed partial class WebViewPage : Page
         sender.WebMessageReceived += CoreWebView2_WebMessageReceived;
         // Apply WebView2 settings
         ApplyWebView2Settings(sender);
-        string mainscript = "document.addEventListener('keydown', function(event) { if (event.ctrlKey && event.key === 't') { event.preventDefault(); window.chrome.webview.postMessage('ControlT'); } });";
+        string mainscript = "document.addEventListener('keydown', function (event) { if (event.ctrlKey && event.key === 't') { event.preventDefault(); window.chrome.webview.postMessage('ControlT'); } if (event.ctrlKey && event.key === 'e') { event.preventDefault(); window.chrome.webview.postMessage('ControlE'); } });";
         await sender.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(mainscript);
         if (launchurl != null)
         {
@@ -222,15 +222,24 @@ public sealed partial class WebViewPage : Page
         }
     }
 
+    #region Keyboard shortcuts
     private void CoreWebView2_WebMessageReceived(muxc.WebView2 sender, CoreWebView2WebMessageReceivedEventArgs args)
     {
         // this input has been treated as VERY unsecure input
         // DO NOT add anything which could be slighly insecure
+        if (args.TryGetWebMessageAsString() == "ControlE")
+        {
+            Sidebar.Visibility = Sidebar.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            return;
+        }
+
         if (args.TryGetWebMessageAsString() == "ControlT")
         {
             MainPageContent.CreateTab("New tab", "\uEC6C", typeof(NewTabPage));
+            return;
         }
     }
+    #endregion
 
     private async void AppBarButton_Click(object sender, RoutedEventArgs e)
     {
@@ -260,6 +269,9 @@ public sealed partial class WebViewPage : Page
             case "Translate":
                 string url = WebViewControl.CoreWebView2.Source;
                 WebViewControl.CoreWebView2.Navigate("https://translate.google.com/translate?hl&u=" + url);
+                break;
+            case "FocusMode":
+                Sidebar.Visibility = Sidebar.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
                 break;
             // text context menu
             case "OpenLnkInNewTab":

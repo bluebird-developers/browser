@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.WinUI.Controls;
-using System.Threading;
 
 namespace Bluebird.Pages;
 
