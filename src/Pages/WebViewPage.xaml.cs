@@ -41,6 +41,7 @@ public sealed partial class WebViewPage : Page
                 Frame.Navigate(typeof(WebViewErrorPage), new WebView2CreationError(ex.StackTrace), new DrillInNavigationTransitionInfo());
             }
         }
+        WebViewControl.Focus(FocusState.Pointer);
     }
 
     private async void WebViewControl_CoreWebView2Initialized(muxc.WebView2 sender, muxc.CoreWebView2InitializedEventArgs args)
