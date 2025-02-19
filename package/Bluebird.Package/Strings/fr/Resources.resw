@@ -222,4 +222,16 @@
   <data name="Clear.Content" xml:space="preserve">
     <value>Supprimer</value>
   </data>
+  <data name="NewTabSettings.Header" xml:space="preserve">
+    <value>Paramètres de nouvel onglet</value>
+  </data>
+  <data name="NewTabSettings.Description" xml:space="preserve">
+    <value>Configurer les paramètres liés à la nouvelle page d'onglet</value>
+  </data>
+  <data name="CompactTabs.Header" xml:space="preserve">
+    <value>Onglet compact</value>
+  </data>
+  <data name="CompactTabs.Description" xml:space="preserve">
+    <value>Voir plus d'onglets en un coup d'œil</value>
+  </data>
 </root>

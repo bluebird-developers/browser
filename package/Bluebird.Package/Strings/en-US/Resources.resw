@@ -222,4 +222,16 @@
   <data name="Clear.Content" xml:space="preserve">
     <value>Clear</value>
   </data>
+  <data name="NewTabSettings.Header" xml:space="preserve">
+    <value>New tab settings</value>
+  </data>
+  <data name="NewTabSettings.Description" xml:space="preserve">
+    <value>Configure settings related to the new tab page</value>
+  </data>
+  <data name="CompactTabs.Header" xml:space="preserve">
+    <value>Compact tabs</value>
+  </data>
+  <data name="CompactTabs.Description" xml:space="preserve">
+    <value>View more tabs at a glance</value>
+  </data>
 </root>

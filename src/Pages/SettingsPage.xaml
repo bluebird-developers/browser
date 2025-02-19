@@ -77,13 +77,13 @@
                 </toolkitc:SettingsCard>
                 <!--  Personalization  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Personalization" />
-                <toolkitc:SettingsCard Description="View more tabs at a glance" Header="Compact tabs">
+                <toolkitc:SettingsCard x:Uid="CompactTabs">
                     <toolkitc:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE737;" />
                     </toolkitc:SettingsCard.HeaderIcon>
                     <ToggleSwitch x:Name="CompactTabsToggle" />
                 </toolkitc:SettingsCard>
-                <toolkitc:SettingsExpander Description="Configure settings related to the new tab page" Header="New tab settings">
+                <toolkitc:SettingsExpander x:Uid="NewTabSettings">
                     <toolkitc:SettingsExpander.HeaderIcon>
                         <FontIcon Glyph="&#xEC6C;" />
                     </toolkitc:SettingsExpander.HeaderIcon>
