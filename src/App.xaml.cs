@@ -1,4 +1,6 @@
-﻿namespace Bluebird;
+﻿using WinRT;
+
+namespace Bluebird;
 
 sealed partial class App : Application
 {
@@ -38,14 +40,14 @@ sealed partial class App : Application
     {
         if (args.Kind == ActivationKind.Protocol)
         {
-            ProtocolActivatedEventArgs ProtocolEventArgs = args as ProtocolActivatedEventArgs;
+            ProtocolActivatedEventArgs ProtocolEventArgs = args.As<ProtocolActivatedEventArgs>();
             StartupUrl = ProtocolEventArgs.Uri.ToString();
             UnifiedArgumentStartup();
         }
 
         if (args.Kind == ActivationKind.CommandLineLaunch)
         {
-            CommandLineActivatedEventArgs CommandEventArgs = args as CommandLineActivatedEventArgs;
+            CommandLineActivatedEventArgs CommandEventArgs = args.As<CommandLineActivatedEventArgs>();
             CommandLineActivationOperation operation = CommandEventArgs.Operation;
             string input = operation.Arguments;
 
