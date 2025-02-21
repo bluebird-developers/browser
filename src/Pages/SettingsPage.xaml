@@ -36,6 +36,12 @@
                     Style="{StaticResource TitleTextBlockStyle}" />
                 <!--  General  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="General" />
+                <toolkitc:SettingsCard Header="Set as default">
+                    <toolkitc:SettingsCard.HeaderIcon>
+                        <FontIcon Glyph="&#xEB51;" />
+                    </toolkitc:SettingsCard.HeaderIcon>
+                    <Button Click="SetAsDefaultButton_Click" Content="Set as default" />
+                </toolkitc:SettingsCard>
                 <toolkitc:SettingsCard x:Uid="SearchEngine" HeaderIcon="Find">
                     <ComboBox x:Name="SearchEngineSelector">
                         <ComboBox.ItemTemplate>

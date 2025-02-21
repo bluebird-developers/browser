@@ -54,6 +54,11 @@ public sealed partial class SettingsPage : Page
         PasswordLockToggle.Toggled += PasswordLockToggle_Toggled;
     }
 
+    private async void SetAsDefaultButton_Click(object sender, RoutedEventArgs e)
+    {
+        await Launcher.LaunchUriAsync(new Uri("ms-settings:defaultapps?registeredAUMID=57443TechFireX.BlueBirdBrowser_zf5p29k4fpw22!App"));
+    }
+
     private void SearchEngineSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         SearchEngine engine = e.AddedItems[0] as SearchEngine;
