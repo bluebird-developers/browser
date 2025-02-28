@@ -81,6 +81,49 @@
                 </ListView>
             </Grid>
         </Flyout>
+        <Flyout x:Name="RecentlyClosedTabsFlyout">
+            <Grid Margin="-5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <muxc:InfoBar
+                    Title="Warning"
+                    Grid.Row="0"
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="This feature is in beta"
+                    Severity="Warning" />
+                <TextBlock
+                    Grid.Row="1"
+                    FontSize="20"
+                    Text="Recently closed tabs" />
+                <ListView
+                    x:Name="RecentlyClosedTabsListView"
+                    Grid.Row="2"
+                    Width="300"
+                    MaxHeight="350"
+                    ItemsSource="{x:Bind viewmodels:SettingsViewModel.SettingsVM.RecentlyClosedTabsList, Mode=TwoWay}"
+                    SelectionChanged="RecentlyClosedTabsListView_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="favorites:FavoriteItem">
+                            <StackPanel Margin="0,10,0,10" ToolTipService.ToolTip="{x:Bind Url}">
+                                <TextBlock
+                                    FontSize="18"
+                                    Text="{x:Bind Title}"
+                                    TextTrimming="CharacterEllipsis" />
+                                <TextBlock
+                                    FontSize="12"
+                                    Foreground="{ThemeResource SystemAccentColorDark1}"
+                                    Text="{x:Bind Url}"
+                                    TextTrimming="CharacterEllipsis" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Flyout>
     </Page.Resources>
     <muxc:TabView
         x:Name="Tabs"
@@ -101,6 +144,14 @@
                     <FontIcon Glyph="&#xE10C;" />
                     <Button.Flyout>
                         <MenuFlyout Placement="Bottom">
+                            <MenuFlyoutItem
+                                Click="BrowserMenuFlyoutItem_Click"
+                                Tag="RecentlyClosedFlyout"
+                                Text="Recently closed">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE81C;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
                             <MenuFlyoutItem
                                 x:Uid="Downloads"
                                 Click="BrowserMenuFlyoutItem_Click"

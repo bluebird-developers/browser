@@ -50,6 +50,10 @@ public sealed partial class MainPage : Page
     {
         switch ((sender as MenuFlyoutItem).Tag)
         {
+            case "RecentlyClosedFlyout":
+                RecentlyClosedTabsListView.SelectedItem = null;
+                RecentlyClosedTabsFlyout.ShowAt(BrowserMenuBtn);
+                break;
             case "Downloads":
                 CreateTab("Downloads", "\uE896", typeof(WebViewPage), "edge://downloads");
                 break;
@@ -145,8 +149,23 @@ public sealed partial class MainPage : Page
     {
         muxc.TabViewItem tab = args.Tab;
         var tabcontent = (Frame)tab.Content;
-        if (tabcontent.Content is WebViewPage) (tabcontent.Content as WebViewPage).WebViewControl.Close();
-        if (tabcontent.Content is SplitTabPage) (tabcontent.Content as SplitTabPage).CloseWebViews();
+        if (tabcontent.Content is WebViewPage)
+        {
+            WebViewPage content = tabcontent.Content as WebViewPage;
+            string title = content.WebViewControl.CoreWebView2.DocumentTitle;
+            string url = content.WebViewControl.CoreWebView2.Source;
+            content.WebViewControl.Close();
+            FavoriteItem newItem = new()
+            {
+                Title = title,
+                Url = url
+            };
+            SettingsViewModel.SettingsVM.RecentlyClosedTabsList.Insert(0, newItem);
+        }
+        if (tabcontent.Content is SplitTabPage)
+        {
+            (tabcontent.Content as SplitTabPage).CloseWebViews();
+        }
         Tabs.TabItems.Remove(tab);
         // Workaround for memory leak in TabView
         // microsoft-ui-xaml issue #3597
@@ -177,6 +196,17 @@ public sealed partial class MainPage : Page
             FavoriteItem item = (FavoriteItem)listView.SelectedItem;
             CreateWebTab(item.Url);
             FavoritesFlyout.Hide();
+        }
+    }
+
+    private void RecentlyClosedTabsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        ListView listView = sender as ListView;
+        if (listView.SelectedItem != null)
+        {
+            FavoriteItem item = (FavoriteItem)listView.SelectedItem;
+            CreateWebTab(item.Url);
+            RecentlyClosedTabsFlyout.Hide();
         }
     }
 

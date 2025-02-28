@@ -4,6 +4,7 @@ public class SettingsViewModel : INotifyPropertyChanged
 {
     public static SettingsViewModel SettingsVM = new();
     public ObservableCollection<FavoriteItem> FavoritesList { get; set; } = new ObservableCollection<FavoriteItem>();
+    public ObservableCollection<FavoriteItem> RecentlyClosedTabsList { get; set; } = new ObservableCollection<FavoriteItem>();
 
     // General
     private bool forcedarkenabled;
