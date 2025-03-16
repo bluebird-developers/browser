@@ -108,7 +108,7 @@
                     SelectionChanged="RecentlyClosedTabsListView_SelectionChanged">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="favorites:FavoriteItem">
-                            <StackPanel Margin="0,10,0,10" ToolTipService.ToolTip="{x:Bind Url}">
+                            <StackPanel Margin="0,10,0,10">
                                 <TextBlock
                                     FontSize="18"
                                     Text="{x:Bind Title}"
