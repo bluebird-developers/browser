@@ -16,10 +16,10 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Uwp.Controls.SettingsControls">
-      <Version>8.2.250129-preview2</Version>
+      <Version>8.2.250402</Version>
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Uwp.Controls.Sizers">
-      <Version>8.2.250129-preview2</Version>
+      <Version>8.2.250402</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.8.7</Version>
