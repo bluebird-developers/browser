@@ -127,6 +127,20 @@ public sealed partial class WindowChrome : Window, INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Closes multiple tabs at once while keeping <paramref name="tabToKeep"/> open and selected
+    /// </summary>
+    private void CloseTabs(IEnumerable<Tab> tabs, Tab tabToKeep)
+    {
+        TabListView.SelectedItem = tabToKeep; // Select the surviving tab first so the content host never points at a disposed instance
+        foreach (Tab tab in tabs.Where(t => t != tabToKeep).ToList())
+        {
+            tab.WebContentInstance?.Dispose();
+            tab.WebContentInstance = null;
+            MainViewModel.MainVM.Tabs.Remove(tab);
+        }
+    }
+
 
     private Tab _selectedTab;
 
@@ -245,6 +259,17 @@ public sealed partial class WindowChrome : Window, INotifyPropertyChanged
             case "Duplicate":
                 string URL = ThisWCI.WebContentControl.CoreWebView2?.Source;
                 CreateTab("New tab", URL);
+                break;
+            case "CloseBelow":
+                int belowIndex = MainViewModel.MainVM.Tabs.IndexOf(CTXSelectedTab);
+                CloseTabs(MainViewModel.MainVM.Tabs.Skip(belowIndex + 1), CTXSelectedTab);
+                break;
+            case "CloseAbove":
+                int aboveIndex = MainViewModel.MainVM.Tabs.IndexOf(CTXSelectedTab);
+                CloseTabs(MainViewModel.MainVM.Tabs.Take(aboveIndex), CTXSelectedTab);
+                break;
+            case "CloseOthers":
+                CloseTabs(MainViewModel.MainVM.Tabs, CTXSelectedTab);
                 break;
         }
     }

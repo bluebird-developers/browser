@@ -378,6 +378,19 @@
                                     <FontIcon Glyph="&#xE923;" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
+                            <MenuFlyoutSeparator />
+                            <MenuFlyoutItem
+                                Click="TabCTXItem_Click"
+                                Tag="CloseBelow"
+                                Text="Close tabs below" />
+                            <MenuFlyoutItem
+                                Click="TabCTXItem_Click"
+                                Tag="CloseAbove"
+                                Text="Close tabs above" />
+                            <MenuFlyoutItem
+                                Click="TabCTXItem_Click"
+                                Tag="CloseOthers"
+                                Text="Close all other tabs" />
                         </MenuFlyout>
                     </ListView.ContextFlyout>
                 </ListView>
