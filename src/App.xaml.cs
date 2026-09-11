@@ -14,6 +14,11 @@ public partial class App : Application
         this.InitializeComponent();
         SettingsHelper.LoadSettingsOnStartup();
         UnhandledException += App_UnhandledException;
+
+        // Warm the ad blocklist while the first WebView2 is still being created, so the first
+        // page load is filtered from its very first request without deferring any of them.
+        if (SettingsHelper.GetSetting("BlockAds") == "true")
+            _ = ABEDatabase.EnsureLoadedAsync();
     }
 
     private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)

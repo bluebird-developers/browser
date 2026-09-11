@@ -6,6 +6,7 @@ namespace Horizon.Controls.WebContent;
 public sealed partial class WebContentHost : Page, IDisposable
 {
     private WebContentHostViewModel WCHVM { get; set; } = new();
+    private AdBlockEngine? _adBlockEngine;
 
     public WebContentHost(TabCreationParams parameters)
     {
@@ -38,14 +39,10 @@ public sealed partial class WebContentHost : Page, IDisposable
                     var options = environment.CreateCoreWebView2ControllerOptions();
                     options.IsInPrivateModeEnabled = true;
                     await (sender as WebView2)?.EnsureCoreWebView2Async(environment, options);
-                    return;
                 }
-
-                await (sender as WebView2)?.EnsureCoreWebView2Async(environment);
-                
-                if (SettingsHelper.GetSetting("BlockAds") == "true") {
-                    AdBlockEngine engine = new();
-                    await engine.InitBrowserAsync((sender as WebView2).CoreWebView2);
+                else
+                {
+                    await (sender as WebView2)?.EnsureCoreWebView2Async(environment);
                 }
             }
             catch (Exception ex)
@@ -75,6 +72,15 @@ public sealed partial class WebContentHost : Page, IDisposable
         //sender.CoreWebView2.FaviconChanged += CoreWebView2_FaviconChanged;
         sender.CoreWebView2.ContainsFullScreenElementChanged += CoreWebView2_ContainsFullScreenElementChanged;
         sender.CoreWebView2.WebMessageReceived += CoreWebView2_WebMessageReceived;
+
+        // Attach before the first navigation below so the very first request is already filtered.
+        // Applies to InPrivate tabs as well - tracker blocking matters most there.
+        if (SettingsHelper.GetSetting("BlockAds") == "true")
+        {
+            _adBlockEngine = new AdBlockEngine();
+            _adBlockEngine.Attach(sender.CoreWebView2);
+        }
+
         string mainscript = "document.addEventListener(\"keydown\",function(e){e.ctrlKey&&\"l\"===e.key&&(e.preventDefault(),window.chrome.webview.postMessage(\"ControlL\")),e.ctrlKey&&\"t\"===e.key&&(e.preventDefault(),window.chrome.webview.postMessage(\"ControlT\"))});";
         await sender.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(mainscript);
         
@@ -683,6 +689,8 @@ public sealed partial class WebContentHost : Page, IDisposable
             WebContentControl.CoreWebView2.ContainsFullScreenElementChanged -= CoreWebView2_ContainsFullScreenElementChanged;
             WebContentControl.CoreWebView2.WebMessageReceived -= CoreWebView2_WebMessageReceived;
         }
+        _adBlockEngine?.Dispose();
+        _adBlockEngine = null;
         WebContentControl?.Close();
     }
 }

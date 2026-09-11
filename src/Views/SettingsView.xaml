@@ -105,7 +105,7 @@
                 </toolkitc:SettingsCard>
                 <!--  Advanced features  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Privacy" />
-                <toolkitc:SettingsCard Description="Uses Horizons internal adblocking engine to block ads across the internet" Header="Block Advertisements">
+                <toolkitc:SettingsCard Description="Uses Horizons internal adblocking engine to block ads across the internet" Header="Block Advertisements (beta)">
                     <toolkitc:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xEC4A;" />
                     </toolkitc:SettingsCard.HeaderIcon>

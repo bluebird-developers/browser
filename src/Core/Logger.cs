@@ -1,10 +1,10 @@
-﻿#if DEBUG
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Horizon.Core;
 
 internal static class Logger
 {
+    [Conditional("DEBUG")]
     internal static void LogEvent(Severity severity, string source, string message)
     {
         string timestamp = DateTime.Now.ToString("HH:mm:ss.fff");
@@ -22,4 +22,3 @@ internal static class Logger
         Error
     }
 }
-#endif
