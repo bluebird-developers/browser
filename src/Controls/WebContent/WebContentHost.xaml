@@ -200,10 +200,13 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="48" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1" Style="{StaticResource PageBorder}">
+        <Grid
+            x:Name="WebContentBorder"
+            Grid.Row="1"
+            Style="{StaticResource PageBorder}">
             <!--  required to round wv2  -->
             <WebView2
                 x:Name="WebContentControl"
@@ -218,51 +221,56 @@
                 HorizontalContentAlignment="Stretch"
                 Visibility="Collapsed" />
         </Grid>
-        <StackPanel
-            x:Name="Sidebar"
+        <!--  Collapsing this host removes the whole toolbar row, so the web content can take over the screen in full screen  -->
+        <Grid
+            x:Name="ToolbarHost"
             Grid.Row="0"
-            Margin="40,10,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Orientation="Horizontal">
+            Height="48">
+            <StackPanel
+                x:Name="Sidebar"
+                Margin="40,10,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <Button
+                    Click="SidebarButton_Click"
+                    IsEnabled="{x:Bind WebContentControl.CanGoBack, Mode=OneWay}"
+                    Style="{StaticResource SidebarButton}"
+                    Tag="Back"
+                    ToolTipService.ToolTip="Go back">
+                    <FontIcon FontSize="16" Glyph="&#xE112;" />
+                </Button>
+                <Button
+                    Click="SidebarButton_Click"
+                    Style="{StaticResource SidebarButton}"
+                    Tag="Forward"
+                    ToolTipService.ToolTip="Go forward"
+                    Visibility="{x:Bind WebContentControl.CanGoForward, Mode=OneWay, Converter={StaticResource BooleanToVisiblityConverter}}">
+                    <FontIcon FontSize="16" Glyph="&#xE111;" />
+                </Button>
+                <Button
+                    x:Name="FlyoutHostBtn"
+                    Click="SidebarButton_Click"
+                    Style="{StaticResource SidebarButton}"
+                    Tag="Refresh"
+                    ToolTipService.ToolTip="Refresh (F5)">
+                    <FontIcon FontSize="16" Glyph="&#xE149;" />
+                </Button>
+            </StackPanel>
             <Button
-                Click="SidebarButton_Click"
-                IsEnabled="{x:Bind WebContentControl.CanGoBack, Mode=OneWay}"
-                Style="{StaticResource SidebarButton}"
-                Tag="Back"
-                ToolTipService.ToolTip="Go back">
-                <FontIcon FontSize="16" Glyph="&#xE112;" />
-            </Button>
-            <Button
+                x:Name="MuteBtn"
+                Margin="5,0,0,5"
+                VerticalAlignment="Bottom"
                 Click="SidebarButton_Click"
                 Style="{StaticResource SidebarButton}"
-                Tag="Forward"
-                ToolTipService.ToolTip="Go forward"
-                Visibility="{x:Bind WebContentControl.CanGoForward, Mode=OneWay, Converter={StaticResource BooleanToVisiblityConverter}}">
-                <FontIcon FontSize="16" Glyph="&#xE111;" />
+                Tag="Mute"
+                ToolTipService.ToolTip="Mute"
+                Visibility="Collapsed">
+                <Button.Content>
+                    <FontIcon FontSize="16" Glyph="&#xE767;" />
+                </Button.Content>
             </Button>
-            <Button
-                x:Name="FlyoutHostBtn"
-                Click="SidebarButton_Click"
-                Style="{StaticResource SidebarButton}"
-                Tag="Refresh"
-                ToolTipService.ToolTip="Refresh (F5)">
-                <FontIcon FontSize="16" Glyph="&#xE149;" />
-            </Button>
-        </StackPanel>
-        <Button
-            x:Name="MuteBtn"
-            Margin="5,0,0,5"
-            VerticalAlignment="Bottom"
-            Click="SidebarButton_Click"
-            Style="{StaticResource SidebarButton}"
-            Tag="Mute"
-            ToolTipService.ToolTip="Mute"
-            Visibility="Collapsed">
-            <Button.Content>
-                <FontIcon FontSize="16" Glyph="&#xE767;" />
-            </Button.Content>
-        </Button>
+        </Grid>
         <Grid
             x:Name="UrlBoxWrapper"
             Grid.Row="1"

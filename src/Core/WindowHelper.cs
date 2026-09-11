@@ -41,27 +41,35 @@ public static class WindowHelper
         SaveWindowState();
     }*/
 
+    private static OverlappedPresenter? _windowedPresenter;
+    private static bool _wasMaximized;
+
     public static void SetFullScreen(bool fs)
     {
-        switch (fs)
+        if (fs != IsWindowInFullScreen())
         {
-            case true:
+            if (fs)
+            {
+                // Keep the presenter instance, SetPresenter(Kind) would hand back a fresh one that lost the min size and maximized state
+                _windowedPresenter = MainWindow.AppWindow.Presenter as OverlappedPresenter;
+                _wasMaximized = _windowedPresenter?.State == OverlappedPresenterState.Maximized;
                 MainWindow.AppWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
-                _ = MainWindow.DispatcherQueue.TryEnqueue(() =>
+            }
+            else if (_windowedPresenter != null)
+            {
+                MainWindow.AppWindow.SetPresenter(_windowedPresenter);
+                if (_wasMaximized)
                 {
-                    MainWindow.TabContentHost.Margin = new Thickness(-44, -8, -194, -8);
-                    MainWindow.Sidebar.Visibility = Visibility.Collapsed;
-                });
-                break;
-            case false:
+                    _windowedPresenter.Maximize();
+                }
+            }
+            else
+            {
                 MainWindow.AppWindow.SetPresenter(AppWindowPresenterKind.Default);
-                _ = MainWindow.DispatcherQueue.TryEnqueue(() =>
-                {
-                    MainWindow.TabContentHost.Margin = new Thickness(0);
-                    MainWindow.Sidebar.Visibility = Visibility.Visible;
-                });
-                break;
+            }
         }
+
+        MainWindow.SetFullScreenLayout(fs);
     }
 
     public static bool IsWindowInFullScreen()

@@ -24,10 +24,29 @@ public sealed partial class WindowChrome : Window, INotifyPropertyChanged
         UpdateDragRegions();
     }
 
+    private void BrowserControlIsland_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        // The island is collapsed while in full screen, once it is laid out again the drag regions have to follow it
+        UpdateDragRegions();
+    }
+
     private void UpdateDragRegions()
     {
         if (AppWindowTitleBar.IsCustomizationSupported() && AppWindow.TitleBar.ExtendsContentIntoTitleBar)
         {
+            if (_isFullScreenLayout)
+            {
+                // There is no title bar in full screen, a leftover rectangle would otherwise sit on top of the content
+                this.AppWindow.TitleBar.SetDragRectangles([]);
+                return;
+            }
+
+            if (BrowserControlIsland.ActualWidth == 0)
+            {
+                // Not laid out yet (e.g. right after leaving full screen), BrowserControlIsland_SizeChanged will get us here again
+                return;
+            }
+
             double scale = RootWindowGrid.XamlRoot.RasterizationScale;
 
             // Find where the BrowserControlIsland is rendered relative to the window container
@@ -60,6 +79,42 @@ public sealed partial class WindowChrome : Window, INotifyPropertyChanged
 
             this.AppWindow.TitleBar.SetDragRectangles(dragRects.ToArray());
         }
+    }
+
+    private bool _isFullScreenLayout;
+    private Thickness _windowedTabContentHostMargin;
+
+    /// <summary>
+    /// Hides the window chrome (app icon, control island and tab sidebar) so the tab content can cover the whole screen,
+    /// or brings the regular windowed layout back
+    /// </summary>
+    public void SetFullScreenLayout(bool fullScreen)
+    {
+        if (_isFullScreenLayout == fullScreen)
+        {
+            return;
+        }
+        _isFullScreenLayout = fullScreen;
+
+        Visibility chromeVisibility = fullScreen ? Visibility.Collapsed : Visibility.Visible;
+        AppIconHost.Visibility = chromeVisibility;
+        BrowserControlIsland.Visibility = chromeVisibility;
+        Sidebar.Visibility = chromeVisibility;
+
+        if (fullScreen)
+        {
+            // The windowed margin pulls the content up into the title bar row, keep it so the exact XAML value comes back later
+            _windowedTabContentHostMargin = TabContentHost.Margin;
+            TabContentHost.Margin = new Thickness(0);
+            Grid.SetColumnSpan(TabContentHost, 2);
+        }
+        else
+        {
+            TabContentHost.Margin = _windowedTabContentHostMargin;
+            Grid.SetColumnSpan(TabContentHost, 1);
+        }
+
+        UpdateDragRegions();
     }
 
     public void CreateTab(string title, string launchurl, bool isinprivate = false, bool insertaftercurrent = false, int indexofrequester = -1)

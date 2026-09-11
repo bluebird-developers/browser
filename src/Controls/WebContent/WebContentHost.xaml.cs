@@ -216,14 +216,33 @@ public sealed partial class WebContentHost : Page, IDisposable
 
     private void CoreWebView2_ContainsFullScreenElementChanged(CoreWebView2 sender, object args)
     {
-        bool fs = WindowHelper.IsWindowInFullScreen();
-        if (!fs)
+        // Follow what the page actually requested instead of toggling, otherwise window and page can drift apart
+        bool fs = sender.ContainsFullScreenElement;
+        WindowHelper.SetFullScreen(fs);
+        SetFullScreenLayout(fs);
+    }
+
+    /// <summary>
+    /// Hides the toolbar and strips the rounded border around the WebView2 so the page can cover the whole screen,
+    /// or brings the regular layout back
+    /// </summary>
+    private void SetFullScreenLayout(bool fullScreen)
+    {
+        if (fullScreen)
         {
-            WindowHelper.SetFullScreen(true);
+            ToolbarHost.Visibility = Visibility.Collapsed;
+            UrlBoxWrapper.Visibility = Visibility.Collapsed;
+            WebContentBorder.Margin = new Thickness(0);
+            WebContentBorder.BorderThickness = new Thickness(0);
+            WebContentBorder.CornerRadius = new CornerRadius(0);
         }
         else
         {
-            WindowHelper.SetFullScreen(false);
+            ToolbarHost.Visibility = Visibility.Visible;
+            // Clearing the local values hands these back to the PageBorder style
+            WebContentBorder.ClearValue(MarginProperty);
+            WebContentBorder.ClearValue(Grid.BorderThicknessProperty);
+            WebContentBorder.ClearValue(Grid.CornerRadiusProperty);
         }
     }
 
