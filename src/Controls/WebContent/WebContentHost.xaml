@@ -203,10 +203,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid
-            x:Name="WebContentBorder"
-            Grid.Row="1"
-            Style="{StaticResource PageBorder}">
+        <Grid x:Name="WebContentBorder" Grid.Row="1">
             <!--  required to round wv2  -->
             <WebView2
                 x:Name="WebContentControl"
@@ -221,7 +218,6 @@
                 HorizontalContentAlignment="Stretch"
                 Visibility="Collapsed" />
         </Grid>
-        <!--  Collapsing this host removes the whole toolbar row, so the web content can take over the screen in full screen  -->
         <Grid
             x:Name="ToolbarHost"
             Grid.Row="0"
