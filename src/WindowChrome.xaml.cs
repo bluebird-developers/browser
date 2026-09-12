@@ -5,6 +5,7 @@ namespace Horizon;
 /// </summary>
 public sealed partial class WindowChrome : Window, INotifyPropertyChanged
 {
+    private MainWindowViewModel MWVM = new();
     public event PropertyChangedEventHandler PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
@@ -34,7 +35,7 @@ public sealed partial class WindowChrome : Window, INotifyPropertyChanged
     {
         if (AppWindowTitleBar.IsCustomizationSupported() && AppWindow.TitleBar.ExtendsContentIntoTitleBar)
         {
-            if (_isFullScreenLayout)
+            if (MWVM._isFullScreenLayout)
             {
                 // There is no title bar in full screen, a leftover rectangle would otherwise sit on top of the content
                 this.AppWindow.TitleBar.SetDragRectangles([]);
@@ -81,8 +82,7 @@ public sealed partial class WindowChrome : Window, INotifyPropertyChanged
         }
     }
 
-    private bool _isFullScreenLayout;
-    private Thickness _windowedTabContentHostMargin;
+    
 
     /// <summary>
     /// Hides the window chrome (app icon, control island and tab sidebar) so the tab content can cover the whole screen,
@@ -90,11 +90,11 @@ public sealed partial class WindowChrome : Window, INotifyPropertyChanged
     /// </summary>
     public void SetFullScreenLayout(bool fullScreen)
     {
-        if (_isFullScreenLayout == fullScreen)
+        if (MWVM._isFullScreenLayout == fullScreen)
         {
             return;
         }
-        _isFullScreenLayout = fullScreen;
+        MWVM._isFullScreenLayout = fullScreen;
 
         Visibility chromeVisibility = fullScreen ? Visibility.Collapsed : Visibility.Visible;
         AppIconHost.Visibility = chromeVisibility;
@@ -104,13 +104,13 @@ public sealed partial class WindowChrome : Window, INotifyPropertyChanged
         if (fullScreen)
         {
             // The windowed margin pulls the content up into the title bar row, keep it so the exact XAML value comes back later
-            _windowedTabContentHostMargin = TabContentHost.Margin;
+            MWVM._windowedTabContentHostMargin = TabContentHost.Margin;
             TabContentHost.Margin = new Thickness(0);
             Grid.SetColumnSpan(TabContentHost, 2);
         }
         else
         {
-            TabContentHost.Margin = _windowedTabContentHostMargin;
+            TabContentHost.Margin = MWVM._windowedTabContentHostMargin;
             Grid.SetColumnSpan(TabContentHost, 1);
         }
 
