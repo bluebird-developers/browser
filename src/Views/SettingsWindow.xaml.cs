@@ -14,7 +14,7 @@ public sealed partial class SettingsWindow : Window
         {
             var workArea = displayArea.WorkArea;
 
-            int newWidth = (int)(workArea.Width * 0.4);
+            int newWidth = (int)(workArea.Width * 0.5);
             int newHeight = (int)(workArea.Height * 0.7);
 
             int newX = workArea.X + (workArea.Width - newWidth) / 2;
